@@ -44,6 +44,7 @@ class ICalParser():
         return vevents
 
     def _get_parameters(self):
+        """Collects all the AClass object creation parameters and stores them."""
         vevents = self._extract_vevents()
 
         for vevent in vevents:
@@ -86,3 +87,15 @@ class ICalParser():
 if __name__ == "__main__":
     icp = ICalParser()
     print icp.get_classes()
+
+__author__ = 'Kristo Koert'
+
+from timetableRetrieval.iCalParser import ICalParser
+from database.databaseConnector import DatabaseConnector
+
+if __name__ == "__main__":
+    icp = ICalParser()
+    dbc = DatabaseConnector()
+    for aClass in icp.get_classes():
+        dbc.add_class(aClass)
+    print dbc.test()
