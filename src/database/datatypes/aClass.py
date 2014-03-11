@@ -1,13 +1,14 @@
 __author__ = 'Kristo Koert'
 
-from notification import Notification
+from src.database.datatypes.notification import Notification
 
 
 class AClass(Notification):
+    """A data container for database writing and reading."""
 
     def __init__(self, subject_code, subject_name, attending_groups, class_type, start_timestamp, end_timestamp,
                  classroom, academician, attendible=False):
-        """Creates a representation of a single class.
+        """
         :param subject_code: The subjects code (e.g. I241).
         :type subject_code: str
         :param subject_name: The name of the class.
@@ -28,12 +29,16 @@ class AClass(Notification):
         :type attendible: bool
         """
         Notification.__init__(self, subject_name, start_timestamp, "Class")
-        self.subject_code = subject_code
-        self.subject_name = subject_name
-        self.attending_groups = attending_groups
-        self.class_type = class_type
-        self.start_timestamp = start_timestamp
-        self.end_timestamp = end_timestamp
-        self.classroom = classroom
-        self.academician = academician
-        self.attendible = attendible
+        self.subject_code = unicode(subject_code)
+        self.subject_name = unicode(subject_name)
+        self.attending_groups = unicode(attending_groups)
+        self.class_type = unicode(class_type)
+        self.start_timestamp = unicode(start_timestamp)
+        self.end_timestamp = unicode(end_timestamp)
+        self.classroom = unicode(classroom)
+        self.academician = unicode(academician)
+        self.attendible = unicode(attendible)
+
+    def get_database_info(self):
+        return (self.subject_code, self.subject_name, self.attending_groups, self.class_type, self.start_timestamp,
+                self.end_timestamp, self.classroom, self.academician, self.attendible)

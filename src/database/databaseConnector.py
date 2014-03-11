@@ -36,18 +36,14 @@ class DatabaseConnector():
             :param a_class: A class
             :type a_class: aClass
         """
-        self.cursor.execute("INSERT INTO Class VALUES (?,?,?,?,?,?,?,?,?)", (unicode(a_class.subject_code),
-                                                                             unicode(a_class.subject_name),
-                                                                             unicode(a_class.attending_groups),
-                                                                             unicode(a_class.class_type),
-                                                                             unicode(a_class.start_timestamp),
-                                                                             unicode(a_class.end_timestamp),
-                                                                             unicode(a_class.classroom),
-                                                                             unicode(a_class.academician),
-                                                                             unicode(a_class.attendible)))
+        self.cursor.execute("INSERT INTO Class VALUES (?,?,?,?,?,?,?,?,?)", (a_class.get_database_info()))
+
+    def add_classes(self, classes):
+        for cls in classes:
+            self.add_class(cls)
         self.conn.commit()
 
-    def add_reminder(self, reminder):
+    def add_notification(self, reminder):
         """
             :param reminder: A reminder
             :type reminder: Reminder
@@ -71,13 +67,8 @@ class DatabaseConnector():
     def get_statistics(self):
         pass
 
-    def test(self):
-        print "-------------------------------------------------------------"
-        self.cursor.execute("SELECT * FROM Class WHERE start_timestamp IS '2014-03-11 08:15:00'")
-        for row in self.cursor:
-            print row
-
 if __name__ == "__main__":
     dbc = DatabaseConnector()
+    dbc.get_classes()
 
 

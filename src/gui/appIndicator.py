@@ -4,8 +4,8 @@ import gtk
 import appindicator
 from threading import ThreadError
 
-from src.notificationTracking import NotificationHandler
-from src.timeManager import Stopper
+from src.notificationtracking import NotificationHandler
+from src.timemanager import Stopper
 from mainMenu import MainMenu
 from trackingSubMenu import TrackingSubMenu
 

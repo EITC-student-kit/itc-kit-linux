@@ -1,12 +1,6 @@
 __author__ = 'Kristo Koert'
 
 
-def own_path():
-    """:return The path in which this function was run, with no newline."""
-    import subprocess
-    return subprocess.check_output("pwd", shell=True)[:-1]
-
-
 def seconds_to_min(s):
     """Turns seconds input into a time format
 
@@ -46,3 +40,5 @@ def ical_datetime_to_timestamp(ical_dt):
     return Timestamp(int(ical_dt[:4]), int(ical_dt[4:6]), int(ical_dt[6:8]), int(ical_dt[9:11]) + 2, int(ical_dt[11:13]))
 
 
+if __name__ == "__main__":
+    pass

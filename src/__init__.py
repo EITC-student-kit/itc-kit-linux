@@ -1,7 +1,7 @@
 __author__ = 'Kristo Koert'
 
 from .database import *
-from .guiElements import *
-from .notificationTracking import *
-from .timeManager import *
-from .timetableRetrieval import *
+from .gui import *
+from .notificationtracking import *
+from .timemanager import *
+from .ical import *

@@ -3,15 +3,12 @@ from threading import Thread
 from time import sleep
 from appindicator import STATUS_ATTENTION, STATUS_ACTIVE, Indicator
 
-from src.dataTypes.notification import Notification
+from src.database.datatypes.notification import Notification
 
 
 #test
 from datetime import datetime
 
-class hullasi():
-    def __init__(self):
-        pass
 
 class NotificationHandler(Thread):
     """Handles checking if there are any notifications in a database that are due and raises an alarm if they are."""

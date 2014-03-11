@@ -1,6 +1,6 @@
 __author__ = 'Kristo Koert'
 
-from notification import Notification
+from src.database.datatypes.notification import Notification
 
 
 class Reminder(Notification):
@@ -13,3 +13,6 @@ class Reminder(Notification):
             :type time: Timestamp
         """
         Notification.__init__(self, message, time, "Reminder")
+
+    def get_database_info(self):
+        return self.get_notification_info()

@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'Kristo Koert'
-from src.utilityFunctions import UtilityFunctions
 from src.utilityFunctions.UtilityFunctions import string_till_symbol, ical_datetime_to_timestamp
-from src.dataTypes.aClass import AClass
+from src.database.datatypes.aClass import AClass
 
 
 class ICalParser():
@@ -19,8 +18,9 @@ class ICalParser():
     classes = []
 
     def __init__(self):
-        self.user_ical_file = file(UtilityFunctions.own_path() + "/timetableRetrieval/user_ical", "r")
-        self.main_ical_file = file(UtilityFunctions.own_path() + "/timetableRetrieval/main_ical", "r")
+        import os
+        self.user_ical_file = file(os.path.dirname(os.path.abspath(__file__)) + "/user_ical", "r")
+        self.main_ical_file = file(os.path.dirname(os.path.abspath(__file__)) + "/main_ical", "r")
 
     def _extract_vevents(self):
         """:return A list of vevents in string format"""
@@ -62,7 +62,8 @@ class ICalParser():
             :return list
         """
         aclass_parameters = []
-        keywords = ["Ainekood: ", "Rühmad: ", "Tüüp: ", "Ruum: ", "Õppejõud: "]
+        keywords = ["Subject code: ", "Groups: ", "Type: ", "Room: ", "Academician: "]
+        #keywords = ["Ainekood: ", "Rühmad: ", "Tüüp: ", "Ruum: ", "Õppejõud: "]
         for word in keywords:
             keyword_start_index = description_line.find(word)
             aclass_parameters.append(string_till_symbol(description_line[keyword_start_index + len(word): -1],
@@ -86,16 +87,3 @@ class ICalParser():
 
 if __name__ == "__main__":
     icp = ICalParser()
-    print icp.get_classes()
-
-__author__ = 'Kristo Koert'
-
-from timetableRetrieval.iCalParser import ICalParser
-from database.databaseConnector import DatabaseConnector
-
-if __name__ == "__main__":
-    icp = ICalParser()
-    dbc = DatabaseConnector()
-    for aClass in icp.get_classes():
-        dbc.add_class(aClass)
-    print dbc.test()
