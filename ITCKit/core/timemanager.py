@@ -2,8 +2,7 @@ __author__ = "Kristo Koert"
 
 from threading import Thread
 from time import sleep
-
-from src.utilityFunctions.UtilityFunctions import seconds_to_min
+from utils import seconds_to_min
 
 
 class Stopper(Thread):

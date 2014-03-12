@@ -3,12 +3,8 @@ __author__ = "Kristo Koert"
 import gtk
 import appindicator
 from threading import ThreadError
-
-from src.notificationtracking import NotificationHandler
-from src.timemanager import Stopper
-from mainMenu import MainMenu
-from trackingSubMenu import TrackingSubMenu
-
+from ITCKit.core.notificationHandler import NotificationHandler
+from ITCKit.core.timemanager import Stopper
 
 gtk.gdk.threads_init()
 
@@ -19,8 +15,8 @@ class AppIndicator(appindicator.Indicator):
     """
 
     def __init__(self):
-        from src.utilityFunctions import UtilityFunctions
-        icon_path = UtilityFunctions.own_path() + "/icon/Ico4.png"
+        import os
+        icon_path = os.path.dirname(os.path.abspath(__file__)) + "/ico4.png"
         super(AppIndicator, self).__init__("app-doc-menu", icon_path,
                                            appindicator.CATEGORY_APPLICATION_STATUS)
 
@@ -135,3 +131,90 @@ if __name__ == "__main__":
     gtk.threads_enter()
     gtk.main()
     gtk.threads_leave()
+
+
+class MainMenu(gtk.Menu):
+    """A menu item containing three widgets."""
+
+    def __init__(self, indicator):
+        """The object is created with a reference to a AppIndicator object. It is assumed that this menu
+        will be attached to that instance.
+
+        :param indicator: an AppIndicator instance
+        :type indicator: AppIndicator
+        """
+        super(gtk.Menu, self).__init__()
+
+        menu_items = [gtk.ImageMenuItem("Tracking.."),
+                      gtk.MenuItem("More"),
+                      gtk.ImageMenuItem("Notification!")
+                      ]
+
+        self.tracking_widget = menu_items[0]
+        self.more_widget = menu_items[1]
+        self.notification_widget = menu_items[2]
+
+        for item in menu_items:
+            self.append(item)
+            item.show()
+
+        self.more_widget.connect("activate", indicator.on_more_clicked)
+        self.notification_widget.connect("activate", indicator.notification_checked)
+        self.notification_widget.hide()
+
+
+class TrackingSubMenu(gtk.Menu):
+    """A menu item intended to be used as a sub menu."""
+
+    def __init__(self, indicator):
+        """The object is created with a reference to a AppIndicator object. It is assumed that this menu
+        will be attached to a MainMenu instance in this AppIndicator.
+
+        :param indicator: an AppIndicator instance
+        :type indicator: AppIndicator
+        """
+        super(TrackingSubMenu, self).__init__()
+
+        #Only used to retrieve icons, probably a better way to do this.
+        icon_indicator = appindicator.Indicator("for-retrieving-icons", "user-available",
+                                                appindicator.CATEGORY_APPLICATION_STATUS)
+
+        pro_icon = icon_indicator.get_icon()
+        icon_indicator.set_icon("user-offline")
+        neu_icon = icon_indicator.get_icon()
+        icon_indicator.set_icon("user-busy")
+        cou_icon = icon_indicator.get_icon()
+
+        self.sub_menu_items = [gtk.ImageMenuItem(pro_icon),
+                               gtk.ImageMenuItem(neu_icon),
+                               gtk.ImageMenuItem(cou_icon),
+                               gtk.MenuItem("Stop"),
+                               gtk.MenuItem("Reset"),
+                               gtk.MenuItem("Undo")]
+
+        #Probably a better way to set the labels on instance creation.
+        self.sub_menu_items[0].set_label("Productive")
+        self.sub_menu_items[1].set_label("Neutral")
+        self.sub_menu_items[2].set_label("Counter-Productive")
+
+        self.productive_widget = self.sub_menu_items[0]
+        self.neutral_widget = self.sub_menu_items[1]
+        self.counter_productive_widget = self.sub_menu_items[2]
+        self.stop_widget = self.sub_menu_items[3]
+        self.reset_widget = self.sub_menu_items[4]
+        self.undo_widget = self.sub_menu_items[5]
+
+        self.productive_widget.set_always_show_image(True)
+        self.neutral_widget.set_always_show_image(True)
+        self.counter_productive_widget.set_always_show_image(True)
+
+        for item in self.sub_menu_items:
+            self.append(item)
+
+        self.productive_widget.connect("activate", indicator.on_productivity_choice_clicked)
+        self.neutral_widget.connect("activate", indicator.on_productivity_choice_clicked)
+        self.counter_productive_widget.connect("activate", indicator.on_productivity_choice_clicked)
+        self.stop_widget.connect("activate", indicator.on_stop_clicked)
+        self.reset_widget.connect("activate", indicator.on_reset_clicked)
+
+

@@ -1,12 +1,10 @@
 __author__ = 'Kristo Koert'
+
 from threading import Thread
 from time import sleep
 from appindicator import STATUS_ATTENTION, STATUS_ACTIVE, Indicator
-
-from src.database.datatypes.notification import Notification
-
-
-#test
+from ITCKit.db.datatypes import Notification
+#
 from datetime import datetime
 
 
