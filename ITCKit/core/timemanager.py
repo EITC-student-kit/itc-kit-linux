@@ -2,7 +2,8 @@ __author__ = "Kristo Koert"
 
 from threading import Thread
 from time import sleep
-from utils import seconds_to_min
+
+from ITCKit.utils import converting
 
 
 class Stopper(Thread):
@@ -32,7 +33,7 @@ class Stopper(Thread):
         while not self._exit_thread:
             while self._active and not self._exit_thread:
                 if self._show_time_in_indicator:
-                    self._indicator.set_label(seconds_to_min(self._time))
+                    self._indicator.set_label(converting.sec_to_time(self._time))
                 sleep(1)
                 self._time += 1
             while not self._active and not self._exit_thread:

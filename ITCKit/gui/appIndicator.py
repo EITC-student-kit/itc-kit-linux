@@ -1,10 +1,13 @@
 __author__ = "Kristo Koert"
 
+#ToDo Port to Python 3
+from threading import ThreadError
+
 import gtk
 import appindicator
-from threading import ThreadError
 from ITCKit.core.notificationHandler import NotificationHandler
 from ITCKit.core.timemanager import Stopper
+
 
 gtk.gdk.threads_init()
 

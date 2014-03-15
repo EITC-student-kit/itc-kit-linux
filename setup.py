@@ -10,8 +10,8 @@ config = {
     'download_url': 'https://github.com/KristoKoert/ITCKit/archive/master.zip',
     'author_email': 'Kristo Koert',
     'version': '0.1',
-    'install_requires': ['Python2.7'],
-    'packages': ['NAME'],
+    'install_requires': ['Python3.3', 'sqlLite', 'GTK++3', 'gobject-introspection'],
+    'packages': ['ITCKit'],
     'scripts': [],
     'name': 'ITCKit'
 }

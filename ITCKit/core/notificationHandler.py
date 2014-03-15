@@ -1,9 +1,11 @@
 __author__ = 'Kristo Koert'
 
+#ToDo Port to Python 3
 from threading import Thread
 from time import sleep
-from appindicator import STATUS_ATTENTION, STATUS_ACTIVE, Indicator
-from ITCKit.db.datatypes import Notification
+
+from ITCKit.core.datatypes import Notification
+
 #
 from datetime import datetime
 
