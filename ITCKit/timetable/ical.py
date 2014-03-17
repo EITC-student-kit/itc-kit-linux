@@ -26,7 +26,7 @@ class ICalRetriever():
             try:
                 open(self.user_file_path, "w").write(
                     tools.download_ical(settings.get_user_url()))
-            except:
+            except ValueError:
                 print("User url, not defined.")
         if main:
             open(self.main_file_path, "w").write(

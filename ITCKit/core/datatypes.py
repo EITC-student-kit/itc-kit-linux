@@ -2,7 +2,6 @@ __author__ = 'Kristo Koert'
 
 from datetime import datetime
 
-
 class DataTypesAbstractClass():
     """Any classes inheriting from this class would be meant for creating instances that can be easily written to
     database, created from database rows or add the ability to safely and easily remove instances from database"""
@@ -11,7 +10,7 @@ class DataTypesAbstractClass():
 
     def __init__(self, type_of):
         try:
-            assert type_of in ("Class", "Mail", "Reminder", "Productive", "Neutral", "Counter_Productive")
+            assert type_of in ("Class", "Mail", "Reminder", "Productive", "Neutral", "Counter-Productive")
             self.type_of = type_of
         except AssertionError:
             print("Parameter type_of should be Class, Mail, Reminder or Activity Type.")
@@ -19,6 +18,16 @@ class DataTypesAbstractClass():
 
     def get_database_row(self):
         raise NotImplementedError
+
+    def remove_from_db(self):
+        if self.type_of == "Class":
+            pass
+        elif self.type_of == "Mail":
+            pass
+        elif self.type_of == "Reminder":
+            pass
+        elif self.type_of in ("Productive", "Neutral", "Counter-Productive"):
+            pass
 
 
 #Raw prototype

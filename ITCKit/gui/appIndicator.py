@@ -3,17 +3,22 @@ __author__ = "Kristo Koert"
 #ToDo Port to Python 3
 from threading import ThreadError
 
-import gtk
-import appindicator
+from gi.repository import Gtk, Gdk
+
+try:
+       from gi.repository import AppIndicator3 as AppIndicator
+except ImportError:
+       from gi.repository import AppIndicator
+
 from ITCKit.core.notificationHandler import NotificationHandler
 from ITCKit.core.timemanager import Stopper
 
 
-gtk.gdk.threads_init()
+Gdk.threads_init()
 
 
 class AppIndicator(appindicator.Indicator):
-    """Linux gtk toolbar application indicator with a main menu containing three elements and a sub-menu attached to the
+    """Linux Gtk toolbar application indicator with a main menu containing three elements and a sub-menu attached to the
     first element of the main menu containing another 6 elements.
     """
 
@@ -44,7 +49,7 @@ class AppIndicator(appindicator.Indicator):
         tracking.
 
         :param widget: the widget that triggered this event handler
-        :type widget: gtk.ImageMenuItem
+        :type widget: Gtk.ImageMenuItem
         """
         self.set_sub_menu_state_tracking(True)
         self.start_stopper()
@@ -53,7 +58,7 @@ class AppIndicator(appindicator.Indicator):
         """Event handler for stopping the timer.
 
         :param widget: the widget that triggered this event handler
-        :type widget: gtk.MenuItem
+        :type widget: Gtk.MenuItem
         """
         if widget.get_label() == "Stop":
             widget.set_label("Start")
@@ -65,7 +70,7 @@ class AppIndicator(appindicator.Indicator):
         """Event handler for resetting the stopper.
 
         :param widget: the widget that triggered this event handler
-        :type widget: gtk.MenuItem
+        :type widget: Gtk.MenuItem
         """
         self.sub_menu.stop_widget.set_label("Stop")
         self.set_sub_menu_state_tracking(False)
@@ -73,16 +78,16 @@ class AppIndicator(appindicator.Indicator):
         self.reset_stopper()
 
     def start_stopper(self):
-        """Leaves the gtk thread, creates a Stopper object there that is referenced in this object and starts it."""
+        """Leaves the Gtk thread, creates a Stopper object there that is referenced in this object and starts it."""
         try:
-            gtk.threads_leave()
+            Gtk.threads_leave()
             self._stopper = Stopper(self)
             self._stopper.toggle_active()
             self._stopper.start()
         except ThreadError:
             print("Threading problem in appIndicator.")
         finally:
-            gtk.threads_enter()
+            Gtk.threads_enter()
 
     def reset_stopper(self):
         """Deals with resetting the Stopper object via stopping it and removing the reference to it. The indicators
@@ -99,7 +104,7 @@ class AppIndicator(appindicator.Indicator):
         """Removes notification signs.
 
         :param widget: the widget that triggered this event handler
-        :type widget: gtk.MenuItem
+        :type widget: Gtk.MenuItem
         """
         widget.hide()
         self._notification_handler.remove_notification()
@@ -129,14 +134,8 @@ class AppIndicator(appindicator.Indicator):
                 self.sub_menu.reset_widget.hide()
                 self.sub_menu.stop_widget.hide()
 
-if __name__ == "__main__":
-    gui = AppIndicator()
-    gtk.threads_enter()
-    gtk.main()
-    gtk.threads_leave()
 
-
-class MainMenu(gtk.Menu):
+class MainMenu(Gtk.Menu):
     """A menu item containing three widgets."""
 
     def __init__(self, indicator):
@@ -146,11 +145,11 @@ class MainMenu(gtk.Menu):
         :param indicator: an AppIndicator instance
         :type indicator: AppIndicator
         """
-        super(gtk.Menu, self).__init__()
+        super(Gtk.Menu, self).__init__()
 
-        menu_items = [gtk.ImageMenuItem("Tracking.."),
-                      gtk.MenuItem("More"),
-                      gtk.ImageMenuItem("Notification!")
+        menu_items = [Gtk.ImageMenuItem("Tracking.."),
+                      Gtk.MenuItem("More"),
+                      Gtk.ImageMenuItem("Notification!")
                       ]
 
         self.tracking_widget = menu_items[0]
@@ -166,7 +165,7 @@ class MainMenu(gtk.Menu):
         self.notification_widget.hide()
 
 
-class TrackingSubMenu(gtk.Menu):
+class TrackingSubMenu(Gtk.Menu):
     """A menu item intended to be used as a sub menu."""
 
     def __init__(self, indicator):
@@ -188,12 +187,12 @@ class TrackingSubMenu(gtk.Menu):
         icon_indicator.set_icon("user-busy")
         cou_icon = icon_indicator.get_icon()
 
-        self.sub_menu_items = [gtk.ImageMenuItem(pro_icon),
-                               gtk.ImageMenuItem(neu_icon),
-                               gtk.ImageMenuItem(cou_icon),
-                               gtk.MenuItem("Stop"),
-                               gtk.MenuItem("Reset"),
-                               gtk.MenuItem("Undo")]
+        self.sub_menu_items = [Gtk.ImageMenuItem(pro_icon),
+                               Gtk.ImageMenuItem(neu_icon),
+                               Gtk.ImageMenuItem(cou_icon),
+                               Gtk.MenuItem("Stop"),
+                               Gtk.MenuItem("Reset"),
+                               Gtk.MenuItem("Undo")]
 
         #Probably a better way to set the labels on instance creation.
         self.sub_menu_items[0].set_label("Productive")
@@ -221,3 +220,8 @@ class TrackingSubMenu(gtk.Menu):
         self.reset_widget.connect("activate", indicator.on_reset_clicked)
 
 
+if __name__ == "__main__":
+    gui = AppIndicator()
+    Gtk.threads_enter()
+    Gtk.main()
+    Gtk.threads_leave()
