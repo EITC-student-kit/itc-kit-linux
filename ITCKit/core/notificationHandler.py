@@ -4,7 +4,10 @@ __author__ = 'Kristo Koert'
 from threading import Thread
 from time import sleep
 
+from gi.repository import AppIndicator3 as AppIndicator
+
 from ITCKit.core.datatypes import Notification
+
 
 
 #
@@ -22,7 +25,7 @@ class NotificationHandler(Thread):
         menu_item.
 
         :param indicator: channel for displaying the notification
-        :type indicator: Indicator
+        :type indicator: ToolbarIndicator
         :param menu_item: Place to display more notification information
         :type menu_item: gtk.ImageMenuItem
         """
@@ -48,7 +51,7 @@ class NotificationHandler(Thread):
         """Gets notifications from database"""
         #raise NotImplementedError
         #Test
-        self._notifications.append(Notification("Do math homework!", datetime.now(), "Some_ALARM"))
+        self._notifications.append(Notification("Do math homework!", datetime.now(), "Reminder"))
 
     def _raise_notification(self, notif):
         """Raises notification in Indicator passed as __init__ parameter.
@@ -56,13 +59,13 @@ class NotificationHandler(Thread):
         param: notif: A notification
         type: notif: Notification
         """
-        self._indicator.set_status(STATUS_ATTENTION)
+        self._indicator.set_status(AppIndicator.IndicatorStatus.ATTENTION)
         self._menu_item.show()
-        self._menu_item.set_label("Notification: " + notif.get_message())
+        self._menu_item.set_label("Notification: " + notif.message)
 
     def remove_notification(self):
         """Resets widget status to normal."""
-        self._indicator.set_status(STATUS_ACTIVE)
+        self._indicator.set_status(AppIndicator.IndicatorStatus.ACTIVE)
 
 if __name__ == "__main__":
     pass

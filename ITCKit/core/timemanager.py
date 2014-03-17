@@ -18,7 +18,7 @@ class Stopper(Thread):
         be used as a display point for the running stopper time.
 
         :param indicator: A place to display stopper time
-        :type indicator: Indicator
+        :type indicator: ToolbarIndicator
         """
         super(Stopper, self).__init__()
         self._indicator = indicator
@@ -33,7 +33,7 @@ class Stopper(Thread):
         while not self._exit_thread:
             while self._active and not self._exit_thread:
                 if self._show_time_in_indicator:
-                    self._indicator.set_label(converting.sec_to_time(self._time))
+                    self._indicator._tracked_time = converting.sec_to_time(self._time)
                 sleep(1)
                 self._time += 1
             while not self._active and not self._exit_thread:

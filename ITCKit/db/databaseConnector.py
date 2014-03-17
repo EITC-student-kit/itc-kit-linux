@@ -5,6 +5,7 @@ from sqlite3 import connect, OperationalError
 from ITCKit.utils import converting
 from ITCKit.settings import DATABASE_PATH
 
+print("db path:", DATABASE_PATH)
 
 class DatabaseConnector():
 
@@ -17,8 +18,8 @@ class DatabaseConnector():
             self.cursor.execute("""CREATE TABLE Class (subject_code TEXT, subject_name TEXT, attending_groups TEXT,
                                 class_type TEXT, start_timestamp TIMESTAMP, end_timestamp TIMESTAMP, classroom TEXT,
                                 academician TEXT, user_attend BOOLEAN)""")
-        except OperationalError:
-            pass
+        except OperationalError as e:
+            print(e)
 
         try:
             self.cursor.execute("""CREATE TABLE TimemanagerActivity (activity_type TEXT, start_timestamp TIMESTAMP,

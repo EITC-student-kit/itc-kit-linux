@@ -1,35 +1,36 @@
 __author__ = "Kristo Koert"
 
-#ToDo Port to Python 3
 from threading import ThreadError
 
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GLib
 
 try:
-       from gi.repository import AppIndicator3 as AppIndicator
+    from gi.repository import AppIndicator3 as AppIndicator
 except ImportError:
-       from gi.repository import AppIndicator
+    from gi.repository import AppIndicator
 
 from ITCKit.core.notificationHandler import NotificationHandler
 from ITCKit.core.timemanager import Stopper
-
+from ITCKit.gui.maingui import open_main_window
 
 Gdk.threads_init()
 
 
-class AppIndicator(appindicator.Indicator):
+class ToolbarIndicator():
     """Linux Gtk toolbar application indicator with a main menu containing three elements and a sub-menu attached to the
     first element of the main menu containing another 6 elements.
     """
 
+    _tracked_time = ''
+
     def __init__(self):
         import os
-        icon_path = os.path.dirname(os.path.abspath(__file__)) + "/ico4.png"
-        super(AppIndicator, self).__init__("app-doc-menu", icon_path,
-                                           appindicator.CATEGORY_APPLICATION_STATUS)
+        icon_path = os.path.dirname(os.path.abspath(__file__)) + "/icon/Icon4.png"
+        self.indc = AppIndicator.Indicator.new("app-doc-menu", icon_path,
+                                               AppIndicator.IndicatorCategory.APPLICATION_STATUS)
 
-        self.set_status(appindicator.STATUS_ACTIVE)
-        self.set_attention_icon("indicator-messages-new")
+        self.indc.set_status(AppIndicator.IndicatorStatus.ACTIVE)
+        self.indc.set_attention_icon("indicator-messages-new")
 
         self.main_menu = MainMenu(self)
         self.sub_menu = TrackingSubMenu(self)
@@ -38,11 +39,16 @@ class AppIndicator(appindicator.Indicator):
 
         self.set_sub_menu_state_tracking(False)
 
-        self.set_menu(self.main_menu)
+        self.indc.set_menu(self.main_menu)
 
         self._stopper = None
-        self._notification_handler = NotificationHandler(self, self.main_menu.notification_widget)
+        self._notification_handler = NotificationHandler(self.indc, self.main_menu.notification_widget)
         self._notification_handler.start()
+        GLib.timeout_add(10, self.handler_timeout)
+
+    def handler_timeout(self):
+        self.indc.set_label(self._tracked_time, '')
+        return True
 
     def on_productivity_choice_clicked(self, widget):
         """Event handler for all three productivity type choices. Independent of choice sets sub-menu state to
@@ -80,14 +86,14 @@ class AppIndicator(appindicator.Indicator):
     def start_stopper(self):
         """Leaves the Gtk thread, creates a Stopper object there that is referenced in this object and starts it."""
         try:
-            Gtk.threads_leave()
+            Gdk.threads_leave()
             self._stopper = Stopper(self)
             self._stopper.toggle_active()
             self._stopper.start()
         except ThreadError:
             print("Threading problem in appIndicator.")
         finally:
-            Gtk.threads_enter()
+            Gdk.threads_enter()
 
     def reset_stopper(self):
         """Deals with resetting the Stopper object via stopping it and removing the reference to it. The indicators
@@ -95,10 +101,11 @@ class AppIndicator(appindicator.Indicator):
         """
         self._stopper.stop_tracking()
         self._stopper = None
-        self.set_label("")
+        self._tracked_time = ''
 
     def on_more_clicked(self, widget):
-        raise NotImplementedError
+        Gdk.threads_leave()
+        open_main_window()
 
     def notification_checked(self, widget):
         """Removes notification signs.
@@ -143,7 +150,7 @@ class MainMenu(Gtk.Menu):
         will be attached to that instance.
 
         :param indicator: an AppIndicator instance
-        :type indicator: AppIndicator
+        :type indicator: ToolbarIndicator
         """
         super(Gtk.Menu, self).__init__()
 
@@ -173,13 +180,13 @@ class TrackingSubMenu(Gtk.Menu):
         will be attached to a MainMenu instance in this AppIndicator.
 
         :param indicator: an AppIndicator instance
-        :type indicator: AppIndicator
+        :type indicator: ToolbarIndicator
         """
         super(TrackingSubMenu, self).__init__()
 
         #Only used to retrieve icons, probably a better way to do this.
-        icon_indicator = appindicator.Indicator("for-retrieving-icons", "user-available",
-                                                appindicator.CATEGORY_APPLICATION_STATUS)
+        icon_indicator = AppIndicator.Indicator.new("for-retrieving-icons", "user-available",
+                                                    AppIndicator.IndicatorCategory.APPLICATION_STATUS)
 
         pro_icon = icon_indicator.get_icon()
         icon_indicator.set_icon("user-offline")
@@ -221,7 +228,7 @@ class TrackingSubMenu(Gtk.Menu):
 
 
 if __name__ == "__main__":
-    gui = AppIndicator()
-    Gtk.threads_enter()
+    gui = ToolbarIndicator()
+    Gdk.threads_enter()
     Gtk.main()
-    Gtk.threads_leave()
+    Gdk.threads_leave()
