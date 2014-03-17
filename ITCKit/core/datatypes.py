@@ -7,18 +7,42 @@ class DataTypesAbstractClass():
     """Any classes inheriting from this class would be meant for creating instances that can be easily written to
     database, created from database rows or add the ability to safely and easily remove instances from database"""
 
-    _type_of = None
+    type_of = None
 
     def __init__(self, type_of):
         try:
-            assert type_of in ("Class", "Mail", "Reminder")
-            self._type_of = type_of
+            assert type_of in ("Class", "Mail", "Reminder", "Productive", "Neutral", "Counter_Productive")
+            self.type_of = type_of
         except AssertionError:
-            print("Parameter type_of should be Class, Mail or Reminder.")
+            print("Parameter type_of should be Class, Mail, Reminder or Activity Type.")
             raise RuntimeError
 
     def get_database_row(self):
         raise NotImplementedError
+
+
+#Raw prototype
+class Mail(DataTypesAbstractClass):
+
+    def __init__(self, title, sender):
+        DataTypesAbstractClass.__init__(self, "Mail")
+        self.title = title
+        self.sender = sender
+
+    def get_database_row(self):
+        return self.title, self.sender, self.type_of
+
+
+class Activity(DataTypesAbstractClass):
+
+    def __init__(self, type_of, start, end, time_spent):
+        DataTypesAbstractClass.__init__(self, type_of)
+        self.time_spent = time_spent
+        self.start = start
+        self.end = end
+
+    def get_database_row(self):
+        return self.type_of, self.start, self.end, self.time_spent
 
 
 class Notification(DataTypesAbstractClass):
@@ -40,7 +64,7 @@ class Notification(DataTypesAbstractClass):
         return self.timestamp <= datetime.now()
 
     def get_database_row(self):
-        return self.message, self.timestamp, self._type_of
+        return self.type_of, self.timestamp, self.message
 
 
 class Reminder(Notification):
@@ -58,13 +82,13 @@ class Reminder(Notification):
 class AClass(Notification):
     """A data container for database writing and reading."""
 
-    def __init__(self, subject_summary, subject_code, attending_groups, class_type, start_timestamp, end_timestamp,
+    def __init__(self, subject_name, subject_code, attending_groups, class_type, start_timestamp, end_timestamp,
                  classroom, academician, attendible=False):
         """
         :param subject_code: The subjects code (e.g. I241).
         :type subject_code: str
-        :param subject_summary: The name of the class.
-        :type subject_summary: str
+        :param subject_name: The name of the class.
+        :type subject_name: str
         :param attending_groups: Attending groups separated by comas.
         :type attending_groups: str
         :param class_type: Lecture, Exercise, Practice, Repeat prelim, Reservation, Consultation etc.
@@ -80,8 +104,8 @@ class AClass(Notification):
         :param attendible: Does the user attend this class or not
         :type attendible: bool
         """
-        Notification.__init__(self, subject_summary, start_timestamp, "Class")
-        self.subject_summary = subject_summary
+        Notification.__init__(self, subject_name, start_timestamp, "Class")
+        self.subject_name = subject_name
         self.subject_code = subject_code
         self.attending_groups = attending_groups
         self.class_type = class_type
@@ -92,7 +116,7 @@ class AClass(Notification):
         self.attendible = attendible
 
     def get_database_row(self):
-        return (self.subject_code, self.subject_summary, self.attending_groups, self.class_type, self.start_timestamp,
+        return (self.subject_code, self.subject_name, self.attending_groups, self.class_type, self.start_timestamp,
                 self.end_timestamp, self.classroom, self.academician, self.attendible)
 
     def __str__(self):

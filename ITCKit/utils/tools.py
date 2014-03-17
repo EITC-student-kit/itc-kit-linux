@@ -2,7 +2,9 @@ __author__ = 'Kristo Koert'
 
 
 def download_ical(url):
-    """Returns ical text from url."""
+    """Returns ical text from url.
+    :rtype: str
+    """
     import urllib.request
     req = urllib.request.urlopen(url)
     return req.read().decode(encoding='UTF-8')
@@ -18,3 +20,7 @@ def string_from_till(a_string, first_symbol, second_symbol):
         else:
             indx += 1
     return a_string
+
+
+def load_settings():
+    pass

@@ -89,6 +89,7 @@ class ICalParser():
     def _create_class_instances(self):
         par = self._parameters
         for i in range(len(self._parameters["DTSTART:"])):
+            #SUMMARY: returns name
             self.classes.append(AClass(par["SUMMARY:"][i], par["Subject code: "][i], par["Groups: "][i],
                                        par["Type: "][i], par["DTSTART:"][i], par["DTEND:"][i], par["LOCATION:"][i],
                                        par["Academician: "][i], False))

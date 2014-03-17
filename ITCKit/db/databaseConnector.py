@@ -2,14 +2,15 @@ __author__ = 'Kristo Koert'
 
 from sqlite3 import connect, OperationalError
 
-from ITCKit.settings import DATABASE_NAME
+from ITCKit.utils import converting
+from ITCKit.settings import DATABASE_PATH
 
 
 class DatabaseConnector():
 
     def __init__(self):
         """If tables do not yet exist, they are created."""
-        self.conn = connect(DATABASE_NAME)
+        self.conn = connect(DATABASE_PATH)
         self.cursor = self.conn.cursor()
 
         try:
@@ -38,36 +39,40 @@ class DatabaseConnector():
         except OperationalError:
             pass
 
-    def _add_class(self, a_class):
-        """
-            :param a_class: A class
-            :type a_class: aClass
-        """
-        self.cursor.execute("INSERT INTO Class VALUES (?,?,?,?,?,?,?,?,?)", (a_class.get_database_row()))
-
     def add_classes(self, classes):
+        converting.to_list(classes)
         for cls in classes:
             self._add_class(cls)
         self.conn.commit()
 
-    def add_notification(self, notification):
-        """
-            :param notification: A reminder
-            :type notification: Notification
-        """
-        self.cursor.execute("INSERT INTO Notification VALUES (?,?,?)", (notification.get_database_row()))
-        self.conn.commit()
-
-    def update_statistics(self, reminder):
-        pass
+    def _add_class(self, a_class):
+        self.cursor.execute("INSERT INTO Class VALUES (?,?,?,?,?,?,?,?,?)", (a_class.get_database_row()))
 
     def get_classes(self):
-        return self.cursor.execute("SELECT * FROM Class")
+        return self.cursor.execute("SELECT * FROM Class").fetchall()
+
+    def add_notifications(self, notifications):
+        converting.to_list(notifications)
+        for notif in notifications:
+            self._add_notification(notif)
+        self.conn.commit()
+
+    def _add_notification(self, notification):
+        self.cursor.execute("INSERT INTO Notification VALUES (?,?,?)", (notification.get_database_row()))
 
     def get_notifications(self):
         self.cursor.execute("SELECT * FROM Notification")
 
+    def update_statistics(self, reminder):
+        pass
+
     def get_statistics(self):
+        pass
+
+    def update_settings(self):
+        pass
+
+    def get_settings(self):
         pass
 
 if __name__ == "__main__":

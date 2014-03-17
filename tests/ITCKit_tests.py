@@ -30,7 +30,7 @@ class TestUtils(unittest.TestCase):
                           sqlite3.Timestamp(2014, 3, 4, 10, 0, 0))
 
 
-class TestDatabase(unittest.TestCase):
+class TestDatabaseConnector(unittest.TestCase):
 
     dbc = databaseConnector.DatabaseConnector()
 
@@ -40,11 +40,9 @@ class TestDatabase(unittest.TestCase):
         self.dbc.add_classes(classes)
 
     def test_reading_classes(self):
-        i = 0
-        for classes in self.dbc.get_classes():
-            if i == 0:
-                print(classes)
-                i += 1
+        classes = self.dbc.get_classes()
+        for a_class in classes:
+            self.assertNotIn('', a_class)
 
 if __name__ == '__main__':
     unittest.main()
