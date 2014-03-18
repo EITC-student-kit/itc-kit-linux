@@ -3,7 +3,7 @@ from datetime import datetime
 
 from ITCKit.utils import converting
 from ITCKit.timetable import ical
-from ITCKit.db import databaseConnector
+from ITCKit.db import dbc
 from ITCKit.core import datatypes
 
 
@@ -65,17 +65,21 @@ class TestUtils(unittest.TestCase):
 
 class TestDatabaseConnector(unittest.TestCase):
 
-    dbc = databaseConnector.DatabaseConnector()
-
-    def test_writing_classes(self):
+    def test_add_to_db(self):
+        from ITCKit.core.datatypes import Activity, Notification
         icp = ical.ICalParser()
-        classes = icp.get_classes()
-        self.dbc.add_classes(classes)
+        a_class = icp.get_classes()
+        dbc.add_to_db(a_class[0])
+        dbc.add_to_db(Notification("Reminder", "Water plants!", datetime.now()))
+        dbc.add_to_db(Activity("Productive", datetime.now(), datetime.now(), 10))
 
     def test_reading_classes(self):
-        classes = self.dbc.get_classes()
-        for a_class in classes:
-            self.assertNotIn('', a_class)
+        classes = dbc.get_all_classes()
+        try:
+            assert(['' not in a_class for a_class in classes])
+        except AssertionError:
+            print("Empty string in a class instance.")
+
 
 if __name__ == '__main__':
-        unittest.main()
+    unittest.main()

@@ -1,5 +1,6 @@
 __author__ = 'Kristo Koert'
 
+#!/usr/bin/python
 from gi.repository import Gtk
 
 

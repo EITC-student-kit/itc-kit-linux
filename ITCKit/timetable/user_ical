@@ -185,7 +185,7 @@ TRANSP:OPAQUE
 DTSTART:20140311T100000Z
 DTEND:20140311T113000Z
 SUMMARY:Probability Theory and Mathematical Statistics [15]
-DESCRIPTION:Subject code: I104\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 02/11/2014 - 04/07/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
+DESCRIPTION:Subject code: I104\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 02/11/2014 - 04/07/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n\nEvent description: \n
 LOCATION:314
 END:VEVENT
 BEGIN:VEVENT
