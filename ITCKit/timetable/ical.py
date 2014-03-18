@@ -22,6 +22,10 @@ class ICalRetriever():
         settings.set_main_url(url)
 
     def retrieve(self, user=False, main=False):
+        """Downloads the icals to their respective files.
+        :type user bool
+        :type main bool
+        """
         if user:
             try:
                 open(self.user_file_path, "w").write(
@@ -77,6 +81,10 @@ class ICalParser():
         return vevents
 
     def _find(self, event):
+        """Finds and sets all the parameters in a line, if there are any.
+        :param event A vevent string from a ical file
+        :type event str
+        """
         for data in event:
             for key in self._keywords:
                 if key in data:
@@ -95,6 +103,9 @@ class ICalParser():
                                        par["Academician: "][i], False))
 
     def get_classes(self):
+        """Gets all the parameters and creates instances.
+        :rtype list
+        """
         self._set_parameters()
         self._create_class_instances()
         return self.classes
@@ -102,3 +113,4 @@ class ICalParser():
 
 if __name__ == "__main__":
     pass
+

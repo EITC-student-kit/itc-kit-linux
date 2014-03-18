@@ -5,7 +5,6 @@ from sqlite3 import connect, OperationalError
 from ITCKit.utils import converting
 from ITCKit.settings import DATABASE_PATH
 
-print("db path:", DATABASE_PATH)
 
 class DatabaseConnector():
 
@@ -19,7 +18,7 @@ class DatabaseConnector():
                                 class_type TEXT, start_timestamp TIMESTAMP, end_timestamp TIMESTAMP, classroom TEXT,
                                 academician TEXT, user_attend BOOLEAN)""")
         except OperationalError as e:
-            print(e)
+            pass
 
         try:
             self.cursor.execute("""CREATE TABLE TimemanagerActivity (activity_type TEXT, start_timestamp TIMESTAMP,
@@ -63,6 +62,8 @@ class DatabaseConnector():
 
     def get_notifications(self):
         self.cursor.execute("SELECT * FROM Notification")
+        import datetime.datetime
+        self.cursor.execute("SELECT * FROM Notification WHERE time < (?)", (datetime.now()))
 
     def update_statistics(self, reminder):
         pass

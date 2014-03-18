@@ -1,4 +1,5 @@
 __author__ = "Kristo Koert"
+#Dependency: gir1.2-appindicator3
 
 from threading import ThreadError
 
@@ -227,7 +228,7 @@ class TrackingSubMenu(Gtk.Menu):
         self.reset_widget.connect("activate", indicator.on_reset_clicked)
 
 
-if __name__ == "__main__":
+def activate_toolbar():
     gui = ToolbarIndicator()
     Gdk.threads_enter()
     Gtk.main()

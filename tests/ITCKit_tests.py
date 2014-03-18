@@ -1,8 +1,41 @@
 import unittest
+from datetime import datetime
 
 from ITCKit.utils import converting
 from ITCKit.timetable import ical
 from ITCKit.db import databaseConnector
+from ITCKit.core import datatypes
+
+
+class TestDatatypes(unittest.TestCase):
+
+    def test_notification(self):
+        dt = datetime.now()
+        notif = datatypes.Notification("Some Type", "Remember to water plants", dt)
+        self.assertEquals(notif.get_database_row(), ("Some Type", "Remember to water plants", dt))
+
+    def test_reminder(self):
+        dt = datetime.now()
+        reminder = datatypes.Reminder("Remember to water plants", dt)
+        self.assertEquals(reminder.get_database_row(), ("Reminder", "Remember to water plants", dt))
+
+    def test_activity(self):
+        dt1 = datetime.now()
+        dt2 = datetime.now()
+        activity = datatypes.Activity("Productive", dt1, dt2, 10)
+        self.assertEquals(activity.get_database_row(), ("Productive", dt1, dt2, 10))
+
+    def test_mail(self):
+        mail = datatypes.Mail("ITC")
+        self.assertEquals(mail.get_database_row()[:-1], ("Mail", "ITC"))
+
+    def test_a_class(self):
+        dt1 = datetime.now()
+        dt2 = datetime.now()
+        a_class = datatypes.AClass("I290", "Math", "12, 13, 14", "Practice", dt1, dt2,
+                                   "213A", "Max", False)
+        self.assertEquals(a_class.get_database_row(), ("I290", "Math", "12, 13, 14", "Practice", dt1,
+                                                       dt2, "213A", "Max", False))
 
 
 class TestIcal(unittest.TestCase):
@@ -45,5 +78,4 @@ class TestDatabaseConnector(unittest.TestCase):
             self.assertNotIn('', a_class)
 
 if __name__ == '__main__':
-    unittest.main()
-
+        unittest.main()

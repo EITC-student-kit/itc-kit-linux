@@ -2,96 +2,77 @@ __author__ = 'Kristo Koert'
 
 from datetime import datetime
 
+
 class DataTypesAbstractClass():
     """Any classes inheriting from this class would be meant for creating instances that can be easily written to
     database, created from database rows or add the ability to safely and easily remove instances from database"""
 
-    type_of = None
+    _db_row = []
 
-    def __init__(self, type_of):
-        try:
-            assert type_of in ("Class", "Mail", "Reminder", "Productive", "Neutral", "Counter-Productive")
-            self.type_of = type_of
-        except AssertionError:
-            print("Parameter type_of should be Class, Mail, Reminder or Activity Type.")
-            raise RuntimeError
+    def __init__(self):
+        pass
 
-    def get_database_row(self):
-        raise NotImplementedError
-
-    def remove_from_db(self):
-        if self.type_of == "Class":
-            pass
-        elif self.type_of == "Mail":
-            pass
-        elif self.type_of == "Reminder":
-            pass
-        elif self.type_of in ("Productive", "Neutral", "Counter-Productive"):
-            pass
-
-
-#Raw prototype
-class Mail(DataTypesAbstractClass):
-
-    def __init__(self, title, sender):
-        DataTypesAbstractClass.__init__(self, "Mail")
-        self.title = title
-        self.sender = sender
+    def _create_database_row(self, *kwargs):
+        if len(self._db_row) == 0:
+            self._db_row = kwargs
 
     def get_database_row(self):
-        return self.title, self.sender, self.type_of
+        return self._db_row
+
+
+class Notification(DataTypesAbstractClass):
+
+    def __init__(self, type_of, message, when_to_raise):
+        """
+        :param type_of: Either Mail or Reminder
+        :type type_of: str
+        :type message: str
+        :type when_to_raise: Timestamp
+        """
+        DataTypesAbstractClass.__init__(self)
+        self._create_database_row(type_of, message, when_to_raise)
+
+    def is_due(self):
+        return self._db_row[2] <= datetime.now()
 
 
 class Activity(DataTypesAbstractClass):
 
     def __init__(self, type_of, start, end, time_spent):
-        DataTypesAbstractClass.__init__(self, type_of)
-        self.time_spent = time_spent
-        self.start = start
-        self.end = end
-
-    def get_database_row(self):
-        return self.type_of, self.start, self.end, self.time_spent
-
-
-class Notification(DataTypesAbstractClass):
-
-    def __init__(self, message, timestamp, type_of):
         """
-        :param message: A notification name
-        :type message: str
-        :param timestamp: The time this notification should be raised.
-        :type timestamp: Timestamp
-        :param type_of: Either aClass, Mail or Reminder
+        :param type_of: Either Productive, Neutral of Counter Productive
         :type type_of: str
+        :type start: datetime
+        :type end: datetime
+        :type time_spent: int
         """
-        DataTypesAbstractClass.__init__(self, type_of)
-        self.message = message
-        self.timestamp = timestamp
+        DataTypesAbstractClass.__init__(self)
+        self._create_database_row(type_of, start, end, time_spent)
 
-    def is_due(self):
-        return self.timestamp <= datetime.now()
 
-    def get_database_row(self):
-        return self.type_of, self.timestamp, self.message
+class Mail(Notification):
+
+    def __init__(self, sender):
+        """
+        :type sender: str
+        """
+        Notification.__init__(self, "Mail", sender, datetime.now())
 
 
 class Reminder(Notification):
 
-    def __init__(self, message, time):
+    def __init__(self, message, when_to_activate):
         """
-            :param message: The message displayed on reminder activation.
             :type message: str
-            :param time: Time when reminder should activate.
-            :type time: Timestamp
+            :type when_to_activate: Timestamp
         """
-        Notification.__init__(self, message, time, "Reminder")
+        Notification.__init__(self, "Reminder", message, when_to_activate)
 
 
-class AClass(Notification):
+class AClass(DataTypesAbstractClass):
     """A data container for database writing and reading."""
 
-    def __init__(self, subject_name, subject_code, attending_groups, class_type, start_timestamp, end_timestamp,
+    def __init__(self, subject_code, subject_name, attending_groups, class_type, start_timestamp, end_timestamp,
                  classroom, academician, attendible=False):
         """
         :param subject_code: The subjects code (e.g. I241).
@@ -113,20 +94,9 @@ class AClass(Notification):
         :param attendible: Does the user attend this class or not
         :type attendible: bool
         """
-        Notification.__init__(self, subject_name, start_timestamp, "Class")
-        self.subject_name = subject_name
-        self.subject_code = subject_code
-        self.attending_groups = attending_groups
-        self.class_type = class_type
-        self.start_timestamp = start_timestamp
-        self.end_timestamp = end_timestamp
-        self.classroom = classroom
-        self.academician = academician
-        self.attendible = attendible
-
-    def get_database_row(self):
-        return (self.subject_code, self.subject_name, self.attending_groups, self.class_type, self.start_timestamp,
-                self.end_timestamp, self.classroom, self.academician, self.attendible)
+        DataTypesAbstractClass.__init__(self)
+        self._create_database_row(subject_code, subject_name, attending_groups, class_type, start_timestamp,
+                                  end_timestamp, classroom, academician, attendible)
 
     def __str__(self):
         return str(self.get_database_row())
