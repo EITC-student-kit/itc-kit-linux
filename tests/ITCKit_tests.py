@@ -5,7 +5,7 @@ from ITCKit.utils import converting
 from ITCKit.timetable import ical
 from ITCKit.db import dbc
 from ITCKit.core import datatypes
-from ITCKit.core.datatypes import Activity, Notification, AClass
+from ITCKit.core.datatypes import Activity, Notification
 
 
 class TestDatatypes(unittest.TestCase):
@@ -67,17 +67,17 @@ class TestUtils(unittest.TestCase):
 class TestDB(unittest.TestCase):
 
     def test_add_to_db(self):
+        from ITCKit.timetable import ical
+        icp = ical.ICalParser()
         dt = datetime.now()
-        dbc.add_to_db(AClass('', '', '', '', dt, dt, '', '', False))
-        dbc.add_to_db(Notification("Reminder", "Water plants!", datetime.now()))
-        dbc.add_to_db(Activity("Productive", datetime.now(), datetime.now(), 10))
+        #dbc.add_to_db(AClass('', '', '', '', dt, dt, '', '', False))
+        dbc.add_to_db(icp.get_classes())
+        dbc.add_to_db(Notification("Reminder", "Water plants!", dt))
+        dbc.add_to_db(Activity("Productive", dt, dt, 10))
 
     def test_reading_classes(self):
         classes = dbc.get_all_classes()
-        try:
-            assert(['' not in a_class for a_class in classes])
-        except AssertionError:
-            print("Empty string in a class instance.")
+        [print(cls) for cls in classes]
 
 
 if __name__ == '__main__':

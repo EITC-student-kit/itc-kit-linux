@@ -37,14 +37,15 @@ class NotificationHandler(Thread):
 
     def _check_notifications(self):
         """Checks if any notifications should be triggered."""
-        for notif in self._notifications:
-            if notif.is_due():
-                self._raise_notification(notif)
-                self._notifications.remove(notif)
+        if self._notifications[0] is not None:
+            for notif in self._notifications:
+                if notif.is_due():
+                    self._raise_notification(notif)
+                    self._notifications.remove(notif)
 
     def _get_notifications(self):
         """Gets notifications from database"""
-        self._notifications.append(dbc.get_all_notifications())
+        self._notifications = dbc.get_all_notifications()
 
     def _raise_notification(self, notif):
         """Raises notification in Indicator passed as __init__ parameter.

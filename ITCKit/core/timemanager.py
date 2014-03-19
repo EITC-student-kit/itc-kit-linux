@@ -4,6 +4,7 @@ from threading import Thread
 from time import sleep
 from datetime import datetime
 
+from ITCKit.core.datatypes import Activity
 from ITCKit.db import dbc
 from ITCKit.utils import converting
 
@@ -28,7 +29,6 @@ class Stopper(Thread):
         self._type_of_activity = type_of_activity
         self._indicator = indicator
         self._time = 0
-        self._active = False
         self._exit_thread = False
 
     def run(self):
@@ -37,26 +37,21 @@ class Stopper(Thread):
         creates a stop and resume effect."""
         start_time = datetime.now()
         while not self._exit_thread:
-            while self._active and not self._exit_thread:
-                if self._show_time_in_indicator:
-                    self._indicator._tracked_time = converting.sec_to_time(self._time)
+            if self._show_time_in_indicator:
+                self._indicator._tracked_time = converting.sec_to_time(self._time)
                 sleep(1)
                 self._time += 1
-            while not self._active and not self._exit_thread:
-                sleep(1)
         if self._write_to_db:
             end_time = datetime.now()
-            new_activity = dbc.Activity(self._type_of_activity, start_time, end_time, self._time)
+            new_activity = Activity(self._type_of_activity, start_time, end_time, self._time)
             dbc.add_to_db(new_activity)
-
-    def toggle_active(self):
-        self._active = not self._active
+            self._time = 0
 
     def stop_tracking(self):
         """Lets this thread instance finish. After this all references to this instance should be removed."""
         self._exit_thread = True
 
-    def _reset_tracking(self):
+    def reset_tracking(self):
         """Writing to db does not take place."""
         self._write_to_db = False
         self.stop_tracking()

@@ -87,6 +87,7 @@ class ICalParser():
         :param event A vevent string from a ical file
         :type event str
         """
+        var = None
         for data in event:
             for key in self._keywords:
                 if key in data:
@@ -95,6 +96,9 @@ class ICalParser():
                         self._parameters[key].append(converting.ical_datetime_to_timestamp(var))
                     else:
                         self._parameters[key].append(var.replace('\\', ''))
+                #ToDo replace temporary fix
+                elif key == "Academician: " and len(self._parameters["DTSTART:"]) > len(self._parameters["Academician: "]):
+                    self._parameters[key].append('')
 
     def _create_class_instances(self):
         par = self._parameters

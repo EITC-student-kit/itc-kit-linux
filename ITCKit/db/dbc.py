@@ -50,7 +50,8 @@ def get_all_classes():
 def get_all_notifications():
     """:rtype tuple"""
     db = connect_to_db()
-    return db.cursor().execute("SELECT * FROM Notification").fetchall()
+    return [[].append(Notification(p[0], p[1], p[2])
+                      for p in db.cursor().execute("SELECT * FROM Notification").fetchall())]
 
 
 def get_all_activities():

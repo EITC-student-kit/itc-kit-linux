@@ -35,7 +35,7 @@ class ToolbarIndicator():
         self.main_menu = MainMenu(self)
         self.sub_menu = TrackingSubMenu(self)
 
-        self.main_menu.tracking_widget.set_submenu(TrackingSubMenu)
+        self.main_menu.tracking_widget.set_submenu(self.sub_menu)
         self.indc.set_menu(self.main_menu)
 
         self.set_sub_menu_state_tracking(False)
@@ -59,29 +59,19 @@ class ToolbarIndicator():
         self.set_sub_menu_state_tracking(True)
         self.start_stopper(widget.get_label())
 
-    def on_stop_start_clicked(self, widget):
+    def on_stop_clicked(self, widget):
         """Event handler for pausing/continuing the timer.
-
-        :param widget: the widget that triggered this event handler
-        :type widget: Gtk.MenuItem
-        """
-        if widget.get_label() == "Stop":
-            widget.set_label("Start")
-        else:
-            widget.set_label("Stop")
-        self._stopper.toggle_active()
-
-    def on_reset_clicked(self, widget):
-        """Event handler for resetting the stopper.
 
         :param widget: the widget that triggered this event handler
         :type widget: Gtk.MenuItem
         """
         self.sub_menu.start_stop_widget.set_label("Stop")
         self.set_sub_menu_state_tracking(False)
-        self._stopper.reset_tracking()
+        self._stopper.stop_tracking()
         self._stopper = None
         self._tracked_time = ''
+        from ITCKit.db import dbc
+        print(dbc.get_all_activities())
 
     def on_notification_checked(self, widget):
         """Removes notification signs.
@@ -104,7 +94,6 @@ class ToolbarIndicator():
         try:
             Gdk.threads_leave()
             self._stopper = Stopper(self, activity_type)
-            self._stopper.toggle_active()
             self._stopper.start()
         except ThreadError:
             print("Threading problem in appIndicator.")
@@ -128,13 +117,11 @@ class ToolbarIndicator():
                 self.sub_menu.productive_widget.hide()
                 self.sub_menu.neutral_widget.hide()
                 self.sub_menu.counter_productive_widget.hide()
-                self.sub_menu.reset_widget.show()
                 self.sub_menu.start_stop_widget.show()
             elif not is_true:
                 self.sub_menu.productive_widget.show()
                 self.sub_menu.neutral_widget.show()
                 self.sub_menu.counter_productive_widget.show()
-                self.sub_menu.reset_widget.hide()
                 self.sub_menu.start_stop_widget.hide()
 
 
@@ -190,32 +177,32 @@ class TrackingSubMenu(Gtk.Menu):
         icon_indicator.set_icon("user-busy")
         cou_icon = icon_indicator.get_icon()
 
-        self.sub_menu_items = [Gtk.ImageMenuItem(pro_icon).set_label("Productive"),
-                               Gtk.ImageMenuItem(neu_icon).set_label("Neutral"),
-                               Gtk.ImageMenuItem(cou_icon).set_label("Counter-Productive"),
-                               Gtk.MenuItem("Stop"),
-                               Gtk.MenuItem("Reset"),
-                               Gtk.MenuItem("Undo")]
+        sub_menu_items = [Gtk.ImageMenuItem(pro_icon),
+                          Gtk.ImageMenuItem(neu_icon),
+                          Gtk.ImageMenuItem(cou_icon),
+                          Gtk.MenuItem("Stop"),
+                          Gtk.MenuItem("Undo")]
 
-        self.productive_widget = self.sub_menu_items[0]
-        self.neutral_widget = self.sub_menu_items[1]
-        self.counter_productive_widget = self.sub_menu_items[2]
-        self.start_stop_widget = self.sub_menu_items[3]
-        self.reset_widget = self.sub_menu_items[4]
-        self.undo_widget = self.sub_menu_items[5]
+        self.productive_widget = sub_menu_items[0]
+        self.productive_widget.set_label("Productive")
+        self.neutral_widget = sub_menu_items[1]
+        self.neutral_widget.set_label("Neutral")
+        self.counter_productive_widget = sub_menu_items[2]
+        self.counter_productive_widget.set_label("Counter-Productive")
+        self.start_stop_widget = sub_menu_items[3]
+        self.undo_widget = sub_menu_items[4]
 
         self.productive_widget.set_always_show_image(True)
         self.neutral_widget.set_always_show_image(True)
         self.counter_productive_widget.set_always_show_image(True)
 
-        for item in self.sub_menu_items:
+        for item in sub_menu_items:
             self.append(item)
 
         self.productive_widget.connect("activate", indicator.on_productivity_choice_clicked)
         self.neutral_widget.connect("activate", indicator.on_productivity_choice_clicked)
         self.counter_productive_widget.connect("activate", indicator.on_productivity_choice_clicked)
-        self.start_stop_widget.connect("activate", indicator.on_stop_start_clicked)
-        self.reset_widget.connect("activate", indicator.on_reset_clicked)
+        self.start_stop_widget.connect("activate", indicator.on_stop_clicked)
 
 
 def activate_toolbar():
@@ -223,3 +210,6 @@ def activate_toolbar():
     Gdk.threads_enter()
     Gtk.main()
     Gdk.threads_leave()
+
+if __name__ == "__main__":
+    activate_toolbar()
