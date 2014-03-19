@@ -6,45 +6,39 @@ from ITCKit.core.datatypes import Notification, AClass, Activity
 from ITCKit.settings import DATABASE_PATH
 
 
+dt = datetime.now()
+notif_cls = Notification('', '', dt).__class__
+activ_cls = Activity('', dt, dt, 1).__class__
+a_cls_cls = AClass('', '', '', '', dt, dt, '', '', False).__class__
+
+table_dict = {notif_cls: ("Notification", "(?,?,?)"),
+              activ_cls: ("Activity", "(?,?,?,?)"),
+              a_cls_cls: ("Class", "(?,?,?,?,?,?,?,?,?)")}
+
+
+def add_to_db(data_type):
+    """Adds instances from datatype to correct table.
+    :type data_type Iterable | AClass | Activity | Notification
+    """
+    try:
+        iter(data_type)
+    except TypeError:
+        data_type = [data_type]
+    db = connect_to_db()
+    cls = data_type[0].__class__
+    table = table_dict[cls][0]
+    db_colums = table_dict[cls][1]
+    db.executemany(
+        "INSERT INTO " + table + " VALUES "
+        + db_colums, [cls.get_database_row() for cls in data_type])
+    db.commit()
+
+
 def connect_to_db():
     """rtype: Connection"""
     db = connect(DATABASE_PATH)
     attempt_tables_creation(db.cursor())
     return db
-
-
-def add_to_db(data):
-    """
-    :type data: Notification | AClass | Activity | list
-    """
-    if isinstance(data, list):
-        if isinstance(data[0], Notification):
-            add_notifications(data)
-        if isinstance(data[0], AClass):
-            add_classes(data)
-        if isinstance(data[0], Activity):
-            add_activities(data)
-    else:
-        if isinstance(data, Notification):
-            add_notifications(data)
-        if isinstance(data, AClass):
-            add_classes(data)
-        if isinstance(data, Activity):
-            add_activities(data)
-
-
-def add_classes(classes):
-    """Adds instances of AClass to AClass table.
-    :type classes Iterable | AClass
-    """
-    try:
-        iter(classes)
-    except TypeError:
-        classes = [classes]
-    db = connect_to_db()
-    db.executemany(
-        "INSERT INTO Class VALUES (?,?,?,?,?,?,?,?,?)", [cls.get_database_row() for cls in classes])
-    db.commit()
 
 
 def get_all_classes():
@@ -53,40 +47,10 @@ def get_all_classes():
     return db.cursor().execute("SELECT * FROM Class").fetchall()
 
 
-def add_notifications(notifications):
-    """Adds instances of Notification to Notification table.
-    :type notifications: Iterable | Notification
-    """
-    try:
-        iter(notifications)
-    except TypeError:
-        notifications = [notifications]
-    db = connect_to_db()
-    db.executemany(
-        "INSERT INTO Notification VALUES (?,?,?)",
-        [notif.get_database_row() for notif in notifications])
-    db.commit()
-
-
 def get_all_notifications():
     """:rtype tuple"""
     db = connect_to_db()
     return db.cursor().execute("SELECT * FROM Notification").fetchall()
-
-
-def add_activities(activities):
-    """Add an activity instance to Activity table.
-    :type activities: Iterable | Activity
-    """
-    try:
-        iter(activities)
-    except TypeError:
-        activities = [activities]
-    db = connect_to_db()
-    db.executemany(
-        "INSERT INTO Activity VALUES (?, ?, ?, ?)",
-        [act.get_database_row() for act in activities])
-    db.commit()
 
 
 def get_all_activities():
@@ -140,4 +104,6 @@ def attempt_tables_creation(cursor):
         pass
 
 if __name__ == "__main__":
-    pass
+    from datetime import datetime
+    add_to_db(Notification("Reminder", "Message", datetime.now()))
+    print(get_all_notifications())

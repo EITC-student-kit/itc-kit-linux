@@ -29,18 +29,16 @@ class ToolbarIndicator():
         icon_path = os.path.dirname(os.path.abspath(__file__)) + "/icon/Icon4.png"
         self.indc = AppIndicator.Indicator.new("app-doc-menu", icon_path,
                                                AppIndicator.IndicatorCategory.APPLICATION_STATUS)
-
         self.indc.set_status(AppIndicator.IndicatorStatus.ACTIVE)
         self.indc.set_attention_icon("indicator-messages-new")
 
         self.main_menu = MainMenu(self)
         self.sub_menu = TrackingSubMenu(self)
 
-        self.main_menu.tracking_widget.set_submenu(self.sub_menu)
+        self.main_menu.tracking_widget.set_submenu(TrackingSubMenu)
+        self.indc.set_menu(self.main_menu)
 
         self.set_sub_menu_state_tracking(False)
-
-        self.indc.set_menu(self.main_menu)
 
         self._stopper = None
         self._notification_handler = NotificationHandler(self.indc, self.main_menu.notification_widget)
@@ -59,10 +57,10 @@ class ToolbarIndicator():
         :type widget: Gtk.ImageMenuItem
         """
         self.set_sub_menu_state_tracking(True)
-        self.start_stopper()
+        self.start_stopper(widget.get_label())
 
-    def on_stop_clicked(self, widget):
-        """Event handler for stopping the timer.
+    def on_stop_start_clicked(self, widget):
+        """Event handler for pausing/continuing the timer.
 
         :param widget: the widget that triggered this event handler
         :type widget: Gtk.MenuItem
@@ -79,36 +77,13 @@ class ToolbarIndicator():
         :param widget: the widget that triggered this event handler
         :type widget: Gtk.MenuItem
         """
-        self.sub_menu.stop_widget.set_label("Stop")
+        self.sub_menu.start_stop_widget.set_label("Stop")
         self.set_sub_menu_state_tracking(False)
-        widget.hide()
-        self.reset_stopper()
-
-    def start_stopper(self):
-        """Leaves the Gtk thread, creates a Stopper object there that is referenced in this object and starts it."""
-        try:
-            Gdk.threads_leave()
-            self._stopper = Stopper(self)
-            self._stopper.toggle_active()
-            self._stopper.start()
-        except ThreadError:
-            print("Threading problem in appIndicator.")
-        finally:
-            Gdk.threads_enter()
-
-    def reset_stopper(self):
-        """Deals with resetting the Stopper object via stopping it and removing the reference to it. The indicators
-        label is also reset to empty.
-        """
-        self._stopper.stop_tracking()
+        self._stopper.reset_tracking()
         self._stopper = None
         self._tracked_time = ''
 
-    def on_more_clicked(self, widget):
-        Gdk.threads_leave()
-        open_main_window()
-
-    def notification_checked(self, widget):
+    def on_notification_checked(self, widget):
         """Removes notification signs.
 
         :param widget: the widget that triggered this event handler
@@ -117,6 +92,25 @@ class ToolbarIndicator():
         widget.hide()
         self._notification_handler.remove_notification()
 
+    @staticmethod
+    def on_settings_clicked(widget):
+        widget.hide()
+        Gdk.threads_leave()
+        open_main_window()
+        Gdk.threads_enter()
+
+    def start_stopper(self, activity_type):
+        """Leaves the Gtk thread, creates a Stopper object there that is referenced in this object and starts it."""
+        try:
+            Gdk.threads_leave()
+            self._stopper = Stopper(self, activity_type)
+            self._stopper.toggle_active()
+            self._stopper.start()
+        except ThreadError:
+            print("Threading problem in appIndicator.")
+        finally:
+            Gdk.threads_enter()
+
     def set_sub_menu_state_tracking(self, is_true=True):
         """Sets the sub-menu to the appropriate state dependent on whether or not activity tracking is going on
         or not.(This is expressed via the is_true variable)
@@ -124,6 +118,7 @@ class ToolbarIndicator():
         :param is_true: is an activity type being tracked
         :type is_true: bool
         """
+        #ToDo Account for added widgets
         try:
             assert isinstance(is_true, bool)
         except AssertionError:
@@ -134,13 +129,13 @@ class ToolbarIndicator():
                 self.sub_menu.neutral_widget.hide()
                 self.sub_menu.counter_productive_widget.hide()
                 self.sub_menu.reset_widget.show()
-                self.sub_menu.stop_widget.show()
+                self.sub_menu.start_stop_widget.show()
             elif not is_true:
                 self.sub_menu.productive_widget.show()
                 self.sub_menu.neutral_widget.show()
                 self.sub_menu.counter_productive_widget.show()
                 self.sub_menu.reset_widget.hide()
-                self.sub_menu.stop_widget.hide()
+                self.sub_menu.start_stop_widget.hide()
 
 
 class MainMenu(Gtk.Menu):
@@ -156,20 +151,20 @@ class MainMenu(Gtk.Menu):
         super(Gtk.Menu, self).__init__()
 
         menu_items = [Gtk.ImageMenuItem("Tracking.."),
-                      Gtk.MenuItem("More"),
+                      Gtk.MenuItem("Settings"),
                       Gtk.ImageMenuItem("Notification!")
                       ]
 
         self.tracking_widget = menu_items[0]
-        self.more_widget = menu_items[1]
+        self.settings_widget = menu_items[1]
         self.notification_widget = menu_items[2]
 
         for item in menu_items:
             self.append(item)
             item.show()
 
-        self.more_widget.connect("activate", indicator.on_more_clicked)
-        self.notification_widget.connect("activate", indicator.notification_checked)
+        self.settings_widget.connect("activate", indicator.on_settings_clicked)
+        self.notification_widget.connect("activate", indicator.on_notification_checked)
         self.notification_widget.hide()
 
 
@@ -185,7 +180,7 @@ class TrackingSubMenu(Gtk.Menu):
         """
         super(TrackingSubMenu, self).__init__()
 
-        #Only used to retrieve icons, probably a better way to do this.
+        #SubOptimal
         icon_indicator = AppIndicator.Indicator.new("for-retrieving-icons", "user-available",
                                                     AppIndicator.IndicatorCategory.APPLICATION_STATUS)
 
@@ -195,22 +190,17 @@ class TrackingSubMenu(Gtk.Menu):
         icon_indicator.set_icon("user-busy")
         cou_icon = icon_indicator.get_icon()
 
-        self.sub_menu_items = [Gtk.ImageMenuItem(pro_icon),
-                               Gtk.ImageMenuItem(neu_icon),
-                               Gtk.ImageMenuItem(cou_icon),
+        self.sub_menu_items = [Gtk.ImageMenuItem(pro_icon).set_label("Productive"),
+                               Gtk.ImageMenuItem(neu_icon).set_label("Neutral"),
+                               Gtk.ImageMenuItem(cou_icon).set_label("Counter-Productive"),
                                Gtk.MenuItem("Stop"),
                                Gtk.MenuItem("Reset"),
                                Gtk.MenuItem("Undo")]
 
-        #Probably a better way to set the labels on instance creation.
-        self.sub_menu_items[0].set_label("Productive")
-        self.sub_menu_items[1].set_label("Neutral")
-        self.sub_menu_items[2].set_label("Counter-Productive")
-
         self.productive_widget = self.sub_menu_items[0]
         self.neutral_widget = self.sub_menu_items[1]
         self.counter_productive_widget = self.sub_menu_items[2]
-        self.stop_widget = self.sub_menu_items[3]
+        self.start_stop_widget = self.sub_menu_items[3]
         self.reset_widget = self.sub_menu_items[4]
         self.undo_widget = self.sub_menu_items[5]
 
@@ -224,7 +214,7 @@ class TrackingSubMenu(Gtk.Menu):
         self.productive_widget.connect("activate", indicator.on_productivity_choice_clicked)
         self.neutral_widget.connect("activate", indicator.on_productivity_choice_clicked)
         self.counter_productive_widget.connect("activate", indicator.on_productivity_choice_clicked)
-        self.stop_widget.connect("activate", indicator.on_stop_clicked)
+        self.start_stop_widget.connect("activate", indicator.on_stop_start_clicked)
         self.reset_widget.connect("activate", indicator.on_reset_clicked)
 
 

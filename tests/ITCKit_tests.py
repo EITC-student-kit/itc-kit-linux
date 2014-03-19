@@ -5,6 +5,7 @@ from ITCKit.utils import converting
 from ITCKit.timetable import ical
 from ITCKit.db import dbc
 from ITCKit.core import datatypes
+from ITCKit.core.datatypes import Activity, Notification, AClass
 
 
 class TestDatatypes(unittest.TestCase):
@@ -63,13 +64,11 @@ class TestUtils(unittest.TestCase):
                           sqlite3.Timestamp(2014, 3, 4, 10, 0, 0))
 
 
-class TestDatabaseConnector(unittest.TestCase):
+class TestDB(unittest.TestCase):
 
     def test_add_to_db(self):
-        from ITCKit.core.datatypes import Activity, Notification
-        icp = ical.ICalParser()
-        a_class = icp.get_classes()
-        dbc.add_to_db(a_class[0])
+        dt = datetime.now()
+        dbc.add_to_db(AClass('', '', '', '', dt, dt, '', '', False))
         dbc.add_to_db(Notification("Reminder", "Water plants!", datetime.now()))
         dbc.add_to_db(Activity("Productive", datetime.now(), datetime.now(), 10))
 

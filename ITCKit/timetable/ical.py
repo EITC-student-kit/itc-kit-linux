@@ -38,6 +38,7 @@ class ICalRetriever():
 
 
 class ICalParser():
+
     _keywords = ["Subject code: ", "Groups: ", "Type: ", "DTSTART:", "DTEND:", "SUMMARY:",
                  "LOCATION:", "Academician: "]
 
@@ -66,7 +67,8 @@ class ICalParser():
         vevent = ""
         vevents = []
         #SubOptimal
-        for line in self.user_ical_file:
+        #For main ical
+        for line in self.main_ical_file:
             if "BEGIN:VEVENT" in line:
                 found_start = True
             if "END:VEVENT" in line:

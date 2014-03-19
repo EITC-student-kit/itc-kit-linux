@@ -8,6 +8,7 @@ _main_url = "https://itcollege.ois.ee/en/timetable/ical?curriculum_id=2&key=01d8
 _mail_user_name = "kristo.koert@gmail.com"
 _mail_user_password = "password"
 
+
 def get_user_url():
     global _user_url
     return _user_url
