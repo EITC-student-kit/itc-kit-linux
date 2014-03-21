@@ -1,8 +1,11 @@
 __author__ = 'Kristo Koert'
 
+#ToDo implement
+
 import imaplib
 
 from ITCKit.settings import get_mail_username, get_mail_password
+
 
 
 #GDBUS?

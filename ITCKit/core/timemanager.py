@@ -14,18 +14,18 @@ class Stopper(Thread):
     a new instance should be created for tracking another activity. This is due to performance considerations.
     """
 
-    def __init__(self, display, type_of_activity):
+    def __init__(self, sub_menu, type_of_activity):
         """Initialization uses the super class Thread __init__ function and sets a gtk.PictureMenuItem object to
         be used as a display point for the running stopper time.
+
+        :param sub_menu: Reference to tracking sub-menu instance
+        :type sub_menu: TrackingSubMenu
         :param type_of_activity: Productive, Neutral, Counter-Productive
         :type type_of_activity: str
-        :param display: A place to display stopper time
-        :type display: Widget
         """
         super(Stopper, self).__init__()
-        self._write_to_db = True
         self._type_of_activity = type_of_activity
-        self._display = display
+        self.sub_menu_reference = sub_menu
         self._time = 0
         self._exit_thread = False
 
@@ -35,23 +35,19 @@ class Stopper(Thread):
         creates a stop and resume effect."""
         start_time = datetime.now()
         while not self._exit_thread:
-            self._display = converting.sec_to_time(self._time)
+            self.sub_menu_reference._display_label = converting.sec_to_time(self._time)
             sleep(1)
             self._time += 1
-        if self._write_to_db:
-            end_time = datetime.now()
-            new_activity = Activity(self._type_of_activity, start_time, end_time, self._time)
-            dbc.add_to_db(new_activity)
-            self._time = 0
+        end_time = datetime.now()
+        #ToDo check database writing for Activity. Suspected invalid procedure or value
+        new_activity = Activity(self._type_of_activity, start_time, end_time, self._time)
+        dbc.add_to_db(new_activity)
+        self._time = 0
 
     def stop_tracking(self):
         """Lets this thread instance finish. After this all references to this instance should be removed."""
         self._exit_thread = True
 
-    def reset_tracking(self):
-        """Writing to db does not take place."""
-        self._write_to_db = False
-        self.stop_tracking()
 
 if __name__ == "__main__":
     pass

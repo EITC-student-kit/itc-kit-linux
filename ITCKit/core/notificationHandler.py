@@ -1,6 +1,7 @@
 __author__ = 'Kristo Koert'
 
-#ToDo Port to Python 3
+#ToDo re-implement to work with new build
+
 from threading import Thread
 from time import sleep
 

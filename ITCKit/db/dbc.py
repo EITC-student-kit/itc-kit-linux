@@ -60,24 +60,13 @@ def get_all_activities():
     return conn.cursor().execute("SELECT * FROM Activity").fetchall()
 
 
-def update_statistics(self, reminder):
-    pass
-
-
 def get_statistics(self):
-    pass
-
-
-def update_settings(self):
-    pass
-
-
-def get_settings(self):
     pass
 
 
 def attempt_tables_creation(cursor):
     """If tables do not yet exist, they are created."""
+    #ToDo implement a check
     try:
         cursor.execute("""CREATE TABLE Class (subject_code TEXT, subject_name TEXT, attending_groups TEXT,
                                 class_type TEXT, start_timestamp TIMESTAMP, end_timestamp TIMESTAMP, classroom TEXT,

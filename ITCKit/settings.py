@@ -1,5 +1,7 @@
 s__author__ = 'Kristo Koert'
 
+#ToDo implement settings system via writing to file
+
 import os
 
 DATABASE_PATH = os.path.dirname(os.path.abspath(__file__)) + "/db/itckitdb"

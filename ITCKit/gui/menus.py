@@ -4,7 +4,6 @@ from threading import ThreadError
 
 from gi.repository import Gtk, Gdk, GLib
 
-from ITCKit.gui.built_in_icons import pro_icon, neu_icon, cou_icon
 from ITCKit.core.timemanager import Stopper
 
 
@@ -15,76 +14,123 @@ class MainMenu(Gtk.Menu):
 
         menu_items = [Gtk.MenuItem("Time Manager"),
                       Gtk.MenuItem("Timetable"),
+                      Gtk.MenuItem("Notifications"),
                       Gtk.MenuItem("Mail"),
                       Gtk.MenuItem("Conky"),
                       Gtk.ImageMenuItem("Notifications"),
                       ]
 
         self.tracking_widget = menu_items[0]
-        self.set_submenu(TrackingSubMenu())
+        self.tracking_widget.set_submenu(TrackingSubMenu())
         self.timetable_widget = menu_items[1]
-        self.mail_widget = menu_items[2]
-        self.conky_widget = menu_items[3]
-        self.notification_widget = menu_items[4]
+        self.timetable_widget.set_submenu(TimetableSubMenu())
+        self.notification_widget = menu_items[2]
+        self.notification_widget.set_submenu(NotificationSubMenu())
+        self.mail_widget = menu_items[3]
+        self.mail_widget.set_submenu(MailSubMenu())
+        self.conky_widget = menu_items[4]
+        self.conky_widget.set_submenu(ConkySubMenu())
+        self.notification_display_widget = menu_items[5]
+
 
         [(self.append(item), item.show()) for item in menu_items]
 
-        self.notification_widget.hide("activate", self.on_notification_checked)
+        self.notification_display_widget.connect("activate", self.on_notification_checked)
+        self.notification_display_widget.hide()
 
-        def on_notification_checked(self, widget):
-            """Removes notification signs.
+    def on_notification_checked(self, widget):
+        """Removes notification signs.
 
-            :param widget: the widget that triggered this event handler
-            :type widget: Gtk.MenuItem
-            """
-            widget.hide()
-            self._notification_handler.remove_notification()
+        :param widget: the widget that triggered this event handler
+        :type widget: Gtk.MenuItem
+        """
+        widget.hide()
+        self._notification_handler.remove_notification()
 
 
-class TrackingSubMenu(Gtk.Menu):
-
-    _stopper = None
-    _tracked_time = ''
+class BaseSubMenu(Gtk.Menu):
 
     def __init__(self):
-        """"""
+        super(BaseSubMenu, self).__init__()
+
+        menu_item = [Gtk.MenuItem("On/Off"),
+                     Gtk.MenuItem("Settings")]
+
+        self.on_off_widget = menu_item[0]
+        self.settings_widget = menu_item[1]
+
+        [(self.append(item), item.show()) for item in menu_item]
+
+        self.on_off_widget.connect("activate", self.on_off_clicked)
+        self.settings_widget.connect("activate", self.on_settings_clicked)
+
+    def on_off_clicked(self):
+        pass
+
+    def on_settings_clicked(self):
+        pass
+
+
+class TrackingSubMenu(BaseSubMenu):
+
+    _stopper = None
+    _display_label = ''
+
+    def __init__(self):
         super(TrackingSubMenu, self).__init__()
 
-        sub_menu_items = [Gtk.ImageMenuItem(pro_icon, label="Productive"),
-                          Gtk.ImageMenuItem(neu_icon, label="Neutral"),
-                          Gtk.ImageMenuItem(cou_icon, label="Counter-Productive"),
-                          Gtk.MenuItem("Display"),
-                          Gtk.MenuItem("Stop"),
-                          Gtk.MenuItem("Undo")]
+        from ITCKit.gui.icon.build_in_icons import get_productivity_icons
 
-        self.productive_widget = sub_menu_items[0]
-        #self.productive_widget.set_label("Productive")
+        pro_icon, neu_icon, cou_icon = get_productivity_icons()
 
-        self.neutral_widget = sub_menu_items[1]
-        #self.neutral_widget.set_label("Neutral")
+        menu_items = [Gtk.ImageMenuItem(pro_icon),
+                      Gtk.ImageMenuItem(neu_icon),
+                      Gtk.ImageMenuItem(cou_icon),
+                      Gtk.MenuItem("Display"),
+                      Gtk.MenuItem("Stop"),
+                      Gtk.MenuItem("Undo")]
 
-        self.counter_productive_widget = sub_menu_items[2]
-        #self.counter_productive_widget.set_label("Counter-Productive")
+        #ToDo Account for On/Off widget
 
-        self.display = sub_menu_items[3]
-        self.stop = sub_menu_items[4]
-        self.undo_widget = sub_menu_items[5]
+        self.productive_widget = menu_items[0]
+        self.productive_widget.set_label("Productive")
+
+        self.neutral_widget = menu_items[1]
+        self.neutral_widget.set_label("Neutral")
+
+        self.counter_productive_widget = menu_items[2]
+        self.counter_productive_widget.set_label("Counter-Productive")
+
+        self.display_widget = menu_items[3]
+        self.stop_widget = menu_items[4]
+        self.undo_widget = menu_items[5]
 
         self.productive_widget.set_always_show_image(True)
         self.neutral_widget.set_always_show_image(True)
         self.counter_productive_widget.set_always_show_image(True)
 
-        [self.append(item) for item in sub_menu_items]
+        [(self.append(item), item.show()) for item in menu_items]
 
         self.productive_widget.connect("activate", self.on_productivity_choice_clicked)
         self.neutral_widget.connect("activate", self.on_productivity_choice_clicked)
         self.counter_productive_widget.connect("activate", self.on_productivity_choice_clicked)
-        self.stop.connect("activate", self.on_stop_clicked)
+        self.stop_widget.connect("activate", self.on_stop_clicked)
         self.undo_widget.connect("activate", self.on_undo_clicked)
+
+        self.display_widget.hide()
+        self.stop_widget.hide()
+        self.undo_widget.hide()
+
         GLib.timeout_add(10, self.handler_timeout)
 
+    def on_off_clicked(self):
+        pass
+
+    def on_settings_clicked(self):
+        pass
+
     def handler_timeout(self):
-        self.display.set_label(self._tracked_time, '')
+        self.display_widget.set_label(self._display_label)
         return True
 
     def on_productivity_choice_clicked(self, widget):
@@ -108,7 +154,7 @@ class TrackingSubMenu(Gtk.Menu):
         """
         self._stopper.stop_tracking()
         self._stopper = None
-        self._tracked_time = ''
+        self._set_sub_menu_state_tracking(False)
         #ToDo remove after testing
         from ITCKit.db import dbc
         print(dbc.get_all_activities())
@@ -117,7 +163,7 @@ class TrackingSubMenu(Gtk.Menu):
         """Leaves the Gtk thread, creates a Stopper object there that is referenced in this object and starts it."""
         try:
             Gdk.threads_leave()
-            self._stopper = Stopper(self.display, activity_type)
+            self._stopper = Stopper(self, activity_type)
             self._stopper.start()
         except ThreadError:
             print("Threading problem in Tracking sub-menu.")
@@ -141,21 +187,81 @@ class TrackingSubMenu(Gtk.Menu):
                 self.productive_widget.hide()
                 self.neutral_widget.hide()
                 self.counter_productive_widget.hide()
-                self.stop.show()
+                self.stop_widget.show()
+                self.display_widget.show()
             elif not is_tracking:
                 self.productive_widget.show()
                 self.neutral_widget.show()
                 self.counter_productive_widget.show()
-                self.stop.hide()
+                self.stop_widget.hide()
+                self.display_widget.hide()
 
 
-class ConkySubMenu(Gtk.Menu):
-
+class TimetableSubMenu(BaseSubMenu):
+    #ToDo implement class
     def __init__(self):
+        super(TimetableSubMenu, self).__init__()
+
+        menu_item = [Gtk.MenuItem("Manual Update")]
+
+        self.update_widget = menu_item[0]
+
+        [(self.append(item), item.show()) for item in menu_item]
+
+        self.update_widget.connect("activate", self.on_update_clicked)
+
+    def on_off_clicked(self):
+        pass
+
+    def on_settings_clicked(self):
+        pass
+
+    def on_update_clicked(self):
         pass
 
 
-class NotificationSubMenu(Gtk.Menu):
-
+class NotificationSubMenu(BaseSubMenu):
+    #ToDo implement class
     def __init__(self):
+        super(NotificationSubMenu, self).__init__()
+
+        menu_item = [Gtk.MenuItem("Clear All")]
+
+        self.clear_all = menu_item[0]
+
+        [(self.append(item), item.show()) for item in menu_item]
+
+        self.clear_all.connect("activate", self.on_clear_all_clicked)
+
+    def on_off_clicked(self):
+        pass
+
+    def on_settings_clicked(self):
+        pass
+
+    def on_clear_all_clicked(self):
+        pass
+
+
+class MailSubMenu(BaseSubMenu):
+    #ToDo implement class
+    def __init__(self):
+        super(MailSubMenu, self).__init__()
+
+    def on_off_clicked(self):
+        pass
+
+    def on_settings_clicked(self):
+        pass
+
+
+class ConkySubMenu(BaseSubMenu):
+    #ToDo implement class
+    def __init__(self):
+        super(ConkySubMenu, self).__init__()
+
+    def on_off_clicked(self):
+        pass
+
+    def on_settings_clicked(self):
         pass

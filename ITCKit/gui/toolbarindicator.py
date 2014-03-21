@@ -1,6 +1,8 @@
 __author__ = "Kristo Koert"
 #Dependency: gir1.2-appindicator3
 
+from gi.repository import Gtk, Gdk
+
 try:
     from gi.repository import AppIndicator3 as AppIndicator
 except ImportError:
@@ -32,7 +34,7 @@ class ToolbarIndicator():
 
         self.indc.set_menu(self.main_menu)
 
-        self._notification_handler = NotificationHandler(self.indc, self.main_menu.notification_widget)
+        self._notification_handler = NotificationHandler(self.indc, self.main_menu.notification_display_widget)
         self._notification_handler.start()
 
 
