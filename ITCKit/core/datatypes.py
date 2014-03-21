@@ -100,3 +100,7 @@ class AClass(DataTypesAbstractClass):
 
     def __str__(self):
         return str(self.get_database_row())
+
+
+if __name__ == "__main__":
+    pass

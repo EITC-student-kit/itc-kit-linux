@@ -1,4 +1,4 @@
-__author__ = 'Kristo Koert'
+s__author__ = 'Kristo Koert'
 
 import os
 

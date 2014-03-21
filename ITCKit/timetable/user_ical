@@ -24,39 +24,6 @@ RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:51865
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T061500Z
-DTEND:20140305T074500Z
-SUMMARY:Network Applications I: Client-Server Systems [15]
-DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:51944
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T080000Z
-DTEND:20140305T093000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52785
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T100000Z
-DTEND:20140305T113000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
-DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
 UID:54339
 SEQUENCE:1
 STATUS:CONFIRMED
@@ -1342,5 +1309,60 @@ DTEND:20140519T123000Z
 SUMMARY:English [15\, 14]
 DESCRIPTION:Subject code: I023\nGroups: 15\, 14\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Mon\nPeriod: 02/03/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
 LOCATION:226
+END:VEVENT
+BEGIN:VEVENT
+UID:51654
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T051500Z
+DTEND:20140520T064500Z
+SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:52719
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T070000Z
+DTEND:20140520T083000Z
+SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:53499
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T090000Z
+DTEND:20140520T103000Z
+SUMMARY:Enterprise Economics [14\, 15]
+DESCRIPTION:Subject code: I006\nGroups: 14\, 15\nTime: 12:00 - 13:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:51835
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T110000Z
+DTEND:20140520T123000Z
+SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:52050
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T130000Z
+DTEND:20140520T143000Z
+SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
+LOCATION:314
 END:VEVENT
 END:VCALENDAR

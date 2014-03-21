@@ -24,138 +24,6 @@ RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:52773
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T061500Z
-DTEND:20140305T074500Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [12\, 14]
-DESCRIPTION:Subject code: I112\nGroups: 12\, 14\nTime: 08:15 - 09:45\nRoom: 316\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:316
-END:VEVENT
-BEGIN:VEVENT
-UID:53792
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T061500Z
-DTEND:20140305T091500Z
-SUMMARY:Telecommunications Networks [A22-2]
-DESCRIPTION:Subject code: I241\nGroups: A22-2\nTime: 08:15 - 11:15\nRoom: 415\nAcademician: Indrek Rokk\nType: Practice\n\nFrequency: Every second week\, Wed\nPeriod: 02/05/2014 - 03/30/2014\n\nRound: Telecommunications Networks A21 A22 D21 D22 D23\n
-LOCATION:415
-END:VEVENT
-BEGIN:VEVENT
-UID:54030
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T061500Z
-DTEND:20140305T091500Z
-SUMMARY:Telecommunications Networks [A22-1]
-DESCRIPTION:Subject code: I241\nGroups: A22-1\nTime: 08:15 - 11:15\nRoom: TTÜ II-407/408\nAcademician: Marika Kulmar\nType: Practice\n\nFrequency: Every second week\, Wed\nPeriod: 02/05/2014 - 03/30/2014\n\nRound: Telecommunications Networks A21 A22 D21 D22 D23\n
-LOCATION:TTÜ II-407/408
-END:VEVENT
-BEGIN:VEVENT
-UID:51944
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T080000Z
-DTEND:20140305T093000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52980
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T094500Z
-DTEND:20140305T111500Z
-SUMMARY:Telecommunications Networks [A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2]
-DESCRIPTION:Subject code: I241\nGroups: A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2\nTime: 11:45 - 13:15\nRoom: 314\nAcademician: Avo Ots\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 03/30/2014\n\nRound: Telecommunications Networks A21 A22 D21 D22 D23\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52867
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T100000Z
-DTEND:20140305T113000Z
-SUMMARY:Basics of Telecommunication [12]
-DESCRIPTION:Subject code: I249\nGroups: 12\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Truls Ringkjob\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
-UID:53368
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T112500Z
-DTEND:20140305T125500Z
-SUMMARY:Information System Projects and Administration [A21\, A22\, D21\, D22\, D23]
-DESCRIPTION:Subject code: I302\nGroups: A21\, A22\, D21\, D22\, D23\nTime: 13:25 - 14:55\nRoom: 314\nAcademician: Margus Püüa\nType: Lecture\n\nFrequency: Every second week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Information System Projects and Administration A21 A22 D21 D22 D23\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52022
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T120000Z
-DTEND:20140305T133000Z
-SUMMARY:Computers [12]
-DESCRIPTION:Subject code: I201\nGroups: 12\nTime: 14:00 - 15:30\nRoom: 410\nAcademician: Teet Evartson\nType: Practice\n\nFrequency: Every second week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:410
-END:VEVENT
-BEGIN:VEVENT
-UID:53284
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T140000Z
-DTEND:20140305T153000Z
-SUMMARY:English [11\, 12\, 13]
-DESCRIPTION:Subject code: I023\nGroups: 11\, 12\, 13\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:54079
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T140000Z
-DTEND:20140305T153000Z
-SUMMARY:Foundations of Software Testing [A21\, A22\, D21\, D22\, D23]
-DESCRIPTION:Subject code: I365\nGroups: A21\, A22\, D21\, D22\, D23\nTime: 16:00 - 17:30\nRoom: 316\nAcademician: Maili Markvardt\nType: Lecture\n\nFrequency: Every second week\, Wed\nPeriod: 02/05/2014 - 03/30/2014\n\nRound: Foundations of Software Testing A21 A22 D21 D22 D23\n
-LOCATION:316
-END:VEVENT
-BEGIN:VEVENT
-UID:52918
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T160000Z
-DTEND:20140305T173000Z
-SUMMARY:Foundations of Software Testing [A21\, A22\, D21\, D22\, D23]
-DESCRIPTION:Subject code: I365\nGroups: A21\, A22\, D21\, D22\, D23\nTime: 18:00 - 19:30\nRoom: 410\nAcademician: Maili Markvardt\nType: Practice\n\nFrequency: Every second week\, Wed\nPeriod: 02/05/2014 - 03/30/2014\n\nRound: Foundations of Software Testing A21 A22 D21 D22 D23\n
-LOCATION:410
-END:VEVENT
-BEGIN:VEVENT
-UID:53189
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140305T160500Z
-DTEND:20140305T182000Z
-SUMMARY:CCNP 2 Switching [A31\, A32]
-DESCRIPTION:Subject code: I388\nGroups: A31\, A32\nTime: 18:05 - 20:20\nRoom: 415\nAcademician: Truls Ringkjob\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 03/30/2014\n\nRound: CCNP 2 Switching A31 A32\n
-LOCATION:415
-END:VEVENT
-BEGIN:VEVENT
 UID:52995
 SEQUENCE:1
 STATUS:CONFIRMED
@@ -4554,5 +4422,126 @@ DTEND:20140519T140000Z
 SUMMARY:Creative Problem Solving and Innovatics [A21\, A22\, D21\, D22\, D23\, IA27]
 DESCRIPTION:Subject code: I356\nGroups: A21\, A22\, D21\, D22\, D23\, IA27\nTime: 16:00 - 17:00\nRoom: 219\nAcademician: Rao Heidmets\nType: Prelim\n\nFrequency: Single\nDate: 05/19/2014\n\nRound: Creative Problem Solving and Innovatics A21 A22 D21 D22 D23 IA27\n
 LOCATION:219
+END:VEVENT
+BEGIN:VEVENT
+UID:53388
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T050000Z
+DTEND:20140520T071500Z
+SUMMARY:Information System Projects and Administration [A21\, A22]
+DESCRIPTION:Subject code: I302\nGroups: A21\, A22\nTime: 08:00 - 10:15\nRoom: 219\nAcademician: Margus Püüa\nType: Exercise\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Information System Projects and Administration A21 A22 D21 D22 D23\n
+LOCATION:219
+END:VEVENT
+BEGIN:VEVENT
+UID:51654
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T051500Z
+DTEND:20140520T064500Z
+SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:53165
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T051500Z
+DTEND:20140520T064500Z
+SUMMARY:Analysis and Design of Information Systems [D23\, A21\, A22]
+DESCRIPTION:Subject code: I230\nGroups: D23\, A21\, A22\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Andres Mulin\nType: Practice\n\nFrequency: Every second week\, Tue\nPeriod: 04/08/2014 - 06/01/2014\n\nRound: Analysis and Design of Information Systems A21 A22 D21 D22 D23\n
+LOCATION:319
+END:VEVENT
+BEGIN:VEVENT
+UID:52719
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T070000Z
+DTEND:20140520T083000Z
+SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:53507
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T072500Z
+DTEND:20140520T085500Z
+SUMMARY:Scripting Languages [A21\, A22]
+DESCRIPTION:Subject code: I387\nGroups: A21\, A22\nTime: 10:25 - 11:55\nRoom: 316\nAcademician: Margus Ernits\nType: Lecture\n\nFrequency: Every second week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Scripting Languages A21 A22\n
+LOCATION:316
+END:VEVENT
+BEGIN:VEVENT
+UID:52771
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T090000Z
+DTEND:20140520T103000Z
+SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 13]
+DESCRIPTION:Subject code: I112\nGroups: 11\, 13\nTime: 12:00 - 13:30\nRoom: 316\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
+LOCATION:316
+END:VEVENT
+BEGIN:VEVENT
+UID:54000
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T090000Z
+DTEND:20140520T103000Z
+SUMMARY:Probability Theory and Mathematical Statistics [12]
+DESCRIPTION:Subject code: I104\nGroups: 12\nTime: 12:00 - 13:30\nRoom: 410\nAcademician: Kristiina Hakk\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 05/06/2014 - 06/01/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
+LOCATION:410
+END:VEVENT
+BEGIN:VEVENT
+UID:52950
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T091000Z
+DTEND:20140520T104000Z
+SUMMARY:Scripting Languages [A22]
+DESCRIPTION:Subject code: I387\nGroups: A22\nTime: 12:10 - 13:40\nRoom: 317\nAcademician: Margus Ernits\nType: Practice\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Scripting Languages A21 A22\n
+LOCATION:317
+END:VEVENT
+BEGIN:VEVENT
+UID:51835
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T110000Z
+DTEND:20140520T123000Z
+SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:52966
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T114500Z
+DTEND:20140520T131500Z
+SUMMARY:Scripting Languages [A21]
+DESCRIPTION:Subject code: I387\nGroups: A21\nTime: 14:45 - 16:15\nRoom: 317\nAcademician: Margus Ernits\nType: Practice\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Scripting Languages A21 A22\n
+LOCATION:317
+END:VEVENT
+BEGIN:VEVENT
+UID:52050
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140520T130000Z
+DTEND:20140520T143000Z
+SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
+LOCATION:314
 END:VEVENT
 END:VCALENDAR
