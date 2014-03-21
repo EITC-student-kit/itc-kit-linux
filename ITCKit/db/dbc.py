@@ -17,7 +17,7 @@ table_dict = {notif_cls: ("Notification", "(?,?,?)"),
 
 
 def add_to_db(data_type):
-    """Adds instances from datatype to correct table.
+    """Adds instances from datatype to correct table_name.
     :type data_type Iterable | AClass | Activity | Notification
     """
     try:
@@ -26,11 +26,11 @@ def add_to_db(data_type):
         data_type = [data_type]
     db = connect_to_db()
     cls = data_type[0].__class__
-    table = table_dict[cls][0]
-    db_colums = table_dict[cls][1]
+    table_name = table_dict[cls][0]
+    db_coloums = table_dict[cls][1]
     db.executemany(
-        "INSERT INTO " + table + " VALUES "
-        + db_colums, [cls.get_database_row() for cls in data_type])
+        "INSERT INTO " + table_name + " VALUES "
+        + db_coloums, [cls.get_database_row() for cls in data_type])
     db.commit()
 
 
