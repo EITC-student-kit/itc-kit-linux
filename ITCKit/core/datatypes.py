@@ -7,10 +7,8 @@ class DataTypesAbstractClass():
     """Any classes inheriting from this class would be meant for creating instances that can be easily written to
     database, created from database rows or add the ability to safely and easily remove instances from database"""
 
-    _db_row = []
-
     def __init__(self):
-        pass
+        self._db_row = []
 
     def _create_database_row(self, *kwargs):
         if len(self._db_row) == 0:
@@ -29,6 +27,7 @@ class Notification(DataTypesAbstractClass):
         :type message: str
         :type when_to_raise: Timestamp
         """
+        assert type_of in ("Mail", "Reminder")
         DataTypesAbstractClass.__init__(self)
         self._create_database_row(type_of, message, when_to_raise)
 
@@ -40,12 +39,13 @@ class Activity(DataTypesAbstractClass):
 
     def __init__(self, type_of, start, end, time_spent):
         """
-        :param type_of: Either Productive, Neutral of Counter Productive
+        :param type_of: Either Productive, Neutral of Counterproductive
         :type type_of: str
         :type start: datetime
         :type end: datetime
         :type time_spent: int
         """
+        assert type_of in ("Productive", "Neutral", "Counterproductive")
         DataTypesAbstractClass.__init__(self)
         self._create_database_row(type_of, start, end, time_spent)
 
@@ -63,14 +63,13 @@ class Reminder(Notification):
 
     def __init__(self, message, when_to_activate):
         """
-            :type message: str
-            :type when_to_activate: Timestamp
+        :type message: str
+        :type when_to_activate: Timestamp
         """
         Notification.__init__(self, "Reminder", message, when_to_activate)
 
 
 class AClass(DataTypesAbstractClass):
-    """A data container for database writing and reading."""
 
     def __init__(self, subject_code, subject_name, attending_groups, class_type, start_timestamp, end_timestamp,
                  classroom, academician, attendible=False):

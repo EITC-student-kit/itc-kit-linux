@@ -2,7 +2,7 @@ __author__ = 'Kristo Koert'
 
 from ITCKit.utils import converting, tools
 from ITCKit.core.datatypes import AClass
-from ITCKit.settings import settings
+from ITCKit.settings.settings import get_timetable_settings
 
 
 class ICalRetriever():
@@ -11,15 +11,8 @@ class ICalRetriever():
         import os
         self.user_file_path = os.path.dirname(os.path.abspath(__file__)) + "/user_ical"
         self.main_file_path = os.path.dirname(os.path.abspath(__file__)) + "/main_ical"
+        self._settings = get_timetable_settings()
         #ToDo account for access denied due to lacking permission
-
-    @staticmethod
-    def change_user_url(url):
-        settings.set_user_url(url)
-
-    @staticmethod
-    def change_main_url(url):
-        settings.set_main_url(url)
 
     def retrieve(self, user=False, main=False):
         """Downloads the icals to their respective files.
@@ -29,12 +22,12 @@ class ICalRetriever():
         if user:
             try:
                 open(self.user_file_path, "w").write(
-                    tools.download_ical(settings.get_user_url()))
+                    tools.download_ical(self._settings["user_url"]))
             except ValueError:
                 print("User url, not defined.")
         if main:
             open(self.main_file_path, "w").write(
-                tools.download_ical(settings.get_main_url()))
+                tools.download_ical(self._settings["main_url"]))
 
 
 class ICalParser():
@@ -62,12 +55,12 @@ class ICalParser():
             self._find(event)
 
     def _extract_vevents(self):
-        """Returns a list of ical vevent lines."""
+        """Returns a list of ical vevent lines.
+        :rtype :list"""
         found_start = found_end = False
         vevent = ""
         vevents = []
-        #SubOptimal
-        #For main ical
+        #ToDo implement for both main_ical and user_ical
         for line in self.main_ical_file:
             if "BEGIN:VEVENT" in line:
                 found_start = True
@@ -85,7 +78,7 @@ class ICalParser():
     def _find(self, event):
         """Finds and sets all the parameters in a line, if there are any.
         :param event A vevent string from a ical file
-        :type event str
+        :type event: str
         """
         var = None
         for data in event:

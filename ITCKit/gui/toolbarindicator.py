@@ -28,11 +28,14 @@ class ToolbarIndicator():
         self.indc.set_attention_icon("indicator-messages-new")
 
         self.main_menu = MainMenu()
-
         self.indc.set_menu(self.main_menu)
 
         self._notification_handler = NotificationHandler(self.indc, self.main_menu.notification_display_widget)
         self._notification_handler.start()
+
+    def set_notification_icon(self):
+        #ToDo implement set_notification_icon
+        pass
 
 
 def activate_toolbar():

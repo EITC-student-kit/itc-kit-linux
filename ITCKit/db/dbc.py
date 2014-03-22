@@ -31,10 +31,10 @@ def add_to_db(data_type):
     db = connect_to_db()
     cls = data_type[0].__class__
     table_name = table_dict[cls][0]
-    db_coloums = table_dict[cls][1]
+    db_coloumns = table_dict[cls][1]
     db.executemany(
         "INSERT INTO " + table_name + " VALUES "
-        + db_coloums, [cls.get_database_row() for cls in data_type])
+        + db_coloumns, [cls.get_database_row() for cls in data_type])
     db.commit()
 
 

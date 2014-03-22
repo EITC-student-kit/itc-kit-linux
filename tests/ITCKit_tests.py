@@ -77,7 +77,7 @@ class TestDB(unittest.TestCase):
 
     def test_reading_classes(self):
         classes = dbc.get_all_classes()
-        [print(cls) for cls in classes]
+        #[print(cls) for cls in classes]
 
 
 if __name__ == '__main__':

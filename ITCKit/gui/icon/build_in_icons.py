@@ -4,6 +4,9 @@ __author__ = 'Kristo Koert'
 
 
 def get_productivity_icons():
+    """Get productive, neutral and counterproductive icons.
+    :rtype str
+    """
     try:
         from gi.repository import AppIndicator3 as AppIndicator
     except ImportError:

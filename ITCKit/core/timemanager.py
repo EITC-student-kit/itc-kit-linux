@@ -10,8 +10,8 @@ from ITCKit.utils import converting
 
 
 class Stopper(Thread):
-    """A thread object that is meant to replicate a stopper. Has the ability to stop temporarily and continue. Though
-    a new instance should be created for tracking another activity. This is due to performance considerations.
+    """A thread object that is meant to replicate a stopper. A new instance should be created for tracking another
+    activity. This is due to performance considerations.
     """
 
     def __init__(self, sub_menu, type_of_activity):
@@ -19,8 +19,8 @@ class Stopper(Thread):
         be used as a display point for the running stopper time.
 
         :param sub_menu: Reference to tracking sub-menu instance
-        :type sub_menu: TrackingSubMenu
-        :param type_of_activity: Productive, Neutral, Counter-Productive
+        :type sub_menu: TimeManagerSubMenu
+        :param type_of_activity: Productive, Neutral, Counterproductive
         :type type_of_activity: str
         """
         super(Stopper, self).__init__()
@@ -31,8 +31,7 @@ class Stopper(Thread):
 
     def run(self):
         """As long as _exit_thread is false, this objects instance will stay active. When it's true, the instance will
-        become inactive and should be left for garbage collection by removing all references to it. Toggling _active
-        creates a stop and resume effect."""
+        become inactive and should be left for garbage collection by removing all references to it."""
         start_time = datetime.now()
         while not self._exit_thread:
             self.sub_menu_reference._display_label = converting.sec_to_time(self._time)
@@ -42,7 +41,6 @@ class Stopper(Thread):
         #ToDo check database writing for Activity. Suspected invalid procedure or value
         new_activity = Activity(self._type_of_activity, start_time, end_time, self._time)
         dbc.add_to_db(new_activity)
-        self._time = 0
 
     def stop_tracking(self):
         """Lets this thread instance finish. After this all references to this instance should be removed."""
