@@ -16,9 +16,6 @@ Gdk.threads_init()
 
 
 class ToolbarIndicator():
-    """Linux Gtk toolbar application indicator with a main menu containing three elements and a sub-menu attached to the
-    first element of the main menu containing another 6 elements.
-    """
 
     _tracked_time = ''
 

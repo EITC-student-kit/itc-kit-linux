@@ -1,10 +1,14 @@
 __author__ = 'Kristo Koert'
 
 from sqlite3 import connect, OperationalError
+import os
 
 from ITCKit.core.datatypes import Notification, AClass, Activity
-from ITCKit.settings import DATABASE_PATH
 
+
+DATABASE_PATH = os.path.dirname(os.path.abspath(__file__)) + "/itckitdb"
+
+from datetime import datetime
 
 dt = datetime.now()
 notif_cls = Notification('', '', dt).__class__
@@ -94,6 +98,5 @@ def attempt_tables_creation(cursor):
         pass
 
 if __name__ == "__main__":
-    from datetime import datetime
     add_to_db(Notification("Reminder", "Message", datetime.now()))
     print(get_all_notifications())

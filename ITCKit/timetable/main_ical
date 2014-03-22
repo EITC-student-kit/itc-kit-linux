@@ -24,160 +24,6 @@ RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:52995
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T061500Z
-DTEND:20140306T074500Z
-SUMMARY:IT Systems Support and Arrangement in Enterprises [A21\, A22]
-DESCRIPTION:Subject code: I113\nGroups: A21\, A22\nTime: 08:15 - 09:45\nRoom: 316\nAcademician: Guido Leibur\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 06/01/2014\n\nRound: IT Systems Support and Arrangement in Enterprises A21 A22\n
-LOCATION:316
-END:VEVENT
-BEGIN:VEVENT
-UID:53613
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T061500Z
-DTEND:20140306T074500Z
-SUMMARY:Analysis and Design of Information Systems [A21\, A22\, D23]
-DESCRIPTION:Subject code: I230\nGroups: A21\, A22\, D23\nTime: 08:15 - 09:45\nRoom: 410\nAcademician: Andres Mulin\nType: Practice\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 03/30/2014\n\nRound: Analysis and Design of Information Systems A21 A22 D21 D22 D23\n
-LOCATION:410
-END:VEVENT
-BEGIN:VEVENT
-UID:52682
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T080000Z
-DTEND:20140306T093000Z
-SUMMARY:CISCO: Basics of WAN's. Understanding WAN Protocols [A21\, A22]
-DESCRIPTION:Subject code: I373\nGroups: A21\, A22\nTime: 10:00 - 11:30\nRoom: 219\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 03/30/2014\n\nRound: CISCO: Basics of WAN's. Understanding WAN Protocols A21 A22\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:54339
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T080000Z
-DTEND:20140306T093000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 04/06/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51883
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T100000Z
-DTEND:20140306T113000Z
-SUMMARY:Network Applications I: Client-Server Systems [12]
-DESCRIPTION:Subject code: I244\nGroups: 12\nTime: 12:00 - 13:30\nRoom: 317\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:317
-END:VEVENT
-BEGIN:VEVENT
-UID:53776
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T100000Z
-DTEND:20140306T131500Z
-SUMMARY:Telecommunications Networks [A21-2]
-DESCRIPTION:Subject code: I241\nGroups: A21-2\nTime: 12:00 - 15:15\nRoom: 415\nAcademician: Indrek Rokk\nType: Practice\n\nFrequency: Every second week\, Thu\nPeriod: 02/06/2014 - 03/30/2014\n\nRound: Telecommunications Networks A21 A22 D21 D22 D23\n
-LOCATION:415
-END:VEVENT
-BEGIN:VEVENT
-UID:54042
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T100000Z
-DTEND:20140306T131500Z
-SUMMARY:Telecommunications Networks [A21-1]
-DESCRIPTION:Subject code: I241\nGroups: A21-1\nTime: 12:00 - 15:15\nRoom: TTÜ II-407/408\nAcademician: Marika Kulmar\nType: Practice\n\nFrequency: Every second week\, Thu\nPeriod: 02/06/2014 - 03/30/2014\n\nRound: Telecommunications Networks A21 A22 D21 D22 D23\n
-LOCATION:TTÜ II-407/408
-END:VEVENT
-BEGIN:VEVENT
-UID:53314
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T120000Z
-DTEND:20140306T133000Z
-SUMMARY:English [11\, 12\, 13]
-DESCRIPTION:Subject code: I023\nGroups: 11\, 12\, 13\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:52423
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T140000Z
-DTEND:20140306T153000Z
-SUMMARY:Analysis and Design of Information Systems [A21\, D21]
-DESCRIPTION:Subject code: I230\nGroups: A21\, D21\nTime: 16:00 - 17:30\nRoom: 317\nAcademician: Andres Mulin\nType: Practice\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 06/01/2014\n\nRound: Analysis and Design of Information Systems A21 A22 D21 D22 D23\n
-LOCATION:317
-END:VEVENT
-BEGIN:VEVENT
-UID:52393
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T140000Z
-DTEND:20140306T153000Z
-SUMMARY:Analysis and Design of Information Systems [A22\, D22]
-DESCRIPTION:Subject code: I230\nGroups: A22\, D22\nTime: 16:00 - 17:30\nRoom: 319\nAcademician: Andres Mulin\nType: Practice\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 06/01/2014\n\nRound: Analysis and Design of Information Systems A21 A22 D21 D22 D23\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:51913
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140307T061500Z
-DTEND:20140307T074500Z
-SUMMARY:Network Applications I: Client-Server Systems [11]
-DESCRIPTION:Subject code: I244\nGroups: 11\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Fri\nPeriod: 02/07/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:53238
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140307T061500Z
-DTEND:20140307T074500Z
-SUMMARY:CCNA Security [A21\, A22]
-DESCRIPTION:Subject code: I369\nGroups: A21\, A22\nTime: 08:15 - 09:45\nRoom: 417\nAcademician: Truls Ringkjob\nType: Practice\n\nFrequency: Every week\, Fri\nPeriod: 02/07/2014 - 05/11/2014\n\nRound: CCNA Security A21 A22\n
-LOCATION:417
-END:VEVENT
-BEGIN:VEVENT
-UID:53230
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140307T080000Z
-DTEND:20140307T093000Z
-SUMMARY:CCNA Security [A21\, A22]
-DESCRIPTION:Subject code: I369\nGroups: A21\, A22\nTime: 10:00 - 11:30\nRoom: 409\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every second week\, Fri\nPeriod: 03/07/2014 - 04/27/2014\n\nRound: CCNA Security A21 A22\n
-LOCATION:409
-END:VEVENT
-BEGIN:VEVENT
-UID:55301
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140307T080000Z
-DTEND:20140307T093000Z
-SUMMARY:Basics of Telecommunication [11]
-DESCRIPTION:Subject code: I249\nGroups: 11\nTime: 10:00 - 11:30\nRoom: 415\, 417\nAcademician: Truls Ringkjob\nType: Practice\n\nFrequency: Every week\, Fri\nPeriod: 03/07/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
 UID:52084
 SEQUENCE:1
 STATUS:CONFIRMED
@@ -4543,5 +4389,170 @@ DTEND:20140520T143000Z
 SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
 DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
 LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:52783
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140521T051500Z
+DTEND:20140521T064500Z
+SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [12\, 14]
+DESCRIPTION:Subject code: I112\nGroups: 12\, 14\nTime: 08:15 - 09:45\nRoom: 316\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
+LOCATION:316
+END:VEVENT
+BEGIN:VEVENT
+UID:51954
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140521T070000Z
+DTEND:20140521T083000Z
+SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:52877
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140521T090000Z
+DTEND:20140521T103000Z
+SUMMARY:Basics of Telecommunication [12]
+DESCRIPTION:Subject code: I249\nGroups: 12\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Truls Ringkjob\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
+LOCATION:415, 417
+END:VEVENT
+BEGIN:VEVENT
+UID:53373
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140521T102500Z
+DTEND:20140521T115500Z
+SUMMARY:Information System Projects and Administration [A21\, A22\, D21\, D22\, D23]
+DESCRIPTION:Subject code: I302\nGroups: A21\, A22\, D21\, D22\, D23\nTime: 13:25 - 14:55\nRoom: 314\nAcademician: Margus Püüa\nType: Lecture\n\nFrequency: Every second week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Information System Projects and Administration A21 A22 D21 D22 D23\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:52027
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140521T110000Z
+DTEND:20140521T123000Z
+SUMMARY:Computers [12]
+DESCRIPTION:Subject code: I201\nGroups: 12\nTime: 14:00 - 15:30\nRoom: 410\nAcademician: Teet Evartson\nType: Practice\n\nFrequency: Every second week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
+LOCATION:410
+END:VEVENT
+BEGIN:VEVENT
+UID:53294
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140521T130000Z
+DTEND:20140521T143000Z
+SUMMARY:English [11\, 12\, 13]
+DESCRIPTION:Subject code: I023\nGroups: 11\, 12\, 13\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
+LOCATION:226
+END:VEVENT
+BEGIN:VEVENT
+UID:52660
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140521T130000Z
+DTEND:20140521T143000Z
+SUMMARY:Fundamentals of Wireless LANs [A21\, A22]
+DESCRIPTION:Subject code: I375\nGroups: A21\, A22\nTime: 16:00 - 17:30\nRoom: 316\nAcademician: Indrek Rokk\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 04/09/2014 - 06/01/2014\n\nRound: Fundamentals of Wireless LANs A21 A22\n
+LOCATION:316
+END:VEVENT
+BEGIN:VEVENT
+UID:53004
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140522T051500Z
+DTEND:20140522T064500Z
+SUMMARY:IT Systems Support and Arrangement in Enterprises [A21\, A22]
+DESCRIPTION:Subject code: I113\nGroups: A21\, A22\nTime: 08:15 - 09:45\nRoom: 316\nAcademician: Guido Leibur\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 06/01/2014\n\nRound: IT Systems Support and Arrangement in Enterprises A21 A22\n
+LOCATION:316
+END:VEVENT
+BEGIN:VEVENT
+UID:54347
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140522T070000Z
+DTEND:20140522T083000Z
+SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 04/17/2014 - 06/01/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:53198
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140522T070000Z
+DTEND:20140522T091500Z
+SUMMARY:Fundamentals of Wireless LANs [A21]
+DESCRIPTION:Subject code: I375\nGroups: A21\nTime: 10:00 - 12:15\nRoom: 415\nAcademician: Indrek Rokk\nType: Practice\n\nFrequency: Every week\, Thu\nPeriod: 04/10/2014 - 06/01/2014\n\nRound: Fundamentals of Wireless LANs A21 A22\n
+LOCATION:415
+END:VEVENT
+BEGIN:VEVENT
+UID:51892
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140522T090000Z
+DTEND:20140522T103000Z
+SUMMARY:Network Applications I: Client-Server Systems [12]
+DESCRIPTION:Subject code: I244\nGroups: 12\nTime: 12:00 - 13:30\nRoom: 317\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
+LOCATION:317
+END:VEVENT
+BEGIN:VEVENT
+UID:53205
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140522T093000Z
+DTEND:20140522T114500Z
+SUMMARY:Fundamentals of Wireless LANs [A22]
+DESCRIPTION:Subject code: I375\nGroups: A22\nTime: 12:30 - 14:45\nRoom: 415\nAcademician: Indrek Rokk\nType: Practice\n\nFrequency: Every week\, Thu\nPeriod: 04/10/2014 - 06/01/2014\n\nRound: Fundamentals of Wireless LANs A21 A22\n
+LOCATION:415
+END:VEVENT
+BEGIN:VEVENT
+UID:53323
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140522T110000Z
+DTEND:20140522T123000Z
+SUMMARY:English [11\, 12\, 13]
+DESCRIPTION:Subject code: I023\nGroups: 11\, 12\, 13\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
+LOCATION:226
+END:VEVENT
+BEGIN:VEVENT
+UID:52432
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140522T130000Z
+DTEND:20140522T143000Z
+SUMMARY:Analysis and Design of Information Systems [A21\, D21]
+DESCRIPTION:Subject code: I230\nGroups: A21\, D21\nTime: 16:00 - 17:30\nRoom: 317\nAcademician: Andres Mulin\nType: Practice\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 06/01/2014\n\nRound: Analysis and Design of Information Systems A21 A22 D21 D22 D23\n
+LOCATION:317
+END:VEVENT
+BEGIN:VEVENT
+UID:52402
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140522T130000Z
+DTEND:20140522T143000Z
+SUMMARY:Analysis and Design of Information Systems [A22\, D22]
+DESCRIPTION:Subject code: I230\nGroups: A22\, D22\nTime: 16:00 - 17:30\nRoom: 319\nAcademician: Andres Mulin\nType: Practice\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 06/01/2014\n\nRound: Analysis and Design of Information Systems A21 A22 D21 D22 D23\n
+LOCATION:319
 END:VEVENT
 END:VCALENDAR

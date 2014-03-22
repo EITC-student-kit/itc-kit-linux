@@ -24,28 +24,6 @@ RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:54339
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T080000Z
-DTEND:20140306T093000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 04/06/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54381
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140306T140000Z
-DTEND:20140306T153000Z
-SUMMARY:English [14\, 15]
-DESCRIPTION:Subject code: I023\nGroups: 14\, 15\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
 UID:55290
 SEQUENCE:1
 STATUS:CONFIRMED
@@ -1364,5 +1342,60 @@ DTEND:20140520T143000Z
 SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
 DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
 LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:51875
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140521T051500Z
+DTEND:20140521T064500Z
+SUMMARY:Network Applications I: Client-Server Systems [15]
+DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
+LOCATION:319
+END:VEVENT
+BEGIN:VEVENT
+UID:51954
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140521T070000Z
+DTEND:20140521T083000Z
+SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:52795
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140521T090000Z
+DTEND:20140521T103000Z
+SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
+DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
+LOCATION:219
+END:VEVENT
+BEGIN:VEVENT
+UID:54347
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140522T070000Z
+DTEND:20140522T083000Z
+SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
+DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 04/17/2014 - 06/01/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
+LOCATION:314
+END:VEVENT
+BEGIN:VEVENT
+UID:54390
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140522T130000Z
+DTEND:20140522T143000Z
+SUMMARY:English [14\, 15]
+DESCRIPTION:Subject code: I023\nGroups: 14\, 15\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
+LOCATION:226
 END:VEVENT
 END:VCALENDAR

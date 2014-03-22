@@ -1,0 +1,28 @@
+{
+    "TimeManager" : {
+        "activated" : false
+    },
+
+    "Timetable" : {
+        "activated" : false,
+        "user_url" : "https://itcollege.ois.ee/en/timetable/ical?student_id=3117&key=34c0482c0c579f1a7da0ea0ba6bda3077d356da8",
+        "main_url" : "https://itcollege.ois.ee/en/timetable/ical?curriculum_id=2&key=01d8d5cbdbb9881fbf103f61c36955e731531a28",
+        "automatic_update" : false
+    },
+
+    "Mail" : {
+        "activated" : false,
+        "activated_date" : "22-Mar-2014",
+        "user_name" : "kristo.koert@itcollege.ee",
+        "password" : "1RubyOrPerl?"
+    },
+
+    "Conky" : {
+        "activated" : false,
+        "color" : "#77777777"
+    },
+
+    "Notification" : {
+        "activated" : false
+    }
+}

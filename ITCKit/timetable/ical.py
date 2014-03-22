@@ -2,7 +2,7 @@ __author__ = 'Kristo Koert'
 
 from ITCKit.utils import converting, tools
 from ITCKit.core.datatypes import AClass
-from ITCKit import settings
+from ITCKit.settings import settings
 
 
 class ICalRetriever():
