@@ -1,5 +1,7 @@
 __author__ = 'Kristo Koert'
 
+import threading
+
 from ITCKit.utils import converting, tools
 from ITCKit.core.datatypes import AClass
 from ITCKit.settings.settings import get_timetable_settings
@@ -111,10 +113,20 @@ class ICalParser():
         return self.classes
 
 
-def update_icals(user=True, main=True):
-    from ITCKit.db.dbc import add_to_db
-    icr = ICalRetriever()
-    icp = ICalParser()
-    icr.retrieve(user, main)
-    add_to_db(icp.get_classes())
+class ICalsUpdater(threading.Thread):
 
+    def __init__(self, instance):
+        threading.Thread.__init__(self)
+        self.instance = instance
+
+    def run(self):
+        from ITCKit.db.dbc import add_to_db
+        icr = ICalRetriever()
+        icp = ICalParser()
+        try:
+            icr.retrieve(True, True)
+            self.instance.info_label = "Updated."
+            add_to_db(icp.get_classes())
+        except:
+            self.instance.info_label = "Unable to update."
+        self.instance._is_updating = False

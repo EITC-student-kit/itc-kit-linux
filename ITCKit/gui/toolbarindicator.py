@@ -12,9 +12,6 @@ from ITCKit.core.notificationHandler import NotificationHandler
 from ITCKit.gui.menus import MainMenu
 
 
-Gdk.threads_init()
-
-
 class ToolbarIndicator():
 
     _tracked_time = ''
@@ -39,10 +36,9 @@ class ToolbarIndicator():
 
 
 def activate_toolbar():
+    Gdk.threads_init()
     gui = ToolbarIndicator()
-    Gdk.threads_enter()
     Gtk.main()
-    Gdk.threads_leave()
 
 if __name__ == "__main__":
     activate_toolbar()

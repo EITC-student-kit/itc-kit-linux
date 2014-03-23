@@ -1,15 +1,12 @@
 __author__ = 'kristo'
 
-from threading import ThreadError
-from threading import Thread
-
-from gi.repository import Gtk, Gdk, GLib
+import threading
 
 from ITCKit.core.notificationHandler import NotificationHandler
 from ITCKit.core.timemanager import Stopper
 from ITCKit.settings import settings
-from ITCKit.timetable.ical import update_icals
 from ITCKit.db import dbc
+from ITCKit.gui import windows
 
 
 class MainMenu(Gtk.Menu):
@@ -50,8 +47,9 @@ class MainMenu(Gtk.Menu):
         self._notification_handler.remove_notification()
 
     def on_exit(self, widget):
-        #Implement on_exit()
+        #ToDo Implement on_exit()
         raise NotImplementedError
+
 
 class BaseSubMenu(Gtk.Menu):
 
@@ -154,20 +152,17 @@ class TimeManagerSubMenu(BaseSubMenu):
         """
         self._stopper.stop_tracking()
         self._stopper = None
-        self.set_menu_state("Not tracking")
+        self.set_menu_state("Activated")
         #ToDo remove after testing
         print(dbc.get_all_activities())
 
     def _start_stopper(self, activity_type):
         """Leaves the Gtk thread, creates a Stopper object there that is referenced in this object and starts it."""
         try:
-            Gdk.threads_leave()
             self._stopper = Stopper(self, activity_type)
             self._stopper.start()
-        except ThreadError:
+        except threading.ThreadError:
             print("Threading problem in Tracking sub-menu.")
-        finally:
-            Gdk.threads_enter()
 
     def set_menu_state(self, state):
         """Sets the sub-menu to the appropriate state.
@@ -228,18 +223,13 @@ class TimetableSubMenu(BaseSubMenu):
         self.update_widget.connect("activate", self.on_update_clicked)
         self.set_ical_url_widget.connect("activate", self.on_set_ical_url)
 
-    def on_set_ical_url(self):
-        #ToDo implement on_set_ical_url
-        pass
+    @staticmethod
+    def on_set_ical_url(widget):
+        windows.open_set_ical_url()
 
     @staticmethod
     def on_update_clicked(widget):
-        try:
-            Gdk.threads_leave()
-            Thread(update_icals()).start()
-        finally:
-            Gdk.threads_enter()
-        #ToDo GUI freeze until icals updated
+        windows.open_update_timetable()
 
     def set_menu_state(self, state):
         if state == "Not activated":

@@ -1,5 +1,37 @@
 __author__ = 'Kristo Koert'
 
+import threading
+
+from ITCKit.settings import settings
+
+
+class UrlChecker(threading.Thread):
+
+    def __init__(self, instance):
+        """
+        :type instance: SetIcalUrlWindow
+        """
+        threading.Thread.__init__(self)
+        self.instance = instance
+
+    def run(self):
+        self.instance._is_checking_url = True
+        url = self.instance.entry.get_text()
+        if is_valid_ical_url(url):
+            settings.update_settings("Timetable", "user_url", url)
+            self.instance.info_label = "URL Verified and saved!"
+        else:
+            self.instance.info_label = "Unable to verify, or invalid URL."
+        self.instance._is_checking_url = False
+
+
+def is_valid_ical_url(url):
+    try:
+        download_ical(url)
+        return True
+    except ValueError:
+        return False
+
 
 def download_ical(url):
     """Returns ical text from url.
