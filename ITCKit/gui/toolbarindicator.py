@@ -15,6 +15,7 @@ from ITCKit.gui.menus import MainMenu
 class ToolbarIndicator():
 
     _tracked_time = ''
+    notification_raised = False
 
     def __init__(self):
         import os
@@ -24,10 +25,10 @@ class ToolbarIndicator():
         self.indc.set_status(AppIndicator.IndicatorStatus.ACTIVE)
         self.indc.set_attention_icon("indicator-messages-new")
 
-        self.main_menu = MainMenu()
+        self.main_menu = MainMenu(self)
         self.indc.set_menu(self.main_menu)
 
-        self._notification_handler = NotificationHandler(self.indc, self.main_menu.notification_display_widget)
+        self._notification_handler = NotificationHandler(self, self.main_menu.notification_display_widget)
         self._notification_handler.start()
 
     def set_notification_icon(self):

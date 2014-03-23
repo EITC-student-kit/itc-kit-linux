@@ -1,7 +1,7 @@
 __author__ = 'kristo'
 
 import threading
-
+from gi.repository import Gtk, Gdk, GLib
 from ITCKit.core.notificationHandler import NotificationHandler
 from ITCKit.core.timemanager import Stopper
 from ITCKit.settings import settings
@@ -11,8 +11,10 @@ from ITCKit.gui import windows
 
 class MainMenu(Gtk.Menu):
 
-    def __init__(self):
+    def __init__(self, indicator):
         super(Gtk.Menu, self).__init__()
+
+        self._indicator_reference = indicator
 
         menu_items = [Gtk.MenuItem("Time Manager"),
                       Gtk.MenuItem("Timetable"),
@@ -44,7 +46,7 @@ class MainMenu(Gtk.Menu):
         self.notification_handler = NotificationHandler(self, self.notification_display_widget)
 
     def on_notification_checked(self, widget):
-        self._notification_handler.remove_notification()
+        self._indicator_reference._notification_handler.remove_notification()
 
     def on_exit(self, widget):
         #ToDo Implement on_exit()
@@ -269,9 +271,9 @@ class NotificationSubMenu(BaseSubMenu):
         self.clear_all_widget.connect("activate", self.on_clear_all_clicked)
         self.add_reminder_widget.connect("activate", self.on_add_reminder_clicked)
 
-    def on_add_reminder_clicked(self):
-        #ToDo implement on_add_reminder_clicked
-        pass
+    @staticmethod
+    def on_add_reminder_clicked(widget):
+        windows.open_add_reminder()
 
     @staticmethod
     def on_clear_all_clicked():

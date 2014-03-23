@@ -1,9 +1,8 @@
 __author__ = 'Kristo Koert'
 
-from sqlite3 import connect, OperationalError
+from sqlite3 import connect, OperationalError, PARSE_DECLTYPES
 import os
-
-from ITCKit.core.datatypes import Notification, AClass, Activity
+from ITCKit.core.datatypes import Notification, AClass, Activity, Reminder
 
 
 DATABASE_PATH = os.path.dirname(os.path.abspath(__file__)) + "/itckitdb"
@@ -14,10 +13,12 @@ dt = datetime.now()
 notif_cls = Notification('', '', dt).__class__
 activ_cls = Activity('', dt, dt, 1).__class__
 a_cls_cls = AClass('', '', '', '', dt, dt, '', '', False).__class__
+remin_cls = Reminder('', dt).__class__
 
 table_dict = {notif_cls: ("Notification", "(?,?,?)"),
               activ_cls: ("Activity", "(?,?,?,?)"),
-              a_cls_cls: ("Class", "(?,?,?,?,?,?,?,?,?)")}
+              a_cls_cls: ("Class", "(?,?,?,?,?,?,?,?,?)"),
+              remin_cls: ("Notification", "(?,?,?)")}
 
 
 def add_to_db(data_type):
@@ -40,7 +41,7 @@ def add_to_db(data_type):
 
 def connect_to_db():
     """rtype: Connection"""
-    db = connect(DATABASE_PATH)
+    db = connect(DATABASE_PATH, detect_types=PARSE_DECLTYPES)
     attempt_tables_creation(db.cursor())
     return db
 
@@ -54,8 +55,11 @@ def get_all_classes():
 def get_all_notifications():
     """:rtype tuple"""
     db = connect_to_db()
-    return [[].append(Notification(p[0], p[1], p[2])
-                      for p in db.cursor().execute("SELECT * FROM Notification").fetchall())]
+    ret_list = []
+    params = db.cursor().execute("SELECT * FROM Notification").fetchall()
+    for p in params:
+        ret_list.append(Notification(p[0], p[1], p[2]))
+    return ret_list
 
 
 def get_all_activities():
@@ -110,5 +114,4 @@ def attempt_tables_creation(cursor):
         pass
 
 if __name__ == "__main__":
-    add_to_db(Notification("Reminder", "Message", datetime.now()))
-    print(get_all_notifications())
+    pass

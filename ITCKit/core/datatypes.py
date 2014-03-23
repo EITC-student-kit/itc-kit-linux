@@ -20,7 +20,7 @@ class DataTypesAbstractClass():
 
 class Notification(DataTypesAbstractClass):
 
-    def __init__(self, type_of, message, when_to_raise):
+    def __init__(self, type_of, when_to_raise, message):
         """
         :param type_of: Either Mail or Reminder
         :type type_of: str
@@ -28,10 +28,13 @@ class Notification(DataTypesAbstractClass):
         :type when_to_raise: Timestamp
         """
         DataTypesAbstractClass.__init__(self)
-        self._create_database_row(type_of, message, when_to_raise)
+        self._create_database_row(type_of, when_to_raise, message)
 
     def is_due(self):
-        return self._db_row[2] <= datetime.now()
+        return self._db_row[1] <= datetime.now()
+
+    def __eq__(self, other):
+        return self.get_database_row() == other.get_database_row()
 
 
 class Activity(DataTypesAbstractClass):
@@ -64,7 +67,7 @@ class Reminder(Notification):
         :type message: str
         :type when_to_activate: Timestamp
         """
-        Notification.__init__(self, "Reminder", message, when_to_activate)
+        Notification.__init__(self, "Reminder", when_to_activate, message)
 
 
 class AClass(DataTypesAbstractClass):
