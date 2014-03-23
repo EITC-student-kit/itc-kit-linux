@@ -1,12 +1,15 @@
 __author__ = 'kristo'
 
 from threading import ThreadError
+from threading import Thread
 
 from gi.repository import Gtk, Gdk, GLib
 
 from ITCKit.core.notificationHandler import NotificationHandler
 from ITCKit.core.timemanager import Stopper
-from ITCKit.settings.settings import *
+from ITCKit.settings import settings
+from ITCKit.timetable.ical import update_icals
+from ITCKit.db import dbc
 
 
 class MainMenu(Gtk.Menu):
@@ -20,6 +23,7 @@ class MainMenu(Gtk.Menu):
                       Gtk.MenuItem("Mail"),
                       Gtk.MenuItem("Conky"),
                       Gtk.ImageMenuItem("Display"),
+                      Gtk.MenuItem("Exit")
                       ]
 
         self.tracking_widget = menu_items[0]
@@ -33,18 +37,25 @@ class MainMenu(Gtk.Menu):
         self.conky_widget = menu_items[4]
         self.conky_widget.set_submenu(ConkySubMenu())
         self.notification_display_widget = menu_items[5]
+        self.exit_widget = menu_items[6]
 
         [(self.append(item), item.show()) for item in menu_items]
 
         self.notification_display_widget.connect("activate", self.on_notification_checked)
+        self.exit_widget.connect("activate", self.on_exit)
         self.notification_display_widget.hide()
         self.notification_handler = NotificationHandler(self, self.notification_display_widget)
 
     def on_notification_checked(self, widget):
         self._notification_handler.remove_notification()
 
+    def on_exit(self, widget):
+        #Implement on_exit()
+        raise NotImplementedError
 
 class BaseSubMenu(Gtk.Menu):
+
+    _state = "Not activated"
 
     def __init__(self):
         super(BaseSubMenu, self).__init__()
@@ -57,9 +68,14 @@ class BaseSubMenu(Gtk.Menu):
 
         self.on_off_widget.connect("activate", self.on_off_clicked)
 
-    def on_off_clicked(self):
-        #ToDo Implement on_off for all menus
-        pass
+    def on_off_clicked(self, on_off_widget):
+        if self._state == "Not activated":
+            self.set_menu_state("Activated")
+        else:
+            self.set_menu_state("Not activated")
+
+    def set_menu_state(self, state):
+        raise NotImplementedError
 
 
 class TimeManagerSubMenu(BaseSubMenu):
@@ -80,8 +96,6 @@ class TimeManagerSubMenu(BaseSubMenu):
                       Gtk.MenuItem("Stop"),
                       Gtk.MenuItem("Undo")]
 
-        #ToDo Account for On/Off widget
-
         self.productive_widget = menu_items[0]
         self.productive_widget.set_label("Productive")
 
@@ -99,8 +113,10 @@ class TimeManagerSubMenu(BaseSubMenu):
         self.neutral_widget.set_always_show_image(True)
         self.counter_productive_widget.set_always_show_image(True)
 
-        if get_time_manager_settings()["Activated"]:
-            [item.show() for item in menu_items]
+        if settings.get_time_manager_settings()["activated"]:
+            self.set_menu_state("Activated")
+        else:
+            self.set_menu_state("Not activated")
 
         [(self.append(item)) for item in menu_items]
 
@@ -109,10 +125,6 @@ class TimeManagerSubMenu(BaseSubMenu):
         self.counter_productive_widget.connect("activate", self.on_productivity_choice_clicked)
         self.stop_widget.connect("activate", self.on_stop_clicked)
         self.undo_widget.connect("activate", self.on_undo_clicked)
-
-        self.display_widget.hide()
-        self.stop_widget.hide()
-        self.undo_widget.hide()
 
         GLib.timeout_add(10, self.handler_timeout)
 
@@ -127,7 +139,7 @@ class TimeManagerSubMenu(BaseSubMenu):
         :param widget: the widget that triggered this event handler
         :type widget: Gtk.ImageMenuItem
         """
-        self._set_sub_menu_state_tracking(True)
+        self.set_menu_state("Tracking")
         self._start_stopper(widget.get_label())
 
     def on_undo_clicked(self):
@@ -142,9 +154,8 @@ class TimeManagerSubMenu(BaseSubMenu):
         """
         self._stopper.stop_tracking()
         self._stopper = None
-        self._set_sub_menu_state_tracking(False)
+        self.set_menu_state("Not tracking")
         #ToDo remove after testing
-        from ITCKit.db import dbc
         print(dbc.get_all_activities())
 
     def _start_stopper(self, activity_type):
@@ -158,31 +169,40 @@ class TimeManagerSubMenu(BaseSubMenu):
         finally:
             Gdk.threads_enter()
 
-    def _set_sub_menu_state_tracking(self, is_tracking=True):
-        """Sets the sub-menu to the appropriate state dependent on whether or not activity tracking is going on
-        or not.(This is expressed via the is_true variable)
+    def set_menu_state(self, state):
+        """Sets the sub-menu to the appropriate state.
 
-        :param is_tracking: is an activity type being tracked
-        :type is_tracking: bool
+        :param state: The current state
+        :type state: str
         """
-        #ToDo Account for any added widgets
-        try:
-            assert isinstance(is_tracking, bool)
-        except AssertionError:
-            print("is_true must be boolean value")
-        finally:
-            if is_tracking:
-                self.productive_widget.hide()
-                self.neutral_widget.hide()
-                self.counter_productive_widget.hide()
-                self.stop_widget.show()
-                self.display_widget.show()
-            elif not is_tracking:
-                self.productive_widget.show()
-                self.neutral_widget.show()
-                self.counter_productive_widget.show()
-                self.stop_widget.hide()
-                self.display_widget.hide()
+        #ToDo set on_off_widget to the bottom of menu
+        if state == "Tracking":
+            self.on_off_widget.hide()
+            self.productive_widget.hide()
+            self.neutral_widget.hide()
+            self.counter_productive_widget.hide()
+            self.stop_widget.show()
+            self.display_widget.show()
+        elif state == "Activated":
+            settings.update_settings("TimeManager", "activated", True)
+            self.on_off_widget.show()
+            self.productive_widget.show()
+            self.neutral_widget.show()
+            self.counter_productive_widget.show()
+            self.stop_widget.hide()
+            self.display_widget.hide()
+        elif state == "Not activated":
+            settings.update_settings("TimeManager", "activated", False)
+            self.on_off_widget.show()
+            self.productive_widget.hide()
+            self.neutral_widget.hide()
+            self.counter_productive_widget.hide()
+            self.stop_widget.hide()
+            self.display_widget.hide()
+        else:
+            print("state parameter need to be either Tracking, Activated or Not activated")
+            raise RuntimeError
+        self._state = state
 
 
 class TimetableSubMenu(BaseSubMenu):
@@ -198,8 +218,10 @@ class TimetableSubMenu(BaseSubMenu):
         self.set_ical_url_widget = menu_item[1]
         self.customize_timetable_widget = menu_item[2]
 
-        if get_timetable_settings()["Activated"]:
-            [item.show() for item in menu_item]
+        if settings.get_timetable_settings()["activated"]:
+            self.set_menu_state("Activated")
+        else:
+            self.set_menu_state("Not activated")
 
         [(self.append(item)) for item in menu_item]
 
@@ -210,9 +232,30 @@ class TimetableSubMenu(BaseSubMenu):
         #ToDo implement on_set_ical_url
         pass
 
-    def on_update_clicked(self):
-        #ToDo implement on_update_clicked
-        pass
+    @staticmethod
+    def on_update_clicked(widget):
+        try:
+            Gdk.threads_leave()
+            Thread(update_icals()).start()
+        finally:
+            Gdk.threads_enter()
+        #ToDo GUI freeze until icals updated
+
+    def set_menu_state(self, state):
+        if state == "Not activated":
+            settings.update_settings("Timetable", "activated", False)
+            self._state = "Not activated"
+            self.on_off_widget.show()
+            self.customize_timetable_widget.hide()
+            self.set_ical_url_widget.hide()
+            self.update_widget.hide()
+        elif state == "Activated":
+            settings.update_settings("Timetable", "activated", True)
+            self._state = "Activated"
+            self.on_off_widget.show()
+            self.customize_timetable_widget.show()
+            self.set_ical_url_widget.show()
+            self.update_widget.show()
 
 
 class NotificationSubMenu(BaseSubMenu):
@@ -226,8 +269,10 @@ class NotificationSubMenu(BaseSubMenu):
         self.add_reminder_widget = menu_item[0]
         self.clear_all_widget = menu_item[1]
 
-        if get_notification_settings()["Activated"]:
-            [item.show() for item in menu_item]
+        if settings.get_notification_settings()["activated"]:
+            self.set_menu_state("Activated")
+        else:
+            self.set_menu_state("Not activated")
 
         [(self.append(item)) for item in menu_item]
 
@@ -238,9 +283,21 @@ class NotificationSubMenu(BaseSubMenu):
         #ToDo implement on_add_reminder_clicked
         pass
 
-    def on_clear_all_clicked(self):
-        #ToDo implement on_clear_all_clicked
-        pass
+    @staticmethod
+    def on_clear_all_clicked():
+        dbc.remove_all_notifications()
+
+    def set_menu_state(self, state):
+        if state == "Activated":
+            settings.update_settings("Notification", "activated", True)
+            self._state = "Activated"
+            self.add_reminder_widget.show()
+            self.clear_all_widget.show()
+        elif state == "Not activated":
+            settings.update_settings("Notification", "activated", False)
+            self._state = "Not activated"
+            self.add_reminder_widget.hide()
+            self.clear_all_widget.hide()
 
 
 class MailSubMenu(BaseSubMenu):
@@ -250,23 +307,42 @@ class MailSubMenu(BaseSubMenu):
         menu_item = [Gtk.MenuItem("Username/Password"),
                      Gtk.MenuItem("Clear All")]
 
-        self.set_credentials = menu_item[0]
+        self.set_credentials_widget = menu_item[0]
         self.clear_all_widget = menu_item[1]
 
-        if get_mail_settings()["Activated"]:
-            [item.show() for item in menu_item]
+        if settings.get_mail_settings()["activated"]:
+            self.set_menu_state("Activated")
+        else:
+            self.set_menu_state("Not activated")
 
         [(self.append(item)) for item in menu_item]
 
         self.clear_all_widget.connect("activate", self.on_clear_all_clicked)
-        self.set_credentials.connect("activate", self.on_set_credentials_clicked)
+        self.set_credentials_widget.connect("activate", self.on_set_credentials_clicked)
 
     def on_set_credentials_clicked(self):
         #ToDo Implement on_set_credentials_clicked
         pass
 
+    def on_clear_all_clicked(self):
+        #ToDo Implement on_clear_all_clicked
+        pass
+
+    def set_menu_state(self, state):
+        if state == "Not activated":
+            settings.update_settings("Mail", "activated", False)
+            self._state = "Not activated"
+            self.clear_all_widget.hide()
+            self.set_credentials_widget.hide()
+        else:
+            settings.update_settings("Mail", "activated", True)
+            self._state = "Activated"
+            self.clear_all_widget.show()
+            self.set_credentials_widget.show()
+
 
 class ConkySubMenu(BaseSubMenu):
+
     def __init__(self):
         super(ConkySubMenu, self).__init__()
         menu_item = [Gtk.MenuItem("Set Color"),
@@ -275,7 +351,7 @@ class ConkySubMenu(BaseSubMenu):
         self.set_color_widget = menu_item[0]
         self.display_settings_widget = menu_item[1]
 
-        if get_conky_settings()["Activated"]:
+        if settings.get_conky_settings()["activated"]:
             [item.show() for item in menu_item]
 
         [(self.append(item)) for item in menu_item]
@@ -290,3 +366,15 @@ class ConkySubMenu(BaseSubMenu):
     def on_display_settings_clicked(self):
         #ToDo implement on_set_color_clicked
         pass
+
+    def set_menu_state(self, state):
+        if state == "Not activated":
+            settings.update_settings("Conky", "activated", False)
+            self._state = "Not activated"
+            self.display_settings_widget.hide()
+            self.set_color_widget.hide()
+        else:
+            settings.update_settings("Conky", "activated", True)
+            self._state = "Activated"
+            self.display_settings_widget.show()
+            self.set_color_widget.show()

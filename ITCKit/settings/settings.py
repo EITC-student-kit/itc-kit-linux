@@ -5,7 +5,9 @@ __author__ = 'Kristo Koert'
 import json
 import os
 
-_json_data = json.load(open(os.path.dirname(os.path.abspath(__file__)) + "/settingsFile"))
+_settings_file_path = os.path.dirname(os.path.abspath(__file__)) + "/settingsFile"
+
+_json_data = json.load(open(_settings_file_path))
 
 
 def get_time_manager_settings():
@@ -30,7 +32,17 @@ def get_conky_settings():
 
 def get_notification_settings():
     """:rtype: dict"""
-    return _json_data["Notifications"]
+    return _json_data["Notification"]
+
+
+def update_settings(obj, key, value):
+    """Updates the value specified.
+    :type obj: str
+    :type key: str
+    :type value: str | bool
+    """
+    _json_data[obj][key] = value
+    json.dump(_json_data, open(_settings_file_path, "w"), sort_keys=True, indent=4, separators=(',', ': '))
 
 
 def set_user_url(url):

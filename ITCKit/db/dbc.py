@@ -64,8 +64,20 @@ def get_all_activities():
     return conn.cursor().execute("SELECT * FROM Activity").fetchall()
 
 
-def get_statistics(self):
+def get_statistics():
     pass
+
+
+def remove_all_activities():
+    db = connect_to_db()
+    db.execute("DELETE * FROM Activity")
+    db.commit()
+
+
+def remove_all_notifications():
+    db = connect_to_db()
+    db.execute("DELETE * FROM Notification")
+    db.commit()
 
 
 def attempt_tables_creation(cursor):

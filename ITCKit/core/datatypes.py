@@ -27,7 +27,6 @@ class Notification(DataTypesAbstractClass):
         :type message: str
         :type when_to_raise: Timestamp
         """
-        assert type_of in ("Mail", "Reminder")
         DataTypesAbstractClass.__init__(self)
         self._create_database_row(type_of, message, when_to_raise)
 
@@ -45,7 +44,6 @@ class Activity(DataTypesAbstractClass):
         :type end: datetime
         :type time_spent: int
         """
-        assert type_of in ("Productive", "Neutral", "Counterproductive")
         DataTypesAbstractClass.__init__(self)
         self._create_database_row(type_of, start, end, time_spent)
 

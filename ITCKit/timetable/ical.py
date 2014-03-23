@@ -61,18 +61,19 @@ class ICalParser():
         vevent = ""
         vevents = []
         #ToDo implement for both main_ical and user_ical
-        for line in self.main_ical_file:
-            if "BEGIN:VEVENT" in line:
-                found_start = True
-            if "END:VEVENT" in line:
-                found_end = True
-            if found_start:
-                vevent += line
-            if found_start and found_end:
-                vevents.append(vevent)
-                found_start = False
-                found_end = False
-                vevent = ""
+        for ical_file in [self.main_ical_file, self.user_ical_file]:
+            for line in ical_file:
+                if "BEGIN:VEVENT" in line:
+                    found_start = True
+                if "END:VEVENT" in line:
+                    found_end = True
+                if found_start:
+                    vevent += line
+                if found_start and found_end:
+                    vevents.append(vevent)
+                    found_start = False
+                    found_end = False
+                    vevent = ""
         return vevents
 
     def _find(self, event):
@@ -110,6 +111,10 @@ class ICalParser():
         return self.classes
 
 
-if __name__ == "__main__":
-    pass
+def update_icals(user=True, main=True):
+    from ITCKit.db.dbc import add_to_db
+    icr = ICalRetriever()
+    icp = ICalParser()
+    icr.retrieve(user, main)
+    add_to_db(icp.get_classes())
 

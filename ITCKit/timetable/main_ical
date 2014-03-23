@@ -4555,4 +4555,26 @@ SUMMARY:Analysis and Design of Information Systems [A22\, D22]
 DESCRIPTION:Subject code: I230\nGroups: A22\, D22\nTime: 16:00 - 17:30\nRoom: 319\nAcademician: Andres Mulin\nType: Practice\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 06/01/2014\n\nRound: Analysis and Design of Information Systems A21 A22 D21 D22 D23\n
 LOCATION:319
 END:VEVENT
+BEGIN:VEVENT
+UID:51922
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140523T051500Z
+DTEND:20140523T064500Z
+SUMMARY:Network Applications I: Client-Server Systems [11]
+DESCRIPTION:Subject code: I244\nGroups: 11\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Fri\nPeriod: 02/07/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
+LOCATION:319
+END:VEVENT
+BEGIN:VEVENT
+UID:55310
+SEQUENCE:1
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+DTSTART:20140523T070000Z
+DTEND:20140523T083000Z
+SUMMARY:Basics of Telecommunication [11]
+DESCRIPTION:Subject code: I249\nGroups: 11\nTime: 10:00 - 11:30\nRoom: 415\, 417\nAcademician: Truls Ringkjob\nType: Practice\n\nFrequency: Every week\, Fri\nPeriod: 03/07/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
+LOCATION:415, 417
+END:VEVENT
 END:VCALENDAR
