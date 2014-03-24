@@ -1,5 +1,7 @@
 __author__ = 'Kristo Koert'
 
+from datetime import datetime
+
 
 def sec_to_time(s):
     """:rtype str"""
@@ -30,6 +32,11 @@ def to_list(some_val):
     else:
         return some_val
 
+
+def str_to_datetime(datetime_str):
+    """2014-03-24 10:51"""
+    return datetime(int(datetime_str[:4]), int(datetime_str[5:7]), int(datetime_str[8:10]),
+                    int(datetime_str[11:13]), int(datetime_str[14:16]))
 
 if __name__ == "__main__":
     pass

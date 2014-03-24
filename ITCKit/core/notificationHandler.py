@@ -1,7 +1,5 @@
 __author__ = 'Kristo Koert'
 
-#ToDo re-implement to work with new build
-
 from threading import Thread
 from time import sleep
 
@@ -36,7 +34,7 @@ class NotificationHandler(Thread):
             self._notifications = self._get_notifications()
             self.get_due_notifications()
             self.attempt_to_raise_latest_notification()
-            sleep(1)
+            sleep(5)
 
     def get_due_notifications(self):
         """Checks if any notifications should be triggered."""
@@ -46,7 +44,6 @@ class NotificationHandler(Thread):
                     if notif not in self._notification_to_raise:
                         self._notification_to_raise.append(notif)
 
-
     @staticmethod
     def _get_notifications():
         """Gets notifications from database"""
@@ -54,7 +51,7 @@ class NotificationHandler(Thread):
 
     def attempt_to_raise_latest_notification(self):
         if len(self._notification_to_raise) != 0 and not self._indicator_reference.notification_raised:
-            self._raise_notification(self._notification_to_raise[0])
+            self._raise_notification(self._notification_to_raise[-1])
 
     def _raise_notification(self, notif):
         """Raises notification in Indicator passed as __init__ parameter and displays message in the widget.
@@ -71,20 +68,31 @@ class NotificationHandler(Thread):
         if notif.get_database_row()[0] == "Reminder":
             #ToDo switch ATTENTION icons to reminder
             self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ATTENTION)
+            print("Reminder object -> ", notif)
+            print("Get Reminder Name -> ", notif.get_database_row()[2])
             self._menu_item.set_label("Reminder: " + notif.get_database_row()[2])
+        else:
+            print("Else")
 
     def remove_notification(self):
         """Hide widget and reset indicator status."""
         db = dbc.connect_to_db()
+        print("-------------------------------------------------------------------------")
+        print("db before: ")
+        [print(n) for n in dbc.get_all_notifications()]
+        print("to_raise before: ")
+        [print(n) for n in self._notification_to_raise]
         db.execute("DELETE from Notification where type = ? and time = ? and message = ?",
-                   self._notification_to_raise[0].get_database_row())
+                   self._notification_to_raise[-1].get_database_row())
         db.commit()
         self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ACTIVE)
         self._indicator_reference.notification_raised = False
-        print(self._notification_to_raise)
-        del self._notification_to_raise[0]
-        print(self._notification_to_raise)
+        del self._notification_to_raise[-1]
         self._menu_item.hide()
+        print("db after: ")
+        [print(n) for n in dbc.get_all_notifications()]
+        print("to_raise after: ")
+        [print(n) for n in self._notification_to_raise]
 
 
 if __name__ == "__main__":

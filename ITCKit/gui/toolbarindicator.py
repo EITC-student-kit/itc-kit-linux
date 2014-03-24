@@ -33,7 +33,7 @@ class ToolbarIndicator():
 
     def set_notification_icon(self):
         #ToDo implement set_notification_icon
-        pass
+        raise NotImplementedError
 
 
 def activate_toolbar():

@@ -38,7 +38,6 @@ class Stopper(Thread):
             sleep(1)
             self._time += 1
         end_time = datetime.now()
-        #ToDo check database writing for Activity. Suspected invalid procedure or value
         new_activity = Activity(self._type_of_activity, start_time, end_time, self._time)
         dbc.add_to_db(new_activity)
 

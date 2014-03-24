@@ -11,7 +11,6 @@ class BaseWindow(Gtk.Window):
 
     def __init__(self, title=""):
         Gtk.Window.__init__(self, title=title)
-        #GLib.timeout_add(10, self.handler_timeout)
 
     def open_error_window(self, message, text):
         dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.ERROR,
@@ -90,11 +89,11 @@ class SetIcalURLWindow(BaseWindow):
 class UpdatingTimetableWindow(BaseWindow):
 
     _is_updating = True
-    info_label = "Updating"
+    info_label = "Updating.."
 
     def __init__(self):
         BaseWindow.__init__(self, title="Update Timetable")
-        self.set_size_request(225, 0)
+        self.set_size_request(100, 0)
 
         self.timeout_id = None
 
@@ -149,18 +148,22 @@ class UpdatingTimetableWindow(BaseWindow):
 
 class AddReminderWindow(BaseWindow):
 
+    _info_label = ""
+
     def __init__(self):
-        BaseWindow.__init__(self, title="Update Timetable")
+        BaseWindow.__init__(self, title="Add reminders")
         self.set_size_request(100, 100)
 
         rows = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         row1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         row2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         row3 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        row4 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
 
         rows.add(row1)
         rows.add(row2)
         rows.add(row3)
+        rows.add(row4)
 
         self.add(rows)
 
@@ -168,27 +171,37 @@ class AddReminderWindow(BaseWindow):
         row1.pack_start(self.name_label, True, True, 0)
 
         self.name_entry = Gtk.Entry()
-        self.name_entry.set_text("Reminder Name")
+        self.name_entry.set_text("")
         row1.pack_end(self.name_entry, True, True, 10)
 
         self.date_label = Gtk.Label("DateTime")
         row2.pack_start(self.date_label, True, True, 0)
 
         self.date_entry = Gtk.Entry()
-        self.date_entry.set_text(datetime.now().__str__())
+        self.date_entry.set_text(datetime.now().__str__()[:16])
         row2.pack_end(self.date_entry, True, True, 10)
+
+        self.info_label = Gtk.Label(self._info_label)
+        row3.pack_start(self.info_label, True, True, 0)
 
         self.add_reminder_button = Gtk.Button("Add Reminder")
         self.add_reminder_button.connect("clicked", self.on_add_reminder_clicked)
-        row3.pack_start(self.add_reminder_button, True, True, 1)
+        row4.pack_start(self.add_reminder_button, True, True, 1)
+
+        GLib.timeout_add(10, self.handler_timeout)
+
+    def handler_timeout(self):
+        self.info_label.set_label(self._info_label)
+        return True
 
     def on_add_reminder_clicked(self, widget):
         from ITCKit.db import dbc
         try:
             reminder = datatypes.Reminder(self.name_entry.get_text(), self.date_entry.get_text())
             dbc.add_to_db(reminder)
-        except Exception as e:
-            print("Exception in on_add_reminder_clicked")
+            self._info_label = "Reminder added."
+        except ValueError:
+            self._info_label = "Invalid datetime."
 
 
 def open_update_timetable():

@@ -10,7 +10,7 @@ DATABASE_PATH = os.path.dirname(os.path.abspath(__file__)) + "/itckitdb"
 from datetime import datetime
 
 dt = datetime.now()
-notif_cls = Notification('', '', dt).__class__
+notif_cls = Notification('', dt, '').__class__
 activ_cls = Activity('', dt, dt, 1).__class__
 a_cls_cls = AClass('', '', '', '', dt, dt, '', '', False).__class__
 remin_cls = Reminder('', dt).__class__
@@ -37,6 +37,11 @@ def add_to_db(data_type):
         "INSERT INTO " + table_name + " VALUES "
         + db_coloumns, [cls.get_database_row() for cls in data_type])
     db.commit()
+
+
+def check_if_duplicate(obj, table_name):
+    #ToDo implement check_if_duplicate properly
+    pass
 
 
 def connect_to_db():
@@ -114,4 +119,8 @@ def attempt_tables_creation(cursor):
         pass
 
 if __name__ == "__main__":
-    pass
+    db = connect_to_db()
+    p = db.cursor()
+    p.execute("SELECT * FROM Class")
+    data = p.fetchall()
+    [print(d) for d in data]

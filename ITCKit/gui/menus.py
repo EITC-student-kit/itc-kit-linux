@@ -21,7 +21,7 @@ class MainMenu(Gtk.Menu):
                       Gtk.MenuItem("Notifications"),
                       Gtk.MenuItem("Mail"),
                       Gtk.MenuItem("Conky"),
-                      Gtk.ImageMenuItem("Display"),
+                      Gtk.ImageMenuItem("Notification Display"),
                       Gtk.MenuItem("Exit")
                       ]
 
@@ -58,7 +58,7 @@ class BaseSubMenu(Gtk.Menu):
     _state = "Not activated"
 
     def __init__(self):
-        super(BaseSubMenu, self).__init__()
+        super(Gtk.Menu, self).__init__()
 
         menu_item = [Gtk.MenuItem("On/Off")]
 
@@ -144,7 +144,7 @@ class TimeManagerSubMenu(BaseSubMenu):
 
     def on_undo_clicked(self):
         #ToDo Implement tracking undo.
-        pass
+        raise NotImplementedError
 
     def on_stop_clicked(self, widget):
         """Event handler for stopping the stopper.
@@ -155,8 +155,6 @@ class TimeManagerSubMenu(BaseSubMenu):
         self._stopper.stop_tracking()
         self._stopper = None
         self.set_menu_state("Activated")
-        #ToDo remove after testing
-        print(dbc.get_all_activities())
 
     def _start_stopper(self, activity_type):
         """Leaves the Gtk thread, creates a Stopper object there that is referenced in this object and starts it."""
@@ -314,11 +312,11 @@ class MailSubMenu(BaseSubMenu):
 
     def on_set_credentials_clicked(self):
         #ToDo Implement on_set_credentials_clicked
-        pass
+        raise NotImplementedError
 
     def on_clear_all_clicked(self):
         #ToDo Implement on_clear_all_clicked
-        pass
+        raise NotImplementedError
 
     def set_menu_state(self, state):
         if state == "Not activated":
@@ -353,11 +351,11 @@ class ConkySubMenu(BaseSubMenu):
 
     def on_set_color_clicked(self):
         #ToDo implement on_set_color_clicked
-        pass
+        raise NotImplementedError
 
     def on_display_settings_clicked(self):
         #ToDo implement on_set_color_clicked
-        pass
+        raise NotImplementedError
 
     def set_menu_state(self, state):
         if state == "Not activated":

@@ -1,6 +1,7 @@
 __author__ = 'Kristo Koert'
 
 from datetime import datetime
+from ITCKit.utils.converting import str_to_datetime
 
 
 class DataTypesAbstractClass():
@@ -25,8 +26,14 @@ class Notification(DataTypesAbstractClass):
         :param type_of: Either Mail or Reminder
         :type type_of: str
         :type message: str
-        :type when_to_raise: Timestamp
+        :type when_to_raise: Timestamp | str
         """
+        try:
+            if not isinstance(when_to_raise, datetime):
+                when_to_raise = str_to_datetime(when_to_raise)
+        except TypeError:
+            print("Value error at creating Notification instance.")
+            raise ValueError
         DataTypesAbstractClass.__init__(self)
         self._create_database_row(type_of, when_to_raise, message)
 
@@ -35,6 +42,9 @@ class Notification(DataTypesAbstractClass):
 
     def __eq__(self, other):
         return self.get_database_row() == other.get_database_row()
+
+    def __str__(self):
+        return str(self.get_database_row())
 
 
 class Activity(DataTypesAbstractClass):
@@ -57,7 +67,7 @@ class Mail(Notification):
         """
         :type sender: str
         """
-        Notification.__init__(self, "Mail", sender, datetime.now())
+        Notification.__init__(self, "Mail", datetime.now(), sender)
 
 
 class Reminder(Notification):
@@ -94,6 +104,9 @@ class AClass(DataTypesAbstractClass):
         :param attendible: Does the user attend this class or not
         :type attendible: bool
         """
+        print(start_timestamp)
+        print(type(start_timestamp))
+
         DataTypesAbstractClass.__init__(self)
         self._create_database_row(subject_code, subject_name, attending_groups, class_type, start_timestamp,
                                   end_timestamp, classroom, academician, attendible)
