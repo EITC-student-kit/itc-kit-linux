@@ -1,0 +1,62 @@
+# Conky settings #
+background no
+update_interval 1
+
+cpu_avg_samples 2
+net_avg_samples 2
+
+override_utf8_locale yes
+
+double_buffer yes
+no_buffers yes
+
+text_buffer_size 2048
+#imlib_cache_size 0
+
+temperature_unit fahrenheit
+
+# Window specifications #
+
+own_window yes
+own_window_type override
+own_window_transparent yes
+own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
+
+border_inner_margin 0
+border_outer_margin 0
+
+minimum_size 335 130
+maximum_width 335
+
+alignment br
+gap_x 650
+gap_y 35
+
+# Graphics settings #
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+
+# Text settings #
+use_xft yes
+xftfont Data Control:size=10
+xftalpha 1
+
+uppercase no
+
+temperature_unit celsius
+
+default_color FFFFFF
+
+# Lua Load  #
+lua_load ~/ITCKit/conky/scripts/rings.lua
+lua_draw_hook_pre clock_rings
+
+TEXT
+${color 00A000}${alignr 240}${voffset 3}Productive
+${color 00A000}${font Data Control:size=16}${alignr 265}${voffset 40}${cpu cpu0}%
+${color A0A0A0}$font${alignr 140}${voffset -88}Neutral
+${color A0A0A0}${font Data Control:size=16}${alignr 155}${voffset 40}${cpu cpu0}%
+${color A00000}$font$alignr${voffset -88}Counterproductive
+${color A00000}${font Data Control:size=16}${alignr 45}${voffset 40}${cpu cpu0}%
