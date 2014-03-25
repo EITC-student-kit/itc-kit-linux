@@ -78,7 +78,7 @@ require 'lsqlite3'
 
 function rgb_to_r_g_b(colour,alpha)
     return ((colour / 0x10000) % 0x100) / 255., ((colour / 0x100) % 0x100) / 255., (colour % 0x100) / 255., alpha
-end
+end--rgb_to_r_g_b
 
 function draw_ring(cr,t,pt)
     local w,h=conky_window.width,conky_window.height
@@ -102,8 +102,31 @@ function draw_ring(cr,t,pt)
     cairo_arc(cr,xc,yc,ring_r,angle_0,angle_0+t_arc)
     cairo_set_source_rgba(cr,rgb_to_r_g_b(fgc,fga))
     cairo_stroke(cr)        
-end
+end--draw_ring
+ 
+function draw_precent(cr, pct, pt)
+	local function round (number)
+		if math.floor(number) >= 0.5 then
+			number = math.ceil(number) 
+		else
+			number = math.floor(number)
+		end
+	return number
+	end
+	local font = "Ubuntu"
+	local font_slant = CAIRO_FONT_SLANT_NORMAL
+	local font_face = CAIRO_FONT_WEIGHT_NORMAL
+	local font_size = 30
+	local x, y = pt['x'] - 30, pt['y'] + 10
+	local text = string.format("%s%%", round(pct * 100))
 
+	cairo_select_font_face (cr, font, font_slant, font_face);
+	cairo_set_font_size (cr, font_size)
+	cairo_move_to (cr, x, y)
+	cairo_show_text (cr, text)
+	cairo_set_source_rgba (cr, rgb_to_r_g_b(pt['fg_colour'],pt['fg_alpha']))
+	cairo_stroke (cr)	
+end
 function conky_clock_rings()
     local function setup_rings(cr,pt)
         local ac_type=''
@@ -115,15 +138,16 @@ function conky_clock_rings()
 				
         local loc = os.getenv("HOME")
 				local db = sqlite3.open(string.format("%s/ITCKit/db/itckitdb", loc))
-				for ac_sum in db:nrows("SELECT * FROM Activity WHERE activity_type LIKE '"..ac_type.."'") do--for
+				for ac_sum in db:nrows("SELECT * FROM Activity WHERE activity_type LIKE '"..ac_type.."'") do
 					spent_sum=spent_sum+ac_sum.spent_time
 				end--for
-				for ac_total_sum in db:nrows("SELECT * FROM Activity") do--for
+				for ac_total_sum in db:nrows("SELECT * FROM Activity") do
 					total_sum=total_sum+ac_total_sum.spent_time
 				end--for
 				pct=spent_sum/total_sum
-        draw_ring(cr,pct,pt)
-    end
+        draw_ring(cr, pct,pt)
+				draw_precent(cr, pct, pt)
+    end--setup_rings
     
     -- Check that Conky has been running for at least 5s
 
@@ -135,9 +159,9 @@ function conky_clock_rings()
     local updates=conky_parse('${updates}')
     update_num=tonumber(updates)
     
-    if update_num>5 then
+    if update_num>1 then
         for i in pairs(settings_table) do
             setup_rings(cr,settings_table[i])
-        end
-    end
-end
+        end--for
+    end--if
+end--conky_clock_rings

@@ -16,10 +16,13 @@ Changelog:
 30.03.2014- Repositioned rings.
 30.03.2014- Disabled stats as it is currently unpopuated and needs repositioning.
 30.03.2014- Replaced font "Data Control" with "Ubuntu" due to absense on dotted letters.
-
+01.04.2014- Fitted to long lesson names between columns by taking words that would cross the line 
+and writing only the first letter with a dot added (problem: also adds dots to numbers).
+01.04.2014- Replaced rings Cpu counter with precent of activities from database (problem: by rounding the
+numbers total precent becomes 101%)
 ToDo:
-1. Organise table lesson names so that they wouldn't overlap.
+1. ((Organise table lesson names so that they wouldn't overlap.))
 1,1. Table skip weekends?
 1,2. Connect table with json.
-2. Replace rings temporary CPU counter with proper database information.
+2. ((Replace rings temporary CPU counter with proper database information.))
 3. Replan stats positioning and content.
