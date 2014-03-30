@@ -1,4 +1,4 @@
 #!/bin/bash
 conky -c ~/ITCKit/conky/rings &
-conky -c ~/ITCKit/conky/stats &
+#conky -c ~/ITCKit/conky/stats &
 conky -c ~/ITCKit/conky/table

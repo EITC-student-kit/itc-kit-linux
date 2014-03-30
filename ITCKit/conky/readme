@@ -12,4 +12,13 @@ Changelog:
 18.03.2014- Modified rings.lua according to the design (currently displays only cpu).
 18.03.2014- Created table.lua from scratch (currently displays "Hello World").
 18.03.2014- Added custom font "Data Control".
+30.03.2014- Populated table with database information.
+30.03.2014- Repositioned rings.
+30.03.2014- Disabled stats as it is currently unpopuated and needs repositioning.
 
+ToDo:
+1. Organise table lesson names so that they wouldn't overlap.
+1,1. Table skip weekends?
+1,2. Connect table with json.
+2. Replace rings temporary CPU counter with proper database information.
+3. Replan stats positioning and content.

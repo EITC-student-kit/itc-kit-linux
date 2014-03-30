@@ -21,9 +21,7 @@ settings_table = {
         -- Edit this table to customise your rings.
         -- You can create more rings simply by adding more elements to settings_table.
         -- "name" is the type of stat to display; you can choose from 'cpu', 'memperc', 'fs_used_perc', 'battery_used_perc'.
-        name='cpu',
-        -- "arg" is the argument to the stat type, e.g. if in Conky you would write ${cpu cpu0}, 'cpu0' would be the argument. If you would not use an argument in the Conky variable, use ''.
-        arg='',
+        ac_type='Productive',
         -- "max" is the maximum value of the ring. If the Conky variable outputs a percentage, use 100.
         max=100,
         -- "bg_colour" is the colour of the base ring.
@@ -46,8 +44,7 @@ settings_table = {
         end_angle=360
     },
     {
-        name='cpu',
-        arg='',
+        ac_type='Neutral',
         max=100,
         bg_colour=0xffffff,
         bg_alpha=0.1,
@@ -60,8 +57,7 @@ settings_table = {
         end_angle=360
     },
     {
-        name='cpu',
-        arg='',
+        ac_type='Counterproductive',
         max=100,
         bg_colour=0xA00000,
         bg_alpha=0.1,
@@ -78,6 +74,7 @@ settings_table = {
 -- Use these settings to define the origin and extent of your clock.
 
 require 'cairo'
+require 'lsqlite3'
 
 function rgb_to_r_g_b(colour,alpha)
     return ((colour / 0x10000) % 0x100) / 255., ((colour / 0x100) % 0x100) / 255., (colour % 0x100) / 255., alpha
@@ -109,15 +106,22 @@ end
 
 function conky_clock_rings()
     local function setup_rings(cr,pt)
-        local str=''
+        local ac_type=''
         local value=0
-        
-        str=string.format('${%s %s}',pt['name'],pt['arg'])
-        str=conky_parse(str)
-        
-        value=tonumber(str)
-        pct=value/pt['max']
-        
+        local spent_sum=0
+				local total_sum=0
+
+        ac_type=pt['ac_type']
+				
+        local loc = os.getenv("HOME")
+				local db = sqlite3.open(string.format("%s/ITCKit/db/itckitdb", loc))
+				for ac_sum in db:nrows("SELECT * FROM Activity WHERE activity_type LIKE '"..ac_type.."'") do--for
+					spent_sum=spent_sum+ac_sum.spent_time
+				end--for
+				for ac_total_sum in db:nrows("SELECT * FROM Activity") do--for
+					total_sum=total_sum+ac_total_sum.spent_time
+				end--for
+				pct=spent_sum/total_sum
         draw_ring(cr,pct,pt)
     end
     

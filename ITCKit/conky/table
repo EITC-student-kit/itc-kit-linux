@@ -25,8 +25,8 @@ own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
 border_inner_margin 0
 border_outer_margin 0
 
-minimum_size 1000 400
-maximum_width 1000
+minimum_size 700 525
+maximum_width 700
 
 alignment tr
 gap_x 35

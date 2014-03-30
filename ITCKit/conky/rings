@@ -29,7 +29,7 @@ minimum_size 335 130
 maximum_width 335
 
 alignment br
-gap_x 650
+gap_x 35
 gap_y 35
 
 # Graphics settings #
