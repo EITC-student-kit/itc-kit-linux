@@ -28,8 +28,8 @@ class ToolbarIndicator():
         self.main_menu = MainMenu(self)
         self.indc.set_menu(self.main_menu)
 
-        self._notification_handler = NotificationHandler(self, self.main_menu.notification_display_widget)
-        self._notification_handler.start()
+        self.notification_handler = NotificationHandler(self, self.main_menu.notification_display_widget)
+        self.notification_handler.start()
 
     def set_notification_icon(self):
         #ToDo implement set_notification_icon

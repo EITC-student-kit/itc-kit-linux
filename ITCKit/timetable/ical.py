@@ -1,132 +1,189 @@
 __author__ = 'Kristo Koert'
 
 import threading
-
+import os
 from ITCKit.utils import converting, tools
 from ITCKit.core.datatypes import AClass
 from ITCKit.settings.settings import get_timetable_settings
+from ITCKit.db import dbc
+
+keywords = ["Subject code: ", "Groups: ", "Type: ", "DTSTART:", "DTEND:", "SUMMARY:",
+            "LOCATION:", "Academician: "]
 
 
-class ICalRetriever():
-
-    def __init__(self):
-        import os
-        self.user_file_path = os.path.dirname(os.path.abspath(__file__)) + "/user_ical"
-        self.main_file_path = os.path.dirname(os.path.abspath(__file__)) + "/main_ical"
-        self._settings = get_timetable_settings()
-        #ToDo account for access denied due to lacking permission
-
-    def retrieve(self, user=False, main=False):
-        """Downloads the icals to their respective files.
-        :type user bool
-        :type main bool
-        """
-        if user:
-            try:
-                open(self.user_file_path, "w").write(
-                    tools.download_ical(self._settings["user_url"]))
-            except ValueError:
-                print("User url, not defined.")
-        if main:
-            open(self.main_file_path, "w").write(
-                tools.download_ical(self._settings["main_url"]))
+def _contains_keyword(line):
+    for key in keywords:
+        if key in line:
+            return True
+    return False
 
 
-class ICalParser():
+def _all_parameters_equal(parameters):
+    """Checks if all the parameters are of equal length.
+    :type parameters: dict
+    :raises AssertionError"""
+    number_of_events = len(parameters["DTSTART:"])
+    for key in keywords:
+        try:
+            assert number_of_events == len(parameters[key])
+        except AssertionError:
+            print("Parameters are not of equal length.")
+            [print(params, "->", len(parameters[params])) for params in parameters]
 
-    _keywords = ["Subject code: ", "Groups: ", "Type: ", "DTSTART:", "DTEND:", "SUMMARY:",
-                 "LOCATION:", "Academician: "]
 
-    _parameters = {key: [] for key in _keywords}
+def _get_relevant_lines(ical_text):
+    """Returns only the lines relevant for the processes in this file.
+    :type ical_text: str
+    :rtype: str"""
+    relevant_text = ""
+    ical_text = ical_text[ical_text.find("BEGIN:VEVENT"):]
+    for line in ical_text.split('\n'):
+        if "DESCRIPTION:" in line:
+            line = line.replace("DESCRIPTION:", '')
+            description_lines = line.split('\\n')
+            for l in description_lines:
+                if _contains_keyword(l):
+                    relevant_text += l
+                    relevant_text += '\n'
+        elif _contains_keyword(line):
+            relevant_text += line
+    return relevant_text
 
-    classes = []
 
-    def __init__(self):
-        import os
-        self.user_ical_file = open(os.path.dirname(os.path.abspath(__file__)) + "/user_ical", "r")
-        self.main_ical_file = open(os.path.dirname(os.path.abspath(__file__)) + "/main_ical", "r")
+def _write_to_user_ical(ical_text):
+    user_file_path = os.path.dirname(os.path.abspath(__file__)) + "/user_ical"
+    open(user_file_path, "w").write(_get_relevant_lines(ical_text))
 
-    def _set_parameters(self):
-        """Collects all the AClass object creation parameters and stores them."""
-        vevents = self._extract_vevents()
 
-        for event in vevents:
-            event = event.split('\n')
-            [event.append(element) for element in event[8].replace("DESCRIPTION:", '').split('\\n')]
-            del event[8]
-            self._find(event)
+def _write_to_main_ical(ical_text):
+    main_file_path = os.path.dirname(os.path.abspath(__file__)) + "/main_ical"
+    open(main_file_path, "w").write(_get_relevant_lines(ical_text))
 
-    def _extract_vevents(self):
-        """Returns a list of ical vevent lines.
-        :rtype :list"""
-        found_start = found_end = False
-        vevent = ""
-        vevents = []
-        #ToDo implement for both main_ical and user_ical
-        for ical_file in [self.main_ical_file, self.user_ical_file]:
-            for line in ical_file:
-                if "BEGIN:VEVENT" in line:
-                    found_start = True
-                if "END:VEVENT" in line:
-                    found_end = True
-                if found_start:
-                    vevent += line
-                if found_start and found_end:
-                    vevents.append(vevent)
-                    found_start = False
-                    found_end = False
-                    vevent = ""
-        return vevents
 
-    def _find(self, event):
-        """Finds and sets all the parameters in a line, if there are any.
-        :param event A vevent string from a ical file
-        :type event: str
-        """
-        var = None
-        for data in event:
-            for key in self._keywords:
-                if key in data:
-                    var = data[data.index(key):].replace(key, '')
-                    if key == "DTSTART:" or key == "DTEND:":
-                        self._parameters[key].append(converting.ical_datetime_to_timestamp(var))
-                    else:
-                        self._parameters[key].append(var.replace('\\', ''))
-                #ToDo replace temporary fix
-                elif key == "Academician: " and len(self._parameters["DTSTART:"]) > len(self._parameters["Academician: "]):
-                    self._parameters[key].append('')
+def _format_parameters(old_parameters):
+    """Parameters are converted to their proper forms.
+    :type old_parameters: dict
+    :rtype: dict"""
+    new_parameters = {key: [] for key in keywords}
+    for el in old_parameters["Groups: "]:
+        new_parameters["Groups: "].append(el.replace('\\', ''))
+    for el in old_parameters["SUMMARY:"]:
+        new_parameters["SUMMARY:"].append(el[:el.find('[')])
+    for el in old_parameters["DTEND:"]:
+        new_parameters["DTEND:"].append(converting.ical_datetime_to_timestamp(el))
+    for el in old_parameters["DTSTART:"]:
+        new_parameters["DTSTART:"].append(converting.ical_datetime_to_timestamp(el))
+    for key in keywords:
+        if len(new_parameters[key]) == 0:
+            new_parameters[key] = old_parameters[key]
+    return new_parameters
 
-    def _create_class_instances(self):
-        par = self._parameters
-        for i in range(len(self._parameters["DTSTART:"])):
-            #SUMMARY: returns name
-            self.classes.append(AClass(par["SUMMARY:"][i], par["Subject code: "][i], par["Groups: "][i],
-                                       par["Type: "][i], par["DTSTART:"][i], par["DTEND:"][i], par["LOCATION:"][i],
-                                       par["Academician: "][i], False))
 
-    def get_classes(self):
-        """Gets all the parameters and creates instances.
-        :rtype list
-        """
-        self._set_parameters()
-        self._create_class_instances()
-        return self.classes
+def _collect_parameters(formatted_ical_text, parameters):
+    """Recursively collects all the parameters
+    :type formatted_ical_text: str
+    :type parameters dict
+    :rtype: dict
+    """
+    try:
+        cut_off = formatted_ical_text.index("DTSTART:", 1)
+        event = formatted_ical_text[0:cut_off]
+        rest = formatted_ical_text[cut_off:]
+        #Deals with events that do not have a Academician
+        if len(event.split('\n')) == 8:
+            event += "Academician: "
+        for line in event.split('\n'):
+            for key in parameters.keys():
+                if key in line:
+                    parameters[key].append(line.replace(key, ''))
+        return _collect_parameters(rest, parameters)
+    except ValueError:
+        parameters = _format_parameters(parameters)
+        _all_parameters_equal(parameters)
+        return parameters
 
+
+def _combine_classes(user_classes, main_classes):
+    """Returns a list of only the AClass objects that are unique.
+    :type user_classes: list
+    :type main_classes: list
+    :rtype: list
+    """
+    for cls in user_classes:
+        if cls in main_classes:
+            main_classes[main_classes.index(cls)] = cls
+    return main_classes
+
+
+def retrieve_ical():
+    """Writes formatted icals to files. Raises value error if url invalid.
+    :raises ValueError"""
+    _settings = get_timetable_settings()
+
+    if _settings["user_url"] != "":
+        try:
+            user_ical = tools.download_ical(_settings["user_url"])
+            _write_to_user_ical(user_ical)
+        except ValueError:
+            print("Problem with user URL")
+
+    try:
+        main_ical = tools.download_ical(_settings["main_url"])
+        _write_to_main_ical(main_ical)
+    except ValueError:
+        print("Problem with main URL")
+
+
+def parse_ical():
+    """Parses ical files and writes the results to database."""
+    parameters_dict = {key: [] for key in keywords}
+    user_classes = []
+    main_classes = []
+
+    user_ical = open(os.path.dirname(os.path.abspath(__file__)) + "/user_ical", "r").read()
+    main_ical = open(os.path.dirname(os.path.abspath(__file__)) + "/main_ical", "r").read()
+
+    parameters = _collect_parameters(user_ical, parameters_dict)
+    for i in range(len(parameters["DTSTART:"])):
+        user_classes.append(AClass(parameters["Subject code: "][i], parameters["SUMMARY:"][i], parameters["Groups: "][i],
+                                   parameters["Type: "][i], parameters["DTSTART:"][i], parameters["DTEND:"][i],
+                                   parameters["LOCATION:"][i], parameters["Academician: "][i], True))
+
+    parameters.clear()
+
+    parameters = _collect_parameters(main_ical, parameters_dict)
+    for i in range(len(parameters["DTSTART:"])):
+        main_classes.append(AClass(parameters["Subject code: "][i], parameters["SUMMARY:"][i], parameters["Groups: "][i],
+                                   parameters["Type: "][i], parameters["DTSTART:"][i], parameters["DTEND:"][i],
+                                   parameters["LOCATION:"][i], parameters["Academician: "][i], False))
+
+    dbc.add_to_db(_combine_classes(user_classes, main_classes))
+
+
+def update_icals():
+    retrieve_ical()
+    parse_ical()
 
 class ICalsUpdater(threading.Thread):
-
     def __init__(self, instance):
         threading.Thread.__init__(self)
         self.instance = instance
 
     def run(self):
         from ITCKit.db.dbc import add_to_db
-        icr = ICalRetriever()
-        icp = ICalParser()
+        #icr = ICalRetriever()
+#        icp = ICalParser()
         try:
-            icr.retrieve(True, True)
+            #icr.retrieve(True, True)
             self.instance.info_label = "Updated."
             add_to_db(icp.get_classes())
         except:
             self.instance.info_label = "Unable to update."
         self.instance._is_updating = False
+
+
+if __name__ == "__main__":
+    retrieve_ical()
+    parse_ical()
+    #print("Read from db:  ", dbc.get_all_classes()[0])
+    #[print(cls) for cls in dbc.get_all_classes()]

@@ -125,7 +125,8 @@ class UpdatingTimetableWindow(BaseWindow):
         GLib.timeout_add(10, self.handler_timeout)
 
     def update(self):
-        ical.ICalsUpdater(self).start()
+        import threading
+        threading.Thread(target=ical.update_icals()).start()
 
     def handler_timeout(self):
         self.checking_animation()

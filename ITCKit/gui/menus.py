@@ -43,10 +43,9 @@ class MainMenu(Gtk.Menu):
         self.notification_display_widget.connect("activate", self.on_notification_checked)
         self.exit_widget.connect("activate", self.on_exit)
         self.notification_display_widget.hide()
-        self.notification_handler = NotificationHandler(self, self.notification_display_widget)
 
     def on_notification_checked(self, widget):
-        self._indicator_reference._notification_handler.remove_notification()
+        self._indicator_reference.notification_handler.remove_notification()
 
     def on_exit(self, widget):
         #ToDo Implement on_exit()

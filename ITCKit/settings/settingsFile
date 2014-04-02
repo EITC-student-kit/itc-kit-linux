@@ -16,7 +16,6 @@
         "activated": true
     },
     "Timetable": {
-        "activate": false,
         "activated": true,
         "automatic_update": false,
         "main_url": "https://itcollege.ois.ee/en/timetable/ical?curriculum_id=2&key=01d8d5cbdbb9881fbf103f61c36955e731531a28",

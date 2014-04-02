@@ -2,9 +2,7 @@ __author__ = 'Kristo Koert'
 
 from threading import Thread
 from time import sleep
-
 from gi.repository import AppIndicator3 as AppIndicator
-
 from ITCKit.db import dbc
 
 
@@ -21,74 +19,75 @@ class NotificationHandler(Thread):
         :param indicator: channel for raising the notification
         :type indicator: ToolbarIndicator
         :param menu_item: Place to display more notification information
-        :type menu_item: gtk.ImageMenuItem
+        :type menu_item: ImageMenuItem
         """
         super(NotificationHandler, self).__init__()
         self._indicator_reference = indicator
-        self._menu_item = menu_item
+        self._menu_item_reference = menu_item
 
     def run(self):
         """When thread is started, an endless loop ensues. Constantly checking if any notifications should be raised.
         The notifications are constantly reread into the list to assure up do date information."""
         while True:
-            self._notifications = self._get_notifications()
-            self.get_due_notifications()
-            self.attempt_to_raise_latest_notification()
+            self._notifications = dbc.get_all_notifications()
+            [self._notification_to_raise.append(new_notif) for new_notif in self._get_due_notifications()]
+            self._attempt_to_raise_latest_notification()
             sleep(5)
 
-    def get_due_notifications(self):
-        """Checks if any notifications should be triggered."""
+    def _get_due_notifications(self):
+        """Return notifications that need to be raised and are not already in _notifications_to_raise.
+        :rtype Notification"""
+        new_notifs_to_raise = []
         if len(self._notifications) != 0:
             for notif in self._notifications:
-                if notif.is_due():
-                    if notif not in self._notification_to_raise:
-                        self._notification_to_raise.append(notif)
+                if notif.is_due() and (notif not in self._notification_to_raise):
+                        new_notifs_to_raise.append(notif)
+        return new_notifs_to_raise
 
-    @staticmethod
-    def _get_notifications():
-        """Gets notifications from database"""
-        return dbc.get_all_notifications()
-
-    def attempt_to_raise_latest_notification(self):
+    def _attempt_to_raise_latest_notification(self):
         if len(self._notification_to_raise) != 0 and not self._indicator_reference.notification_raised:
-            self._raise_notification(self._notification_to_raise[-1])
+            self._raise_notification(self._notification_to_raise[0])
 
     def _raise_notification(self, notif):
-        """Raises notification in Indicator passed as __init__ parameter and displays message in the widget.
+        """Raises notification in Indicator and displays message in the menu item.
 
         param: notif: A notification
         type: notif: Notification
         """
         self._indicator_reference.notification_raised = True
-        self._menu_item.show()
+        self._menu_item_reference.show()
         if notif.get_database_row()[0] == "Mail":
             #ToDo switch ATTENTION icons to mail
             self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ATTENTION)
-            self._menu_item.set_label("Mail from: " + notif.message)
+            self._menu_item_reference.set_label("Mail from: " + notif.message)
         if notif.get_database_row()[0] == "Reminder":
             #ToDo switch ATTENTION icons to reminder
             self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ATTENTION)
+            #DebuggingAid
             print("Reminder object -> ", notif)
             print("Get Reminder Name -> ", notif.get_database_row()[2])
-            self._menu_item.set_label("Reminder: " + notif.get_database_row()[2])
+            self._menu_item_reference.set_label("Reminder: " + notif.get_database_row()[2])
         else:
-            print("Else")
+            print("Unable to raise notification.")
+            raise RuntimeError
 
     def remove_notification(self):
         """Hide widget and reset indicator status."""
         db = dbc.connect_to_db()
+        #DebuggingAid
         print("-------------------------------------------------------------------------")
         print("db before: ")
         [print(n) for n in dbc.get_all_notifications()]
         print("to_raise before: ")
         [print(n) for n in self._notification_to_raise]
         db.execute("DELETE from Notification where type = ? and time = ? and message = ?",
-                   self._notification_to_raise[-1].get_database_row())
+                   self._notification_to_raise[0].get_database_row())
         db.commit()
         self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ACTIVE)
         self._indicator_reference.notification_raised = False
         del self._notification_to_raise[-1]
-        self._menu_item.hide()
+        self._menu_item_reference.hide()
+        #DebuggingAid
         print("db after: ")
         [print(n) for n in dbc.get_all_notifications()]
         print("to_raise after: ")

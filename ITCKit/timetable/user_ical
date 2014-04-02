@@ -1,1401 +1,473 @@
-BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//The Estonian Information Technology College//Schedule v2.0//EN
-CALSCALE:GREGORIAN
-X-WR-CALNAME:Student Kristo Koert
-X-WR-TIMEZONE:Europe/Tallinn
-X-PUBLISHED-TTL:PT60M
-BEGIN:VTIMEZONE
-TZID:Europe/Tallinn
-X-LIC-LOCATION:Europe/Tallinn
-BEGIN:DAYLIGHT
-TZOFFSETFROM:+0200
-TZOFFSETTO:+0300
-TZNAME:EEST
-DTSTART:19700329T030000
-RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
-END:DAYLIGHT
-BEGIN:STANDARD
-TZOFFSETFROM:+0300
-TZOFFSETTO:+0200
-TZNAME:EET
-DTSTART:19701025T040000
-RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
-END:STANDARD
-END:VTIMEZONE
-BEGIN:VEVENT
-UID:55290
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140310T100000Z
-DTEND:20140310T113000Z
-SUMMARY:Basics of Telecommunication [15]
-DESCRIPTION:Subject code: I249\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Kaido Saul\nType: Practice\n\nFrequency: Every week\, Mon\nPeriod: 03/03/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
-UID:53254
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140310T120000Z
-DTEND:20140310T133000Z
-SUMMARY:English [15\, 14]
-DESCRIPTION:Subject code: I023\nGroups: 15\, 14\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Mon\nPeriod: 02/03/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:51645
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140311T061500Z
-DTEND:20140311T074500Z
-SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52710
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140311T080000Z
-DTEND:20140311T093000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54444
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140311T100000Z
-DTEND:20140311T113000Z
-SUMMARY:Probability Theory and Mathematical Statistics [15]
-DESCRIPTION:Subject code: I104\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 02/11/2014 - 04/07/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n\nEvent description: \n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51826
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140311T120000Z
-DTEND:20140311T133000Z
-SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52041
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140311T140000Z
-DTEND:20140311T153000Z
-SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51866
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140312T061500Z
-DTEND:20140312T074500Z
-SUMMARY:Network Applications I: Client-Server Systems [15]
-DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:51945
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140312T080000Z
-DTEND:20140312T093000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52786
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140312T100000Z
-DTEND:20140312T113000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
-DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:52014
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140312T120000Z
-DTEND:20140312T133000Z
-SUMMARY:Computers [15]
-DESCRIPTION:Subject code: I201\nGroups: 15\nTime: 14:00 - 15:30\nRoom: 410\nAcademician: Teet Evartson\nType: Practice\n\nFrequency: Every second week\, Wed\nPeriod: 02/12/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:410
-END:VEVENT
-BEGIN:VEVENT
-UID:54340
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140313T080000Z
-DTEND:20140313T093000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 04/06/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n\nEvent description: \n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54382
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140313T140000Z
-DTEND:20140313T153000Z
-SUMMARY:English [14\, 15]
-DESCRIPTION:Subject code: I023\nGroups: 14\, 15\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:55291
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140317T100000Z
-DTEND:20140317T113000Z
-SUMMARY:Basics of Telecommunication [15]
-DESCRIPTION:Subject code: I249\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Kaido Saul\nType: Practice\n\nFrequency: Every week\, Mon\nPeriod: 03/03/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
-UID:53255
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140317T120000Z
-DTEND:20140317T133000Z
-SUMMARY:English [15\, 14]
-DESCRIPTION:Subject code: I023\nGroups: 15\, 14\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Mon\nPeriod: 02/03/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:51646
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140318T061500Z
-DTEND:20140318T074500Z
-SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52711
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140318T080000Z
-DTEND:20140318T093000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:53495
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140318T100000Z
-DTEND:20140318T113000Z
-SUMMARY:Enterprise Economics [14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 14\, 15\nTime: 12:00 - 13:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51827
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140318T120000Z
-DTEND:20140318T133000Z
-SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52042
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140318T140000Z
-DTEND:20140318T153000Z
-SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51867
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140319T061500Z
-DTEND:20140319T074500Z
-SUMMARY:Network Applications I: Client-Server Systems [15]
-DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:51946
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140319T080000Z
-DTEND:20140319T093000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52787
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140319T100000Z
-DTEND:20140319T113000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
-DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:54341
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140320T080000Z
-DTEND:20140320T093000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 04/06/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54383
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140320T140000Z
-DTEND:20140320T153000Z
-SUMMARY:English [14\, 15]
-DESCRIPTION:Subject code: I023\nGroups: 14\, 15\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:55292
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140324T100000Z
-DTEND:20140324T113000Z
-SUMMARY:Basics of Telecommunication [15]
-DESCRIPTION:Subject code: I249\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Kaido Saul\nType: Practice\n\nFrequency: Every week\, Mon\nPeriod: 03/03/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
-UID:53256
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140324T120000Z
-DTEND:20140324T133000Z
-SUMMARY:English [15\, 14]
-DESCRIPTION:Subject code: I023\nGroups: 15\, 14\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Mon\nPeriod: 02/03/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:51647
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140325T061500Z
-DTEND:20140325T074500Z
-SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52712
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140325T080000Z
-DTEND:20140325T093000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54445
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140325T100000Z
-DTEND:20140325T113000Z
-SUMMARY:Probability Theory and Mathematical Statistics [15]
-DESCRIPTION:Subject code: I104\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 02/11/2014 - 04/07/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51828
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140325T120000Z
-DTEND:20140325T133000Z
-SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52043
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140325T140000Z
-DTEND:20140325T153000Z
-SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51868
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140326T061500Z
-DTEND:20140326T074500Z
-SUMMARY:Network Applications I: Client-Server Systems [15]
-DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:51947
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140326T080000Z
-DTEND:20140326T093000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52788
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140326T100000Z
-DTEND:20140326T113000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
-DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:52015
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140326T120000Z
-DTEND:20140326T133000Z
-SUMMARY:Computers [15]
-DESCRIPTION:Subject code: I201\nGroups: 15\nTime: 14:00 - 15:30\nRoom: 410\nAcademician: Teet Evartson\nType: Practice\n\nFrequency: Every second week\, Wed\nPeriod: 02/12/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:410
-END:VEVENT
-BEGIN:VEVENT
-UID:54342
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140327T080000Z
-DTEND:20140327T093000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 02/06/2014 - 04/06/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54384
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140327T140000Z
-DTEND:20140327T153000Z
-SUMMARY:English [14\, 15]
-DESCRIPTION:Subject code: I023\nGroups: 14\, 15\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:55293
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140407T090000Z
-DTEND:20140407T103000Z
-SUMMARY:Basics of Telecommunication [15]
-DESCRIPTION:Subject code: I249\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Kaido Saul\nType: Practice\n\nFrequency: Every week\, Mon\nPeriod: 03/03/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
-UID:53257
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140407T110000Z
-DTEND:20140407T123000Z
-SUMMARY:English [15\, 14]
-DESCRIPTION:Subject code: I023\nGroups: 15\, 14\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Mon\nPeriod: 02/03/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:51648
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140408T051500Z
-DTEND:20140408T064500Z
-SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52713
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140408T070000Z
-DTEND:20140408T083000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:53496
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140408T090000Z
-DTEND:20140408T103000Z
-SUMMARY:Enterprise Economics [14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 14\, 15\nTime: 12:00 - 13:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51829
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140408T110000Z
-DTEND:20140408T123000Z
-SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52044
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140408T130000Z
-DTEND:20140408T143000Z
-SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51869
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140409T051500Z
-DTEND:20140409T064500Z
-SUMMARY:Network Applications I: Client-Server Systems [15]
-DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:51948
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140409T070000Z
-DTEND:20140409T083000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52789
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140409T090000Z
-DTEND:20140409T103000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
-DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:54349
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140410T070000Z
-DTEND:20140410T083000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 316\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Single\nDate: 04/10/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:316
-END:VEVENT
-BEGIN:VEVENT
-UID:54385
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140410T130000Z
-DTEND:20140410T143000Z
-SUMMARY:English [14\, 15]
-DESCRIPTION:Subject code: I023\nGroups: 14\, 15\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:55294
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140414T090000Z
-DTEND:20140414T103000Z
-SUMMARY:Basics of Telecommunication [15]
-DESCRIPTION:Subject code: I249\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Kaido Saul\nType: Practice\n\nFrequency: Every week\, Mon\nPeriod: 03/03/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
-UID:53258
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140414T110000Z
-DTEND:20140414T123000Z
-SUMMARY:English [15\, 14]
-DESCRIPTION:Subject code: I023\nGroups: 15\, 14\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Mon\nPeriod: 02/03/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:51649
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140415T051500Z
-DTEND:20140415T064500Z
-SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52714
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140415T070000Z
-DTEND:20140415T083000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:53995
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140415T090000Z
-DTEND:20140415T103000Z
-SUMMARY:Probability Theory and Mathematical Statistics [15]
-DESCRIPTION:Subject code: I104\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 410\nAcademician: Kristiina Hakk\nType: Exercise\n\nFrequency: Single\nDate: 04/15/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:410
-END:VEVENT
-BEGIN:VEVENT
-UID:51830
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140415T110000Z
-DTEND:20140415T123000Z
-SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52045
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140415T130000Z
-DTEND:20140415T143000Z
-SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51870
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140416T051500Z
-DTEND:20140416T064500Z
-SUMMARY:Network Applications I: Client-Server Systems [15]
-DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:51949
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140416T070000Z
-DTEND:20140416T083000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52790
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140416T090000Z
-DTEND:20140416T103000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
-DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:52016
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140416T110000Z
-DTEND:20140416T123000Z
-SUMMARY:Computers [15]
-DESCRIPTION:Subject code: I201\nGroups: 15\nTime: 14:00 - 15:30\nRoom: 410\nAcademician: Teet Evartson\nType: Practice\n\nFrequency: Every second week\, Wed\nPeriod: 02/12/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:410
-END:VEVENT
-BEGIN:VEVENT
-UID:54343
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140417T070000Z
-DTEND:20140417T083000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 04/17/2014 - 06/01/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n\nEvent description: \n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54386
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140417T130000Z
-DTEND:20140417T143000Z
-SUMMARY:English [14\, 15]
-DESCRIPTION:Subject code: I023\nGroups: 14\, 15\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:55295
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140421T090000Z
-DTEND:20140421T103000Z
-SUMMARY:Basics of Telecommunication [15]
-DESCRIPTION:Subject code: I249\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Kaido Saul\nType: Practice\n\nFrequency: Every week\, Mon\nPeriod: 03/03/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
-UID:53259
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140421T110000Z
-DTEND:20140421T123000Z
-SUMMARY:English [15\, 14]
-DESCRIPTION:Subject code: I023\nGroups: 15\, 14\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Mon\nPeriod: 02/03/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:51650
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140422T051500Z
-DTEND:20140422T064500Z
-SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52715
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140422T070000Z
-DTEND:20140422T083000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:53497
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140422T090000Z
-DTEND:20140422T103000Z
-SUMMARY:Enterprise Economics [14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 14\, 15\nTime: 12:00 - 13:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51831
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140422T110000Z
-DTEND:20140422T123000Z
-SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52046
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140422T130000Z
-DTEND:20140422T143000Z
-SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51871
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140423T051500Z
-DTEND:20140423T064500Z
-SUMMARY:Network Applications I: Client-Server Systems [15]
-DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:54422
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140423T070000Z
-DTEND:20140423T083000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 219\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Single\nDate: 04/23/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:51950
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140423T070000Z
-DTEND:20140423T083000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52791
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140423T090000Z
-DTEND:20140423T103000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
-DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:54344
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140424T070000Z
-DTEND:20140424T083000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 04/17/2014 - 06/01/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54387
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140424T130000Z
-DTEND:20140424T143000Z
-SUMMARY:English [14\, 15]
-DESCRIPTION:Subject code: I023\nGroups: 14\, 15\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:55296
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140428T090000Z
-DTEND:20140428T103000Z
-SUMMARY:Basics of Telecommunication [15]
-DESCRIPTION:Subject code: I249\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Kaido Saul\nType: Practice\n\nFrequency: Every week\, Mon\nPeriod: 03/03/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
-UID:53260
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140428T110000Z
-DTEND:20140428T123000Z
-SUMMARY:English [15\, 14]
-DESCRIPTION:Subject code: I023\nGroups: 15\, 14\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Mon\nPeriod: 02/03/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:54477
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140428T130000Z
-DTEND:20140428T143000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Single\nDate: 04/28/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51651
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140429T051500Z
-DTEND:20140429T064500Z
-SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52716
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140429T070000Z
-DTEND:20140429T083000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54454
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140429T090000Z
-DTEND:20140429T103000Z
-SUMMARY:Probability Theory and Mathematical Statistics [15]
-DESCRIPTION:Subject code: I104\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Exercise\n\nFrequency: Single\nDate: 04/29/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51832
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140429T110000Z
-DTEND:20140429T123000Z
-SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52047
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140429T130000Z
-DTEND:20140429T143000Z
-SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51872
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140430T051500Z
-DTEND:20140430T064500Z
-SUMMARY:Network Applications I: Client-Server Systems [15]
-DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:51951
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140430T070000Z
-DTEND:20140430T083000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52792
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140430T090000Z
-DTEND:20140430T103000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
-DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:52017
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140430T110000Z
-DTEND:20140430T123000Z
-SUMMARY:Computers [15]
-DESCRIPTION:Subject code: I201\nGroups: 15\nTime: 14:00 - 15:30\nRoom: 410\nAcademician: Teet Evartson\nType: Practice\n\nFrequency: Every second week\, Wed\nPeriod: 02/12/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:410
-END:VEVENT
-BEGIN:VEVENT
-UID:55297
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140505T090000Z
-DTEND:20140505T103000Z
-SUMMARY:Basics of Telecommunication [15]
-DESCRIPTION:Subject code: I249\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Kaido Saul\nType: Practice\n\nFrequency: Every week\, Mon\nPeriod: 03/03/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
-UID:53261
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140505T110000Z
-DTEND:20140505T123000Z
-SUMMARY:English [15\, 14]
-DESCRIPTION:Subject code: I023\nGroups: 15\, 14\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Mon\nPeriod: 02/03/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:51652
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140506T051500Z
-DTEND:20140506T064500Z
-SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52717
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140506T070000Z
-DTEND:20140506T083000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:53498
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140506T090000Z
-DTEND:20140506T103000Z
-SUMMARY:Enterprise Economics [14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 14\, 15\nTime: 12:00 - 13:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51833
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140506T110000Z
-DTEND:20140506T123000Z
-SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52048
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140506T130000Z
-DTEND:20140506T143000Z
-SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51873
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140507T051500Z
-DTEND:20140507T064500Z
-SUMMARY:Network Applications I: Client-Server Systems [15]
-DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:51952
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140507T070000Z
-DTEND:20140507T083000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52793
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140507T090000Z
-DTEND:20140507T103000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
-DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:54345
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140508T070000Z
-DTEND:20140508T083000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 04/17/2014 - 06/01/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54388
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140508T130000Z
-DTEND:20140508T143000Z
-SUMMARY:English [14\, 15]
-DESCRIPTION:Subject code: I023\nGroups: 14\, 15\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:55298
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140512T090000Z
-DTEND:20140512T103000Z
-SUMMARY:Basics of Telecommunication [15]
-DESCRIPTION:Subject code: I249\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Kaido Saul\nType: Practice\n\nFrequency: Every week\, Mon\nPeriod: 03/03/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
-UID:53262
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140512T110000Z
-DTEND:20140512T123000Z
-SUMMARY:English [15\, 14]
-DESCRIPTION:Subject code: I023\nGroups: 15\, 14\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Mon\nPeriod: 02/03/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:51653
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140513T051500Z
-DTEND:20140513T064500Z
-SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52718
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140513T070000Z
-DTEND:20140513T083000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54003
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140513T090000Z
-DTEND:20140513T103000Z
-SUMMARY:Probability Theory and Mathematical Statistics [15]
-DESCRIPTION:Subject code: I104\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 410\nAcademician: Kristiina Hakk\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 05/13/2014 - 06/01/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:410
-END:VEVENT
-BEGIN:VEVENT
-UID:51834
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140513T110000Z
-DTEND:20140513T123000Z
-SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52049
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140513T130000Z
-DTEND:20140513T143000Z
-SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51874
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140514T051500Z
-DTEND:20140514T064500Z
-SUMMARY:Network Applications I: Client-Server Systems [15]
-DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:51953
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140514T070000Z
-DTEND:20140514T083000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52794
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140514T090000Z
-DTEND:20140514T103000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
-DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:52018
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140514T110000Z
-DTEND:20140514T123000Z
-SUMMARY:Computers [15]
-DESCRIPTION:Subject code: I201\nGroups: 15\nTime: 14:00 - 15:30\nRoom: 410\nAcademician: Teet Evartson\nType: Practice\n\nFrequency: Every second week\, Wed\nPeriod: 02/12/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:410
-END:VEVENT
-BEGIN:VEVENT
-UID:54346
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140515T070000Z
-DTEND:20140515T083000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 04/17/2014 - 06/01/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n\nEvent description: \n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54389
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140515T130000Z
-DTEND:20140515T143000Z
-SUMMARY:English [14\, 15]
-DESCRIPTION:Subject code: I023\nGroups: 14\, 15\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:55299
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140519T090000Z
-DTEND:20140519T103000Z
-SUMMARY:Basics of Telecommunication [15]
-DESCRIPTION:Subject code: I249\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 415\, 417\nAcademician: Kaido Saul\nType: Practice\n\nFrequency: Every week\, Mon\nPeriod: 03/03/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:415, 417
-END:VEVENT
-BEGIN:VEVENT
-UID:53263
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140519T110000Z
-DTEND:20140519T123000Z
-SUMMARY:English [15\, 14]
-DESCRIPTION:Subject code: I023\nGroups: 15\, 14\nTime: 14:00 - 15:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Mon\nPeriod: 02/03/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-BEGIN:VEVENT
-UID:51654
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140520T051500Z
-DTEND:20140520T064500Z
-SUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I249\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 08:15 - 09:45\nRoom: 314\nAcademician: Truls Ringkjob\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 03/04/2014 - 06/01/2014\n\nRound: Basics of Telecommunication 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52719
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140520T070000Z
-DTEND:20140520T083000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I112\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Peeter Lorents\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:53499
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140520T090000Z
-DTEND:20140520T103000Z
-SUMMARY:Enterprise Economics [14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 14\, 15\nTime: 12:00 - 13:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Exercise\n\nFrequency: Every second week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51835
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140520T110000Z
-DTEND:20140520T123000Z
-SUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I244\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 14:00 - 15:30\nRoom: 314\nAcademician: Tiia Tänav\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52050
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140520T130000Z
-DTEND:20140520T143000Z
-SUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I006\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 16:00 - 17:30\nRoom: 314\nAcademician: Lembit Viilup\nType: Lecture\n\nFrequency: Every week\, Tue\nPeriod: 02/04/2014 - 06/01/2014\n\nRound: Enterprise Economics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:51875
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140521T051500Z
-DTEND:20140521T064500Z
-SUMMARY:Network Applications I: Client-Server Systems [15]
-DESCRIPTION:Subject code: I244\nGroups: 15\nTime: 08:15 - 09:45\nRoom: 319\nAcademician: Tiia Tänav\nType: Practice\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Network Applications I: Client-Server Systems 11 12 13 14 15\n
-LOCATION:319
-END:VEVENT
-BEGIN:VEVENT
-UID:51954
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140521T070000Z
-DTEND:20140521T083000Z
-SUMMARY:Computers [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I201\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Teet Evartson\nType: Lecture\n\nFrequency: Every week\, Wed\nPeriod: 02/05/2014 - 06/01/2014\n\nRound: Computers 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:52795
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140521T090000Z
-DTEND:20140521T103000Z
-SUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]
-DESCRIPTION:Subject code: I112\nGroups: 15\nTime: 12:00 - 13:30\nRoom: 219\nAcademician: Peeter Lorents\nType: Exercise\n\nFrequency: Every week\, Wed\nPeriod: 03/05/2014 - 06/01/2014\n\nRound: Logic and Algorithms Theory /Discrete Mathematics 11 12 13 14 15\n
-LOCATION:219
-END:VEVENT
-BEGIN:VEVENT
-UID:54347
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140522T070000Z
-DTEND:20140522T083000Z
-SUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]
-DESCRIPTION:Subject code: I104\nGroups: 11\, 12\, 13\, 14\, 15\nTime: 10:00 - 11:30\nRoom: 314\nAcademician: Kristiina Hakk\nType: Lecture\n\nFrequency: Every week\, Thu\nPeriod: 04/17/2014 - 06/01/2014\n\nRound: Probability Theory and Mathematical Statistics 11 12 13 14 15\n
-LOCATION:314
-END:VEVENT
-BEGIN:VEVENT
-UID:54390
-SEQUENCE:1
-STATUS:CONFIRMED
-TRANSP:OPAQUE
-DTSTART:20140522T130000Z
-DTEND:20140522T143000Z
-SUMMARY:English [14\, 15]
-DESCRIPTION:Subject code: I023\nGroups: 14\, 15\nTime: 16:00 - 17:30\nRoom: 226\nAcademician: Kärt Rummel\nType: Exercise\n\nFrequency: Every week\, Thu\nPeriod: 02/13/2014 - 06/01/2014\n\nRound: English 11 12 13 14 15\n
-LOCATION:226
-END:VEVENT
-END:VCALENDAR
+DTSTART:20140319T061500ZDTEND:20140319T074500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
+Groups: 15
+Academician: Tiia Tänav
+Type: Practice
+LOCATION:319DTSTART:20140319T080000ZDTEND:20140319T093000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Teet Evartson
+Type: Lecture
+LOCATION:314DTSTART:20140319T100000ZDTEND:20140319T113000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
+Groups: 15
+Academician: Peeter Lorents
+Type: Exercise
+LOCATION:219DTSTART:20140320T080000ZDTEND:20140320T093000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Kristiina Hakk
+Type: Lecture
+LOCATION:314DTSTART:20140320T140000ZDTEND:20140320T153000ZSUMMARY:English [14\, 15]Subject code: I023
+Groups: 14\, 15
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140324T100000ZDTEND:20140324T113000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
+Groups: 15
+Academician: Kaido Saul
+Type: Practice
+LOCATION:415, 417DTSTART:20140324T120000ZDTEND:20140324T133000ZSUMMARY:English [15\, 14]Subject code: I023
+Groups: 15\, 14
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140325T061500ZDTEND:20140325T074500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Truls Ringkjob
+Type: Lecture
+LOCATION:314DTSTART:20140325T080000ZDTEND:20140325T093000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Peeter Lorents
+Type: Lecture
+LOCATION:314DTSTART:20140325T100000ZDTEND:20140325T113000ZSUMMARY:Probability Theory and Mathematical Statistics [15]Subject code: I104
+Groups: 15
+Academician: Kristiina Hakk
+Type: Exercise
+LOCATION:314DTSTART:20140325T120000ZDTEND:20140325T133000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Tiia Tänav
+Type: Lecture
+LOCATION:314DTSTART:20140325T140000ZDTEND:20140325T153000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Lembit Viilup
+Type: Lecture
+LOCATION:314DTSTART:20140326T061500ZDTEND:20140326T074500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
+Groups: 15
+Academician: Tiia Tänav
+Type: Practice
+LOCATION:319DTSTART:20140326T080000ZDTEND:20140326T093000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Teet Evartson
+Type: Lecture
+LOCATION:314DTSTART:20140326T100000ZDTEND:20140326T113000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
+Groups: 15
+Academician: Peeter Lorents
+Type: Exercise
+LOCATION:219DTSTART:20140326T120000ZDTEND:20140326T133000ZSUMMARY:Computers [15]Subject code: I201
+Groups: 15
+Academician: Teet Evartson
+Type: Practice
+LOCATION:410DTSTART:20140327T080000ZDTEND:20140327T093000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Kristiina Hakk
+Type: Lecture
+LOCATION:314DTSTART:20140327T140000ZDTEND:20140327T153000ZSUMMARY:English [14\, 15]Subject code: I023
+Groups: 14\, 15
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140407T090000ZDTEND:20140407T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
+Groups: 15
+Academician: Kaido Saul
+Type: Practice
+LOCATION:415, 417DTSTART:20140407T110000ZDTEND:20140407T123000ZSUMMARY:English [15\, 14]Subject code: I023
+Groups: 15\, 14
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140408T051500ZDTEND:20140408T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Truls Ringkjob
+Type: Lecture
+LOCATION:314DTSTART:20140408T070000ZDTEND:20140408T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Peeter Lorents
+Type: Lecture
+LOCATION:314DTSTART:20140408T090000ZDTEND:20140408T103000ZSUMMARY:Enterprise Economics [14\, 15]Subject code: I006
+Groups: 14\, 15
+Academician: Lembit Viilup
+Type: Exercise
+LOCATION:314DTSTART:20140408T110000ZDTEND:20140408T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Tiia Tänav
+Type: Lecture
+LOCATION:314DTSTART:20140408T130000ZDTEND:20140408T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Lembit Viilup
+Type: Lecture
+LOCATION:314DTSTART:20140409T051500ZDTEND:20140409T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
+Groups: 15
+Academician: Tiia Tänav
+Type: Practice
+LOCATION:319DTSTART:20140409T070000ZDTEND:20140409T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Teet Evartson
+Type: Lecture
+LOCATION:314DTSTART:20140409T090000ZDTEND:20140409T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
+Groups: 15
+Academician: Peeter Lorents
+Type: Exercise
+LOCATION:219DTSTART:20140410T070000ZDTEND:20140410T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Kristiina Hakk
+Type: Lecture
+LOCATION:316DTSTART:20140410T130000ZDTEND:20140410T143000ZSUMMARY:English [14\, 15]Subject code: I023
+Groups: 14\, 15
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140414T090000ZDTEND:20140414T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
+Groups: 15
+Academician: Kaido Saul
+Type: Practice
+LOCATION:415, 417DTSTART:20140414T110000ZDTEND:20140414T123000ZSUMMARY:English [15\, 14]Subject code: I023
+Groups: 15\, 14
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140415T051500ZDTEND:20140415T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Truls Ringkjob
+Type: Lecture
+LOCATION:314DTSTART:20140415T070000ZDTEND:20140415T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Peeter Lorents
+Type: Lecture
+LOCATION:314DTSTART:20140415T090000ZDTEND:20140415T103000ZSUMMARY:Probability Theory and Mathematical Statistics [15]Subject code: I104
+Groups: 15
+Academician: Kristiina Hakk
+Type: Exercise
+LOCATION:410DTSTART:20140415T110000ZDTEND:20140415T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Tiia Tänav
+Type: Lecture
+LOCATION:314DTSTART:20140415T130000ZDTEND:20140415T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Lembit Viilup
+Type: Lecture
+LOCATION:314DTSTART:20140416T051500ZDTEND:20140416T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
+Groups: 15
+Academician: Tiia Tänav
+Type: Practice
+LOCATION:319DTSTART:20140416T070000ZDTEND:20140416T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Teet Evartson
+Type: Lecture
+LOCATION:314DTSTART:20140416T090000ZDTEND:20140416T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
+Groups: 15
+Academician: Peeter Lorents
+Type: Exercise
+LOCATION:219DTSTART:20140416T110000ZDTEND:20140416T123000ZSUMMARY:Computers [15]Subject code: I201
+Groups: 15
+Academician: Teet Evartson
+Type: Practice
+LOCATION:410DTSTART:20140417T070000ZDTEND:20140417T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Kristiina Hakk
+Type: Lecture
+LOCATION:314DTSTART:20140417T130000ZDTEND:20140417T143000ZSUMMARY:English [14\, 15]Subject code: I023
+Groups: 14\, 15
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140421T090000ZDTEND:20140421T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
+Groups: 15
+Academician: Kaido Saul
+Type: Practice
+LOCATION:415, 417DTSTART:20140421T110000ZDTEND:20140421T123000ZSUMMARY:English [15\, 14]Subject code: I023
+Groups: 15\, 14
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140422T051500ZDTEND:20140422T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Truls Ringkjob
+Type: Lecture
+LOCATION:314DTSTART:20140422T070000ZDTEND:20140422T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Peeter Lorents
+Type: Lecture
+LOCATION:314DTSTART:20140422T090000ZDTEND:20140422T103000ZSUMMARY:Enterprise Economics [14\, 15]Subject code: I006
+Groups: 14\, 15
+Academician: Lembit Viilup
+Type: Exercise
+LOCATION:314DTSTART:20140422T110000ZDTEND:20140422T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Tiia Tänav
+Type: Lecture
+LOCATION:314DTSTART:20140422T130000ZDTEND:20140422T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Lembit Viilup
+Type: Lecture
+LOCATION:314DTSTART:20140423T051500ZDTEND:20140423T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
+Groups: 15
+Academician: Tiia Tänav
+Type: Practice
+LOCATION:319DTSTART:20140423T070000ZDTEND:20140423T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Teet Evartson
+Type: Lecture
+LOCATION:219DTSTART:20140423T070000ZDTEND:20140423T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Teet Evartson
+Type: Lecture
+LOCATION:314DTSTART:20140423T090000ZDTEND:20140423T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
+Groups: 15
+Academician: Peeter Lorents
+Type: Exercise
+LOCATION:219DTSTART:20140424T070000ZDTEND:20140424T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Kristiina Hakk
+Type: Lecture
+LOCATION:314DTSTART:20140424T130000ZDTEND:20140424T143000ZSUMMARY:English [14\, 15]Subject code: I023
+Groups: 14\, 15
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140428T090000ZDTEND:20140428T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
+Groups: 15
+Academician: Kaido Saul
+Type: Practice
+LOCATION:415, 417DTSTART:20140428T110000ZDTEND:20140428T123000ZSUMMARY:English [15\, 14]Subject code: I023
+Groups: 15\, 14
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140428T130000ZDTEND:20140428T143000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Kristiina Hakk
+Type: Lecture
+LOCATION:314DTSTART:20140429T051500ZDTEND:20140429T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Truls Ringkjob
+Type: Lecture
+LOCATION:314DTSTART:20140429T070000ZDTEND:20140429T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Peeter Lorents
+Type: Lecture
+LOCATION:314DTSTART:20140429T090000ZDTEND:20140429T103000ZSUMMARY:Probability Theory and Mathematical Statistics [15]Subject code: I104
+Groups: 15
+Academician: Kristiina Hakk
+Type: Exercise
+LOCATION:314DTSTART:20140429T110000ZDTEND:20140429T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Tiia Tänav
+Type: Lecture
+LOCATION:314DTSTART:20140429T130000ZDTEND:20140429T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Lembit Viilup
+Type: Lecture
+LOCATION:314DTSTART:20140430T051500ZDTEND:20140430T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
+Groups: 15
+Academician: Tiia Tänav
+Type: Practice
+LOCATION:319DTSTART:20140430T070000ZDTEND:20140430T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Teet Evartson
+Type: Lecture
+LOCATION:314DTSTART:20140430T090000ZDTEND:20140430T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
+Groups: 15
+Academician: Peeter Lorents
+Type: Exercise
+LOCATION:219DTSTART:20140430T110000ZDTEND:20140430T123000ZSUMMARY:Computers [15]Subject code: I201
+Groups: 15
+Academician: Teet Evartson
+Type: Practice
+LOCATION:410DTSTART:20140505T090000ZDTEND:20140505T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
+Groups: 15
+Academician: Kaido Saul
+Type: Practice
+LOCATION:415, 417DTSTART:20140505T110000ZDTEND:20140505T123000ZSUMMARY:English [15\, 14]Subject code: I023
+Groups: 15\, 14
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140506T051500ZDTEND:20140506T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Truls Ringkjob
+Type: Lecture
+LOCATION:314DTSTART:20140506T070000ZDTEND:20140506T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Peeter Lorents
+Type: Lecture
+LOCATION:314DTSTART:20140506T090000ZDTEND:20140506T103000ZSUMMARY:Enterprise Economics [14\, 15]Subject code: I006
+Groups: 14\, 15
+Academician: Lembit Viilup
+Type: Exercise
+LOCATION:314DTSTART:20140506T110000ZDTEND:20140506T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Tiia Tänav
+Type: Lecture
+LOCATION:314DTSTART:20140506T130000ZDTEND:20140506T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Lembit Viilup
+Type: Lecture
+LOCATION:314DTSTART:20140507T051500ZDTEND:20140507T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
+Groups: 15
+Academician: Tiia Tänav
+Type: Practice
+LOCATION:319DTSTART:20140507T070000ZDTEND:20140507T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Teet Evartson
+Type: Lecture
+LOCATION:314DTSTART:20140507T090000ZDTEND:20140507T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
+Groups: 15
+Academician: Peeter Lorents
+Type: Exercise
+LOCATION:219DTSTART:20140508T070000ZDTEND:20140508T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Kristiina Hakk
+Type: Lecture
+LOCATION:314DTSTART:20140508T130000ZDTEND:20140508T143000ZSUMMARY:English [14\, 15]Subject code: I023
+Groups: 14\, 15
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140512T090000ZDTEND:20140512T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
+Groups: 15
+Academician: Kaido Saul
+Type: Practice
+LOCATION:415, 417DTSTART:20140512T110000ZDTEND:20140512T123000ZSUMMARY:English [15\, 14]Subject code: I023
+Groups: 15\, 14
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140513T051500ZDTEND:20140513T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Truls Ringkjob
+Type: Lecture
+LOCATION:314DTSTART:20140513T070000ZDTEND:20140513T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Peeter Lorents
+Type: Lecture
+LOCATION:314DTSTART:20140513T090000ZDTEND:20140513T103000ZSUMMARY:Probability Theory and Mathematical Statistics [15]Subject code: I104
+Groups: 15
+Academician: Kristiina Hakk
+Type: Exercise
+LOCATION:410DTSTART:20140513T110000ZDTEND:20140513T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Tiia Tänav
+Type: Lecture
+LOCATION:314DTSTART:20140513T130000ZDTEND:20140513T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Lembit Viilup
+Type: Lecture
+LOCATION:314DTSTART:20140514T051500ZDTEND:20140514T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
+Groups: 15
+Academician: Tiia Tänav
+Type: Practice
+LOCATION:319DTSTART:20140514T070000ZDTEND:20140514T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Teet Evartson
+Type: Lecture
+LOCATION:314DTSTART:20140514T090000ZDTEND:20140514T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
+Groups: 15
+Academician: Peeter Lorents
+Type: Exercise
+LOCATION:219DTSTART:20140514T110000ZDTEND:20140514T123000ZSUMMARY:Computers [15]Subject code: I201
+Groups: 15
+Academician: Teet Evartson
+Type: Practice
+LOCATION:410DTSTART:20140515T070000ZDTEND:20140515T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Kristiina Hakk
+Type: Lecture
+LOCATION:314DTSTART:20140515T130000ZDTEND:20140515T143000ZSUMMARY:English [14\, 15]Subject code: I023
+Groups: 14\, 15
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140519T090000ZDTEND:20140519T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
+Groups: 15
+Academician: Kaido Saul
+Type: Practice
+LOCATION:415, 417DTSTART:20140519T110000ZDTEND:20140519T123000ZSUMMARY:English [15\, 14]Subject code: I023
+Groups: 15\, 14
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140520T051500ZDTEND:20140520T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Truls Ringkjob
+Type: Lecture
+LOCATION:314DTSTART:20140520T070000ZDTEND:20140520T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Peeter Lorents
+Type: Lecture
+LOCATION:314DTSTART:20140520T090000ZDTEND:20140520T103000ZSUMMARY:Enterprise Economics [14\, 15]Subject code: I006
+Groups: 14\, 15
+Academician: Lembit Viilup
+Type: Exercise
+LOCATION:314DTSTART:20140520T110000ZDTEND:20140520T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Tiia Tänav
+Type: Lecture
+LOCATION:314DTSTART:20140520T130000ZDTEND:20140520T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Lembit Viilup
+Type: Lecture
+LOCATION:314DTSTART:20140521T051500ZDTEND:20140521T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
+Groups: 15
+Academician: Tiia Tänav
+Type: Practice
+LOCATION:319DTSTART:20140521T070000ZDTEND:20140521T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Teet Evartson
+Type: Lecture
+LOCATION:314DTSTART:20140521T090000ZDTEND:20140521T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
+Groups: 15
+Academician: Peeter Lorents
+Type: Exercise
+LOCATION:219DTSTART:20140522T070000ZDTEND:20140522T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Kristiina Hakk
+Type: Lecture
+LOCATION:314DTSTART:20140522T130000ZDTEND:20140522T143000ZSUMMARY:English [14\, 15]Subject code: I023
+Groups: 14\, 15
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140526T090000ZDTEND:20140526T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
+Groups: 15
+Academician: Kaido Saul
+Type: Practice
+LOCATION:415, 417DTSTART:20140526T110000ZDTEND:20140526T123000ZSUMMARY:English [15\, 14]Subject code: I023
+Groups: 15\, 14
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140527T051500ZDTEND:20140527T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Truls Ringkjob
+Type: Lecture
+LOCATION:314DTSTART:20140527T070000ZDTEND:20140527T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Peeter Lorents
+Type: Lecture
+LOCATION:314DTSTART:20140527T090000ZDTEND:20140527T103000ZSUMMARY:Probability Theory and Mathematical Statistics [15]Subject code: I104
+Groups: 15
+Academician: Kristiina Hakk
+Type: Exercise
+LOCATION:410DTSTART:20140527T110000ZDTEND:20140527T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Tiia Tänav
+Type: Lecture
+LOCATION:314DTSTART:20140527T130000ZDTEND:20140527T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Lembit Viilup
+Type: Lecture
+LOCATION:314DTSTART:20140528T051500ZDTEND:20140528T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
+Groups: 15
+Academician: Tiia Tänav
+Type: Practice
+LOCATION:319DTSTART:20140528T070000ZDTEND:20140528T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Teet Evartson
+Type: Lecture
+LOCATION:314DTSTART:20140528T090000ZDTEND:20140528T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
+Groups: 15
+Academician: Peeter Lorents
+Type: Exercise
+LOCATION:219DTSTART:20140528T110000ZDTEND:20140528T123000ZSUMMARY:Computers [15]Subject code: I201
+Groups: 15
+Academician: Teet Evartson
+Type: Practice
+LOCATION:410DTSTART:20140529T070000ZDTEND:20140529T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+Groups: 11\, 12\, 13\, 14\, 15
+Academician: Kristiina Hakk
+Type: Lecture
+LOCATION:314DTSTART:20140529T130000ZDTEND:20140529T143000ZSUMMARY:English [14\, 15]Subject code: I023
+Groups: 14\, 15
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226

@@ -12,17 +12,26 @@ class DataTypesAbstractClass():
         self._db_row = []
 
     def _create_database_row(self, *kwargs):
+        """Sets the supplied parameters as the value for instances database row representation. Only works if a
+        database row has not already been created, thus ensuring that inheritance can be used."""
         if len(self._db_row) == 0:
             self._db_row = kwargs
 
     def get_database_row(self):
         return self._db_row
 
+    def __eq__(self, other):
+        return self.get_database_row() == other.get_database_row()
+
+    def __str__(self):
+        return str(self.get_database_row())
+
 
 class Notification(DataTypesAbstractClass):
 
     def __init__(self, type_of, when_to_raise, message):
-        """
+        """The database table -> Notification (type TEXT, time TIMESTAMP, message TEXT)
+
         :param type_of: Either Mail or Reminder
         :type type_of: str
         :type message: str
@@ -32,33 +41,35 @@ class Notification(DataTypesAbstractClass):
             if not isinstance(when_to_raise, datetime):
                 when_to_raise = str_to_datetime(when_to_raise)
         except TypeError:
-            print("Value error at creating Notification instance.")
-            raise ValueError
+            print("Problem converting string to datetime in Notification class.")
+            raise RuntimeError
+
         DataTypesAbstractClass.__init__(self)
         self._create_database_row(type_of, when_to_raise, message)
 
     def is_due(self):
         return self._db_row[1] <= datetime.now()
 
-    def __eq__(self, other):
-        return self.get_database_row() == other.get_database_row()
-
-    def __str__(self):
-        return str(self.get_database_row())
-
 
 class Activity(DataTypesAbstractClass):
 
-    def __init__(self, type_of, start, end, time_spent):
-        """
+    def __init__(self, type_of, start, end, spent_time):
+        """The database table -> Activity (activity_type TEXT, start_timestamp TIMESTAMP, end_timestamp TIMESTAMP,
+         spent_time INTEGER )
+
         :param type_of: Either Productive, Neutral of Counterproductive
         :type type_of: str
         :type start: datetime
         :type end: datetime
-        :type time_spent: int
+        :type spent_time: int
         """
+        try:
+            assert type_of in ("Productive", "Neutral", "Counterproductive")
+        except AssertionError:
+            print("Invalid parameter passed for type_of in Activity instance creation: ", type_of)
+
         DataTypesAbstractClass.__init__(self)
-        self._create_database_row(type_of, start, end, time_spent)
+        self._create_database_row(type_of, start, end, spent_time)
 
 
 class Mail(Notification):
@@ -84,7 +95,10 @@ class AClass(DataTypesAbstractClass):
 
     def __init__(self, subject_code, subject_name, attending_groups, class_type, start_timestamp, end_timestamp,
                  classroom, academician, attendible=False):
-        """
+        """The database table -> Class (subject_code TEXT, subject_name TEXT, attending_groups TEXT,
+                                class_type TEXT, start_timestamp TIMESTAMP, end_timestamp TIMESTAMP, classroom TEXT,
+                                academician TEXT, user_attend BOOLEAN)
+
         :param subject_code: The subjects code (e.g. I241).
         :type subject_code: str
         :param subject_name: The name of the class.
@@ -104,9 +118,6 @@ class AClass(DataTypesAbstractClass):
         :param attendible: Does the user attend this class or not
         :type attendible: bool
         """
-        print(start_timestamp)
-        print(type(start_timestamp))
-
         DataTypesAbstractClass.__init__(self)
         self._create_database_row(subject_code, subject_name, attending_groups, class_type, start_timestamp,
                                   end_timestamp, classroom, academician, attendible)
@@ -114,6 +125,9 @@ class AClass(DataTypesAbstractClass):
     def __str__(self):
         return str(self.get_database_row())
 
+    def __eq__(self, other):
+        """Last element attendible row in database can differ and still be the same description."""
+        return self.get_database_row()[:-1] == other.get_database_row()[:-1]
 
 if __name__ == "__main__":
     pass
