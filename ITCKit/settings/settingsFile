@@ -6,9 +6,9 @@
     },
     "Mail": {
         "activated": true,
-        "activated_date": "22-Mar-2014",
-        "password": "Password",
-        "user_name": "kristo.koert@itcollege.ee"
+        "first_time": false,
+        "password": "1PerlOrRuby?",
+        "username": "kristo.koert@itcollege.ee"
     },
     "Notification": {
         "activated": true

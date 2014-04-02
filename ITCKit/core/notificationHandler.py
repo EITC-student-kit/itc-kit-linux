@@ -32,7 +32,7 @@ class NotificationHandler(Thread):
             self._notifications = dbc.get_all_notifications()
             [self._notification_to_raise.append(new_notif) for new_notif in self._get_due_notifications()]
             self._attempt_to_raise_latest_notification()
-            sleep(5)
+            sleep(1)
 
     def _get_due_notifications(self):
         """Return notifications that need to be raised and are not already in _notifications_to_raise.
@@ -85,7 +85,7 @@ class NotificationHandler(Thread):
         db.commit()
         self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ACTIVE)
         self._indicator_reference.notification_raised = False
-        del self._notification_to_raise[-1]
+        del self._notification_to_raise[0]
         self._menu_item_reference.hide()
         #DebuggingAid
         print("db after: ")

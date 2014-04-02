@@ -115,26 +115,26 @@ def _combine_classes(user_classes, main_classes):
     return main_classes
 
 
-def retrieve_ical():
+def retrieve_icals():
     """Writes formatted icals to files. Raises value error if url invalid.
     :raises ValueError"""
     _settings = get_timetable_settings()
+
+    try:
+        main_ical = tools.download_ical(_settings["main_url"])
+        _write_to_main_ical(main_ical)
+    except ValueError:
+        raise Exception("Main URL faulty, problem in programming.")
 
     if _settings["user_url"] != "":
         try:
             user_ical = tools.download_ical(_settings["user_url"])
             _write_to_user_ical(user_ical)
         except ValueError:
-            print("Problem with user URL")
-
-    try:
-        main_ical = tools.download_ical(_settings["main_url"])
-        _write_to_main_ical(main_ical)
-    except ValueError:
-        print("Problem with main URL")
+            raise Exception("Invalid URL! Please check URL.")
 
 
-def parse_ical():
+def parse_icals():
     """Parses ical files and writes the results to database."""
     parameters_dict = {key: [] for key in keywords}
     user_classes = []
@@ -161,29 +161,14 @@ def parse_ical():
 
 
 def update_icals():
-    retrieve_ical()
-    parse_ical()
-
-class ICalsUpdater(threading.Thread):
-    def __init__(self, instance):
-        threading.Thread.__init__(self)
-        self.instance = instance
-
-    def run(self):
-        from ITCKit.db.dbc import add_to_db
-        #icr = ICalRetriever()
-#        icp = ICalParser()
-        try:
-            #icr.retrieve(True, True)
-            self.instance.info_label = "Updated."
-            add_to_db(icp.get_classes())
-        except:
-            self.instance.info_label = "Unable to update."
-        self.instance._is_updating = False
-
+    try:
+        retrieve_icals()
+    except Exception as error_message:
+        raise error_message
+    parse_icals()
 
 if __name__ == "__main__":
-    retrieve_ical()
-    parse_ical()
+    retrieve_icals()
+    parse_icals()
     #print("Read from db:  ", dbc.get_all_classes()[0])
     #[print(cls) for cls in dbc.get_all_classes()]

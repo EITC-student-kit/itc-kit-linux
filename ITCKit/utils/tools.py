@@ -35,7 +35,10 @@ def download_ical(url):
     """
     import urllib.request
     req = urllib.request.urlopen(url)
-    return req.read().decode(encoding='UTF-8')
+    text = req.read().decode(encoding='UTF-8')
+    if "BEGIN:VCALENDAR" not in text:
+        raise ValueError
+    return text
 
 
 def string_from_till(a_string, first_symbol, second_symbol):

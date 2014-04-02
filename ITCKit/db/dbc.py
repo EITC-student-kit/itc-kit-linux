@@ -33,6 +33,7 @@ def add_to_db(datatypes):
     table_name = table_dict[cls][0]
     db_coloumns = table_dict[cls][1]
     new = get_not_already_in_db(datatypes, table_name)
+    print(type(new[0].get_database_row()))
     db.executemany(
         "INSERT INTO " + table_name + " VALUES "
         + db_coloumns, [cls.get_database_row() for cls in new])
@@ -43,12 +44,14 @@ def get_not_already_in_db(datatypes, table_name):
     new = []
     if table_name == "Class":
         currently_in_db = get_all_classes()
-        for datatype in datatypes:
-            if datatype not in currently_in_db:
-                new.append(datatype)
-        return new
+    elif table_name == "Notification":
+        currently_in_db = get_all_notifications()
     else:
         return datatypes
+    for datatype in datatypes:
+        if datatype not in currently_in_db:
+            new.append(datatype)
+        return new
 
 
 def connect_to_db():
@@ -103,6 +106,35 @@ def remove_all_notifications():
     db.commit()
 
 
+def get_all_mail_uids():
+    db = connect_to_db()
+    return db.cursor().execute("SELECT * FROM SeenMailUID").fetchall()
+
+
+def get_mail_not_read(uids):
+    not_found = []
+    currend_uids = get_all_mail_uids()
+    [not_found.append(int(uid)) for uid in uids if int(uid) not in currend_uids]
+    print("Notfound -> ", not_found)
+    return not_found
+
+
+def add_mail_uid(uids):
+    try:
+        assert isinstance(uids, list)
+    except AssertionError:
+        uids = [uids]
+    all_uids = get_all_mail_uids()
+    to_be_added = []
+    for u in uids:
+        if u not in all_uids:
+            to_be_added.append(int(u))
+    db = connect_to_db()
+    print(type(to_be_added[0]))
+    db.executemany("INSERT INTO SeenMailUID (uid) VALUES (?)", [(i,) for i in to_be_added])
+    db.commit()
+
+
 def attempt_tables_creation(cursor):
     """If tables do not yet exist, they are created."""
     #ToDo implement a real check?
@@ -124,6 +156,11 @@ def attempt_tables_creation(cursor):
     except OperationalError:
         #Already exists
         pass
+    try:
+        cursor.execute("CREATE TABLE SeenMailUID (uid INTEGER)")
+    except OperationalError:
+        #Already exists
+        pass
 
 if __name__ == "__main__":
-    pass
+    [print(i) for i in get_all_mail_uids()]

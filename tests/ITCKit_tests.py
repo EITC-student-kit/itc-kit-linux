@@ -12,7 +12,7 @@ class TestDatatypes(unittest.TestCase):
 
     def test_notification(self):
         dt = datetime.now()
-        notif = datatypes.Notification("Some Type", "Remember to water plants", dt)
+        notif = datatypes.Notification("Some Type", dt, "Remember to water plants")
         self.assertEquals(notif.get_database_row(), ("Some Type", "Remember to water plants", dt))
 
     def test_reminder(self):
@@ -72,12 +72,11 @@ class TestDB(unittest.TestCase):
         dt = datetime.now()
         #dbc.add_to_db(AClass('', '', '', '', dt, dt, '', '', False))
         dbc.add_to_db(icp.get_classes())
-        dbc.add_to_db(Notification("Reminder", "Water plants!", dt))
+        dbc.add_to_db(Notification("Reminder", dt, "reminder name"))
         dbc.add_to_db(Activity("Productive", dt, dt, 10))
 
     def test_reading_classes(self):
         classes = dbc.get_all_classes()
-        #[print(cls) for cls in classes]
 
 
 if __name__ == '__main__':

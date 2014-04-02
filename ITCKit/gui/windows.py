@@ -5,12 +5,14 @@ from ITCKit.timetable import ical
 from ITCKit.core import datatypes
 from gi.repository import Gtk, Gdk, GLib
 from datetime import datetime
+import threading
 
 
-class BaseWindow(Gtk.Window):
+class BaseWindow(Gtk.Window, threading.Thread):
 
     def __init__(self, title=""):
         Gtk.Window.__init__(self, title=title)
+        threading.Thread.__init__(self)
 
     def open_error_window(self, message, text):
         dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.ERROR,
@@ -18,6 +20,9 @@ class BaseWindow(Gtk.Window):
         dialog.format_secondary_text(text)
         dialog.run()
         dialog.destroy()
+
+    def on_close(self, *kwargs):
+        self.destroy()
 
 
 class SetIcalURLWindow(BaseWindow):
@@ -88,7 +93,7 @@ class SetIcalURLWindow(BaseWindow):
 
 class UpdatingTimetableWindow(BaseWindow):
 
-    _is_updating = True
+    _has_updated = False
     info_label = "Updating.."
 
     def __init__(self):
@@ -120,28 +125,32 @@ class UpdatingTimetableWindow(BaseWindow):
         self.ok_button.hide()
         row3.pack_start(self.ok_button, True, True, 1)
 
-        self.update()
-
         GLib.timeout_add(10, self.handler_timeout)
 
-    def update(self):
-        import threading
-        threading.Thread(target=ical.update_icals()).start()
+    def run(self):
+        self.info_label = "Updating.."
+        try:
+            ical.update_icals()
+            self.info_label = "Done updating!"
+        except Exception as error_message:
+            self.info_label = error_message.args[0]
+        self._has_updated = True
+        return False
 
     def handler_timeout(self):
         self.checking_animation()
         self._info_label.set_label(self.info_label)
-        if self._is_updating:
-            self.ok_button.hide()
-        else:
+        if self._has_updated:
             self.ok_button.show()
+        else:
+            self.ok_button.hide()
         return True
 
     def on_ok_clicked(self, widget):
         self.destroy()
 
     def checking_animation(self):
-        if self._is_updating:
+        if not self._has_updated:
             self.progressbar.pulse()
         else:
             self.progressbar.set_fraction(0.0)
@@ -207,19 +216,20 @@ class AddReminderWindow(BaseWindow):
 
 def open_update_timetable():
     win = UpdatingTimetableWindow()
-    win.connect("delete-event", Gtk.main_quit)
+    win.connect("delete-event", win.on_close)
     win.show_all()
+    win.start()
 
 
 def open_set_ical_url():
     win = SetIcalURLWindow()
-    win.connect("delete-event", Gtk.main_quit)
+    win.connect("delete-event", win.on_close)
     win.show_all()
 
 
 def open_add_reminder():
     win = AddReminderWindow()
-    win.connect("delete-event", Gtk.main_quit)
+    win.connect("delete-event", win.on_close)
     #ToDo .main_quit results in crash
     win.show_all()
 

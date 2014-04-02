@@ -2,7 +2,6 @@ __author__ = 'kristo'
 
 import threading
 from gi.repository import Gtk, Gdk, GLib
-from ITCKit.core.notificationHandler import NotificationHandler
 from ITCKit.core.timemanager import Stopper
 from ITCKit.settings import settings
 from ITCKit.db import dbc
@@ -49,7 +48,7 @@ class MainMenu(Gtk.Menu):
 
     def on_exit(self, widget):
         #ToDo Implement on_exit()
-        raise NotImplementedError
+        pass
 
 
 class BaseSubMenu(Gtk.Menu):
