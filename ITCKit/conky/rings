@@ -55,8 +55,5 @@ lua_draw_hook_pre clock_rings
 
 TEXT
 ${color 00A000}${alignr 240}${voffset 3}Productive
-${color 00A000}${font Data Control:size=16}${alignr 265}${voffset 40}${cpu cpu0}%
-${color A0A0A0}$font${alignr 140}${voffset -88}Neutral
-${color A0A0A0}${font Data Control:size=16}${alignr 155}${voffset 40}${cpu cpu0}%
-${color A00000}$font$alignr${voffset -88}Counterproductive
-${color A00000}${font Data Control:size=16}${alignr 45}${voffset 40}${cpu cpu0}%
+${color A0A0A0}$font${alignr 140}${voffset -17}Neutral
+${color A00000}$font$alignr${voffset -16}Counterproductive

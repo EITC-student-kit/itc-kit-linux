@@ -1,7 +1,8 @@
 {
     "Conky": {
         "activated": true,
-        "color": "#77777777"
+        "color": "#77777777",
+        "days": 3
     },
     "Mail": {
         "activated": true,
