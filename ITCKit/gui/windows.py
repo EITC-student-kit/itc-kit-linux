@@ -133,7 +133,11 @@ class UpdatingTimetableWindow(BaseWindow):
             ical.update_icals()
             self.info_label = "Done updating!"
         except Exception as error_message:
-            self.info_label = error_message.args[0]
+            from socket import gaierror
+            if isinstance(error_message.args[0], gaierror):
+                self.info_label = "No internet connection."
+            else:
+                self.info_label = error_message.args[0]
         self._has_updated = True
         return False
 
@@ -214,6 +218,53 @@ class AddReminderWindow(BaseWindow):
             self._info_label = "Invalid datetime."
 
 
+class SetCredentialsWindow(BaseWindow):
+
+    def __init__(self):
+        BaseWindow.__init__(self, title="Set Credentials")
+        self.set_size_request(100, 100)
+
+        rows = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        row1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        row2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        row3 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+
+        rows.add(row1)
+        rows.add(row2)
+        rows.add(row3)
+
+        self.add(rows)
+
+        self.name_label = Gtk.Label("Username")
+        row1.pack_start(self.name_label, True, True, 0)
+
+        self.username_entry = Gtk.Entry()
+        self.username_entry.set_text("itcollege username")
+        row1.pack_end(self.username_entry, True, True, 10)
+
+        self.date_label = Gtk.Label("Password")
+        row2.pack_start(self.date_label, True, True, 0)
+
+        self.password_entry = Gtk.Entry()
+        self.password_entry.set_visibility(False)
+        row2.pack_end(self.password_entry, True, True, 10)
+
+        self.confirm_button = Gtk.Button("Confirm")
+        self.confirm_button.connect("clicked", self.on_confirm_clicked)
+        row3.pack_start(self.confirm_button, True, True, 1)
+
+    def on_confirm_clicked(self, widget):
+        from ITCKit.mail.credential_security import save_to_keyring
+        save_to_keyring(self.username_entry.get_text(), self.password_entry.get_text())
+
+
+def open_set_credentials():
+    win = SetCredentialsWindow()
+    win.connect("delete-event", win.on_close)
+    win.show_all()
+    win.start()
+
+
 def open_update_timetable():
     win = UpdatingTimetableWindow()
     win.connect("delete-event", win.on_close)
@@ -230,7 +281,6 @@ def open_set_ical_url():
 def open_add_reminder():
     win = AddReminderWindow()
     win.connect("delete-event", win.on_close)
-    #ToDo .main_quit results in crash
     win.show_all()
 
 if __name__ == "__main__":

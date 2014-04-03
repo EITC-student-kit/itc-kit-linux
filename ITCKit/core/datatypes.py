@@ -32,7 +32,7 @@ class Notification(DataTypesAbstractClass):
     def __init__(self, type_of, when_to_raise, message):
         """The database table -> Notification (type TEXT, time TIMESTAMP, message TEXT)
 
-        :param type_of: Either Mail or Reminder
+        :param type_of: Either EMail or Reminder
         :type type_of: str
         :type message: str
         :type when_to_raise: Timestamp | str
@@ -72,13 +72,13 @@ class Activity(DataTypesAbstractClass):
         self._create_database_row(type_of, start, end, spent_time)
 
 
-class Mail(Notification):
+class EMail(Notification):
 
     def __init__(self, sender):
         """
         :type sender: str
         """
-        Notification.__init__(self, "Mail", datetime.now(), sender)
+        Notification.__init__(self, "EMail", datetime.now(), sender)
 
 
 class Reminder(Notification):

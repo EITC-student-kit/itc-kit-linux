@@ -8,7 +8,6 @@ try:
 except ImportError:
     from gi.repository import AppIndicator
 
-from ITCKit.core.notificationHandler import NotificationHandler
 from ITCKit.gui.menus import MainMenu
 
 
@@ -28,18 +27,14 @@ class ToolbarIndicator():
         self.main_menu = MainMenu(self)
         self.indc.set_menu(self.main_menu)
 
-        self.notification_handler = NotificationHandler(self, self.main_menu.notification_display_widget)
-        self.notification_handler.start()
-
     def set_notification_icon(self):
         #ToDo implement set_notification_icon
         raise NotImplementedError
 
 
 def activate_toolbar():
-    Gdk.threads_init()
     gui = ToolbarIndicator()
-    Gtk.main()
+    return gui
 
 if __name__ == "__main__":
     activate_toolbar()

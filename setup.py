@@ -8,9 +8,9 @@ config = {
     'author': 'Kristo Koert',
     'url': 'https://github.com/KristoKoert/ITCKit',
     'download_url': 'https://github.com/KristoKoert/ITCKit/archive/master.zip',
-    'author_email': 'Kristo Koert',
+    'author_email': 'kristo.koert@itcollege.ee',
     'version': '0.1',
-    'install_requires': [], #'gobject-introspection' 'gtk'  'sqlLite' 'Python3'
+    'install_requires': [], #'gobject-introspection' 'GTK+3' 'python3', 'python3-gi', 'python3-keyring'
     'packages': ['ITCKit'],
     'scripts': [],
     'name': 'ITCKit'

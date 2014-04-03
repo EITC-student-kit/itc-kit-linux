@@ -1,55 +1,4 @@
-DTSTART:20140319T061500ZDTEND:20140319T074500ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [12\, 14]Subject code: I112
-Groups: 12\, 14
-Academician: Peeter Lorents
-Type: Exercise
-LOCATION:316DTSTART:20140319T061500ZDTEND:20140319T091500ZSUMMARY:Telecommunications Networks [A22-2]Subject code: I241
-Groups: A22-2
-Academician: Indrek Rokk
-Type: Practice
-LOCATION:415DTSTART:20140319T061500ZDTEND:20140319T091500ZSUMMARY:Telecommunications Networks [A22-1]Subject code: I241
-Groups: A22-1
-Academician: Marika Kulmar
-Type: Practice
-LOCATION:TTÜ II-407/408DTSTART:20140319T080000ZDTEND:20140319T093000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Teet Evartson
-Type: Lecture
-LOCATION:314DTSTART:20140319T094500ZDTEND:20140319T111500ZSUMMARY:Telecommunications Networks [A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2]Subject code: I241
-Groups: A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2
-Academician: Avo Ots
-Type: Lecture
-LOCATION:314DTSTART:20140319T100000ZDTEND:20140319T113000ZSUMMARY:Basics of Telecommunication [12]Subject code: I249
-Groups: 12
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:415, 417DTSTART:20140319T112500ZDTEND:20140319T125500ZSUMMARY:Information System Projects and Administration [A21\, A22\, D21\, D22\, D23]Subject code: I302
-Groups: A21\, A22\, D21\, D22\, D23
-Academician: Margus Püüa
-Type: Lecture
-LOCATION:314DTSTART:20140319T120000ZDTEND:20140319T133000ZSUMMARY:Computers [12]Subject code: I201
-Groups: 12
-Academician: Teet Evartson
-Type: Practice
-LOCATION:410DTSTART:20140319T140000ZDTEND:20140319T153000ZSUMMARY:English [11\, 12\, 13]Subject code: I023
-Groups: 11\, 12\, 13
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140319T140000ZDTEND:20140319T153000ZSUMMARY:Foundations of Software Testing [A21\, A22\, D21\, D22\, D23]Subject code: I365
-Groups: A21\, A22\, D21\, D22\, D23
-Academician: Maili Markvardt
-Type: Lecture
-LOCATION:316DTSTART:20140319T150000ZDTEND:20140319T163000ZSUMMARY:Analysis and Design of Information SystemsSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:317DTSTART:20140319T160000ZDTEND:20140319T173000ZSUMMARY:Foundations of Software Testing [A21\, A22\, D21\, D22\, D23]Subject code: I365
-Groups: A21\, A22\, D21\, D22\, D23
-Academician: Maili Markvardt
-Type: Practice
-LOCATION:410DTSTART:20140319T160500ZDTEND:20140319T182000ZSUMMARY:CCNP 2 Switching [A31\, A32]Subject code: I388
-Groups: A31\, A32
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:415DTSTART:20140320T061500ZDTEND:20140320T074500ZSUMMARY:IT Systems Support and Arrangement in Enterprises [A21\, A22]Subject code: I113
+DTSTART:20140320T061500ZDTEND:20140320T074500ZSUMMARY:IT Systems Support and Arrangement in Enterprises [A21\, A22]Subject code: I113
 Groups: A21\, A22
 Academician: Guido Leibur
 Type: Lecture

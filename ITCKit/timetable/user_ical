@@ -1,16 +1,4 @@
-DTSTART:20140319T061500ZDTEND:20140319T074500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
-Groups: 15
-Academician: Tiia Tänav
-Type: Practice
-LOCATION:319DTSTART:20140319T080000ZDTEND:20140319T093000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Teet Evartson
-Type: Lecture
-LOCATION:314DTSTART:20140319T100000ZDTEND:20140319T113000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
-Groups: 15
-Academician: Peeter Lorents
-Type: Exercise
-LOCATION:219DTSTART:20140320T080000ZDTEND:20140320T093000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+DTSTART:20140320T080000ZDTEND:20140320T093000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
 Groups: 11\, 12\, 13\, 14\, 15
 Academician: Kristiina Hakk
 Type: Lecture

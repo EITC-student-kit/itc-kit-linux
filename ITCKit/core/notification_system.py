@@ -12,23 +12,25 @@ class NotificationHandler(Thread):
     _notifications = []
     _notification_to_raise = []
 
-    def __init__(self, indicator, menu_item):
+    def __init__(self, indicator, main_menu):
         """Sets an Indicator object to be used as the place where a notification is raised, if needed. More info on the
         notification will be displayed on the menu_item.
 
         :param indicator: channel for raising the notification
         :type indicator: ToolbarIndicator
-        :param menu_item: Place to display more notification information
-        :type menu_item: ImageMenuItem
+        :param main_menu: Place to display more notification information
+        :type main_menu: MainMenu
         """
         super(NotificationHandler, self).__init__()
         self._indicator_reference = indicator
-        self._menu_item_reference = menu_item
+        self._main_menu_reference = main_menu
 
     def run(self):
         """When thread is started, an endless loop ensues. Constantly checking if any notifications should be raised.
         The notifications are constantly reread into the list to assure up do date information."""
         while True:
+            if self._main_menu_reference.notification_message == "Checked" and self._indicator_reference.notification_raised:
+                self.remove_notification()
             self._notifications = dbc.get_all_notifications()
             [self._notification_to_raise.append(new_notif) for new_notif in self._get_due_notifications()]
             self._attempt_to_raise_latest_notification()
@@ -55,18 +57,15 @@ class NotificationHandler(Thread):
         type: notif: Notification
         """
         self._indicator_reference.notification_raised = True
-        self._menu_item_reference.show()
-        if notif.get_database_row()[0] == "Mail":
-            #ToDo switch ATTENTION icons to mail
+        self._main_menu_reference.notification_display_widget.show()
+        if notif.get_database_row()[0] == "EMail":
+            #ToDo switch ATTENTION icons to email
             self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ATTENTION)
-            self._menu_item_reference.set_label("Mail from: " + notif.message)
-        if notif.get_database_row()[0] == "Reminder":
+            self._main_menu_reference.notification_message = "EMail from: " + notif.get_database_row()[2]
+        elif notif.get_database_row()[0] == "Reminder":
             #ToDo switch ATTENTION icons to reminder
             self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ATTENTION)
-            #DebuggingAid
-            print("Reminder object -> ", notif)
-            print("Get Reminder Name -> ", notif.get_database_row()[2])
-            self._menu_item_reference.set_label("Reminder: " + notif.get_database_row()[2])
+            self._main_menu_reference.notification_message = "Reminder: " + notif.get_database_row()[2]
         else:
             print("Unable to raise notification.")
             raise RuntimeError
@@ -74,24 +73,13 @@ class NotificationHandler(Thread):
     def remove_notification(self):
         """Hide widget and reset indicator status."""
         db = dbc.connect_to_db()
-        #DebuggingAid
-        print("-------------------------------------------------------------------------")
-        print("db before: ")
-        [print(n) for n in dbc.get_all_notifications()]
-        print("to_raise before: ")
-        [print(n) for n in self._notification_to_raise]
         db.execute("DELETE from Notification where type = ? and time = ? and message = ?",
                    self._notification_to_raise[0].get_database_row())
         db.commit()
         self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ACTIVE)
         self._indicator_reference.notification_raised = False
         del self._notification_to_raise[0]
-        self._menu_item_reference.hide()
-        #DebuggingAid
-        print("db after: ")
-        [print(n) for n in dbc.get_all_notifications()]
-        print("to_raise after: ")
-        [print(n) for n in self._notification_to_raise]
+        self._main_menu_reference.notification_display_widget.hide()
 
 
 if __name__ == "__main__":

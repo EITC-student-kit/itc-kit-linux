@@ -2,7 +2,7 @@ __author__ = 'Kristo Koert'
 
 from sqlite3 import connect, OperationalError, PARSE_DECLTYPES
 import os
-from ITCKit.core.datatypes import Notification, AClass, Activity, Reminder
+from ITCKit.core.datatypes import *
 from datetime import datetime
 
 DATABASE_PATH = os.path.dirname(os.path.abspath(__file__)) + "/itckitdb"
@@ -12,11 +12,13 @@ notif_cls = Notification('', dt, '').__class__
 activ_cls = Activity('Productive', dt, dt, 1).__class__
 a_cls_cls = AClass('', '', '', '', dt, dt, '', '', False).__class__
 remin_cls = Reminder('', dt).__class__
+email_cls = EMail('').__class__
 
 table_dict = {notif_cls: ("Notification", "(?,?,?)"),
+              remin_cls: ("Notification", "(?,?,?)"),
+              email_cls: ("Notification", "(?,?,?)"),
               activ_cls: ("Activity", "(?,?,?,?)"),
-              a_cls_cls: ("Class", "(?,?,?,?,?,?,?,?,?)"),
-              remin_cls: ("Notification", "(?,?,?)")}
+              a_cls_cls: ("Class", "(?,?,?,?,?,?,?,?,?)")}
 
 
 def add_to_db(datatypes):
@@ -28,12 +30,13 @@ def add_to_db(datatypes):
         iter(datatypes)
     except TypeError:
         datatypes = [datatypes]
+    if len(datatypes) == 0:
+        return
     db = connect_to_db()
     cls = datatypes[0].__class__
     table_name = table_dict[cls][0]
     db_coloumns = table_dict[cls][1]
     new = get_not_already_in_db(datatypes, table_name)
-    print(type(new[0].get_database_row()))
     db.executemany(
         "INSERT INTO " + table_name + " VALUES "
         + db_coloumns, [cls.get_database_row() for cls in new])
@@ -114,8 +117,7 @@ def get_all_mail_uids():
 def get_mail_not_read(uids):
     not_found = []
     currend_uids = get_all_mail_uids()
-    [not_found.append(int(uid)) for uid in uids if int(uid) not in currend_uids]
-    print("Notfound -> ", not_found)
+    [not_found.append(uid) for uid in uids if uid not in currend_uids]
     return not_found
 
 
@@ -131,7 +133,7 @@ def add_mail_uid(uids):
             to_be_added.append(int(u))
     db = connect_to_db()
     print(type(to_be_added[0]))
-    db.executemany("INSERT INTO SeenMailUID (uid) VALUES (?)", [(i,) for i in to_be_added])
+    db.executemany("INSERT INTO SeenMailUID (uid) VALUES (?)", [i for i in to_be_added])
     db.commit()
 
 
@@ -157,7 +159,7 @@ def attempt_tables_creation(cursor):
         #Already exists
         pass
     try:
-        cursor.execute("CREATE TABLE SeenMailUID (uid INTEGER)")
+        cursor.execute("CREATE TABLE SeenMailUID (uid BLOB)")
     except OperationalError:
         #Already exists
         pass

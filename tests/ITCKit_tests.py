@@ -27,7 +27,7 @@ class TestDatatypes(unittest.TestCase):
         self.assertEquals(activity.get_database_row(), ("Productive", dt1, dt2, 10))
 
     def test_mail(self):
-        mail = datatypes.Mail("ITC")
+        mail = datatypes.EMail("ITC")
         self.assertEquals(mail.get_database_row()[:-1], ("Mail", "ITC"))
 
     def test_a_class(self):
@@ -41,8 +41,8 @@ class TestDatatypes(unittest.TestCase):
 
 class TestIcal(unittest.TestCase):
 
-    icr = ical.ICalRetriever()
-    icp = ical.ICalParser()
+    icr = ical.retrieve_icals()
+    icp = ical.parse_icals()
 
     def test_retriever(self):
         self.icr.retrieve(True, True)
@@ -60,15 +60,15 @@ class TestUtils(unittest.TestCase):
 
     def test_to_timestamp(self):
         import sqlite3
-        self.assertEquals(converting.ical_datetime_to_timestamp("DTSTART:20140304T080000Z"),
-                          sqlite3.Timestamp(2014, 3, 4, 10, 0, 0))
+        self.assertEquals(converting.ical_datetime_to_timestamp("DTSTART:20140304T083000Z"),
+                          sqlite3.Timestamp(2014, 3, 4, 10, 30, 0))
 
 
 class TestDB(unittest.TestCase):
 
     def test_add_to_db(self):
         from ITCKit.timetable import ical
-        icp = ical.ICalParser()
+        icp = ical.parse_icals()
         dt = datetime.now()
         #dbc.add_to_db(AClass('', '', '', '', dt, dt, '', '', False))
         dbc.add_to_db(icp.get_classes())

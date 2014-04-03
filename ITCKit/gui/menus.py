@@ -10,6 +10,8 @@ from ITCKit.gui import windows
 
 class MainMenu(Gtk.Menu):
 
+    notification_message = "Checked"
+
     def __init__(self, indicator):
         super(Gtk.Menu, self).__init__()
 
@@ -30,8 +32,8 @@ class MainMenu(Gtk.Menu):
         self.timetable_widget.set_submenu(TimetableSubMenu())
         self.notification_widget = menu_items[2]
         self.notification_widget.set_submenu(NotificationSubMenu())
-        self.mail_widget = menu_items[3]
-        self.mail_widget.set_submenu(MailSubMenu())
+        self.email_widget = menu_items[3]
+        self.email_widget.set_submenu(MailSubMenu())
         self.conky_widget = menu_items[4]
         self.conky_widget.set_submenu(ConkySubMenu())
         self.notification_display_widget = menu_items[5]
@@ -42,9 +44,14 @@ class MainMenu(Gtk.Menu):
         self.notification_display_widget.connect("activate", self.on_notification_checked)
         self.exit_widget.connect("activate", self.on_exit)
         self.notification_display_widget.hide()
+        GLib.timeout_add(10, self.handler_timeout)
+
+    def handler_timeout(self):
+        self.notification_display_widget.set_label(self.notification_message)
+        return True
 
     def on_notification_checked(self, widget):
-        self._indicator_reference.notification_handler.remove_notification()
+        self.notification_message = "Checked"
 
     def on_exit(self, widget):
         #ToDo Implement on_exit()
@@ -298,7 +305,7 @@ class MailSubMenu(BaseSubMenu):
         self.set_credentials_widget = menu_item[0]
         self.clear_all_widget = menu_item[1]
 
-        if settings.get_mail_settings()["activated"]:
+        if settings.get_email_settings()["activated"]:
             self.set_menu_state("Activated")
         else:
             self.set_menu_state("Not activated")
@@ -308,22 +315,21 @@ class MailSubMenu(BaseSubMenu):
         self.clear_all_widget.connect("activate", self.on_clear_all_clicked)
         self.set_credentials_widget.connect("activate", self.on_set_credentials_clicked)
 
-    def on_set_credentials_clicked(self):
-        #ToDo Implement on_set_credentials_clicked
-        raise NotImplementedError
+    def on_set_credentials_clicked(self, widget):
+        windows.open_set_credentials()
 
-    def on_clear_all_clicked(self):
+    def on_clear_all_clicked(self, widget):
         #ToDo Implement on_clear_all_clicked
         raise NotImplementedError
 
     def set_menu_state(self, state):
         if state == "Not activated":
-            settings.update_settings("Mail", "activated", False)
+            settings.update_settings("EMail", "activated", False)
             self._state = "Not activated"
             self.clear_all_widget.hide()
             self.set_credentials_widget.hide()
         else:
-            settings.update_settings("Mail", "activated", True)
+            settings.update_settings("EMail", "activated", True)
             self._state = "Activated"
             self.clear_all_widget.show()
             self.set_credentials_widget.show()

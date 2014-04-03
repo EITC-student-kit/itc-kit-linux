@@ -20,9 +20,9 @@ def get_timetable_settings():
     return _json_data["Timetable"]
 
 
-def get_mail_settings():
+def get_email_settings():
     """:rtype: dict"""
-    return _json_data["Mail"]
+    return _json_data["EMail"]
 
 
 def get_conky_settings():

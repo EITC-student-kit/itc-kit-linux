@@ -4,10 +4,9 @@
         "color": "#77777777",
         "days": 3
     },
-    "Mail": {
+    "EMail": {
         "activated": true,
         "first_time": false,
-        "password": "1PerlOrRuby?",
         "username": "kristo.koert@itcollege.ee"
     },
     "Notification": {
