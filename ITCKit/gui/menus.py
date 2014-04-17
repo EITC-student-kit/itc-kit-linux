@@ -279,7 +279,7 @@ class NotificationSubMenu(BaseSubMenu):
         windows.open_add_reminder()
 
     @staticmethod
-    def on_clear_all_clicked():
+    def on_clear_all_clicked(widget):
         dbc.remove_all_notifications()
 
     def set_menu_state(self, state):

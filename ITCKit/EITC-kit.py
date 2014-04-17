@@ -18,5 +18,6 @@ if __name__ == "__main__":
     notification_thread = notification_system.NotificationHandler(indicator, indicator.main_menu)
     notification_thread.start()
     Gdk.threads_enter()
+
     Gtk.main()
 
