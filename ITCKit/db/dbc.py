@@ -4,8 +4,9 @@ from sqlite3 import connect, OperationalError, PARSE_DECLTYPES
 import os
 from ITCKit.core.datatypes import *
 from datetime import datetime
+from ITCKit.settings.settings import EITC_DB_PATH
 
-DATABASE_PATH = os.path.dirname(os.path.abspath(__file__)) + "/itckitdb"
+DATABASE_PATH = EITC_DB_PATH
 
 dt = datetime.now()
 notif_cls = Notification('', dt, '').__class__

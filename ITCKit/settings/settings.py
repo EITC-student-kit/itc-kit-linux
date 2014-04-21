@@ -4,8 +4,28 @@ __author__ = 'Kristo Koert'
 
 import json
 import os
+from os.path import join
+import getpass
 
-_settings_file_path = os.path.dirname(os.path.abspath(__file__)) + "/settingsFile"
+
+def find_and_set_files():
+
+    username = getpass.getuser()
+
+    def find_file_path(file):
+        search_in = "/home/" + username
+        for root, dirs, files in os.walk(search_in):
+            print("searching", root)
+            if file in files:
+                path = join(root, file)
+                print("found: %s" % path)
+                return path
+
+    look_for = ["EITCSettingsFile", "main_ical", "user_ical", "itckitdb"]
+    return find_file_path(look_for[0]), find_file_path(look_for[1]), \
+        find_file_path(look_for[2]), find_file_path(look_for[3])
+
+_settings_file_path, MAIN_ICAL_PATH, USER_ICAL_PATH, EITC_DB_PATH = find_and_set_files()
 
 _json_data = json.load(open(_settings_file_path))
 

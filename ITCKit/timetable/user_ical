@@ -1,64 +1,4 @@
-DTSTART:20140320T080000ZDTEND:20140320T093000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Kristiina Hakk
-Type: Lecture
-LOCATION:314DTSTART:20140320T140000ZDTEND:20140320T153000ZSUMMARY:English [14\, 15]Subject code: I023
-Groups: 14\, 15
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140324T100000ZDTEND:20140324T113000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
-Groups: 15
-Academician: Kaido Saul
-Type: Practice
-LOCATION:415, 417DTSTART:20140324T120000ZDTEND:20140324T133000ZSUMMARY:English [15\, 14]Subject code: I023
-Groups: 15\, 14
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140325T061500ZDTEND:20140325T074500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Truls Ringkjob
-Type: Lecture
-LOCATION:314DTSTART:20140325T080000ZDTEND:20140325T093000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Peeter Lorents
-Type: Lecture
-LOCATION:314DTSTART:20140325T100000ZDTEND:20140325T113000ZSUMMARY:Probability Theory and Mathematical Statistics [15]Subject code: I104
-Groups: 15
-Academician: Kristiina Hakk
-Type: Exercise
-LOCATION:314DTSTART:20140325T120000ZDTEND:20140325T133000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Tiia Tänav
-Type: Lecture
-LOCATION:314DTSTART:20140325T140000ZDTEND:20140325T153000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Lembit Viilup
-Type: Lecture
-LOCATION:314DTSTART:20140326T061500ZDTEND:20140326T074500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
-Groups: 15
-Academician: Tiia Tänav
-Type: Practice
-LOCATION:319DTSTART:20140326T080000ZDTEND:20140326T093000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Teet Evartson
-Type: Lecture
-LOCATION:314DTSTART:20140326T100000ZDTEND:20140326T113000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
-Groups: 15
-Academician: Peeter Lorents
-Type: Exercise
-LOCATION:219DTSTART:20140326T120000ZDTEND:20140326T133000ZSUMMARY:Computers [15]Subject code: I201
-Groups: 15
-Academician: Teet Evartson
-Type: Practice
-LOCATION:410DTSTART:20140327T080000ZDTEND:20140327T093000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Kristiina Hakk
-Type: Lecture
-LOCATION:314DTSTART:20140327T140000ZDTEND:20140327T153000ZSUMMARY:English [14\, 15]Subject code: I023
-Groups: 14\, 15
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140407T090000ZDTEND:20140407T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
+DTSTART:20140407T090000ZDTEND:20140407T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
 Groups: 15
 Academician: Kaido Saul
 Type: Practice
@@ -154,7 +94,7 @@ LOCATION:410DTSTART:20140417T070000ZDTEND:20140417T083000ZSUMMARY:Probability
 Groups: 11\, 12\, 13\, 14\, 15
 Academician: Kristiina Hakk
 Type: Lecture
-LOCATION:314DTSTART:20140417T130000ZDTEND:20140417T143000ZSUMMARY:English [14\, 15]Subject code: I023
+LOCATION:314DTSTART:20140421T051500ZDTEND:20140421T064500ZSUMMARY:English [14\, 15]Subject code: I023
 Groups: 14\, 15
 Academician: Kärt Rummel
 Type: Exercise
@@ -298,7 +238,7 @@ LOCATION:314DTSTART:20140507T090000ZDTEND:20140507T103000ZSUMMARY:Logic and A
 Groups: 15
 Academician: Peeter Lorents
 Type: Exercise
-LOCATION:219DTSTART:20140508T070000ZDTEND:20140508T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+LOCATION:316DTSTART:20140508T070000ZDTEND:20140508T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
 Groups: 11\, 12\, 13\, 14\, 15
 Academician: Kristiina Hakk
 Type: Lecture
@@ -398,7 +338,7 @@ LOCATION:314DTSTART:20140521T090000ZDTEND:20140521T103000ZSUMMARY:Logic and A
 Groups: 15
 Academician: Peeter Lorents
 Type: Exercise
-LOCATION:219DTSTART:20140522T070000ZDTEND:20140522T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
+LOCATION:316DTSTART:20140522T070000ZDTEND:20140522T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
 Groups: 11\, 12\, 13\, 14\, 15
 Academician: Kristiina Hakk
 Type: Lecture

@@ -1,10 +1,8 @@
 __author__ = 'Kristo Koert'
 
-import threading
-import os
 from ITCKit.utils import converting, tools
 from ITCKit.core.datatypes import AClass
-from ITCKit.settings.settings import get_timetable_settings
+from ITCKit.settings.settings import get_timetable_settings, USER_ICAL_PATH, MAIN_ICAL_PATH
 from ITCKit.db import dbc
 
 keywords = ["Subject code: ", "Groups: ", "Type: ", "DTSTART:", "DTEND:", "SUMMARY:",
@@ -51,12 +49,12 @@ def _get_relevant_lines(ical_text):
 
 
 def _write_to_user_ical(ical_text):
-    user_file_path = os.path.dirname(os.path.abspath(__file__)) + "/user_ical"
+    user_file_path = USER_ICAL_PATH
     open(user_file_path, "w").write(_get_relevant_lines(ical_text))
 
 
 def _write_to_main_ical(ical_text):
-    main_file_path = os.path.dirname(os.path.abspath(__file__)) + "/main_ical"
+    main_file_path = MAIN_ICAL_PATH
     open(main_file_path, "w").write(_get_relevant_lines(ical_text))
 
 
@@ -140,8 +138,8 @@ def parse_icals():
     user_classes = []
     main_classes = []
 
-    user_ical = open(os.path.dirname(os.path.abspath(__file__)) + "/user_ical", "r").read()
-    main_ical = open(os.path.dirname(os.path.abspath(__file__)) + "/main_ical", "r").read()
+    user_ical = open(USER_ICAL_PATH, "r").read()
+    main_ical = open(USER_ICAL_PATH, "r").read()
 
     parameters = _collect_parameters(user_ical, parameters_dict)
     for i in range(len(parameters["DTSTART:"])):
@@ -166,9 +164,3 @@ def update_icals():
     except Exception as error_message:
         raise error_message
     parse_icals()
-
-if __name__ == "__main__":
-    retrieve_icals()
-    parse_icals()
-    #print("Read from db:  ", dbc.get_all_classes()[0])
-    #[print(cls) for cls in dbc.get_all_classes()]

@@ -1,313 +1,4 @@
-DTSTART:20140320T061500ZDTEND:20140320T074500ZSUMMARY:IT Systems Support and Arrangement in Enterprises [A21\, A22]Subject code: I113
-Groups: A21\, A22
-Academician: Guido Leibur
-Type: Lecture
-LOCATION:316DTSTART:20140320T061500ZDTEND:20140320T074500ZSUMMARY:Analysis and Design of Information Systems [A21\, A22\, D23]Subject code: I230
-Groups: A21\, A22\, D23
-Academician: Andres Mulin
-Type: Practice
-LOCATION:410DTSTART:20140320T080000ZDTEND:20140320T093000ZSUMMARY:CISCO: Basics of WAN's. Understanding WAN Protocols [A21\, A22]Subject code: I373
-Groups: A21\, A22
-Academician: Truls Ringkjob
-Type: Lecture
-LOCATION:219DTSTART:20140320T080000ZDTEND:20140320T093000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Kristiina Hakk
-Type: Lecture
-LOCATION:314DTSTART:20140320T100000ZDTEND:20140320T113000ZSUMMARY:Network Applications I: Client-Server Systems [12]Subject code: I244
-Groups: 12
-Academician: Tiia Tänav
-Type: Practice
-LOCATION:317DTSTART:20140320T100000ZDTEND:20140320T131500ZSUMMARY:Telecommunications Networks [A21-2]Subject code: I241
-Groups: A21-2
-Academician: Indrek Rokk
-Type: Practice
-LOCATION:415DTSTART:20140320T100000ZDTEND:20140320T131500ZSUMMARY:Telecommunications Networks [A21-1]Subject code: I241
-Groups: A21-1
-Academician: Marika Kulmar
-Type: Practice
-LOCATION:TTÜ II-407/408DTSTART:20140320T120000ZDTEND:20140320T133000ZSUMMARY:English [11\, 12\, 13]Subject code: I023
-Groups: 11\, 12\, 13
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140320T140000ZDTEND:20140320T153000ZSUMMARY:Analysis and Design of Information Systems [A21\, D21]Subject code: I230
-Groups: A21\, D21
-Academician: Andres Mulin
-Type: Practice
-LOCATION:317DTSTART:20140320T140000ZDTEND:20140320T153000ZSUMMARY:Analysis and Design of Information Systems [A22\, D22]Subject code: I230
-Groups: A22\, D22
-Academician: Andres Mulin
-Type: Practice
-LOCATION:319DTSTART:20140320T160000ZDTEND:20140320T173000ZSUMMARY:PhysicsSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:409DTSTART:20140321T061500ZDTEND:20140321T074500ZSUMMARY:Network Applications I: Client-Server Systems [11]Subject code: I244
-Groups: 11
-Academician: Tiia Tänav
-Type: Practice
-LOCATION:319DTSTART:20140321T061500ZDTEND:20140321T074500ZSUMMARY:CCNA Security [A21\, A22]Subject code: I369
-Groups: A21\, A22
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:417DTSTART:20140321T070000ZDTEND:20140321T074500ZSUMMARY:Digital Audio and Video ProcessingSubject code: 
-Groups: 
-Type: Repeat prelim
-LOCATION:317DTSTART:20140321T080000ZDTEND:20140321T093000ZSUMMARY:CCNA Security [A21\, A22]Subject code: I369
-Groups: A21\, A22
-Academician: Truls Ringkjob
-Type: Lecture
-LOCATION:409DTSTART:20140321T080000ZDTEND:20140321T093000ZSUMMARY:Basics of Telecommunication [11]Subject code: I249
-Groups: 11
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:415, 417DTSTART:20140321T100000ZDTEND:20140321T130000ZSUMMARY:Network Administration\, RoutersSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:317DTSTART:20140321T120000ZDTEND:20140321T140000ZSUMMARY:Digital Logic and Digital SystemsSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:316DTSTART:20140321T140000ZDTEND:20140321T160000ZSUMMARY:IT Systems Support and Arrangement in EnterprisesSubject code: 
-Groups: 
-Type: Repeat prelim
-LOCATION:219DTSTART:20140324T061500ZDTEND:20140324T074500ZSUMMARY:IT Systems Support and Arrangement in Enterprises [A22]Subject code: I113
-Groups: A22
-Academician: Guido Leibur
-Type: Exercise
-LOCATION:219DTSTART:20140324T061500ZDTEND:20140324T074500ZSUMMARY:Analysis and Design of Information Systems [A21\, A22\, D21\, D22\, D23]Subject code: I230
-Groups: A21\, A22\, D21\, D22\, D23
-Academician: Andres Mulin
-Type: Lecture
-LOCATION:314DTSTART:20140324T080000ZDTEND:20140324T093000ZSUMMARY:Telecommunications Networks [A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2]Subject code: I241
-Groups: A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2
-Academician: Avo Ots
-Type: Lecture
-LOCATION:314DTSTART:20140324T100000ZDTEND:20140324T113000ZSUMMARY:IT Infrastructure Services [A21\, A22]Subject code: I385
-Groups: A21\, A22
-Academician: Margus Ernits\, Katrin Loodus
-Type: Lecture
-LOCATION:317DTSTART:20140324T120000ZDTEND:20140324T133000ZSUMMARY:IT Infrastructure Services [A21\, A22]Subject code: I385
-Groups: A21\, A22
-Academician: Margus Ernits\, Katrin Loodus
-Type: Practice
-LOCATION:317DTSTART:20140324T140000ZDTEND:20140324T153000ZSUMMARY:Software Protection [A21\, A22]Subject code: I234
-Groups: A21\, A22
-Academician: Urmas Kukk
-Type: Prelim
-LOCATION:219DTSTART:20140325T060000ZDTEND:20140325T081500ZSUMMARY:Information System Projects and Administration [A21\, A22]Subject code: I302
-Groups: A21\, A22
-Academician: Margus Püüa
-Type: Exercise
-LOCATION:219DTSTART:20140325T061500ZDTEND:20140325T074500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Truls Ringkjob
-Type: Lecture
-LOCATION:314DTSTART:20140325T080000ZDTEND:20140325T093000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Peeter Lorents
-Type: Lecture
-LOCATION:314DTSTART:20140325T100000ZDTEND:20140325T113000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 13]Subject code: I112
-Groups: 11\, 13
-Academician: Peeter Lorents
-Type: Exercise
-LOCATION:316DTSTART:20140325T100000ZDTEND:20140325T113000ZSUMMARY:Enterprise Economics [12]Subject code: I006
-Groups: 12
-Academician: Lembit Viilup
-Type: Exercise
-LOCATION:409DTSTART:20140325T101000ZDTEND:20140325T114000ZSUMMARY:Scripting Languages [A22]Subject code: I387
-Groups: A22
-Academician: Margus Ernits
-Type: Practice
-LOCATION:317DTSTART:20140325T101500ZDTEND:20140325T123000ZSUMMARY:CISCO: Basics of WAN's. Understanding WAN Protocols [A21]Subject code: I373
-Groups: A21
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:415DTSTART:20140325T120000ZDTEND:20140325T133000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Tiia Tänav
-Type: Lecture
-LOCATION:314DTSTART:20140325T124500ZDTEND:20140325T141500ZSUMMARY:Scripting Languages [A21]Subject code: I387
-Groups: A21
-Academician: Margus Ernits
-Type: Practice
-LOCATION:317DTSTART:20140325T124500ZDTEND:20140325T150000ZSUMMARY:CISCO: Basics of WAN's. Understanding WAN Protocols [A22]Subject code: I373
-Groups: A22
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:415DTSTART:20140325T140000ZDTEND:20140325T153000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Lembit Viilup
-Type: Lecture
-LOCATION:314DTSTART:20140325T160000ZDTEND:20140325T181500ZSUMMARY:CCNP 2 Switching [A31\, A32]Subject code: I388
-Groups: A31\, A32
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:415DTSTART:20140326T061500ZDTEND:20140326T074500ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [12\, 14]Subject code: I112
-Groups: 12\, 14
-Academician: Peeter Lorents
-Type: Exercise
-LOCATION:316DTSTART:20140326T061500ZDTEND:20140326T074500ZSUMMARY:Computers [11]Subject code: I201
-Groups: 11
-Academician: Teet Evartson
-Type: Practice
-LOCATION:317DTSTART:20140326T061500ZDTEND:20140326T091500ZSUMMARY:Telecommunications Networks [A22-1]Subject code: I241
-Groups: A22-1
-Academician: Indrek Rokk
-Type: Practice
-LOCATION:415DTSTART:20140326T061500ZDTEND:20140326T091500ZSUMMARY:Telecommunications Networks [A22-2]Subject code: I241
-Groups: A22-2
-Academician: Marika Kulmar
-Type: Practice
-LOCATION:TTÜ II-407/408DTSTART:20140326T080000ZDTEND:20140326T093000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Teet Evartson
-Type: Lecture
-LOCATION:314DTSTART:20140326T094500ZDTEND:20140326T111500ZSUMMARY:Telecommunications Networks [A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2]Subject code: I241
-Groups: A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2
-Academician: Avo Ots
-Type: Lecture
-LOCATION:314DTSTART:20140326T100000ZDTEND:20140326T113000ZSUMMARY:Basics of Telecommunication [12]Subject code: I249
-Groups: 12
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:415, 417DTSTART:20140326T140000ZDTEND:20140326T153000ZSUMMARY:English [11\, 12\, 13]Subject code: I023
-Groups: 11\, 12\, 13
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140326T160000ZDTEND:20140326T173000ZSUMMARY:Foundations of Software Testing [A21\, A22\, D21\, D22\, D23]Subject code: I365
-Groups: A21\, A22\, D21\, D22\, D23
-Academician: Maili Markvardt
-Type: Practice
-LOCATION:410DTSTART:20140326T160500ZDTEND:20140326T182000ZSUMMARY:CCNP 2 Switching [A31\, A32]Subject code: I388
-Groups: A31\, A32
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:415DTSTART:20140327T061500ZDTEND:20140327T074500ZSUMMARY:Probability Theory and Mathematical Statistics [11]Subject code: I104
-Groups: 11
-Academician: Kristiina Hakk
-Type: Exercise
-LOCATION:219DTSTART:20140327T061500ZDTEND:20140327T074500ZSUMMARY:IT Systems Support and Arrangement in Enterprises [A21\, A22]Subject code: I113
-Groups: A21\, A22
-Academician: Guido Leibur
-Type: Lecture
-LOCATION:316DTSTART:20140327T061500ZDTEND:20140327T074500ZSUMMARY:Analysis and Design of Information Systems [A21\, A22\, D23]Subject code: I230
-Groups: A21\, A22\, D23
-Academician: Andres Mulin
-Type: Practice
-LOCATION:410DTSTART:20140327T080000ZDTEND:20140327T093000ZSUMMARY:CISCO: Basics of WAN's. Understanding WAN Protocols [A21\, A22]Subject code: I373
-Groups: A21\, A22
-Academician: Truls Ringkjob
-Type: Lecture
-LOCATION:219DTSTART:20140327T080000ZDTEND:20140327T093000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Kristiina Hakk
-Type: Lecture
-LOCATION:314DTSTART:20140327T100000ZDTEND:20140327T113000ZSUMMARY:Enterprise Economics [11\, 13]Subject code: I006
-Groups: 11\, 13
-Academician: Lembit Viilup
-Type: Exercise
-LOCATION:316DTSTART:20140327T100000ZDTEND:20140327T113000ZSUMMARY:Network Applications I: Client-Server Systems [12]Subject code: I244
-Groups: 12
-Academician: Tiia Tänav
-Type: Practice
-LOCATION:317DTSTART:20140327T100000ZDTEND:20140327T131500ZSUMMARY:Telecommunications Networks [A21-1]Subject code: I241
-Groups: A21-1
-Academician: Indrek Rokk
-Type: Practice
-LOCATION:415DTSTART:20140327T100000ZDTEND:20140327T131500ZSUMMARY:Telecommunications Networks [A21-2]Subject code: I241
-Groups: A21-2
-Academician: Marika Kulmar
-Type: Practice
-LOCATION:TTÜ II-407/408DTSTART:20140327T120000ZDTEND:20140327T133000ZSUMMARY:English [11\, 12\, 13]Subject code: I023
-Groups: 11\, 12\, 13
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140327T130000ZDTEND:20140327T160000ZSUMMARY:Social\, Ethical and Professional Issues in ITSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:320DTSTART:20140327T140000ZDTEND:20140327T153000ZSUMMARY:PhilosophySubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:DTSTART:20140327T140000ZDTEND:20140327T153000ZSUMMARY:Analysis and Design of Information Systems [A21\, D21]Subject code: I230
-Groups: A21\, D21
-Academician: Andres Mulin
-Type: Practice
-LOCATION:317DTSTART:20140327T140000ZDTEND:20140327T153000ZSUMMARY:Analysis and Design of Information Systems [A22\, D22]Subject code: I230
-Groups: A22\, D22
-Academician: Andres Mulin
-Type: Practice
-LOCATION:319DTSTART:20140327T140000ZDTEND:20140327T153000ZSUMMARY:Enterprise EconomicsSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:410DTSTART:20140328T061500ZDTEND:20140328T074500ZSUMMARY:Network Applications I: Client-Server Systems [11]Subject code: I244
-Groups: 11
-Academician: Tiia Tänav
-Type: Practice
-LOCATION:319DTSTART:20140328T061500ZDTEND:20140328T074500ZSUMMARY:CCNA Security [A21\, A22]Subject code: I369
-Groups: A21\, A22
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:417DTSTART:20140328T063000ZDTEND:20140328T073000ZSUMMARY:Business English for IT SpecialistsSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:226DTSTART:20140328T063000ZDTEND:20140328T080000ZSUMMARY:EnglishSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:226DTSTART:20140328T070000ZDTEND:20140328T083000ZSUMMARY:English GrammarSubject code: 
-Groups: 
-Type: Repeat prelim
-LOCATION:226DTSTART:20140328T080000ZDTEND:20140328T093000ZSUMMARY:Basics of Telecommunication [11]Subject code: I249
-Groups: 11
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:415, 417DTSTART:20140328T080000ZDTEND:20140328T110000ZSUMMARY:CCNP 2 SwitchingSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:410DTSTART:20140328T080000ZDTEND:20140328T110000ZSUMMARY:CISCO: Basics of WAN's. Understanding WAN ProtocolsSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:410DTSTART:20140328T080000ZDTEND:20140328T110000ZSUMMARY:CISCO: Configuring Switches and Understanding VLANsSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:410DTSTART:20140328T080000ZDTEND:20140328T110000ZSUMMARY:Basics of TelecommunicationSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:410DTSTART:20140328T080000ZDTEND:20140328T110000ZSUMMARY:CCNP 1 Advanced RoutingSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:410DTSTART:20140331T130000ZDTEND:20140331T170000ZSUMMARY:Telecommunications Networks [A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2]Subject code: I241
-Groups: A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2
-Academician: Avo Ots\, Indrek Rokk
-Type: Examination
-LOCATION:316DTSTART:20140401T060000ZDTEND:20140401T150000ZSUMMARY:Telecommunications Networks [A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2]Subject code: I241
-Groups: A21-1\, A21-2\, A22-1\, A22-2\, D21-1\, D21-2\, D22-1\, D22-2\, D23-1\, D23-2
-Academician: Avo Ots\, Indrek Rokk
-Type: Examination
-LOCATION:219DTSTART:20140403T120000ZDTEND:20140403T130000ZSUMMARY:Database AdministrationSubject code: 
-Groups: 
-Type: Repeat prelim
-LOCATION:219DTSTART:20140403T120000ZDTEND:20140403T140000ZSUMMARY:Database BasicsSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:219DTSTART:20140403T130000ZDTEND:20140403T150000ZSUMMARY:Foundations of Software Testing [A21\, A22\, D21\, D22\, D23]Subject code: I365
-Groups: A21\, A22\, D21\, D22\, D23
-Academician: Maili Markvardt
-Type: Examination
-LOCATION:319DTSTART:20140403T150000ZDTEND:20140403T163000ZSUMMARY:Mathematical AnalysisSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:219DTSTART:20140404T050000ZDTEND:20140404T064500ZSUMMARY:Foundations of System TheorySubject code: 
-Groups: 
-Type: Repeat prelim
-LOCATION:409DTSTART:20140404T060000ZDTEND:20140404T070000ZSUMMARY:Database Integration and OptimisationSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:219DTSTART:20140404T070000ZDTEND:20140404T090000ZSUMMARY:Information Storage TechnologiesSubject code: 
-Groups: 
-Type: Repeat prelim
-LOCATION:317DTSTART:20140404T090000ZDTEND:20140404T130000ZSUMMARY:Mathematical AnalysisSubject code: 
-Groups: 
-Type: Re-examination
-LOCATION:316DTSTART:20140407T051500ZDTEND:20140407T064500ZSUMMARY:IT Systems Support and Arrangement in Enterprises [A21]Subject code: I113
+DTSTART:20140407T051500ZDTEND:20140407T064500ZSUMMARY:IT Systems Support and Arrangement in Enterprises [A21]Subject code: I113
 Groups: A21
 Academician: Guido Leibur
 Type: Exercise
@@ -446,7 +137,11 @@ Type: Practice
 LOCATION:319DTSTART:20140410T130000ZDTEND:20140410T143000ZSUMMARY:Introduction to InformaticsSubject code: 
 Groups: 
 Type: Repeat prelim
-LOCATION:410DTSTART:20140411T051500ZDTEND:20140411T064500ZSUMMARY:Network Applications I: Client-Server Systems [11]Subject code: I244
+LOCATION:410DTSTART:20140410T150000ZDTEND:20140410T180000ZSUMMARY:Diploma Thesis [A31\, A32\, D31\, D32]Subject code: I501
+Groups: A31\, A32\, D31\, D32
+Academician: Toomas Lepikult
+Type: Seminar
+LOCATION:409DTSTART:20140411T051500ZDTEND:20140411T064500ZSUMMARY:Network Applications I: Client-Server Systems [11]Subject code: I244
 Groups: 11
 Academician: Tiia Tänav
 Type: Practice
@@ -462,11 +157,27 @@ LOCATION:409DTSTART:20140411T070000ZDTEND:20140411T083000ZSUMMARY:Basics of T
 Groups: 11
 Academician: Truls Ringkjob
 Type: Practice
-LOCATION:415, 417DTSTART:20140414T051500ZDTEND:20140414T064500ZSUMMARY:IT Systems Support and Arrangement in Enterprises [A22]Subject code: I113
+LOCATION:415, 417DTSTART:20140411T110000ZDTEND:20140411T123000ZSUMMARY:English [11\, 12\, 13]Subject code: I023
+Groups: 11\, 12\, 13
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140412T070000ZDTEND:20140412T110000ZSUMMARY:Diploma Thesis [A31\, A32\, D31\, D32]Subject code: I501
+Groups: A31\, A32\, D31\, D32
+Academician: Toomas Lepikult
+Type: Seminar
+LOCATION:409DTSTART:20140413T110000ZDTEND:20140413T140000ZSUMMARY:IT Infrastructure ServicesSubject code: 
+Groups: 
+Academician: Margus Ernits
+Type: Consultation
+LOCATION:320DTSTART:20140414T051500ZDTEND:20140414T064500ZSUMMARY:IT Systems Support and Arrangement in Enterprises [A22]Subject code: I113
 Groups: A22
 Academician: Guido Leibur
 Type: Exercise
-LOCATION:219DTSTART:20140414T051500ZDTEND:20140414T064500ZSUMMARY:Analysis and Design of Information Systems [A21\, A22\, D21\, D22\, D23]Subject code: I230
+LOCATION:219DTSTART:20140414T051500ZDTEND:20140414T064500ZSUMMARY:English [11\, 12\, 13]Subject code: I023
+Groups: 11\, 12\, 13
+Academician: Kärt Rummel
+Type: Exercise
+LOCATION:226DTSTART:20140414T051500ZDTEND:20140414T064500ZSUMMARY:Analysis and Design of Information Systems [A21\, A22\, D21\, D22\, D23]Subject code: I230
 Groups: A21\, A22\, D21\, D22\, D23
 Academician: Andres Mulin
 Type: Lecture
@@ -547,11 +258,7 @@ Type: Practice
 LOCATION:415, 417DTSTART:20140416T120000ZDTEND:20140416T150000ZSUMMARY:Network Applications I: Client-Server SystemsSubject code: 
 Groups: 
 Type: Re-examination
-LOCATION:319DTSTART:20140416T130000ZDTEND:20140416T143000ZSUMMARY:English [11\, 12\, 13]Subject code: I023
-Groups: 11\, 12\, 13
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140416T130000ZDTEND:20140416T143000ZSUMMARY:Fundamentals of Wireless LANs [A21\, A22]Subject code: I375
+LOCATION:319DTSTART:20140416T130000ZDTEND:20140416T143000ZSUMMARY:Fundamentals of Wireless LANs [A21\, A22]Subject code: I375
 Groups: A21\, A22
 Academician: Indrek Rokk
 Type: Lecture
@@ -586,11 +293,7 @@ LOCATION:317DTSTART:20140417T093000ZDTEND:20140417T114500ZSUMMARY:Fundamental
 Groups: A22
 Academician: Indrek Rokk
 Type: Practice
-LOCATION:415DTSTART:20140417T110000ZDTEND:20140417T123000ZSUMMARY:English [11\, 12\, 13]Subject code: I023
-Groups: 11\, 12\, 13
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140417T110000ZDTEND:20140417T123000ZSUMMARY:Introduction to Information ProcessingSubject code: 
+LOCATION:415DTSTART:20140417T110000ZDTEND:20140417T123000ZSUMMARY:Introduction to Information ProcessingSubject code: 
 Groups: 
 Type: Repeat prelim
 LOCATION:317DTSTART:20140417T130000ZDTEND:20140417T143000ZSUMMARY:Analysis and Design of Information Systems [A21\, D21]Subject code: I230
@@ -761,7 +464,7 @@ Type: Re-examination
 LOCATION:317DTSTART:20140425T110000ZDTEND:20140425T130000ZSUMMARY:Logic and Algorithms Theory /Discrete MathematicsSubject code: 
 Groups: 
 Type: Re-examination
-LOCATION:316DTSTART:20140425T123000ZDTEND:20140425T153000ZSUMMARY:Introduction to Programming in JavaSubject code: 
+LOCATION:316DTSTART:20140425T123000ZDTEND:20140425T153000ZSUMMARY:Introduction to Programming in Java(Cancelled)Subject code: 
 Groups: 
 Type: Re-examination
 LOCATION:410DTSTART:20140425T130000ZDTEND:20140425T143000ZSUMMARY:MacroeconomicsSubject code: 

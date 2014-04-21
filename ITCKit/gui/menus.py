@@ -227,6 +227,7 @@ class TimetableSubMenu(BaseSubMenu):
 
         self.update_widget.connect("activate", self.on_update_clicked)
         self.set_ical_url_widget.connect("activate", self.on_set_ical_url)
+        self.customize_timetable_widget.connect("activate", self.on_customize_timetable_clicked)
 
     @staticmethod
     def on_set_ical_url(widget):
@@ -235,6 +236,10 @@ class TimetableSubMenu(BaseSubMenu):
     @staticmethod
     def on_update_clicked(widget):
         windows.open_update_timetable()
+
+    @staticmethod
+    def on_customize_timetable_clicked(widget):
+        windows.open_customize_timetable()
 
     def set_menu_state(self, state):
         if state == "Not activated":

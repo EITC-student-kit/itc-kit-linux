@@ -25,6 +25,43 @@ class BaseWindow(Gtk.Window, threading.Thread):
         self.destroy()
 
 
+class CustomizeTimetableWindow(BaseWindow):
+
+    def __init__(self):
+        BaseWindow.__init__(self, title="Set ical URL")
+        self.set_size_request(500, 500)
+
+        rows = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        row1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        row2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=20)
+        row3 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=1)
+        rows.add(row1)
+        rows.add(row2)
+        rows.add(row3)
+
+        self.add(rows)
+
+        confirm_button = Gtk.Button("Confirm")
+        #confirm_button.connect("clicked", self.on_verify_clicked)
+        row3.pack_start(confirm_button, True, True, 1)
+
+        reset_button = Gtk.Button("Reset")
+        #confirm_button.connect("clicked", self.on_verify_clicked)
+        row3.pack_start(reset_button, True, True, 1)
+
+        cancel_button = Gtk.Button("Cancel")
+        #confirm_button.connect("clicked", self.on_verify_clicked)
+        row3.pack_start(cancel_button, True, True, 1)
+
+        confirm_button = Gtk.Button("Search")
+        #confirm_button.connect("clicked", self.on_verify_clicked)
+        row1.pack_end(confirm_button, True, True, 1)
+
+        self.search_field = Gtk.Entry()
+        self.search_field.set_text("Search for class")
+        row1.pack_start(self.search_field, True, True, 10)
+
+
 class SetIcalURLWindow(BaseWindow):
 
     _is_checking_url = False
@@ -282,6 +319,13 @@ def open_add_reminder():
     win = AddReminderWindow()
     win.connect("delete-event", win.on_close)
     win.show_all()
+
+
+def open_customize_timetable():
+    win = CustomizeTimetableWindow()
+    win.connect('delete-event', win.on_close)
+    win.show_all()
+
 
 if __name__ == "__main__":
     pass
