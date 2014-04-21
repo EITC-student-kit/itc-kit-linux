@@ -60,10 +60,12 @@ class NotificationHandler(Thread):
         self._main_menu_reference.notification_display_widget.show()
         if notif.get_database_row()[0] == "EMail":
             #ToDo switch ATTENTION icons to email
+            self._indicator_reference.set_notification_icon("email")
             self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ATTENTION)
             self._main_menu_reference.notification_message = "EMail from: " + notif.get_database_row()[2]
         elif notif.get_database_row()[0] == "Reminder":
             #ToDo switch ATTENTION icons to reminder
+            self._indicator_reference.set_notification_icon("Reminder")
             self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ATTENTION)
             self._main_menu_reference.notification_message = "Reminder: " + notif.get_database_row()[2]
         else:

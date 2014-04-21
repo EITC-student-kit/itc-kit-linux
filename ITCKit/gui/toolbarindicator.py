@@ -22,14 +22,16 @@ class ToolbarIndicator():
         self.indc = AppIndicator.Indicator.new("app-doc-menu", icon_path,
                                                AppIndicator.IndicatorCategory.APPLICATION_STATUS)
         self.indc.set_status(AppIndicator.IndicatorStatus.ACTIVE)
-        self.indc.set_attention_icon("indicator-messages-new")
+        self.indc.set_attention_icon("ubuntuone-client-offline")
 
         self.main_menu = MainMenu(self)
         self.indc.set_menu(self.main_menu)
 
-    def set_notification_icon(self):
-        #ToDo implement set_notification_icon
-        raise NotImplementedError
+    def set_notification_icon(self, typ):
+        if typ == "email":
+            self.indc.set_attention_icon("indicator-messages-new")
+        else:
+            self.indc.set_attention_icon("ubuntuone-client-offline")
 
 
 def activate_toolbar():

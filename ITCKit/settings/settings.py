@@ -1,7 +1,5 @@
 __author__ = 'Kristo Koert'
 
-#ToDo implement settings system via writing to file
-
 import json
 import os
 from os.path import join
@@ -15,10 +13,10 @@ def find_and_set_files():
     def find_file_path(file):
         search_in = "/home/" + username
         for root, dirs, files in os.walk(search_in):
-            print("searching", root)
+            #print("searching", root)
             if file in files:
                 path = join(root, file)
-                print("found: %s" % path)
+                #print("found: %s" % path)
                 return path
 
     look_for = ["EITCSettingsFile", "main_ical", "user_ical", "itckitdb"]
