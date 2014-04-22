@@ -3,7 +3,7 @@ try:
 except ImportError:
     from distutils.core import setup
 
-setup(name='ITC-kit',
+setup(name='EITC-kit',
       description='A toolkit for Estonian IT college students.',
       author='Kristo Koert, Johannes Vatsfeld',
       author_email='kristo.koert@itcollege.ee',

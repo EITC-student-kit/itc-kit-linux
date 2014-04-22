@@ -5,20 +5,15 @@ from ITCKit.utils import converting
 from ITCKit.timetable import ical
 from ITCKit.db import dbc
 from ITCKit.core import datatypes
-from ITCKit.core.datatypes import Activity, Notification
+from ITCKit.core.datatypes import Activity, EMail, Reminder, AClass
 
 
 class TestDatatypes(unittest.TestCase):
 
-    def test_notification(self):
-        dt = datetime.now()
-        notif = datatypes.Notification("Some Type", dt, "Remember to water plants")
-        self.assertEquals(notif.get_database_row(), ("Some Type", "Remember to water plants", dt))
-
     def test_reminder(self):
         dt = datetime.now()
         reminder = datatypes.Reminder("Remember to water plants", dt)
-        self.assertEquals(reminder.get_database_row(), ("Reminder", "Remember to water plants", dt))
+        self.assertEquals(reminder.get_database_row(), ("Reminder", dt, "Remember to water plants", ))
 
     def test_activity(self):
         dt1 = datetime.now()
@@ -28,7 +23,7 @@ class TestDatatypes(unittest.TestCase):
 
     def test_mail(self):
         mail = datatypes.EMail("ITC")
-        self.assertEquals(mail.get_database_row()[:-1], ("Mail", "ITC"))
+        self.assertEquals(mail.get_database_row()[0:3:2], ("EMail", "ITC"))
 
     def test_a_class(self):
         dt1 = datetime.now()
@@ -41,14 +36,11 @@ class TestDatatypes(unittest.TestCase):
 
 class TestIcal(unittest.TestCase):
 
-    icr = ical.retrieve_icals()
-    icp = ical.parse_icals()
-
     def test_retriever(self):
-        self.icr.retrieve(True, True)
+        ical.retrieve_icals()
 
     def test_parser(self):
-        self.icp.get_classes()
+        ical.parse_icals()
 
 
 class TestUtils(unittest.TestCase):
@@ -68,12 +60,12 @@ class TestDB(unittest.TestCase):
 
     def test_add_to_db(self):
         from ITCKit.timetable import ical
-        icp = ical.parse_icals()
+        ical.parse_icals()
         dt = datetime.now()
-        #dbc.add_to_db(AClass('', '', '', '', dt, dt, '', '', False))
-        dbc.add_to_db(icp.get_classes())
-        dbc.add_to_db(Notification("Reminder", dt, "reminder name"))
+        dbc.add_to_db(AClass('', '', '', '', dt, dt, '', '', False))
+        dbc.add_to_db(Reminder("Reminder name", dt))
         dbc.add_to_db(Activity("Productive", dt, dt, 10))
+        dbc.add_to_db(EMail("Sender"))
 
     def test_reading_classes(self):
         classes = dbc.get_all_classes()
