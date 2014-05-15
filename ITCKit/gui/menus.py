@@ -17,27 +17,27 @@ class MainMenu(Gtk.Menu):
 
         self._indicator_reference = indicator
 
-        menu_items = [Gtk.MenuItem("Time Manager"),
+        menu_items = [#Gtk.MenuItem("Time Manager"),
                       Gtk.MenuItem("Timetable"),
-                      Gtk.MenuItem("Notifications"),
-                      Gtk.MenuItem("Mail"),
-                      Gtk.MenuItem("Conky"),
+                      #Gtk.MenuItem("Notifications"),
+                      Gtk.MenuItem("EMail"),
+                      #Gtk.MenuItem("Conky"),
                       Gtk.ImageMenuItem("Notification Display"),
                       Gtk.MenuItem("Exit")
                       ]
 
-        self.tracking_widget = menu_items[0]
-        self.tracking_widget.set_submenu(TimeManagerSubMenu())
-        self.timetable_widget = menu_items[1]
+        #self.tracking_widget = menu_items[0]
+        #self.tracking_widget.set_submenu(TimeManagerSubMenu())
+        self.timetable_widget = menu_items[0]  # 1
         self.timetable_widget.set_submenu(TimetableSubMenu())
-        self.notification_widget = menu_items[2]
-        self.notification_widget.set_submenu(NotificationSubMenu())
-        self.email_widget = menu_items[3]
+        #self.notification_widget = menu_items[2]
+        #self.notification_widget.set_submenu(NotificationSubMenu())
+        self.email_widget = menu_items[1]  # 3
         self.email_widget.set_submenu(MailSubMenu())
-        self.conky_widget = menu_items[4]
-        self.conky_widget.set_submenu(ConkySubMenu())
-        self.notification_display_widget = menu_items[5]
-        self.exit_widget = menu_items[6]
+        #self.conky_widget = menu_items[4]
+        #self.conky_widget.set_submenu(ConkySubMenu())
+        self.notification_display_widget = menu_items[2]  # 5
+        self.exit_widget = menu_items[3]  # 6
 
         [(self.append(item), item.show()) for item in menu_items]
 

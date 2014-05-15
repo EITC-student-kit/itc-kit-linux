@@ -5,7 +5,7 @@
         "days": 3
     },
     "EMail": {
-        "activated": true,
+        "activated": false,
         "first_time": false,
         "username": "kristo.koert@itcollege.ee"
     },
@@ -19,6 +19,6 @@
         "activated": true,
         "automatic_update": false,
         "main_url": "https://itcollege.ois.ee/en/timetable/ical?curriculum_id=2&key=01d8d5cbdbb9881fbf103f61c36955e731531a28",
-        "user_url": "https://itcollege.ois.ee/en/timetable/ical?student_id=3117&key=34c0482c0c579f1a7da0ea0ba6bda3077d356da8"
+        "user_url": "https://itcollege.ois.ee/en/timetable/ical?study_year=1&study_form_code=regular_study&key=a8e9fad0bfc0684c9bb1486c279c1acf8f4ac935"
     }
 }

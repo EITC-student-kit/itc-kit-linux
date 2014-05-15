@@ -32,6 +32,7 @@ class NotificationHandler(Thread):
             if self._main_menu_reference.notification_message == "Checked" and self._indicator_reference.notification_raised:
                 self.remove_notification()
             self._notifications = dbc.get_all_notifications()
+            print(len(self._notifications))
             [self._notification_to_raise.append(new_notif) for new_notif in self._get_due_notifications()]
             self._attempt_to_raise_latest_notification()
             sleep(1)
@@ -82,7 +83,6 @@ class NotificationHandler(Thread):
         self._indicator_reference.notification_raised = False
         del self._notification_to_raise[0]
         self._main_menu_reference.notification_display_widget.hide()
-
 
 if __name__ == "__main__":
     pass

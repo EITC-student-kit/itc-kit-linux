@@ -26,7 +26,6 @@ def add_to_db(datatypes):
     """Adds instances from datatype to correct table. Duplicates are not written.
     :type datatypes Iterable | DataTypesAbstractClass
     """
-    new = []
     try:
         iter(datatypes)
     except TypeError:
@@ -45,6 +44,7 @@ def add_to_db(datatypes):
 
 
 def get_not_already_in_db(datatypes, table_name):
+    #Letters already checked cannot be marked as unread and checked again.
     new = []
     if table_name == "Class":
         currently_in_db = get_all_classes()
