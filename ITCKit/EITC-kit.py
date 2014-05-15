@@ -3,9 +3,12 @@ __author__ = 'Kristo Koert'
 from gui import toolbarindicator
 from mail import email_system
 from core import notification_system
+from settings import settings
 from gi.repository import Gtk, Gdk
 
 if __name__ == "__main__":
+
+    settings.find_and_set_files()
 
     Gdk.threads_init()
     indicator = toolbarindicator.activate_toolbar()

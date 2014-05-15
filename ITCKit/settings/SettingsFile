@@ -1,8 +1,9 @@
 {
     "Conky": {
         "activated": true,
-        "color": "#77777777",
-        "days": 3
+        "color": "0xffffff",
+        "days": 3,
+        "dbPath": ""
     },
     "EMail": {
         "activated": false,
