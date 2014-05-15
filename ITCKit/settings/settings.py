@@ -29,7 +29,7 @@ def find_and_set_files():
                 #print("found: %s" % path)
                 return path
 
-    look_for = ["SettingsFile", "main_ical", "user_ical", "itckitdb"]
+    look_for = ["settingsFile", "main_ical", "user_ical", "itckitdb"]
     return find_file_path(look_for[0]), find_file_path(look_for[1]), \
         find_file_path(look_for[2]), find_file_path(look_for[3])
 

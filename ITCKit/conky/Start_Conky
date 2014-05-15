@@ -1,3 +1,3 @@
 #!/bin/bash
 #conky -c ~/ITCKit/conky/rings &
-conky -c ~/EITC-kit/Linux-version-master/ITCKit/conky/table
+conky -c ~/EITC-kit/Linux-version/ITCKit/conky/table

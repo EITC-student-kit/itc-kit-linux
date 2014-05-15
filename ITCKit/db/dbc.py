@@ -26,6 +26,7 @@ def add_to_db(datatypes):
     """Adds instances from datatype to correct table. Duplicates are not written.
     :type datatypes Iterable | DataTypesAbstractClass
     """
+    print("Recieved: ", len(datatypes), "Elements to add.")
     try:
         iter(datatypes)
     except TypeError:
@@ -37,9 +38,11 @@ def add_to_db(datatypes):
     table_name = table_dict[cls][0]
     db_coloumns = table_dict[cls][1]
     new = get_not_already_in_db(datatypes, table_name)
-    db.executemany(
-        "INSERT INTO " + table_name + " VALUES "
-        + db_coloumns, [cls.get_database_row() for cls in new])
+    print(len(new), "Elements perceived as new.")
+    for cls in new:
+        db.executemany(
+            "INSERT INTO " + table_name + " VALUES "
+            + db_coloumns, cls.get_database_row())
     db.commit()
 
 
@@ -70,6 +73,7 @@ def get_all_classes():
     :rtype tuple"""
     db = connect_to_db()
     db_rows = db.cursor().execute("SELECT * FROM Class").fetchall()
+    print("Apparently there are", len(db_rows), "items in Class table right now.")
     classes = []
     for r in db_rows:
         classes.append(AClass(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7]))
