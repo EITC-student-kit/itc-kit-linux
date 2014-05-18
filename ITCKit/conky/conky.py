@@ -4,8 +4,6 @@ import subprocess
 from settings.settings import get_timetable_settings, get_conky_settings
 from threading import Thread
 import time
-import os
-import signal
 
 
 class Conky(Thread):

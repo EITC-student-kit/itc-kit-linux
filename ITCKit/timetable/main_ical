@@ -1,16 +1,4 @@
-DTSTART:20140502T051500ZDTEND:20140502T064500ZSUMMARY:Network Applications I: Client-Server Systems [11]Subject code: I244
-Groups: 11
-Academician: Tiia Tänav
-Type: Practice
-LOCATION:319DTSTART:20140502T051500ZDTEND:20140502T064500ZSUMMARY:CCNA Security [A21\, A22]Subject code: I369
-Groups: A21\, A22
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:417DTSTART:20140502T070000ZDTEND:20140502T083000ZSUMMARY:Basics of Telecommunication [11]Subject code: I249
-Groups: 11
-Academician: Truls Ringkjob
-Type: Practice
-LOCATION:415, 417DTSTART:20140505T050000ZDTEND:20140505T060000ZSUMMARY:Philosophy [11\, 12\, 13\, 14\, 15]Subject code: I016
+DTSTART:20140505T050000ZDTEND:20140505T060000ZSUMMARY:Philosophy [11\, 12\, 13\, 14\, 15]Subject code: I016
 Groups: 11\, 12\, 13\, 14\, 15
 Academician: Indrek Meos
 Type: Examination

@@ -1,6 +1,6 @@
 # Conky settings #
 background no
-update_interval 0.25
+update_interval 1
 
 cpu_avg_samples 2
 net_avg_samples 2
@@ -18,7 +18,7 @@ temperature_unit fahrenheit
 # Window specifications #
 
 own_window yes
-own_window_type override
+own_window_type desktop
 own_window_transparent yes
 own_window_hints undecorate,sticky,skip_taskbar,skip_pager,below
 

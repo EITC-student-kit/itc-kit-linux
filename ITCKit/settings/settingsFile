@@ -1,27 +1,31 @@
 {
     "Conky": {
-        "activated": true,
+        "activated": false,
         "color": "0x000000",
         "days": 3,
-        "dbPath": "/home/kristo/EITC-kit/Linux-version/ITCKit/db/itckitdb",
-        "scriptPath": "/home/kristo/EITC-kit/Linux-version/ITCKit/conky/Start_Conky"
+        "dbPath": "",
+        "scriptPath": ""
     },
     "EMail": {
         "activated": true,
         "first_time": false,
+        "scriptPath": "",
         "username": "kristo.koert@itcollege.ee"
     },
     "Notification": {
         "activated": false
     },
-    "TimeManager": {
-        "activated": false
+    "Other": {
+        "icon_path": ""
+    },
+    "Time manager": {
+        "activated": true
     },
     "Timetable": {
-        "activated": false,
+        "activated": true,
         "automatic_update": false,
-        "dbPath": "/home/kristo/EITC-kit/Linux-version/ITCKit/db/itckitdb",
+        "dbPath": "",
         "main_url": "https://itcollege.ois.ee/en/timetable/ical?curriculum_id=2&key=01d8d5cbdbb9881fbf103f61c36955e731531a28",
-        "user_url": "https://itcollege.ois.ee/et/timetable/ical?curriculum_id=3&key=631243315a0d0efa9869a7c5031a959b5836107b"
+        "user_url": ""
     }
 }

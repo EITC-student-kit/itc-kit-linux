@@ -50,7 +50,7 @@ temperature_unit celsius
 default_color FFFFFF
 
 # Lua Load  #
-lua_load ~/ITCKit/conky/scripts/rings.lua
+lua_load ~/EITC-kit/Linux-version/ITCKit/conky/scripts/rings.lua
 lua_draw_hook_pre clock_rings
 
 TEXT

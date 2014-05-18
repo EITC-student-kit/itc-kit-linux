@@ -1,4 +1,4 @@
-__author__ = 'kristo'
+__author__ = 'Kristo Koert'
 
 import threading
 from gi.repository import Gtk, Gdk, GLib
@@ -6,6 +6,28 @@ from ITCKit.core.timemanager import Stopper
 from ITCKit.settings import settings
 from ITCKit.db import dbc
 from ITCKit.gui import windows
+
+NR_OF_PLUGINS = 0
+
+
+def add_plugin():
+    global NR_OF_PLUGINS
+    NR_OF_PLUGINS += 1
+
+
+def get_state(sub_menu):
+    key = "activated"
+    states = {TimetableSubMenu.__name__: settings.get_timetable_settings()[key],
+              #"Timetable": settings.get_timetable_settings()[key],
+              MailSubMenu.__name__: settings.get_email_settings()[key],
+              #"Email": settings.get_email_settings()[key],
+              NotificationSubMenu.__name__: settings.get_notification_settings()[key],
+              #"Notification": settings.get_notification_settings()[key],
+              TimeManagerSubMenu.__name__: settings.get_time_manager_settings()[key],
+              #"Time manager": settings.get_time_manager_settings()[key],
+              ConkySubMenu.__name__: settings.get_conky_settings()[key]}
+              #"Conky": settings.get_conky_settings()[key]}
+    return states[sub_menu]
 
 
 class MainMenu(Gtk.Menu):
@@ -15,119 +37,158 @@ class MainMenu(Gtk.Menu):
         super(Gtk.Menu, self).__init__()
 
         self._indicator_reference = indicator
+        self.sub_menus = dict()
 
-        menu_items = [Gtk.MenuItem("Timetable"),
-                      Gtk.MenuItem("EMail"),
-                      Gtk.MenuItem("Notifications"),
-                      Gtk.MenuItem("Time Manager"),
-                      Gtk.MenuItem("Conky"),
-                      Gtk.MenuItem("Plugins"),
-                      Gtk.ImageMenuItem("Notification Display"),
-                      Gtk.MenuItem("Exit")]
+        self.menu_items = [Gtk.MenuItem("Timetable"),
+                           Gtk.MenuItem("EMail"),
+                           Gtk.MenuItem("Notifications"),
+                           Gtk.MenuItem("Time Manager"),
+                           Gtk.MenuItem("Conky"),
+                           Gtk.MenuItem("Plugins"),
+                           Gtk.ImageMenuItem("Notification Display"),
+                           Gtk.ImageMenuItem("Exit")]
 
-        self.timetable_widget = menu_items[0]
-        self.timetable_widget.set_submenu(TimetableSubMenu())
-        self.email_widget = menu_items[1]
-        self.email_widget.set_submenu(MailSubMenu())
-        self.notification_widget = menu_items[2]
-        self.notification_widget.set_submenu(NotificationSubMenu())
-        self.tracking_widget = menu_items[3]
-        self.tracking_widget.set_submenu(TimeManagerSubMenu())
-        self.conky_widget = menu_items[4]
-        self.conky_widget.set_submenu(ConkySubMenu())
-        self.plugins_widget = menu_items[5]
-        self.plugins_widget.set_submenu(PluginSubMenu(self))
-        self.notification_display_widget = menu_items[6]
-        self.exit_widget = menu_items[7]
+        for sub_menu in BaseSubMenu.__subclasses__():
+            if sub_menu.__name__ != "PluginSubMenu":
+                self.sub_menus[sub_menu.__name__] = sub_menu()
 
-        [(self.append(item), item.show()) for item in menu_items]
+        self.sub_menus["PluginSubMenu"] = PluginSubMenu(self)
+
+        self.timetable_widget = self.menu_items[0]
+        self.timetable_widget.set_submenu(self.sub_menus[TimetableSubMenu.__name__])
+        self.email_widget = self.menu_items[1]
+        self.email_widget.set_submenu(self.sub_menus[MailSubMenu.__name__])
+        self.notification_widget = self.menu_items[2]
+        self.notification_widget.set_submenu(self.sub_menus[NotificationSubMenu.__name__])
+        self.tracking_widget = self.menu_items[3]
+        self.tracking_widget.set_submenu(self.sub_menus[TimeManagerSubMenu.__name__])
+        self.conky_widget = self.menu_items[4]
+        self.conky_widget.set_submenu(self.sub_menus[ConkySubMenu.__name__])
+        self.plugins_widget = self.menu_items[5]
+        self.plugins_widget.set_submenu(self.sub_menus[PluginSubMenu.__name__])
+        self.notification_display_widget = self.menu_items[6]
+        self.exit_widget = self.menu_items[7]
+
+        [(self.append(item), item.show()) for item in self.menu_items]
 
         self.notification_display_widget.connect("activate", self.on_notification_checked)
         self.exit_widget.connect("activate", self.on_exit)
         self.notification_display_widget.hide()
         GLib.timeout_add(10, self.handler_timeout)
+        GLib.timeout_add(500, self.handler_timeout2)
 
     def handler_timeout(self):
         self.notification_display_widget.set_label(self.notification_message)
         return True
 
+    def handler_timeout2(self):
+        global NR_OF_PLUGINS
+        for i in range(NR_OF_PLUGINS):
+            if get_state(self.menu_items[i].get_submenu().__class__.__name__):
+                self.menu_items[i].show()
+            else:
+                self.menu_items[i].hide()
+        return True
+
     def on_notification_checked(self, widget):
         self.notification_message = "Checked"
 
-    def on_exit(self, widget):
-        #ToDo Implement on_exit()
-        pass
+    @staticmethod
+    def on_exit(widget):
+        #Not working
+        Gtk.main_quit()
 
 
 class BaseSubMenu(Gtk.Menu):
-    _state = "not activated"
+    menu_item_lbl = None
 
-    def __init__(self, identity):
+    def __init__(self, identity, lbl):
         super(Gtk.Menu, self).__init__()
         self.identity = identity
+        self.menu_item_lbl = lbl
 
-    def on_off_clicked(self, on_off_widget):
-        if self._state == "not activated":
-            self.set_menu_state("activated")
-            self._set_in_settings("activated")
-        else:
-            self.set_menu_state("not activated")
-            self._set_in_settings("not activated")
-
-    def set_menu_state(self, state):
-        if state == "activated":
-            self.show()
-        elif state == "not activated":
-            self.hide()
-
-    def _set_in_settings(self, on_off):
-        if on_off == "activated":
-            settings.update_settings(self.identity, "activated", True)
-        elif on_off == "not activated":
-            settings.update_settings(self.identity, "activated", False)
-        else:
-            raise RuntimeError
+    def set_active_in_settings(self, state):
+        settings.update_settings(self.menu_item_lbl, "activated", state)
 
 
 class PluginSubMenu(BaseSubMenu):
 
     def __init__(self, main_menu_ref):
-        super(PluginSubMenu, self).__init__(PluginSubMenu)
-        self.plugins = {"Timetable": {"active?": settings.get_timetable_settings, "refr": main_menu_ref.}, "Email": settings.get_email_settings,
-                              "Notifications": settings.get_notification_settings,
-                              "Time manager": settings.get_time_manager_settings,
-                              "Conky": settings.get_conky_settings}
-        menu_items = self.make_menu()
-        self.timetable_widget = menu_items[0]
-        self.email_widget = menu_items[1]
-        self.notifications_widget = menu_items[2]
-        self.timemanager_widget = menu_items[3]
-        self.conky_widget = menu_items[4]
+        super(PluginSubMenu, self).__init__(self.__class__.__name__, "Plugins")
+        self.main_menu_ref = main_menu_ref
+        self.plugins = self.make_submenus_dict()
+        self.menu_items, self.menu_refs = self.make_menu()
+
+        for widget in self.menu_items:
+            self.append(widget)
+
+        self.timetable_widget = self.menu_items[0]
+        self.email_widget = self.menu_items[1]
+        self.notifications_widget = self.menu_items[2]
+        self.timemanager_widget = self.menu_items[3]
+        self.conky_widget = self.menu_items[4]
+
+        for it in self.menu_items:
+            it.show()
+
+        for widget in self.menu_items:
+            widget.connect("activate", self.click_plugin)
+
+        #GLib.timeout_add(10, self.handler_timeout)
+
+    def handler_timeout(self):
+        for i in range(NR_OF_PLUGINS):
+            if get_state(self.menu_refs[i].__class__.__name__):
+                self.menu_items[i].hide()
+            else:
+                self.menu_items[i].show()
+        return True
+
+    def click_plugin(self, widget):
+        ref_indx = self.menu_items.index(widget)
+        state = get_state(self.menu_refs[ref_indx].__class__.__name__)
+        if state:
+            self.menu_refs[ref_indx].set_active_in_settings(False)
+            #new_lbl = widget.get_label().replace("[On]", "[Off]")
+            #self.widget.set_label(new_lbl)
+        elif not state:
+            self.menu_refs[ref_indx].set_active_in_settings(True)
+            #new_lbl = widget.get_label().replace("[Off]", "[On]")
+            #self.widget.set_label(new_lbl)
+        else:
+            print("State:", state)
+            raise RuntimeError
 
     def make_menu(self):
         menu = []
+        refs = []
         for key in self.plugins:
-            val = self.plugins[key]
-            if val()["activated"]:
-                lbl = "On" + key
+            is_active = self.plugins[key]["active?"]
+            ref = self.plugins[key]["menu_ref"]
+            if is_active:
+                lbl = ref.menu_item_lbl
                 menu.append(Gtk.MenuItem(lbl))
-            elif not val()["activated"]:
-                lbl = "Off" + key
-                menu.append(Gtk.MenuItem(lbl))
+                refs.append(ref)
             else:
-                raise RuntimeError
-        return menu
+                lbl = ref.menu_item_lbl
+                menu.append(Gtk.MenuItem(lbl))
+                refs.append(ref)
+        return menu, refs
 
-    def connect_to_submenus(self):
-        for key in self.plugins:
-            pass
+    def make_submenus_dict(self):
+        d = dict()
+        for key in self.main_menu_ref.sub_menus.keys():
+            d[key] = {"active?": get_state(key), "menu_ref": self.main_menu_ref.sub_menus[key]}
+        return d
+
 
 class TimeManagerSubMenu(BaseSubMenu):
     _stopper = None
     _display_label = ''
 
     def __init__(self):
-        super(TimeManagerSubMenu, self).__init__("TimeManager")
+        add_plugin()
+        super(TimeManagerSubMenu, self).__init__(self.__class__.__name__, "Time manager")
 
         from ITCKit.gui.icon.build_in_icons import get_productivity_icons
 
@@ -157,11 +218,6 @@ class TimeManagerSubMenu(BaseSubMenu):
         self.neutral_widget.set_always_show_image(True)
         self.counter_productive_widget.set_always_show_image(True)
 
-        if settings.get_time_manager_settings()["activated"]:
-            self.set_menu_state("Activated")
-        else:
-            self.set_menu_state("Not activated")
-
         [(self.append(item)) for item in menu_items]
 
         self.productive_widget.connect("activate", self.on_productivity_choice_clicked)
@@ -169,6 +225,8 @@ class TimeManagerSubMenu(BaseSubMenu):
         self.counter_productive_widget.connect("activate", self.on_productivity_choice_clicked)
         self.stop_widget.connect("activate", self.on_stop_clicked)
         self.undo_widget.connect("activate", self.on_undo_clicked)
+
+        self.set_menu_state2("activated")
 
         GLib.timeout_add(10, self.handler_timeout)
 
@@ -183,7 +241,7 @@ class TimeManagerSubMenu(BaseSubMenu):
         :param widget: the widget that triggered this event handler
         :type widget: Gtk.ImageMenuItem
         """
-        self.set_menu_state("Tracking")
+        self.set_menu_state2("tracking")
         self._start_stopper(widget.get_label())
 
     def on_undo_clicked(self):
@@ -198,7 +256,7 @@ class TimeManagerSubMenu(BaseSubMenu):
         """
         self._stopper.stop_tracking()
         self._stopper = None
-        self.set_menu_state("Activated")
+        self.set_menu_state2("activated")
 
     def _start_stopper(self, activity_type):
         """Leaves the Gtk thread, creates a Stopper object there that is referenced in this object and starts it."""
@@ -208,60 +266,48 @@ class TimeManagerSubMenu(BaseSubMenu):
         except threading.ThreadError:
             print("Threading problem in Tracking sub-menu.")
 
-    def set_menu_state(self, state):
+    def set_menu_state2(self, state):
         """Sets the sub-menu to the appropriate state.
 
         :param state: The current state
         :type state: str
         """
-        #ToDo set on_off_widget to the bottom of menu
-        if state == "Tracking":
-            self.on_off_widget.hide()
+        if state == "tracking":
             self.productive_widget.hide()
             self.neutral_widget.hide()
             self.counter_productive_widget.hide()
             self.stop_widget.show()
             self.display_widget.show()
-        elif state == "Activated":
-            settings.update_settings("TimeManager", "activated", True)
-            self.on_off_widget.show()
+        elif state == "activated":
+            settings.update_settings("Time manager", "activated", True)
             self.productive_widget.show()
             self.neutral_widget.show()
             self.counter_productive_widget.show()
             self.stop_widget.hide()
             self.display_widget.hide()
-        elif state == "Not activated":
-            settings.update_settings("TimeManager", "activated", False)
-            self.on_off_widget.show()
-            self.productive_widget.hide()
-            self.neutral_widget.hide()
-            self.counter_productive_widget.hide()
-            self.stop_widget.hide()
-            self.display_widget.hide()
+            #self.undo_widget.hide()
         else:
             print("state parameter need to be either Tracking, Activated or Not activated")
             raise RuntimeError
-        self._state = state
 
 
 class TimetableSubMenu(BaseSubMenu):
     def __init__(self):
-        super(TimetableSubMenu, self).__init__("Timetable")
+        add_plugin()
+        super(TimetableSubMenu, self).__init__(self.__class__.__name__, "Timetable")
 
-        menu_item = [Gtk.MenuItem("Manual Update"),
-                     Gtk.MenuItem("Set ical URL"),
-                     Gtk.MenuItem("Customize Timetable")]
+        menu_items = [Gtk.MenuItem("Update"),
+                      Gtk.MenuItem("Set ical URL"),
+                      Gtk.MenuItem("Customize Timetable")]
 
-        self.update_widget = menu_item[0]
-        self.set_ical_url_widget = menu_item[1]
-        self.customize_timetable_widget = menu_item[2]
+        for it in menu_items:
+            it.show()
 
-        if settings.get_timetable_settings()["activated"]:
-            self.set_menu_state("Activated")
-        else:
-            self.set_menu_state("Not activated")
+        self.update_widget = menu_items[0]
+        self.set_ical_url_widget = menu_items[1]
+        self.customize_timetable_widget = menu_items[2]
 
-        [(self.append(item)) for item in menu_item]
+        [(self.append(item)) for item in menu_items]
 
         self.update_widget.connect("activate", self.on_update_clicked)
         self.set_ical_url_widget.connect("activate", self.on_set_ical_url)
@@ -279,47 +325,22 @@ class TimetableSubMenu(BaseSubMenu):
     def on_customize_timetable_clicked(widget):
         windows.open_customize_timetable()
 
-    def set_menu_state(self, state):
-        if state == "Not activated":
-            settings.update_settings("Timetable", "activated", False)
-            self._state = "Not activated"
-            self.on_off_widget.show()
-            self.customize_timetable_widget.hide()
-            self.set_ical_url_widget.hide()
-            self.update_widget.hide()
-        elif state == "Activated":
-            settings.update_settings("Timetable", "activated", True)
-            self._state = "Activated"
-            self.on_off_widget.show()
-            self.customize_timetable_widget.show()
-            self.set_ical_url_widget.show()
-            self.update_widget.show()
-
-    def _set_in_settings(self, on_off):
-        if on_off == "on":
-            settings.update_settings("Timetable", "activated", True)
-        elif on_off == "off":
-            settings.update_settings("Timetable", "activated", False)
-        else:
-            raise RuntimeError
-
 
 class NotificationSubMenu(BaseSubMenu):
     def __init__(self):
-        super(NotificationSubMenu, self).__init__("Notification")
+        add_plugin()
+        super(NotificationSubMenu, self).__init__(self.__class__.__name__, "Notification")
 
-        menu_item = [Gtk.MenuItem("Add reminder"),
-                     Gtk.MenuItem("Clear All")]
+        menu_items = [Gtk.MenuItem("Add reminder"),
+                      Gtk.MenuItem("Clear All")]
 
-        self.add_reminder_widget = menu_item[0]
-        self.clear_all_widget = menu_item[1]
+        for it in menu_items:
+            it.show()
 
-        if settings.get_notification_settings()["activated"]:
-            self.set_menu_state("Activated")
-        else:
-            self.set_menu_state("Not activated")
+        self.add_reminder_widget = menu_items[0]
+        self.clear_all_widget = menu_items[1]
 
-        [(self.append(item)) for item in menu_item]
+        [(self.append(item)) for item in menu_items]
 
         self.clear_all_widget.connect("activate", self.on_clear_all_clicked)
         self.add_reminder_widget.connect("activate", self.on_add_reminder_clicked)
@@ -332,71 +353,41 @@ class NotificationSubMenu(BaseSubMenu):
     def on_clear_all_clicked(widget):
         dbc.remove_all_notifications()
 
-    def set_menu_state(self, state):
-        if state == "Activated":
-            settings.update_settings("Notification", "activated", True)
-            self._state = "Activated"
-            self.add_reminder_widget.show()
-            self.clear_all_widget.show()
-        elif state == "Not activated":
-            settings.update_settings("Notification", "activated", False)
-            self._state = "Not activated"
-            self.add_reminder_widget.hide()
-            self.clear_all_widget.hide()
-
 
 class MailSubMenu(BaseSubMenu):
     def __init__(self):
-        super(MailSubMenu, self).__init__("Email")
-        menu_item = [Gtk.MenuItem("Username/Password"),
-                     Gtk.MenuItem("Clear All")]
+        add_plugin()
+        super(MailSubMenu, self).__init__(self.__class__.__name__, "EMail")
+        menu_items = [Gtk.MenuItem("Username/Password")]
 
-        self.set_credentials_widget = menu_item[0]
-        self.clear_all_widget = menu_item[1]
+        for it in menu_items:
+            it.show()
 
-        if settings.get_email_settings()["activated"]:
-            self.set_menu_state("Activated")
-        else:
-            self.set_menu_state("Not activated")
+        self.set_credentials_widget = menu_items[0]
 
-        [(self.append(item)) for item in menu_item]
+        [(self.append(item)) for item in menu_items]
 
-        self.clear_all_widget.connect("activate", self.on_clear_all_clicked)
         self.set_credentials_widget.connect("activate", self.on_set_credentials_clicked)
 
     def on_set_credentials_clicked(self, widget):
         windows.open_set_credentials()
 
-    def on_clear_all_clicked(self, widget):
-        #ToDo Implement on_clear_all_clicked
-        raise NotImplementedError
-
-    def set_menu_state(self, state):
-        if state == "Not activated":
-            settings.update_settings("EMail", "activated", False)
-            self._state = "Not activated"
-            self.clear_all_widget.hide()
-            self.set_credentials_widget.hide()
-        else:
-            settings.update_settings("EMail", "activated", True)
-            self._state = "Activated"
-            self.clear_all_widget.show()
-            self.set_credentials_widget.show()
-
 
 class ConkySubMenu(BaseSubMenu):
+
     def __init__(self):
-        super(ConkySubMenu, self).__init__("Conky")
-        menu_item = [Gtk.MenuItem("Set Color"),
-                     Gtk.MenuItem("Display Settings")]
+        add_plugin()
+        super(ConkySubMenu, self).__init__(self.__class__.__name__, "Conky")
+        menu_items = [Gtk.MenuItem("Set Color"),
+                      Gtk.MenuItem("Display Settings")]
 
-        self.set_color_widget = menu_item[0]
-        self.display_settings_widget = menu_item[1]
+        for it in menu_items:
+            it.show()
 
-        if settings.get_conky_settings()["activated"]:
-            [item.show() for item in menu_item]
+        self.set_color_widget = menu_items[0]
+        self.display_settings_widget = menu_items[1]
 
-        [(self.append(item)) for item in menu_item]
+        [(self.append(item)) for item in menu_items]
 
         self.set_color_widget.connect("activate", self.on_set_color_clicked)
         self.display_settings_widget.connect("activate", self.on_display_settings_clicked)
@@ -409,14 +400,4 @@ class ConkySubMenu(BaseSubMenu):
         #ToDo implement on_set_color_clicked
         raise NotImplementedError
 
-    def set_menu_state(self, state):
-        if state == "Not activated":
-            settings.update_settings("Conky", "activated", False)
-            self._state = "Not activated"
-            self.display_settings_widget.hide()
-            self.set_color_widget.hide()
-        else:
-            settings.update_settings("Conky", "activated", True)
-            self._state = "Activated"
-            self.display_settings_widget.show()
-            self.set_color_widget.show()
+

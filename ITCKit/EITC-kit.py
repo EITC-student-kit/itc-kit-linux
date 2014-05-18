@@ -1,11 +1,11 @@
 __author__ = 'Kristo Koert'
 
-from gui import toolbarindicator
-from mail import email_system
-from core import notification_system
-from settings import settings
+from ITCKit.gui import toolbarindicator
+from ITCKit.mail import email_system
+from ITCKit.core import notification_system
+from ITCKit.settings import settings
 from gi.repository import Gtk, Gdk
-from conky.conky import Conky
+from ITCKit.conky.conky import Conky
 
 if __name__ == "__main__":
 

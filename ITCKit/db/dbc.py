@@ -21,6 +21,10 @@ table_dict = {notif_cls: ("Notification", "(?,?,?)"),
               a_cls_cls: ("Class", "(?,?,?,?,?,?,?,?,?)")}
 
 
+def make_empty_db():
+    pass
+
+
 def add_to_db(datatypes):
     """Adds instances from datatype to correct table. Duplicates are not written.
     :type datatypes Iterable | DataTypesAbstractClass
@@ -132,7 +136,6 @@ def add_mail_uid(uids):
         if u not in all_uids:
             to_be_added.append(int(u))
     db = connect_to_db()
-    print(type(to_be_added[0]))
     db.executemany("INSERT INTO SeenMailUID (uid) VALUES (?)", [i for i in to_be_added])
     db.commit()
 

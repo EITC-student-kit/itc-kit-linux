@@ -291,7 +291,7 @@ class SetCredentialsWindow(BaseWindow):
         row3.pack_start(self.confirm_button, True, True, 1)
 
     def on_confirm_clicked(self, widget):
-        from ITCKit.mail.credential_security import save_to_keyring
+        from ITCKit.mail.password_retention import save_to_keyring
         save_to_keyring(self.username_entry.get_text(), self.password_entry.get_text())
 
 
