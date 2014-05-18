@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 __author__ = 'Kristo Koert'
 
 from ITCKit.gui import toolbarindicator

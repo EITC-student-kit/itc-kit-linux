@@ -3,20 +3,20 @@
         "activated": false,
         "color": "0x000000",
         "days": 3,
-        "dbPath": "",
-        "scriptPath": ""
+        "dbPath": "/home/aili/EITC-kit/Linux-version/ITCKit/db/itckitdb",
+        "scriptPath": "/home/aili/EITC-kit/Linux-version/ITCKit/conky/Start_Conky"
     },
     "EMail": {
         "activated": true,
         "first_time": false,
-        "scriptPath": "",
+        "scriptPath": "/home/aili/.local/share/Trash/files/build/lib/ITCKit/mail/password_retrieval.py",
         "username": "kristo.koert@itcollege.ee"
     },
     "Notification": {
         "activated": false
     },
     "Other": {
-        "icon_path": ""
+        "icon_path": "/home/aili/EITC-kit/Linux-version/ITCKit/gui/icon/Icon1.png"
     },
     "Time manager": {
         "activated": true
@@ -24,7 +24,7 @@
     "Timetable": {
         "activated": true,
         "automatic_update": false,
-        "dbPath": "",
+        "dbPath": "/home/aili/EITC-kit/Linux-version/ITCKit/db/itckitdb",
         "main_url": "https://itcollege.ois.ee/en/timetable/ical?curriculum_id=2&key=01d8d5cbdbb9881fbf103f61c36955e731531a28",
         "user_url": ""
     }
