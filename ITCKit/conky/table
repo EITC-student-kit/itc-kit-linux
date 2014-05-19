@@ -51,6 +51,6 @@ temperature_unit celsius
 default_color FFFFFF
 
 # Lua Load  #
-lua_load ~/EITC-kit/Linux-version-master/ITCKit/conky/scripts/table.lua
+lua_load ~/EITC-kit/Linux-version/ITCKit/conky/scripts/table.lua
 lua_draw_hook_pre main
 TEXT

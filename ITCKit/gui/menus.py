@@ -9,7 +9,6 @@ from ITCKit.gui import windows
 
 
 class MainMenu(Gtk.Menu):
-
     notification_message = "Checked"
 
     def __init__(self, indicator):
@@ -17,27 +16,29 @@ class MainMenu(Gtk.Menu):
 
         self._indicator_reference = indicator
 
-        menu_items = [#Gtk.MenuItem("Time Manager"),
-                      Gtk.MenuItem("Timetable"),
-                      #Gtk.MenuItem("Notifications"),
+        menu_items = [Gtk.MenuItem("Timetable"),
                       Gtk.MenuItem("EMail"),
-                      #Gtk.MenuItem("Conky"),
+                      Gtk.MenuItem("Notifications"),
+                      Gtk.MenuItem("Time Manager"),
+                      Gtk.MenuItem("Conky"),
+                      Gtk.MenuItem("Plugins"),
                       Gtk.ImageMenuItem("Notification Display"),
-                      Gtk.MenuItem("Exit")
-                      ]
+                      Gtk.MenuItem("Exit")]
 
-        #self.tracking_widget = menu_items[0]
-        #self.tracking_widget.set_submenu(TimeManagerSubMenu())
-        self.timetable_widget = menu_items[0]  # 1
+        self.timetable_widget = menu_items[0]
         self.timetable_widget.set_submenu(TimetableSubMenu())
-        #self.notification_widget = menu_items[2]
-        #self.notification_widget.set_submenu(NotificationSubMenu())
-        self.email_widget = menu_items[1]  # 3
+        self.email_widget = menu_items[1]
         self.email_widget.set_submenu(MailSubMenu())
-        #self.conky_widget = menu_items[4]
-        #self.conky_widget.set_submenu(ConkySubMenu())
-        self.notification_display_widget = menu_items[2]  # 5
-        self.exit_widget = menu_items[3]  # 6
+        self.notification_widget = menu_items[2]
+        self.notification_widget.set_submenu(NotificationSubMenu())
+        self.tracking_widget = menu_items[3]
+        self.tracking_widget.set_submenu(TimeManagerSubMenu())
+        self.conky_widget = menu_items[4]
+        self.conky_widget.set_submenu(ConkySubMenu())
+        self.plugins_widget = menu_items[5]
+        self.plugins_widget.set_submenu(PluginSubMenu(self))
+        self.notification_display_widget = menu_items[6]
+        self.exit_widget = menu_items[7]
 
         [(self.append(item), item.show()) for item in menu_items]
 
@@ -59,39 +60,77 @@ class MainMenu(Gtk.Menu):
 
 
 class BaseSubMenu(Gtk.Menu):
+    _state = "not activated"
 
-    _state = "Not activated"
-
-    def __init__(self):
+    def __init__(self, identity):
         super(Gtk.Menu, self).__init__()
-
-        menu_item = [Gtk.MenuItem("On/Off")]
-
-        self.on_off_widget = menu_item[0]
-
-        [(self.append(item), item.show()) for item in menu_item]
-
-        self.on_off_widget.connect("activate", self.on_off_clicked)
+        self.identity = identity
 
     def on_off_clicked(self, on_off_widget):
-        if self._state == "Not activated":
-            self.set_menu_state("Activated")
+        if self._state == "not activated":
+            self.set_menu_state("activated")
+            self._set_in_settings("activated")
         else:
-            self.set_menu_state("Not activated")
+            self.set_menu_state("not activated")
+            self._set_in_settings("not activated")
 
     def set_menu_state(self, state):
-        raise NotImplementedError
+        if state == "activated":
+            self.show()
+        elif state == "not activated":
+            self.hide()
 
+    def _set_in_settings(self, on_off):
+        if on_off == "activated":
+            settings.update_settings(self.identity, "activated", True)
+        elif on_off == "not activated":
+            settings.update_settings(self.identity, "activated", False)
+        else:
+            raise RuntimeError
+
+
+class PluginSubMenu(BaseSubMenu):
+
+    def __init__(self, main_menu_ref):
+        super(PluginSubMenu, self).__init__(PluginSubMenu)
+        self.plugins = {"Timetable": {"active?": settings.get_timetable_settings, "refr": main_menu_ref.}, "Email": settings.get_email_settings,
+                              "Notifications": settings.get_notification_settings,
+                              "Time manager": settings.get_time_manager_settings,
+                              "Conky": settings.get_conky_settings}
+        menu_items = self.make_menu()
+        self.timetable_widget = menu_items[0]
+        self.email_widget = menu_items[1]
+        self.notifications_widget = menu_items[2]
+        self.timemanager_widget = menu_items[3]
+        self.conky_widget = menu_items[4]
+
+    def make_menu(self):
+        menu = []
+        for key in self.plugins:
+            val = self.plugins[key]
+            if val()["activated"]:
+                lbl = "On" + key
+                menu.append(Gtk.MenuItem(lbl))
+            elif not val()["activated"]:
+                lbl = "Off" + key
+                menu.append(Gtk.MenuItem(lbl))
+            else:
+                raise RuntimeError
+        return menu
+
+    def connect_to_submenus(self):
+        for key in self.plugins:
+            pass
 
 class TimeManagerSubMenu(BaseSubMenu):
-
     _stopper = None
     _display_label = ''
 
     def __init__(self):
-        super(TimeManagerSubMenu, self).__init__()
+        super(TimeManagerSubMenu, self).__init__("TimeManager")
 
         from ITCKit.gui.icon.build_in_icons import get_productivity_icons
+
         pro_icon, neu_icon, cou_icon = get_productivity_icons()
 
         menu_items = [Gtk.ImageMenuItem(pro_icon),
@@ -206,9 +245,8 @@ class TimeManagerSubMenu(BaseSubMenu):
 
 
 class TimetableSubMenu(BaseSubMenu):
-
     def __init__(self):
-        super(TimetableSubMenu, self).__init__()
+        super(TimetableSubMenu, self).__init__("Timetable")
 
         menu_item = [Gtk.MenuItem("Manual Update"),
                      Gtk.MenuItem("Set ical URL"),
@@ -257,11 +295,18 @@ class TimetableSubMenu(BaseSubMenu):
             self.set_ical_url_widget.show()
             self.update_widget.show()
 
+    def _set_in_settings(self, on_off):
+        if on_off == "on":
+            settings.update_settings("Timetable", "activated", True)
+        elif on_off == "off":
+            settings.update_settings("Timetable", "activated", False)
+        else:
+            raise RuntimeError
+
 
 class NotificationSubMenu(BaseSubMenu):
-
     def __init__(self):
-        super(NotificationSubMenu, self).__init__()
+        super(NotificationSubMenu, self).__init__("Notification")
 
         menu_item = [Gtk.MenuItem("Add reminder"),
                      Gtk.MenuItem("Clear All")]
@@ -301,9 +346,8 @@ class NotificationSubMenu(BaseSubMenu):
 
 
 class MailSubMenu(BaseSubMenu):
-
     def __init__(self):
-        super(MailSubMenu, self).__init__()
+        super(MailSubMenu, self).__init__("Email")
         menu_item = [Gtk.MenuItem("Username/Password"),
                      Gtk.MenuItem("Clear All")]
 
@@ -341,9 +385,8 @@ class MailSubMenu(BaseSubMenu):
 
 
 class ConkySubMenu(BaseSubMenu):
-
     def __init__(self):
-        super(ConkySubMenu, self).__init__()
+        super(ConkySubMenu, self).__init__("Conky")
         menu_item = [Gtk.MenuItem("Set Color"),
                      Gtk.MenuItem("Display Settings")]
 

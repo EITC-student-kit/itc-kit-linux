@@ -1,12 +1,11 @@
 __author__ = 'Kristo Koert'
 
 from sqlite3 import connect, OperationalError, PARSE_DECLTYPES
-import os
 from ITCKit.core.datatypes import *
 from datetime import datetime
-from ITCKit.settings.settings import EITC_DB_PATH
+from ITCKit.settings.settings import get_timetable_settings
 
-DATABASE_PATH = EITC_DB_PATH
+DATABASE_PATH = get_timetable_settings()["dbPath"]
 
 dt = datetime.now()
 notif_cls = Notification('', dt, '').__class__
@@ -26,7 +25,6 @@ def add_to_db(datatypes):
     """Adds instances from datatype to correct table. Duplicates are not written.
     :type datatypes Iterable | DataTypesAbstractClass
     """
-    print("Recieved: ", len(datatypes), "Elements to add.")
     try:
         iter(datatypes)
     except TypeError:
@@ -38,16 +36,14 @@ def add_to_db(datatypes):
     table_name = table_dict[cls][0]
     db_coloumns = table_dict[cls][1]
     new = get_not_already_in_db(datatypes, table_name)
-    print(len(new), "Elements perceived as new.")
-    for cls in new:
-        db.executemany(
-            "INSERT INTO " + table_name + " VALUES "
-            + db_coloumns, cls.get_database_row())
+    db.executemany(
+        "INSERT INTO " + table_name + " VALUES "
+        + db_coloumns, [cls.get_database_row() for cls in new])
     db.commit()
 
 
 def get_not_already_in_db(datatypes, table_name):
-    #Letters already checked cannot be marked as unread and checked again.
+    #Emails already checked cannot be marked as unread and checked again.
     new = []
     if table_name == "Class":
         currently_in_db = get_all_classes()
@@ -58,7 +54,7 @@ def get_not_already_in_db(datatypes, table_name):
     for datatype in datatypes:
         if datatype not in currently_in_db:
             new.append(datatype)
-        return new
+    return new
 
 
 def connect_to_db():
@@ -73,7 +69,6 @@ def get_all_classes():
     :rtype tuple"""
     db = connect_to_db()
     db_rows = db.cursor().execute("SELECT * FROM Class").fetchall()
-    print("Apparently there are", len(db_rows), "items in Class table right now.")
     classes = []
     for r in db_rows:
         classes.append(AClass(r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7]))
@@ -170,4 +165,4 @@ def attempt_tables_creation(cursor):
         pass
 
 if __name__ == "__main__":
-    [print(i) for i in get_all_mail_uids()]
+    pass

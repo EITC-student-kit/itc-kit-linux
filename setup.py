@@ -11,5 +11,3 @@ setup(name='EITC-kit',
       packages=['ITCKit', 'ITCKit.core', 'ITCKit.db', 'ITCKit.gui', 'ITCKit.mail', 'ITCKit.settings',
                 'ITCKit.timetable', 'ITCKit.utils', 'ITCKit.gui.icon'],
       version='0.1')
-
-#'install_requires': [], #'gobject-introspection' 'GTK+3' 'python3', 'python3-gi', 'python3-keyring'
