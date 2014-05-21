@@ -1,245 +1,0 @@
-DTSTART:20140505T050000ZDTEND:20140505T060000ZSUMMARY:Philosophy [11\, 12\, 13\, 14\, 15]Subject code: I016
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Indrek Meos
-Type: Examination
-LOCATION:DTSTART:20140505T051500ZDTEND:20140505T064500ZSUMMARY:English [14\, 15]Subject code: I023
-Groups: 14\, 15
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140505T090000ZDTEND:20140505T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
-Groups: 15
-Academician: Kaido Saul
-Type: Practice
-LOCATION:415, 417DTSTART:20140506T051500ZDTEND:20140506T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Truls Ringkjob
-Type: Lecture
-LOCATION:314DTSTART:20140506T070000ZDTEND:20140506T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Peeter Lorents
-Type: Lecture
-LOCATION:314DTSTART:20140506T090000ZDTEND:20140506T103000ZSUMMARY:Enterprise Economics [14\, 15]Subject code: I006
-Groups: 14\, 15
-Academician: Lembit Viilup
-Type: Exercise
-LOCATION:314DTSTART:20140506T110000ZDTEND:20140506T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Tiia Tänav
-Type: Lecture
-LOCATION:314DTSTART:20140506T130000ZDTEND:20140506T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Lembit Viilup
-Type: Lecture
-LOCATION:314DTSTART:20140507T051500ZDTEND:20140507T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
-Groups: 15
-Academician: Tiia Tänav
-Type: Practice
-LOCATION:319DTSTART:20140507T070000ZDTEND:20140507T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Teet Evartson
-Type: Lecture
-LOCATION:314DTSTART:20140507T090000ZDTEND:20140507T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
-Groups: 15
-Academician: Peeter Lorents
-Type: Exercise
-LOCATION:316DTSTART:20140508T070000ZDTEND:20140508T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Kristiina Hakk
-Type: Lecture
-LOCATION:314DTSTART:20140508T130000ZDTEND:20140508T143000ZSUMMARY:English [14\, 15]Subject code: I023
-Groups: 14\, 15
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140512T090000ZDTEND:20140512T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
-Groups: 15
-Academician: Kaido Saul
-Type: Practice
-LOCATION:415, 417DTSTART:20140512T103000ZDTEND:20140512T123000ZSUMMARY:English [14\, 15]Subject code: I023
-Groups: 14\, 15
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140513T051500ZDTEND:20140513T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Truls Ringkjob
-Type: Lecture
-LOCATION:314DTSTART:20140513T070000ZDTEND:20140513T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Peeter Lorents
-Type: Lecture
-LOCATION:314DTSTART:20140513T090000ZDTEND:20140513T103000ZSUMMARY:Probability Theory and Mathematical Statistics [15]Subject code: I104
-Groups: 15
-Academician: Kristiina Hakk
-Type: Exercise
-LOCATION:410DTSTART:20140513T110000ZDTEND:20140513T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Tiia Tänav
-Type: Lecture
-LOCATION:314DTSTART:20140513T130000ZDTEND:20140513T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Lembit Viilup
-Type: Lecture
-LOCATION:314DTSTART:20140514T051500ZDTEND:20140514T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
-Groups: 15
-Academician: Tiia Tänav
-Type: Practice
-LOCATION:319DTSTART:20140514T070000ZDTEND:20140514T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Teet Evartson
-Type: Lecture
-LOCATION:314DTSTART:20140514T090000ZDTEND:20140514T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
-Groups: 15
-Academician: Peeter Lorents
-Type: Exercise
-LOCATION:219DTSTART:20140514T110000ZDTEND:20140514T123000ZSUMMARY:Computers [15]Subject code: I201
-Groups: 15
-Academician: Teet Evartson
-Type: Practice
-LOCATION:410DTSTART:20140515T070000ZDTEND:20140515T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Kristiina Hakk
-Type: Lecture
-LOCATION:314DTSTART:20140515T123000ZDTEND:20140515T143000ZSUMMARY:English [14\, 15]Subject code: I023
-Groups: 14\, 15
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140519T090000ZDTEND:20140519T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
-Groups: 15
-Academician: Kaido Saul
-Type: Practice
-LOCATION:415, 417DTSTART:20140519T103000ZDTEND:20140519T123000ZSUMMARY:English [14\, 15]Subject code: I023
-Groups: 14\, 15
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140520T051500ZDTEND:20140520T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Truls Ringkjob
-Type: Lecture
-LOCATION:314DTSTART:20140520T070000ZDTEND:20140520T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Peeter Lorents
-Type: Lecture
-LOCATION:314DTSTART:20140520T090000ZDTEND:20140520T103000ZSUMMARY:Enterprise Economics [14\, 15]Subject code: I006
-Groups: 14\, 15
-Academician: Lembit Viilup
-Type: Exercise
-LOCATION:314DTSTART:20140520T110000ZDTEND:20140520T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Tiia Tänav
-Type: Lecture
-LOCATION:314DTSTART:20140520T130000ZDTEND:20140520T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Lembit Viilup
-Type: Lecture
-LOCATION:314DTSTART:20140521T051500ZDTEND:20140521T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
-Groups: 15
-Academician: Tiia Tänav
-Type: Practice
-LOCATION:319DTSTART:20140521T070000ZDTEND:20140521T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Teet Evartson
-Type: Lecture
-LOCATION:314DTSTART:20140521T090000ZDTEND:20140521T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
-Groups: 15
-Academician: Peeter Lorents
-Type: Exercise
-LOCATION:316DTSTART:20140522T070000ZDTEND:20140522T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Kristiina Hakk
-Type: Lecture
-LOCATION:314DTSTART:20140522T123000ZDTEND:20140522T143000ZSUMMARY:English [14\, 15]Subject code: I023
-Groups: 14\, 15
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140526T090000ZDTEND:20140526T103000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
-Groups: 15
-Academician: Kaido Saul
-Type: Practice
-LOCATION:415, 417DTSTART:20140526T103000ZDTEND:20140526T123000ZSUMMARY:English [14\, 15]Subject code: I023
-Groups: 14\, 15
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140526T123000ZDTEND:20140526T133000ZSUMMARY:EnglishSubject code: 
-Groups: 
-Academician: Kärt Rummel
-Type: Consultation
-LOCATION:226DTSTART:20140527T051500ZDTEND:20140527T064500ZSUMMARY:Basics of Telecommunication [11\, 12\, 13\, 14\, 15]Subject code: I249
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Truls Ringkjob
-Type: Lecture
-LOCATION:314DTSTART:20140527T070000ZDTEND:20140527T083000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Peeter Lorents
-Type: Lecture
-LOCATION:314DTSTART:20140527T090000ZDTEND:20140527T103000ZSUMMARY:Probability Theory and Mathematical Statistics [15]Subject code: I104
-Groups: 15
-Academician: Kristiina Hakk
-Type: Exercise
-LOCATION:410DTSTART:20140527T110000ZDTEND:20140527T123000ZSUMMARY:Network Applications I: Client-Server Systems [11\, 12\, 13\, 14\, 15]Subject code: I244
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Tiia Tänav
-Type: Lecture
-LOCATION:314DTSTART:20140527T130000ZDTEND:20140527T143000ZSUMMARY:Enterprise Economics [11\, 12\, 13\, 14\, 15]Subject code: I006
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Lembit Viilup
-Type: Lecture
-LOCATION:314DTSTART:20140528T051500ZDTEND:20140528T064500ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
-Groups: 15
-Academician: Tiia Tänav
-Type: Practice
-LOCATION:319DTSTART:20140528T070000ZDTEND:20140528T083000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Teet Evartson
-Type: Lecture
-LOCATION:314DTSTART:20140528T090000ZDTEND:20140528T103000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [15]Subject code: I112
-Groups: 15
-Academician: Peeter Lorents
-Type: Exercise
-LOCATION:219DTSTART:20140528T110000ZDTEND:20140528T123000ZSUMMARY:Computers [15]Subject code: I201
-Groups: 15
-Academician: Teet Evartson
-Type: Practice
-LOCATION:410DTSTART:20140529T070000ZDTEND:20140529T083000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Kristiina Hakk
-Type: Lecture
-LOCATION:314DTSTART:20140529T110000ZDTEND:20140529T144500ZSUMMARY:Project I [11\, 12\, 13\, 14\, 15]Subject code: I350
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Toomas Lepikult
-Type: Prelim
-LOCATION:219DTSTART:20140529T123000ZDTEND:20140529T143000ZSUMMARY:English [14\, 15]Subject code: I023
-Groups: 14\, 15
-Academician: Kärt Rummel
-Type: Exercise
-LOCATION:226DTSTART:20140529T130000ZDTEND:20140529T140000ZSUMMARY:English [14\, 15]Subject code: I023
-Groups: 14\, 15
-Academician: Kärt Rummel
-Type: Examination
-LOCATION:226DTSTART:20140602T120000ZDTEND:20140602T133000ZSUMMARY:Computers [11\, 12\, 13\, 14\, 15]Subject code: I201
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Teet Evartson
-Type: Examination
-LOCATION:314DTSTART:20140605T090000ZDTEND:20140605T103000ZSUMMARY:Enterprise Economics [15]Subject code: I006
-Groups: 15
-Academician: Lembit Viilup
-Type: Examination
-LOCATION:319DTSTART:20140609T063000ZDTEND:20140609T093000ZSUMMARY:Network Applications I: Client-Server Systems [15]Subject code: I244
-Groups: 15
-Academician: Tiia Tänav
-Type: Examination
-LOCATION:317DTSTART:20140612T060000ZDTEND:20140612T064500ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Peeter Lorents
-Type: Exam consultation
-LOCATION:314DTSTART:20140612T070000ZDTEND:20140612T090000ZSUMMARY:Logic and Algorithms Theory /Discrete Mathematics [11\, 12\, 13\, 14\, 15]Subject code: I112
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Peeter Lorents
-Type: Examination
-LOCATION:314DTSTART:20140616T070000ZDTEND:20140616T090000ZSUMMARY:Probability Theory and Mathematical Statistics [11\, 12\, 13\, 14\, 15]Subject code: I104
-Groups: 11\, 12\, 13\, 14\, 15
-Academician: Kristiina Hakk
-Type: Examination
-LOCATION:314DTSTART:20140619T130000ZDTEND:20140619T160000ZSUMMARY:Basics of Telecommunication [15]Subject code: I249
-Groups: 15
-Academician: Avo Ots\, Truls Ringkjob\, Indrek Rokk\, Kaido Saul
-Type: Examination
-LOCATION:317

@@ -1,11 +1,11 @@
 import unittest
 from datetime import datetime
 
-from ITCKit.utils import converting
-from ITCKit.timetable import ical
-from ITCKit.db import dbc
-from ITCKit.core import datatypes
-from ITCKit.core.datatypes import Activity, EMail, Reminder, AClass
+from itc_kit.utils import converting
+from itc_kit.timetable import ical
+from itc_kit.db import dbc
+from itc_kit.core import datatypes
+from itc_kit.core.datatypes import Activity, EMail, Reminder, AClass
 
 
 class TestDatatypes(unittest.TestCase):
@@ -59,7 +59,7 @@ class TestUtils(unittest.TestCase):
 class TestDB(unittest.TestCase):
 
     def test_add_to_db(self):
-        from ITCKit.timetable import ical
+        from itc_kit.timetable import ical
         ical.parse_icals()
         dt = datetime.now()
         dbc.add_to_db(AClass('', '', '', '', dt, dt, '', '', False))

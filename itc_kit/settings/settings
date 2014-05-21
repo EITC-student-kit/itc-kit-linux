@@ -1,0 +1,27 @@
+{
+    "Conky": {
+        "activated": false,
+        "color": "0x000000",
+        "days": 3
+    },
+    "EMail": {
+        "activated": false,
+        "first_time": false,
+        "username": ""
+    },
+    "Notification": {
+        "activated": true
+    },
+    "Other": {
+        "icon_path": "/.itc-kit/icons/itc-icon.png"
+    },
+    "Time manager": {
+        "activated": false
+    },
+    "Timetable": {
+        "activated": false,
+        "automatic_update": false,
+        "main_url": "",
+        "user_url": ""
+    }
+}

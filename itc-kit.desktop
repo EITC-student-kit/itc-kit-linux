@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=itc-kit
+Exec=itc-kit.py
+Icon=itc-icon
+Type=Application
+Categories=Productivity;

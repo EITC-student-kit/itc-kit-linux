@@ -1,0 +1,15 @@
+Requires: Conky (sudo apt-get install conky-all),
+Sqlite3-dev (sudo apt-get install libsqlite3-dev),
+Luarocks (sudo apt-get install luarocks),
+LuaSqlite (sudo luarocks install lsqlite3)
+
+1. Place folder "conky" in /home/ITCKit
+2. Run by Start_Conky
+
+Changelog:
+18.03.2014- Created proper folder layout.
+18.03.2014- Created rings, table, stats conky properties files (table, stats contain dummy info).
+18.03.2014- Modified rings.lua according to the design (currently displays only cpu).
+18.03.2014- Created table.lua from scratch (currently displays "Hello World").
+18.03.2014- Added custom font "Data Control".
+
