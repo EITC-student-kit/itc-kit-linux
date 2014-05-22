@@ -52,7 +52,7 @@ Activating the plugin should prompt you for an email and password. Here use your
 
 You should now see the indicator alert and notify you of the sender when you have new unread email.
 
-*Note: If you name is for example Mikk Pulk then although your username is **mpulk** your email is still **mikk.pulk@itcollege.ee***
+*Note: If you name is for example Mikk Pulk then although your username is mpulk your email is still **mikk.pulk@itcollege.ee***
 
 ### Reminders
 
