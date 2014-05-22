@@ -3,20 +3,20 @@
         "activated": false,
         "color": "0x000000",
         "days": 3,
-        "dbPath": "/home/aili/EITC-kit/Linux-version/ITCKit/db/itckitdb",
-        "scriptPath": "/home/aili/EITC-kit/Linux-version/ITCKit/conky/Start_Conky"
+        "dbPath": "/home/kristo/EITC-kit/Linux-version/ITCKit/db/itckitdb",
+        "scriptPath": "/home/kristo/EITC-kit/Linux-version/ITCKit/conky/Start_Conky"
     },
     "EMail": {
         "activated": true,
         "first_time": false,
-        "scriptPath": "/home/aili/.local/share/Trash/files/build/lib/ITCKit/mail/password_retrieval.py",
+        "scriptPath": "/home/kristo/EITC-kit/Linux-version/ITCKit/mail/password_retrieval.py",
         "username": "kristo.koert@itcollege.ee"
     },
     "Notification": {
         "activated": false
     },
     "Other": {
-        "icon_path": "/home/aili/EITC-kit/Linux-version/ITCKit/gui/icon/Icon1.png"
+        "icon_path": "/home/kristo/EITC-kit/Linux-version/ITCKit/gui/icon/Icon2.png"
     },
     "Time manager": {
         "activated": true
@@ -24,8 +24,10 @@
     "Timetable": {
         "activated": true,
         "automatic_update": false,
-        "dbPath": "/home/aili/EITC-kit/Linux-version/ITCKit/db/itckitdb",
+        "dbPath": "/home/kristo/EITC-kit/Linux-version/ITCKit/db/itckitdb",
+        "main_ical_path": "",
         "main_url": "https://itcollege.ois.ee/en/timetable/ical?curriculum_id=2&key=01d8d5cbdbb9881fbf103f61c36955e731531a28",
+        "user_ical_path": "",
         "user_url": ""
     }
 }

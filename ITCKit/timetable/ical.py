@@ -2,7 +2,7 @@ __author__ = 'Kristo Koert'
 
 from ITCKit.utils import converting, tools
 from ITCKit.core.datatypes import AClass
-from ITCKit.settings.settings import get_timetable_settings, USER_ICAL_PATH, MAIN_ICAL_PATH
+from ITCKit.settings.settings import get_timetable_settings
 from ITCKit.db import dbc
 
 keywords = ["Subject code: ", "Groups: ", "Type: ", "DTSTART:", "DTEND:", "SUMMARY:",
@@ -49,12 +49,12 @@ def _get_relevant_lines(ical_text):
 
 
 def _write_to_user_ical(ical_text):
-    user_file_path = USER_ICAL_PATH
+    user_file_path = get_timetable_settings()['user_ical_path']
     open(user_file_path, "w").write(_get_relevant_lines(ical_text))
 
 
 def _write_to_main_ical(ical_text):
-    main_file_path = MAIN_ICAL_PATH
+    main_file_path = get_timetable_settings()['user_ical_path']
     open(main_file_path, "w").write(_get_relevant_lines(ical_text))
 
 
@@ -138,8 +138,8 @@ def parse_icals():
     user_classes = []
     main_classes = []
 
-    user_ical = open(USER_ICAL_PATH, "r").read()
-    main_ical = open(USER_ICAL_PATH, "r").read()
+    user_ical = open(get_timetable_settings()['main_ical_path'], "r").read()
+    main_ical = open(get_timetable_settings()['user_ical_path'], "r").read()
 
     parameters = _collect_parameters(user_ical, parameters_dict)
     for i in range(len(parameters["DTSTART:"])):
