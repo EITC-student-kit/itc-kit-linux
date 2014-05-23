@@ -1,3 +1,5 @@
+<img src="http://www.itcollege.ee/wp-content/themes/itk/images/logo_small.png" />
+
 itc-kit
 ======
 
@@ -26,11 +28,15 @@ sudo sh install.sh
 
 This will perform an update for the latest packages, install the necessary dependencies and create a file structure in your home directory (hidden directory .itc-kit). 
 
-An application launcher named "itc-kit" is created. The application can also be run from the terminal with the command "itc-kit.py" or alias "itc".
+An application launcher named "itc-kit" is created. The application can also be run from the terminal with the command "itc-kit.py" or the alias "itc".
+
+<img src="http://enos.itcollege.ee/~kkoert/app_launcher_small.png" />
 
 The program creates a toolbar indicator with the IT college icon where you can access all functionality.
 
-*Running an untrusted shell script with root privleges can be dangerous, you should check the content of the script first.*
+<img src="http://enos.itcollege.ee/~kkoert/All_small.png" />
+
+*Note: Running an untrusted shell script with root privleges can be dangerous, you should check the content of the script first.*
 
 *Don't worry it's simple. :)*
 
@@ -46,17 +52,23 @@ After activating it from the plugins menu you should see a transparent empty tim
 
 *Note: Currently the application only supports the english version of the timetable. ÕIS Language can be changed in the upper left corner.*
 
+<img src="http://enos.itcollege.ee/~kkoert/timetable.png" />
+
 ### Email
 
 Activating the plugin should prompt you for an email and password. Here use your IT college email username and password.
 
-You should now see the indicator alert and notify you of the sender when you have new unread email.
+You should now see the indicator alert and see the the sender when you have new unread email.
+
+<img src="http://enos.itcollege.ee/~kkoert/email_small.png" />
 
 *Note: If you name is for example Mikk Pulk then although your username is mpulk your email is still **mikk.pulk@itcollege.ee***
 
 ### Reminders
 
 This plugin allows you to create reminders that will trigger at the specified time in the application indicator.
+
+<img src="http://enos.itcollege.ee/~kkoert/stahp_small.png" />
 
 ### Productivity tracker
 
