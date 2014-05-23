@@ -72,3 +72,30 @@ This plugin allows you to create reminders that will trigger at the specified ti
 
 This plugin has not been completely implemented yet. Though it can be used and everything works the display conky element is currently not functional. 
 
+### Development Team
+
+Itc-kit was created by:
+
+[Kristo Koert](https://github.com/KristoKoert) (Software architecture, all python code, installation script)
+
+[Johannes Vatsfeld](https://github.com/JVats)
+ (Design choices, all lua code, conky configuration files)
+
+[Sten Luhtoja](https://github.com/Steckenbauer)
+ (Contributed to designing/testing ical parsing system)
+ 
+### Contact
+
+Kristo Koert email "kristo.koert@gmail.com"
+
+[Kristo's facebook](https://www.facebook.com/kristo.koert)
+
+Note: Olen tavaline tudeng, võtke julgelt ühendust kui probleeme, soovitusi või tahate panustada. :) 
+
+### Contributing
+
+All pull request are welcome!
+
+### Licence
+
+Itc-kit is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
