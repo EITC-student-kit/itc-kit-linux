@@ -30,7 +30,7 @@ An application launcher named "itc-kit" is created. The application can also be 
 
 <img src="http://enos.itcollege.ee/~kkoert/app_launcher_small.png" />
 
-The program creates a toolbar indicator with the IT college icon where you can access all functionality.
+Running the program creates a toolbar indicator with the IT college icon where you can access all functionality.
 
 <img src="http://enos.itcollege.ee/~kkoert/All_small.png" />
 
