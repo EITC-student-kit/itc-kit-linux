@@ -1,6 +1,4 @@
-<img src="http://www.itcollege.ee/wp-content/themes/itk/images/logo_small.png" />
-
-itc-kit
+<img src="http://www.itcollege.ee/wp-content/themes/itk/images/logo_small.png" /> itc-kit
 ======
 
 This application is a collection of some tools suitable for a student in the Estonian Information technology college.
