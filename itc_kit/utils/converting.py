@@ -22,7 +22,7 @@ def ical_datetime_to_timestamp(ical_dt):
     """
     from sqlite3 import Timestamp
     ical_dt = ical_dt[ical_dt.find(':') + 1:].replace("T", "")
-    return Timestamp(int(ical_dt[:4]), int(ical_dt[4:6]), int(ical_dt[6:8]), int(ical_dt[8:10]) + 2, int(ical_dt[10:12]))
+    return Timestamp(int(ical_dt[:4]), int(ical_dt[4:6]), int(ical_dt[6:8]), int(ical_dt[8:10]) + 3, int(ical_dt[10:12]))
 
 
 def to_list(some_val):
