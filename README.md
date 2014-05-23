@@ -1,7 +1,7 @@
 <img src="http://www.itcollege.ee/wp-content/themes/itk/images/logo_small.png" /> itc-kit
 ======
 
-This application is a collection of some tools suitable for a student in the Estonian Information technology college.
+This application is a collection of some tools suitable for a student in the Estonian information technology college.
 
 The application was developed for the Ubuntu linux distribution and can probably run on any linux distibution that runs a desktop environment that uses [GTK](http://en.wikipedia.org/wiki/Category:Desktop_environments_based_on_GTK%2B)
 (Notable exception KDE). *Though it has yet to be properly tested.*
@@ -16,7 +16,7 @@ The application comes with four main functionalities:
  
 ### Installation
 
-Just install the .zip of this repo, extract anywhere and run the install.sh script inside. 
+Just install the .zip of this repo, extract anywhere and run the install.sh script inside with root privleges. 
 
 In Ubuntu terminal:
 ```shell
@@ -78,7 +78,7 @@ Itc-kit was created by:
 
 [Kristo Koert](https://github.com/KristoKoert) (Software architecture, all python code, installation script)
 
-[Johannes Vatsfeld](https://github.com/JVats)
+[Johannes Vatsfeldt](https://github.com/JVats)
  (Design choices, all lua code, conky configuration files)
 
 [Sten Luhtoja](https://github.com/Steckenbauer)
