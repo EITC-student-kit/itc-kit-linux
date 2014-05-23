@@ -1,3 +1,3 @@
 __author__ = 'Kristo Koert'
 
-from ITCKit.utils import *
+from itc_kit.utils import *
