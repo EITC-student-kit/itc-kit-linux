@@ -104,10 +104,10 @@ class MainMenu(Gtk.Menu):
     def on_notification_checked(self, widget):
         self.notification_message = "Checked"
 
-    @staticmethod
-    def on_exit(widget):
-        #ToDo implement
-        Gtk.main_quit()
+    def on_exit(self, widget):
+        import os
+        cmd = "sh " + os.getenv("HOME") + "/.itc-kit/kill_program.sh"
+        os.system(cmd)
 
 
 class BaseSubMenu(Gtk.Menu):
@@ -152,28 +152,15 @@ class PluginSubMenu(BaseSubMenu):
         for widget in self.menu_items:
             widget.connect("activate", self.click_plugin)
 
-        #GLib.timeout_add(10, self.handler_timeout)
-
-    def handler_timeout(self):
-        #ToDo implement changin labels
-        for i in range(NR_OF_PLUGINS):
-            if get_state(self.menu_refs[i].__class__.__name__):
-                self.menu_items[i].hide()
-            else:
-                self.menu_items[i].show()
-        return True
-
     def click_plugin(self, widget):
         ref_indx = self.menu_items.index(widget)
         state = get_state(self.menu_refs[ref_indx].__class__.__name__)
         if state:
             self.menu_refs[ref_indx].set_active_in_settings(False)
-            #new_lbl = widget.get_label().replace("[On]", "[Off]")
-            #self.widget.set_label(new_lbl)
         elif not state:
+            if isinstance(self.menu_refs[ref_indx], MailSubMenu):
+                windows.open_set_credentials()
             self.menu_refs[ref_indx].set_active_in_settings(True)
-            #new_lbl = widget.get_label().replace("[Off]", "[On]")
-            #self.widget.set_label(new_lbl)
         else:
             print("State:", state)
             raise RuntimeError
@@ -192,11 +179,12 @@ class PluginSubMenu(BaseSubMenu):
             ref = self.plugins[key]["menu_ref"]
             if is_active:
                 lbl = ref.menu_item_lbl
-                menu.append(Gtk.MenuItem(lbl))
+                menu.append(Gtk.CheckMenuItem(lbl))
                 refs.append(ref)
+                menu[-1].set_active(True)
             else:
                 lbl = ref.menu_item_lbl
-                menu.append(Gtk.MenuItem(lbl))
+                menu.append(Gtk.CheckMenuItem(lbl))
                 refs.append(ref)
         return menu, refs
 

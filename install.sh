@@ -35,6 +35,7 @@ mkdir ~/.itc-kit
 
 cp itc_kit/settings/settings ~/.itc-kit
 cp itc_kit/db/itckitdb ~/.itc-kit
+cp itc_kit/gui/kill_program.sh ~/.itc-kit
 touch ~/.itc-kit/user_ical
 touch ~/.itc-kit/main_ical
 

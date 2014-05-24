@@ -5,23 +5,19 @@ from itc_kit.timetable import ical
 from itc_kit.core import datatypes
 from gi.repository import Gtk, Gdk, GLib
 from datetime import datetime
-import threading
-
-#Inheriting threading safe to remove?
 
 
-class BaseWindow(Gtk.Window, threading.Thread):
+class BaseWindow(Gtk.Window):
     """
     Classes inheriting this are meant to be used as popup windows for task not possible to conduct in the menus.
     """
 
     def __init__(self, title=""):
         Gtk.Window.__init__(self, title=title)
-        threading.Thread.__init__(self)
 
     def open_error_window(self, message, text):
         dialog = Gtk.MessageDialog(self, 0, Gtk.MessageType.ERROR,
-                               Gtk.ButtonsType.CANCEL, message)
+                                   Gtk.ButtonsType.CANCEL, message)
         dialog.format_secondary_text(text)
         dialog.run()
         dialog.destroy()
@@ -295,9 +291,11 @@ class SetCredentialsWindow(BaseWindow):
         row1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         row2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         row3 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        rowW = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
 
         rows.add(row1)
         rows.add(row2)
+        rows.add(rowW)
         rows.add(row3)
 
         self.add(rows)
@@ -316,7 +314,10 @@ class SetCredentialsWindow(BaseWindow):
         self.password_entry.set_visibility(False)
         row2.pack_end(self.password_entry, True, True, 10)
 
+        self.warning_label = Gtk.Label("For the change to take effect, please restart the app.")
+        rowW.pack_start(self.warning_label, True, True, 1)
         self.confirm_button = Gtk.Button("Confirm")
+
         self.confirm_button.connect("clicked", self.on_confirm_clicked)
         row3.pack_start(self.confirm_button, True, True, 1)
 
@@ -324,20 +325,19 @@ class SetCredentialsWindow(BaseWindow):
         from itc_kit.mail.password_retention import save_to_keyring
         #ToDo implement a username, password validity check
         save_to_keyring(self.username_entry.get_text(), self.password_entry.get_text())
+        self.destroy()
 
 
 def open_set_credentials():
     win = SetCredentialsWindow()
     win.connect("delete-event", win.on_close)
     win.show_all()
-    win.start()
 
 
 def open_update_timetable():
     win = UpdatingTimetableWindow()
     win.connect("delete-event", win.on_close)
     win.show_all()
-    win.start()
 
 
 def open_set_ical_url():
@@ -357,7 +357,3 @@ def open_customize_timetable():
     win.connect('delete-event', win.on_close)
     win.show_all()
 
-
-def open_warning_window():
-    #ToDo implement for use when activating mail without credentials set.
-    pass
