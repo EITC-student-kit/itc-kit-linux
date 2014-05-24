@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime
 
-from itc_kit.utils import converting
+from itc_kit.utils import converting, tools
 from itc_kit.timetable import ical
 from itc_kit.db import dbc
 from itc_kit.core import datatypes
@@ -32,6 +32,17 @@ class TestDatatypes(unittest.TestCase):
                                    "213A", "Max", False)
         self.assertEquals(a_class.get_database_row(), ("I290", "Math", "12, 13, 14", "Practice", dt1,
                                                        dt2, "213A", "Max", False))
+
+    def test_est_timezone(self):
+        est = datatypes.EstonianTimezone()
+        time_x = datetime.now()
+        cut_off = len(str(time_x))
+        time_a = datetime(2014, 1, 20, 3, tzinfo=est) # Before daylight saving +02
+        time_b = datetime(2014, 12, 20, 3, tzinfo=est) # After daylight saving +02
+        time_c = datetime(2014, 5, 25, 3, tzinfo=est) # During daylight saving +03
+        self.assertEqual(str(datetime(time_a, tzinfo=est))[0:cut_off], "+02:00")
+        self.assertEqual(str(datetime(time_b, tzinfo=est))[0:cut_off], "+02:00")
+        self.assertEqual(str(datetime(time_c, tzinfo=est))[0:cut_off], "+03:00")
 
 
 class TestIcal(unittest.TestCase):

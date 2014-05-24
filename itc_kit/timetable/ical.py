@@ -81,7 +81,8 @@ def _format_parameters(old_parameters):
     Parameters are converted to their proper forms.
 
     :type old_parameters: dict
-    :rtype: dict"""
+    :rtype: dict
+    """
 
     #ToDo is this string stripping really neccesary? Probably a misunderstanding of what these symbols mean.
 

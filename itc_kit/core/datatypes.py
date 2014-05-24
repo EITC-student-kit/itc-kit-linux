@@ -138,8 +138,9 @@ class AClass(DataTypesAbstractClass):
         :type attendible: bool
         """
         DataTypesAbstractClass.__init__(self)
-        self._create_database_row(subject_code, subject_name, attending_groups, class_type, start_timestamp,
-                                  end_timestamp, classroom, academician, attendible)
+        self._create_database_row(subject_code, subject_name, attending_groups, class_type,
+                                  start_timestamp, end_timestamp,
+                                  classroom, academician, attendible)
 
     def __str__(self):
         return str(self.get_database_row())
@@ -147,3 +148,4 @@ class AClass(DataTypesAbstractClass):
     def __eq__(self, other):
         """Last element attendible row in database can differ and still be the same description."""
         return self.get_database_row()[:-1] == other.get_database_row()[:-1]
+
