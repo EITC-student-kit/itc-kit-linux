@@ -7,8 +7,13 @@ from gi.repository import Gtk, Gdk, GLib
 from datetime import datetime
 import threading
 
+#Inheriting threading safe to remove?
+
 
 class BaseWindow(Gtk.Window, threading.Thread):
+    """
+    Classes inheriting this are meant to be used as popup windows for task not possible to conduct in the menus.
+    """
 
     def __init__(self, title=""):
         Gtk.Window.__init__(self, title=title)
@@ -26,6 +31,10 @@ class BaseWindow(Gtk.Window, threading.Thread):
 
 
 class CustomizeTimetableWindow(BaseWindow):
+    """
+    Class not implemented
+    """
+    #ToDo implement CustomizeTimetableWindow
 
     def __init__(self):
         BaseWindow.__init__(self, title="Set ical URL")
@@ -63,6 +72,11 @@ class CustomizeTimetableWindow(BaseWindow):
 
 
 class SetIcalURLWindow(BaseWindow):
+    """
+    This class does what it's name implies.
+
+    It is of note that the url verification might not be fool proof.
+    """
 
     _is_checking_url = False
     info_label = "Tip: Log into OIS -> My Schedule -> iCal"
@@ -129,6 +143,13 @@ class SetIcalURLWindow(BaseWindow):
 
 
 class UpdatingTimetableWindow(BaseWindow):
+    """
+    This class opens a window that runs the underling processes that download the ical file at the url specified in the
+    settings ical file.
+
+    It is of note that the error messages displayed in the window when something goes awry are exceptions thrown in the
+    timetable module.
+    """
 
     _has_updated = False
     info_label = "Updating.."
@@ -170,6 +191,7 @@ class UpdatingTimetableWindow(BaseWindow):
             ical.update_icals()
             self.info_label = "Done updating!"
         except Exception as error_message:
+            #ToDo Does it have to be the first element of the error message?
             from socket import gaierror
             if isinstance(error_message.args[0], gaierror):
                 self.info_label = "No internet connection."
@@ -199,7 +221,9 @@ class UpdatingTimetableWindow(BaseWindow):
 
 
 class AddReminderWindow(BaseWindow):
-
+    """
+    This class opens a window where reminders can be added.
+    """
     _info_label = ""
 
     def __init__(self):
@@ -257,6 +281,11 @@ class AddReminderWindow(BaseWindow):
 
 
 class SetCredentialsWindow(BaseWindow):
+    """
+    Simple window that allows the user to enter a username and password and save those in a keyring.
+
+    Note: Currently does not conduct a validity check of the credentials which can result in problems.
+    """
 
     def __init__(self):
         BaseWindow.__init__(self, title="Set Credentials")
@@ -293,6 +322,7 @@ class SetCredentialsWindow(BaseWindow):
 
     def on_confirm_clicked(self, widget):
         from itc_kit.mail.password_retention import save_to_keyring
+        #ToDo implement a username, password validity check
         save_to_keyring(self.username_entry.get_text(), self.password_entry.get_text())
 
 
@@ -328,5 +358,6 @@ def open_customize_timetable():
     win.show_all()
 
 
-if __name__ == "__main__":
+def open_warning_window():
+    #ToDo implement for use when activating mail without credentials set.
     pass

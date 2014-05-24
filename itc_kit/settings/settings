@@ -10,7 +10,7 @@
         "username": ""
     },
     "Notification": {
-        "activated": true
+        "activated": false
     },
     "Other": {
         "icon_path": "/.itc-kit/icons/itc-icon.png"

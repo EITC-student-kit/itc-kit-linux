@@ -7,14 +7,17 @@ from itc_kit.db import dbc
 
 
 class NotificationHandler(Thread):
-    """Handles checking if there are any notifications in a database that are due and raises an alarm if they are."""
+    """
+    Handles checking if there are any notifications in the database that are due and raises an alarm if they are.
+    """
 
     _notifications = []
     _notification_to_raise = []
 
     def __init__(self, indicator, main_menu):
-        """Sets an Indicator object to be used as the place where a notification is raised, if needed. More info on the
-        notification will be displayed on the menu_item.
+        """
+        Sets an Indicator object to be used as the place where a notification is raised, if needed. More info on the
+        notification will be displayed on the supplied menu_item.
 
         :param indicator: channel for raising the notification
         :type indicator: ToolbarIndicator
@@ -26,20 +29,23 @@ class NotificationHandler(Thread):
         self._main_menu_reference = main_menu
 
     def run(self):
-        """When thread is started, an endless loop ensues. Constantly checking if any notifications should be raised.
-        The notifications are constantly reread into the list to assure up do date information."""
+        """
+        When thread is started, an endless loop ensues. Constantly checking if any notifications should be raised.
+        The notifications are constantly reread into the list to assure up do date information.
+        """
         while True:
             if self._main_menu_reference.notification_message == "Checked" and self._indicator_reference.notification_raised:
                 self.remove_notification()
             self._notifications = dbc.get_all_notifications()
-            #print(len(self._notifications))
             [self._notification_to_raise.append(new_notif) for new_notif in self._get_due_notifications()]
             self._attempt_to_raise_latest_notification()
-            sleep(1)
+            sleep(5)
 
     def _get_due_notifications(self):
-        """Return notifications that need to be raised and are not already in _notifications_to_raise.
-        :rtype Notification"""
+        """
+        Return notifications that need to be raised and are not already in _notifications_to_raise.
+        :rtype list
+        """
         new_notifs_to_raise = []
         if len(self._notifications) != 0:
             for notif in self._notifications:
@@ -52,7 +58,8 @@ class NotificationHandler(Thread):
             self._raise_notification(self._notification_to_raise[0])
 
     def _raise_notification(self, notif):
-        """Raises notification in Indicator and displays message in the menu item.
+        """
+        Raises notification in Indicator and displays message in the menu item.
 
         param: notif: A notification
         type: notif: Notification
@@ -60,21 +67,20 @@ class NotificationHandler(Thread):
         self._indicator_reference.notification_raised = True
         self._main_menu_reference.notification_display_widget.show()
         if notif.get_database_row()[0] == "EMail":
-            #ToDo switch ATTENTION icons to email
             self._indicator_reference.set_notification_icon("email")
             self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ATTENTION)
             self._main_menu_reference.notification_message = "EMail from: " + notif.get_database_row()[2]
         elif notif.get_database_row()[0] == "Reminder":
-            #ToDo switch ATTENTION icons to reminder
             self._indicator_reference.set_notification_icon("Reminder")
             self._indicator_reference.indc.set_status(AppIndicator.IndicatorStatus.ATTENTION)
             self._main_menu_reference.notification_message = "Reminder: " + notif.get_database_row()[2]
         else:
-            print("Unable to raise notification.")
-            raise RuntimeError
+            raise RuntimeError("Unable to raise notification.")
 
     def remove_notification(self):
-        """Hide widget and reset indicator status."""
+        """
+        Hide widget and reset indicator status.
+        """
         db = dbc.connect_to_db()
         db.execute("DELETE from Notification where type = ? and time = ? and message = ?",
                    self._notification_to_raise[0].get_database_row())
@@ -83,6 +89,3 @@ class NotificationHandler(Thread):
         self._indicator_reference.notification_raised = False
         del self._notification_to_raise[0]
         self._main_menu_reference.notification_display_widget.hide()
-
-if __name__ == "__main__":
-    pass

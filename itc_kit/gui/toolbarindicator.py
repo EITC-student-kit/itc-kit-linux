@@ -12,7 +12,11 @@ from itc_kit.gui.menus import MainMenu
 
 
 class ToolbarIndicator():
+    """
+    This class creates a icon indicator in a GTK toolbar.
+    """
 
+    #Unneccesary
     _tracked_time = ''
     notification_raised = False
 
@@ -35,8 +39,8 @@ class ToolbarIndicator():
 
 
 def activate_toolbar():
+    """
+    :rtype ToolbarIndicator
+    """
     gui = ToolbarIndicator()
     return gui
-
-if __name__ == "__main__":
-    activate_toolbar()

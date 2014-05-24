@@ -1,10 +1,10 @@
 __author__ = 'Kristo Koert'
 
-import imaplib
 import threading
 import email
 import time
 import subprocess
+from imaplib import IMAP4_SSL
 from itc_kit.settings.settings import get_email_settings
 from itc_kit.settings import settings
 from itc_kit.db import dbc
@@ -13,7 +13,12 @@ from os import getenv
 
 
 class MailHandler(threading.Thread):
+    """
+    This class deals with checking for new unread email at outlook.office365.com.
 
+    This class is a thread that is run on activation of the app that waits idly until the EMail objects value activated
+     is set to true in the ical setting file. After this has happened it will try to connect to a account
+    """
     connection = None
 
     def __init__(self):
@@ -29,7 +34,7 @@ class MailHandler(threading.Thread):
 
     def connect_to_account(self):
         try:
-            mail_service = imaplib.IMAP4_SSL('outlook.office365.com')
+            mail_service = IMAP4_SSL('outlook.office365.com')
             cmd = "python3 " + getenv("HOME") + "/.itc-kit/password_retrieval.py"
             out = subprocess.check_output(args=cmd, shell=True)
             psw = out.decode()

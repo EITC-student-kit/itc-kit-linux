@@ -7,6 +7,7 @@ from itc_kit.settings import settings
 from itc_kit.db import dbc
 from itc_kit.gui import windows
 
+#Used to generated menu widgets dynamically
 NR_OF_PLUGINS = 0
 
 
@@ -16,21 +17,27 @@ def add_plugin():
 
 
 def get_state(sub_menu):
+    """
+    :return The state of a plugin
+    :rtype bool
+    """
     key = "activated"
     states = {TimetableSubMenu.__name__: settings.get_timetable_settings()[key],
-              #"Timetable": settings.get_timetable_settings()[key],
               MailSubMenu.__name__: settings.get_email_settings()[key],
-              #"Email": settings.get_email_settings()[key],
               NotificationSubMenu.__name__: settings.get_notification_settings()[key],
-              #"Notification": settings.get_notification_settings()[key],
               TimeManagerSubMenu.__name__: settings.get_time_manager_settings()[key],
-              #"Time manager": settings.get_time_manager_settings()[key],
               ConkySubMenu.__name__: settings.get_conky_settings()[key]}
-              #"Conky": settings.get_conky_settings()[key]}
     return states[sub_menu]
 
 
 class MainMenu(Gtk.Menu):
+    """
+    This class creates the main menu in the application indicator
+
+    Many of the variables that are created in this class are used in the submenus to create the proper menu setup.
+    """
+
+    #Used as a way to notify notification_system that a notification has been checked
     notification_message = "Checked"
 
     def __init__(self, indicator):
@@ -48,6 +55,7 @@ class MainMenu(Gtk.Menu):
                            Gtk.ImageMenuItem("Notification Display"),
                            Gtk.ImageMenuItem("Exit")]
 
+        #Creates a dictionary where the keys are the name of a class and the values are instances
         for sub_menu in BaseSubMenu.__subclasses__():
             if sub_menu.__name__ != "PluginSubMenu":
                 self.sub_menus[sub_menu.__name__] = sub_menu()
@@ -82,6 +90,9 @@ class MainMenu(Gtk.Menu):
         return True
 
     def handler_timeout2(self):
+        """
+        Sets the menu state, what widgets should be shown or hidden
+        """
         global NR_OF_PLUGINS
         for i in range(NR_OF_PLUGINS):
             if get_state(self.menu_items[i].get_submenu().__class__.__name__):
@@ -95,11 +106,14 @@ class MainMenu(Gtk.Menu):
 
     @staticmethod
     def on_exit(widget):
-        #Not working
+        #ToDo implement
         Gtk.main_quit()
 
 
 class BaseSubMenu(Gtk.Menu):
+    """
+    Classes inheriting from this class are expected to be added to plugins
+    """
     menu_item_lbl = None
 
     def __init__(self, identity, lbl):
@@ -112,6 +126,10 @@ class BaseSubMenu(Gtk.Menu):
 
 
 class PluginSubMenu(BaseSubMenu):
+    """
+    This class generates a submenu of the available plugins by using the variables created on the creation
+    of the MainMenu.
+    """
 
     def __init__(self, main_menu_ref):
         super(PluginSubMenu, self).__init__(self.__class__.__name__, "Plugins")
@@ -137,6 +155,7 @@ class PluginSubMenu(BaseSubMenu):
         #GLib.timeout_add(10, self.handler_timeout)
 
     def handler_timeout(self):
+        #ToDo implement changin labels
         for i in range(NR_OF_PLUGINS):
             if get_state(self.menu_refs[i].__class__.__name__):
                 self.menu_items[i].hide()
@@ -160,6 +179,12 @@ class PluginSubMenu(BaseSubMenu):
             raise RuntimeError
 
     def make_menu(self):
+        """
+        Creates a menu based on all the classes that have inherited BaseSubMenu with some
+        manually inserted exceptions.
+
+        :rtype list
+        """
         menu = []
         refs = []
         for key in self.plugins:
@@ -176,6 +201,14 @@ class PluginSubMenu(BaseSubMenu):
         return menu, refs
 
     def make_submenus_dict(self):
+        """
+        Creates a dictionary where the keys are names of the classes that have inherited BaseSubMenu (with some exceptions)
+        The corresponding value is another dictonary with the keys "active?" which returns whether the menu is
+        currently active and "menu_ref" which returns the refrence for the menu.
+
+        :rtype dict
+        """
+
         d = dict()
         for key in self.main_menu_ref.sub_menus.keys():
             d[key] = {"active?": get_state(key), "menu_ref": self.main_menu_ref.sub_menus[key]}
@@ -183,6 +216,7 @@ class PluginSubMenu(BaseSubMenu):
 
 
 class TimeManagerSubMenu(BaseSubMenu):
+
     _stopper = None
     _display_label = ''
 
@@ -286,11 +320,12 @@ class TimeManagerSubMenu(BaseSubMenu):
             self.display_widget.hide()
             #self.undo_widget.hide()
         else:
-            print("state parameter need to be either Tracking, Activated or Not activated")
+            print("state parameter need to be either tracking or activated.")
             raise RuntimeError
 
 
 class TimetableSubMenu(BaseSubMenu):
+
     def __init__(self):
         add_plugin()
         super(TimetableSubMenu, self).__init__(self.__class__.__name__, "Timetable")
@@ -326,6 +361,7 @@ class TimetableSubMenu(BaseSubMenu):
 
 
 class NotificationSubMenu(BaseSubMenu):
+
     def __init__(self):
         add_plugin()
         super(NotificationSubMenu, self).__init__(self.__class__.__name__, "Notification")

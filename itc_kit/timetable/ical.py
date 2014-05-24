@@ -6,13 +6,22 @@ from itc_kit.settings.settings import get_timetable_settings
 from itc_kit.db import dbc
 from os import getenv
 
+
+#ToDo imlement the main ical system for use with the customize timetable function
 #MAIN_ICAL_PATH = getenv("HOME") + "/.itc-kit/main_ical"
 USER_ICAL_PATH = getenv("HOME") + "/.itc-kit/user_ical"
+
+#Switching the keywords for the appropriate Estonian keywords should work for parsing the estonian ical file.
+#ToDo implement estonian ical parsing
+
 KEYWORDS = ["Subject code: ", "Groups: ", "Type: ", "DTSTART:", "DTEND:", "SUMMARY:",
             "LOCATION:", "Academician: "]
 
 
 def _contains_keyword(line):
+    """
+    :rtype bool
+    """
     for key in KEYWORDS:
         if key in line:
             return True
@@ -20,9 +29,12 @@ def _contains_keyword(line):
 
 
 def _all_parameters_equal(parameters):
-    """Checks if all the parameters are of equal length.
+    """
+    Checks if all the parameters are of equal length.
+
     :type parameters: dict
     :raises AssertionError"""
+
     number_of_events = len(parameters["DTSTART:"])
     for key in KEYWORDS:
         try:
@@ -33,9 +45,12 @@ def _all_parameters_equal(parameters):
 
 
 def _get_relevant_lines(ical_text):
-    """Returns only the lines relevant for the processes in this file.
+    """
+    Returns only the lines relevant for the processes in this file.
+
     :type ical_text: str
     :rtype: str"""
+
     relevant_text = ""
     ical_text = ical_text[ical_text.find("BEGIN:VEVENT"):]
     for line in ical_text.split('\n'):
@@ -62,9 +77,14 @@ def _write_to_user_ical(ical_text):
 
 
 def _format_parameters(old_parameters):
-    """Parameters are converted to their proper forms.
+    """
+    Parameters are converted to their proper forms.
+
     :type old_parameters: dict
     :rtype: dict"""
+
+    #ToDo is this string stripping really neccesary? Probably a misunderstanding of what these symbols mean.
+
     new_parameters = {key: [] for key in KEYWORDS}
     for el in old_parameters["Groups: "]:
         new_parameters["Groups: "].append(el.replace('\\', ''))
@@ -81,7 +101,9 @@ def _format_parameters(old_parameters):
 
 
 def _collect_parameters(formatted_ical_text, parameters):
-    """Recursively collects all the parameters
+    """
+    Recursively collects all the parameters
+
     :type formatted_ical_text: str
     :type parameters dict
     :rtype: dict
@@ -105,7 +127,9 @@ def _collect_parameters(formatted_ical_text, parameters):
 
 
 def _combine_classes(user_classes, main_classes):
-    """Returns a list of only the AClass objects that are unique.
+    """
+    Returns a list of only the AClass objects that are unique.
+
     :type user_classes: list
     :type main_classes: list
     :rtype: list
@@ -117,8 +141,11 @@ def _combine_classes(user_classes, main_classes):
 
 
 def retrieve_icals():
-    """Writes formatted icals to files. Raises value error if url invalid.
-    :raises ValueError"""
+    """
+    Writes formatted icals to files. Raises value error if url invalid.
+
+    :raises ValueError
+    """
     _settings = get_timetable_settings()
 
     #try:
@@ -138,7 +165,9 @@ def retrieve_icals():
 
 
 def parse_icals():
-    """Parses ical files and writes the results to database."""
+    """
+    Parses ical files and writes the results to database.
+    """
     parameters_dict = {key: [] for key in KEYWORDS}
     user_classes = []
     #main_classes = []

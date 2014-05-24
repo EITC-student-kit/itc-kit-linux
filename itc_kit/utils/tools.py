@@ -5,7 +5,14 @@ from itc_kit.settings import settings
 
 
 class UrlChecker(threading.Thread):
+    """
+    This class performs a check to see whether the supplied url is valid or not.
 
+    The check is minimalistic, a way this could be bypassed, is if the url is a text file somewhere that is downloaded
+    and contains the string BEGIN:VCALENDAR.
+
+    No check if this is not a valic ical file. (Anything besides the ical files of IT college.)
+    """
     def __init__(self, instance):
         """
         :type instance: SetIcalUrlWindow
@@ -51,7 +58,3 @@ def string_from_till(a_string, first_symbol, second_symbol):
         else:
             indx += 1
     return a_string
-
-
-def load_settings():
-    pass

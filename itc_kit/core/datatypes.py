@@ -5,19 +5,24 @@ from itc_kit.utils.converting import str_to_datetime
 
 
 class DataTypesAbstractClass():
-    """Any classes inheriting from this class would be meant for creating instances that can be easily written to
-    database, created from database rows or add the ability to safely and easily remove instances from database"""
+    """
+    Any classes inheriting from this class would be meant for creating instances that can be easily written to
+    database, created from database rows or add the ability to safely and easily remove instances from database
+    """
 
     def __init__(self):
         self._db_row = []
 
     def _create_database_row(self, *kwargs):
-        """Sets the supplied parameters as the value for instances database row representation. Only works if a
-        database row has not already been created, thus ensuring that inheritance can be used."""
+        """
+        Sets the supplied parameters as the value for instances database row representation. Only works if a
+        database row has not already been created, thus ensuring that inheritance can be used.
+        """
         if len(self._db_row) == 0:
             self._db_row = kwargs
 
     def get_database_row(self):
+        """:rtype list"""
         return self._db_row
 
     def __eq__(self, other):
@@ -28,9 +33,13 @@ class DataTypesAbstractClass():
 
 
 class Notification(DataTypesAbstractClass):
+    """
+    This class marks the type of a notification, when it should be raised and the message that should accompany it.
+    """
 
     def __init__(self, type_of, when_to_raise, message):
-        """The database table -> Notification (type TEXT, time TIMESTAMP, message TEXT)
+        """
+        The database table -> Notification (type TEXT, time TIMESTAMP, message TEXT)
 
         :param type_of: Either EMail or Reminder
         :type type_of: str
@@ -41,20 +50,25 @@ class Notification(DataTypesAbstractClass):
             if not isinstance(when_to_raise, datetime):
                 when_to_raise = str_to_datetime(when_to_raise)
         except TypeError:
-            print("Problem converting string to datetime in Notification class.")
-            raise RuntimeError
+            raise RuntimeError("Problem converting string to datetime in Notification class.")
 
         DataTypesAbstractClass.__init__(self)
         self._create_database_row(type_of, when_to_raise, message)
 
     def is_due(self):
+        """:rtype bool"""
         return self._db_row[1] <= datetime.now()
 
 
 class Activity(DataTypesAbstractClass):
+    """
+    This class marks the type of an Activity in terms of productivity (Productive, Neutral, Counterproductive), when the
+     activity was started, ended and how long was its duration.
+    """
 
     def __init__(self, type_of, start, end, spent_time):
-        """The database table -> Activity (activity_type TEXT, start_timestamp TIMESTAMP, end_timestamp TIMESTAMP,
+        """
+        The database table -> Activity (activity_type TEXT, start_timestamp TIMESTAMP, end_timestamp TIMESTAMP,
          spent_time INTEGER )
 
         :param type_of: Either Productive, Neutral of Counterproductive
@@ -66,13 +80,17 @@ class Activity(DataTypesAbstractClass):
         try:
             assert type_of in ("Productive", "Neutral", "Counterproductive")
         except AssertionError:
-            print("Invalid parameter passed for type_of in Activity instance creation: ", type_of)
+            raise RuntimeError("Invalid parameter passed for type_of in Activity instance creation: ", type_of,
+                               "should be either Productive, Neutral, Counterproductive")
 
         DataTypesAbstractClass.__init__(self)
         self._create_database_row(type_of, start, end, spent_time)
 
 
 class EMail(Notification):
+    """
+    This class represents received email, it currently only contains the senders name and email in one variable.
+    """
 
     def __init__(self, sender):
         """
@@ -95,7 +113,8 @@ class AClass(DataTypesAbstractClass):
 
     def __init__(self, subject_code, subject_name, attending_groups, class_type, start_timestamp, end_timestamp,
                  classroom, academician, attendible=False):
-        """The database table -> Class (subject_code TEXT, subject_name TEXT, attending_groups TEXT,
+        """
+        The database table -> Class (subject_code TEXT, subject_name TEXT, attending_groups TEXT,
                                 class_type TEXT, start_timestamp TIMESTAMP, end_timestamp TIMESTAMP, classroom TEXT,
                                 academician TEXT, user_attend BOOLEAN)
 
@@ -128,6 +147,3 @@ class AClass(DataTypesAbstractClass):
     def __eq__(self, other):
         """Last element attendible row in database can differ and still be the same description."""
         return self.get_database_row()[:-1] == other.get_database_row()[:-1]
-
-if __name__ == "__main__":
-    pass

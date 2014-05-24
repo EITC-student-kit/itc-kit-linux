@@ -23,12 +23,9 @@ table_dict = {notif_cls: ("Notification", "(?,?,?)"),
               a_cls_cls: ("Class", "(?,?,?,?,?,?,?,?,?)")}
 
 
-def make_empty_db():
-    pass
-
-
 def add_to_db(datatypes):
-    """Adds instances from datatype to correct table. Duplicates are not written.
+    """
+    Adds instances from datatype to correct table. Duplicates are not written.
     :type datatypes Iterable | DataTypesAbstractClass
     """
     try:
@@ -49,7 +46,17 @@ def add_to_db(datatypes):
 
 
 def get_not_already_in_db(datatypes, table_name):
+    """
+    Filters out the instances that are not currently present in database.
+
+    :rtype list
+    :param datatypes A list of DataTypesAbstractClass inherited instances
+    :type datatypes list
+    :param table_name The name of the table associated with this Class
+    :type table_name str
+    """
     #Emails already checked cannot be marked as unread and checked again.
+    #ToDo implement in pure SQL
     new = []
     if table_name == "Class":
         currently_in_db = get_all_classes()
@@ -71,8 +78,10 @@ def connect_to_db():
 
 
 def get_all_classes():
-    """Not used outside testing. Returns database rows not instances of objects.
-    :rtype tuple"""
+    """
+    Not used outside testing.
+    :rtype tuple
+    """
     db = connect_to_db()
     db_rows = db.cursor().execute("SELECT * FROM Class").fetchall()
     classes = []
@@ -116,11 +125,17 @@ def remove_all_notifications():
 
 
 def get_all_mail_uids():
+    """
+    :rtype Iterable
+    """
     db = connect_to_db()
     return db.cursor().execute("SELECT * FROM SeenMailUID").fetchall()
 
 
 def get_mail_not_read(uids):
+    """
+    :rtype Iterable
+    """
     not_found = []
     currend_uids = get_all_mail_uids()
     [not_found.append(uid) for uid in uids if uid not in currend_uids]
@@ -144,7 +159,7 @@ def add_mail_uid(uids):
 
 def attempt_tables_creation(cursor):
     """If tables do not yet exist, they are created."""
-    #ToDo implement a real check?
+    #ToDo implement in pure SQL?
     try:
         cursor.execute("""CREATE TABLE Class (subject_code TEXT, subject_name TEXT, attending_groups TEXT,
                                 class_type TEXT, start_timestamp TIMESTAMP, end_timestamp TIMESTAMP, classroom TEXT,
@@ -168,6 +183,3 @@ def attempt_tables_creation(cursor):
     except OperationalError:
         #Already exists
         pass
-
-if __name__ == "__main__":
-    pass

@@ -10,13 +10,14 @@ from itc_kit.utils import converting
 
 
 class Stopper(Thread):
-    """A thread object that is meant to replicate a stopper. A new instance should be created for tracking another
+    """
+    A thread object that is meant to replicate a stopper. A new instance should be created for tracking another
     activity. This is due to performance considerations.
     """
 
     def __init__(self, sub_menu, type_of_activity):
-        """Initialization uses the super class Thread __init__ function and sets a gtk.PictureMenuItem object to
-        be used as a display point for the running stopper time.
+        """
+        Sets a gtk.PictureMenuItem object to be used as a display point for the running stopper time.
 
         :param sub_menu: Reference to tracking sub-menu instance
         :type sub_menu: TimeManagerSubMenu
@@ -44,7 +45,3 @@ class Stopper(Thread):
     def stop_tracking(self):
         """Lets this thread instance finish. After this all references to this instance should be removed."""
         self._exit_thread = True
-
-
-if __name__ == "__main__":
-    pass
