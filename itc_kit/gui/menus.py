@@ -25,8 +25,7 @@ def get_state(sub_menu):
     states = {TimetableSubMenu.__name__: settings.get_timetable_settings()[key],
               MailSubMenu.__name__: settings.get_email_settings()[key],
               NotificationSubMenu.__name__: settings.get_notification_settings()[key],
-              TimeManagerSubMenu.__name__: settings.get_time_manager_settings()[key],
-              ConkySubMenu.__name__: settings.get_conky_settings()[key]}
+              TimeManagerSubMenu.__name__: settings.get_time_manager_settings()[key]}
     return states[sub_menu]
 
 
@@ -50,7 +49,6 @@ class MainMenu(Gtk.Menu):
                            Gtk.MenuItem("EMail"),
                            Gtk.MenuItem("Notifications"),
                            Gtk.MenuItem("Time Manager"),
-                           Gtk.MenuItem("Conky"),
                            Gtk.MenuItem("Plugins"),
                            Gtk.ImageMenuItem("Notification Display"),
                            Gtk.ImageMenuItem("Exit")]
@@ -70,12 +68,10 @@ class MainMenu(Gtk.Menu):
         self.notification_widget.set_submenu(self.sub_menus[NotificationSubMenu.__name__])
         self.tracking_widget = self.menu_items[3]
         self.tracking_widget.set_submenu(self.sub_menus[TimeManagerSubMenu.__name__])
-        self.conky_widget = self.menu_items[4]
-        self.conky_widget.set_submenu(self.sub_menus[ConkySubMenu.__name__])
-        self.plugins_widget = self.menu_items[5]
+        self.plugins_widget = self.menu_items[4]
         self.plugins_widget.set_submenu(self.sub_menus[PluginSubMenu.__name__])
-        self.notification_display_widget = self.menu_items[6]
-        self.exit_widget = self.menu_items[7]
+        self.notification_display_widget = self.menu_items[5]
+        self.exit_widget = self.menu_items[6]
 
         [(self.append(item), item.show()) for item in self.menu_items]
 
@@ -118,6 +114,7 @@ class BaseSubMenu(Gtk.Menu):
 
     def __init__(self, identity, lbl):
         super(Gtk.Menu, self).__init__()
+        add_plugin()
         self.identity = identity
         self.menu_item_lbl = lbl
 
@@ -132,6 +129,9 @@ class PluginSubMenu(BaseSubMenu):
     """
 
     def __init__(self, main_menu_ref):
+        #Compensate for this exception.
+        global NR_OF_PLUGINS
+        NR_OF_PLUGINS -= 1
         super(PluginSubMenu, self).__init__(self.__class__.__name__, "Plugins")
         self.main_menu_ref = main_menu_ref
         self.plugins = self.make_submenus_dict()
@@ -144,7 +144,6 @@ class PluginSubMenu(BaseSubMenu):
         self.email_widget = self.menu_items[1]
         self.notifications_widget = self.menu_items[2]
         self.timemanager_widget = self.menu_items[3]
-        self.conky_widget = self.menu_items[4]
 
         for it in self.menu_items:
             it.show()
@@ -209,7 +208,6 @@ class TimeManagerSubMenu(BaseSubMenu):
     _display_label = ''
 
     def __init__(self):
-        add_plugin()
         super(TimeManagerSubMenu, self).__init__(self.__class__.__name__, "Time manager")
 
         from itc_kit.gui.icons.build_in_icons import get_productivity_icons
@@ -315,25 +313,28 @@ class TimeManagerSubMenu(BaseSubMenu):
 class TimetableSubMenu(BaseSubMenu):
 
     def __init__(self):
-        add_plugin()
         super(TimetableSubMenu, self).__init__(self.__class__.__name__, "Timetable")
 
         menu_items = [Gtk.MenuItem("Update"),
                       Gtk.MenuItem("Set ical URL"),
-                      Gtk.MenuItem("Customize Timetable")]
+                      Gtk.MenuItem("Conky Settings")]
 
         for it in menu_items:
             it.show()
 
         self.update_widget = menu_items[0]
         self.set_ical_url_widget = menu_items[1]
-        self.customize_timetable_widget = menu_items[2]
+        self.settings_widget = menu_items[2]
 
         [(self.append(item)) for item in menu_items]
 
         self.update_widget.connect("activate", self.on_update_clicked)
         self.set_ical_url_widget.connect("activate", self.on_set_ical_url)
-        self.customize_timetable_widget.connect("activate", self.on_customize_timetable_clicked)
+        self.settings_widget.connect("activate", self.on_change_conky_settings)
+
+    @staticmethod
+    def on_change_conky_settings(self):
+        windows.open_set_conky_settings()
 
     @staticmethod
     def on_set_ical_url(widget):
@@ -351,7 +352,6 @@ class TimetableSubMenu(BaseSubMenu):
 class NotificationSubMenu(BaseSubMenu):
 
     def __init__(self):
-        add_plugin()
         super(NotificationSubMenu, self).__init__(self.__class__.__name__, "Notification")
 
         menu_items = [Gtk.MenuItem("Add reminder"),
@@ -379,7 +379,6 @@ class NotificationSubMenu(BaseSubMenu):
 
 class MailSubMenu(BaseSubMenu):
     def __init__(self):
-        add_plugin()
         super(MailSubMenu, self).__init__(self.__class__.__name__, "EMail")
         menu_items = [Gtk.MenuItem("Username/Password")]
 
@@ -392,35 +391,7 @@ class MailSubMenu(BaseSubMenu):
 
         self.set_credentials_widget.connect("activate", self.on_set_credentials_clicked)
 
-    def on_set_credentials_clicked(self, widget):
+    @staticmethod
+    def on_set_credentials_clicked(widget):
         windows.open_set_credentials()
-
-
-class ConkySubMenu(BaseSubMenu):
-
-    def __init__(self):
-        add_plugin()
-        super(ConkySubMenu, self).__init__(self.__class__.__name__, "Conky")
-        menu_items = [Gtk.MenuItem("Set Color"),
-                      Gtk.MenuItem("Display Settings")]
-
-        for it in menu_items:
-            it.show()
-
-        self.set_color_widget = menu_items[0]
-        self.display_settings_widget = menu_items[1]
-
-        [(self.append(item)) for item in menu_items]
-
-        self.set_color_widget.connect("activate", self.on_set_color_clicked)
-        self.display_settings_widget.connect("activate", self.on_display_settings_clicked)
-
-    def on_set_color_clicked(self):
-        #ToDo implement on_set_color_clicked
-        raise NotImplementedError
-
-    def on_display_settings_clicked(self):
-        #ToDo implement on_set_color_clicked
-        raise NotImplementedError
-
 

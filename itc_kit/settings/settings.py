@@ -10,7 +10,7 @@ def update_settings(obj, key, value):
     """Updates the value specified.
     :type obj: str
     :type key: str
-    :type value: str | bool
+    :type value: str | bool | int
     """
     _json_data = json.load(open(SETTINGS_FILE_PATH))
     _json_data[obj][key] = value

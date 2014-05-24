@@ -4,6 +4,7 @@ from threading import Thread
 from time import sleep
 from gi.repository import AppIndicator3 as AppIndicator
 from itc_kit.db import dbc
+from itc_kit.utils import tools
 
 
 class NotificationHandler(Thread):
@@ -39,7 +40,7 @@ class NotificationHandler(Thread):
             self._notifications = dbc.get_all_notifications()
             [self._notification_to_raise.append(new_notif) for new_notif in self._get_due_notifications()]
             self._attempt_to_raise_latest_notification()
-            sleep(5)
+            sleep(1)
 
     def _get_due_notifications(self):
         """
@@ -64,6 +65,7 @@ class NotificationHandler(Thread):
         param: notif: A notification
         type: notif: Notification
         """
+        tools.play_notification_sound()
         self._indicator_reference.notification_raised = True
         self._main_menu_reference.notification_display_widget.show()
         if notif.get_database_row()[0] == "EMail":

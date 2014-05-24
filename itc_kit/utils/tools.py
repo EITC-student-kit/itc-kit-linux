@@ -4,6 +4,11 @@ import threading
 from itc_kit.settings import settings
 
 
+def play_notification_sound():
+    from os import system
+    system("aplay ~/.itc-kit/notif_sound.wav")
+
+
 class UrlChecker(threading.Thread):
     """
     This class performs a check to see whether the supplied url is valid or not.
@@ -58,3 +63,14 @@ def string_from_till(a_string, first_symbol, second_symbol):
         else:
             indx += 1
     return a_string
+
+
+def is_valid_hex(val):
+    """
+    :rtype bool
+    """
+    try:
+        int(val, 16)
+        return True
+    except ValueError:
+        return False

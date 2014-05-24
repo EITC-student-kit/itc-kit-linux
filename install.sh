@@ -5,11 +5,11 @@ LIST_OF_APPS="python3 python3-gi python3-keyring conky-all libsqlite3-dev luaroc
 #Install dependencies
 
 echo "Performing system update"
-#apt-get update
+apt-get update
 
 echo "Installing dependencies"
 apt-get install -y ${LIST_OF_APPS}
-#luarocks install lsqlite3
+luarocks install lsqlite3
 
 #Add pythons files to path
 
@@ -36,6 +36,7 @@ mkdir ~/.itc-kit
 cp itc_kit/settings/settings ~/.itc-kit
 cp itc_kit/db/itckitdb ~/.itc-kit
 cp itc_kit/gui/kill_program.sh ~/.itc-kit
+cp itc_kit/utils/notif_sound.wav ~/.itc-kit
 touch ~/.itc-kit/user_ical
 touch ~/.itc-kit/main_ical
 
@@ -61,15 +62,3 @@ cp itc_kit/mail/password_retrieval.py ~/.itc-kit/
 
 echo "alias itc='itc-kit.py'" >> ~/.bashrc;
 
-
-#while true; do
-#    read -p "Use the default terminal shorthand? (itc) (yes/no)" yn
-#    case ${yn} in
-#        [Yy]* ) echo "alias itc='itc_kit.py'" >> ~/.bashrc;;
-#        [Nn]* ) read -p "Enter the preferred shorthand: " shorthand;
-#        echo "alias $shorthand='itc_kit.py'" >> ~/.bashrc;
-#        echo "After reopening terminal, Eitc_kit can be run by using the shorthand $shorthand in your terminal";
-#        exit;;
-#        * ) echo "Please answer y or n.";;
-#    esac
-#done

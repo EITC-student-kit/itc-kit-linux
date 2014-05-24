@@ -1,10 +1,12 @@
 __author__ = 'Kristo Koert'
 
-from itc_kit.utils.tools import UrlChecker
+from itc_kit.utils.tools import UrlChecker, is_valid_hex
 from itc_kit.timetable import ical
 from itc_kit.core import datatypes
 from gi.repository import Gtk, Gdk, GLib
 from datetime import datetime
+import threading
+from itc_kit.settings import settings
 
 
 class BaseWindow(Gtk.Window):
@@ -138,7 +140,7 @@ class SetIcalURLWindow(BaseWindow):
             self.progressbar.set_fraction(0.0)
 
 
-class UpdatingTimetableWindow(BaseWindow):
+class UpdatingTimetableWindow(BaseWindow, threading.Thread):
     """
     This class opens a window that runs the underling processes that download the ical file at the url specified in the
     settings ical file.
@@ -152,6 +154,7 @@ class UpdatingTimetableWindow(BaseWindow):
 
     def __init__(self):
         BaseWindow.__init__(self, title="Update Timetable")
+        threading.Thread.__init__(self)
         self.set_size_request(100, 0)
 
         self.timeout_id = None
@@ -328,6 +331,75 @@ class SetCredentialsWindow(BaseWindow):
         self.destroy()
 
 
+class SetConkySettingsWindow(BaseWindow):
+
+    info_text = "The color must be in hex format -> 0xffffff\n" \
+                "The number of days can be from 1 to 7"
+
+    def __init__(self):
+        BaseWindow.__init__(self, title="Set timetable color")
+        self.set_size_request(100, 100)
+
+        rows = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
+        row1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        row2 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        row3 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+        info_row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
+
+        rows.add(row1)
+        rows.add(row2)
+        rows.add(info_row)
+        rows.add(row3)
+
+        self.add(rows)
+
+        self.color_label = Gtk.Label("Color hex code:")
+        row1.pack_start(self.color_label, True, True, 0)
+
+        self.hex_entry = Gtk.Entry()
+        self.hex_entry.set_text(settings.get_conky_settings()["color"])
+        row1.pack_end(self.hex_entry, True, True, 10)
+
+        self.days_label = Gtk.Label("Nr of days displayed:")
+        row2.pack_start(self.days_label, True, True, 0)
+
+        self.days_entry = Gtk.Entry()
+        self.days_entry.set_text(str(settings.get_conky_settings()["days"]))
+        row2.pack_end(self.days_entry, True, True, 10)
+
+        self.info_label = Gtk.Label(self.info_text)
+        info_row.pack_start(self.info_label, True, True, 1)
+
+        self.confirm_button = Gtk.Button("Apply")
+        self.confirm_button.connect("clicked", self.on_confirm_clicked)
+        row3.pack_start(self.confirm_button, True, True, 1)
+
+        GLib.timeout_add(10, self.handler_timeout)
+
+    def handler_timeout(self):
+        self.info_label.set_label(self.info_text)
+        return True
+
+    def on_confirm_clicked(self, widget):
+        hex_input = self.hex_entry.get_text()
+        days_input = int(self.days_entry.get_text())
+        self.info_text = ""
+        if is_valid_hex(hex_input):
+            settings.update_settings("Conky", "color", hex_input)
+        else:
+            self.info_text += "This does not seem to be a valid hex"
+        if 8 > days_input > 0:
+            settings.update_settings("Conky", "days", days_input)
+        else:
+            self.info_text += "\nDays value must be between 1 and 7"
+
+
+def open_set_conky_settings():
+    win = SetConkySettingsWindow()
+    win.connect("delete-event", win.on_close)
+    win.show_all()
+
+
 def open_set_credentials():
     win = SetCredentialsWindow()
     win.connect("delete-event", win.on_close)
@@ -338,6 +410,7 @@ def open_update_timetable():
     win = UpdatingTimetableWindow()
     win.connect("delete-event", win.on_close)
     win.show_all()
+    win.start()
 
 
 def open_set_ical_url():
