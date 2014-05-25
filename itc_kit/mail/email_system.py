@@ -51,7 +51,7 @@ class MailHandler(threading.Thread):
             self.connection = self.connect_to_account()
             time.sleep(1)
         else:
-            print("Mail service is not none ->", mail_service)
+            #print("Mail service is not none ->", mail_service)
             result, data = mail_service.uid("search", None, "UNSEEN")
             if self.mail_settings["first_time"]:
                 settings.update_settings("EMail", "first_time", False)
