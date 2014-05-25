@@ -32,7 +32,7 @@ An application launcher named "itc-kit" is created. The application can also be 
 
 Running the program creates a toolbar indicator with the IT college icon where you can access all functionality.
 
-<img src="http://enos.itcollege.ee/~kkoert/All_small.png" />
+<img src="http://enos.itcollege.ee/~kkoert/new_menu.png" />
 
 *Note: Running an untrusted shell script with root privleges can be dangerous, you should check the content of the script first.*
 
@@ -72,7 +72,11 @@ This plugin allows you to create reminders that will trigger at the specified ti
 
 ### Productivity tracker
 
-This plugin has not been completely implemented yet. Though it can be used and everything works the display conky element is currently not functional. 
+Activating this plugin will allow the tracking of three types of activities. Those that are productive, neutral or counterproductive. 
+
+Three rings displaying the percentages of each activity are displayed in the lower right corner of the screen. 
+
+<img src="http://enos.itcollege.ee/~kkoert/time_manager.png" />
 
 ### Development Team
 
@@ -88,9 +92,7 @@ Itc-kit was created by:
  
 ### Contact
 
-Kristo Koert email "kristo.koert@gmail.com"
-
-[Kristo's facebook](https://www.facebook.com/kristo.koert)
+Kristo Koert email: kristo.koert@itcollege.ee
 
 Note: Olen tavaline tudeng, võtke julgelt ühendust kui probleeme, soovitusi või tahate panustada. :) 
 
