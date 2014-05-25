@@ -228,7 +228,7 @@ class TimeManagerSubMenu(BaseSubMenu):
         self.neutral_widget.set_label("Neutral")
 
         self.counter_productive_widget = menu_items[2]
-        self.counter_productive_widget.set_label("Counter-Productive")
+        self.counter_productive_widget.set_label("Counterproductive")
 
         self.display_widget = menu_items[3]
         self.stop_widget = menu_items[4]
