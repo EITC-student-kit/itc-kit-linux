@@ -48,6 +48,8 @@ After activating it from the plugins menu you should see a transparent empty tim
  * Select the applications timetable submenu
  * Set ical URL
 
+The color and number of days displayed can be changed in the Timetable submenu.
+
 *Note: Currently the application only supports the english version of the timetable. ÕIS Language can be changed in the upper left corner.*
 
 <img src="http://enos.itcollege.ee/~kkoert/timetable.png" />
@@ -56,7 +58,7 @@ After activating it from the plugins menu you should see a transparent empty tim
 
 Activating the plugin should prompt you for an email and password. Here use your IT college email username and password.
 
-You should now see the indicator alert and see the the sender when you have new unread email.
+You should now hear a sound and see a notification icon in the application indicator when you recieve an email. After opening the main menu you will see the the sender. 
 
 <img src="http://enos.itcollege.ee/~kkoert/email_small.png" />
 
