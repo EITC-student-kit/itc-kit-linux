@@ -212,11 +212,11 @@ class TimeManagerSubMenu(BaseSubMenu):
 
         from itc_kit.gui.icons.build_in_icons import get_productivity_icons
 
-        pro_icon, neu_icon, cou_icon = get_productivity_icons()
+        #pro_icon, neu_icon, cou_icon = get_productivity_icons()
 
-        menu_items = [Gtk.ImageMenuItem(pro_icon),
-                      Gtk.ImageMenuItem(neu_icon),
-                      Gtk.ImageMenuItem(cou_icon),
+        menu_items = [Gtk.ImageMenuItem(None),
+                      Gtk.ImageMenuItem(None),
+                      Gtk.ImageMenuItem(None),
                       Gtk.MenuItem("Display"),
                       Gtk.MenuItem("Stop"),
                       Gtk.MenuItem("Undo")]
