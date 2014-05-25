@@ -4,28 +4,28 @@ LIST_OF_APPS="python3 python3-gi python3-keyring conky-all libsqlite3-dev luaroc
 
 #Install dependencies
 
-echo "Performing system update"
-apt-get update
-
-echo "Installing dependencies"
-apt-get install -y ${LIST_OF_APPS}
-luarocks install lsqlite3
-
-#Add pythons files to path
-
+#echo "Performing system update"
+#apt-get update
+#
+#echo "Installing dependencies"
+#apt-get install -y ${LIST_OF_APPS}
+#luarocks install lsqlite3
+#
+##Add pythons files to path
+#
 echo "Running python setup script"
 python3 setup.py install
-
-#Create file structure in home directory
-
-echo "Making executable."
-
-cp itc_kit/gui/icons/itc-icon.png /usr/share/pixmaps
-
-cp itc_kit/itc-kit.py /usr/bin/
-chmod +x /usr/bin/itc-kit.py
-chmod +x itc-kit.desktop
-cp itc-kit.desktop ~/.local/share/applications
+#
+##Create file structure in home directory
+#
+#echo "Making executable."
+#
+#cp itc_kit/gui/icons/itc-icon.png /usr/share/pixmaps
+#
+#cp itc_kit/itc-kit.py /usr/bin/
+#chmod +x /usr/bin/itc-kit.py
+#chmod +x itc-kit.desktop
+#cp itc-kit.desktop ~/.local/share/applications
 
 echo "Creating filestructure"
 
@@ -60,5 +60,5 @@ cp itc_kit/mail/password_retrieval.py ~/.itc-kit/
 
 "
 
-echo "alias itc='itc-kit.py'" >> ~/.bashrc;
+#echo "alias itc='itc-kit.py'" >> ~/.bashrc;
 

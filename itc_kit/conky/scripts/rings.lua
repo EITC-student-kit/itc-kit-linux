@@ -136,8 +136,8 @@ function conky_clock_rings()
 
         ac_type=pt['ac_type']
 				
-        local loc = "~/.itc_kit/itckitdb"
-				local db = sqlite3.open(loc)
+        local loc = os.getenv("HOME")
+				local db = sqlite3.open(string.format("%s/.itc-kit/itckitdb", loc))
 				for ac_sum in db:nrows("SELECT * FROM Activity WHERE activity_type LIKE '"..ac_type.."'") do
 					spent_sum=spent_sum+ac_sum.spent_time
 				end--for
