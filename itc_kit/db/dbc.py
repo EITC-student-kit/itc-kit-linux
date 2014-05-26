@@ -1,9 +1,11 @@
 __author__ = 'Kristo Koert'
 
 from sqlite3 import connect, OperationalError, PARSE_DECLTYPES
-from itc_kit.core.datatypes import *
 from datetime import datetime
 from os import getenv
+
+from itc_kit.core.datatypes import *
+
 
 DATABASE_PATH = getenv("HOME") + "/.itc-kit/itckitdb"
 

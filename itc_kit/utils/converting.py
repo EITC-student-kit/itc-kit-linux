@@ -74,5 +74,3 @@ def get_timezone_difference(datetime):
     return int(str(est_dt)[21:22])
 
 
-if __name__ == "__main__":
-    pass

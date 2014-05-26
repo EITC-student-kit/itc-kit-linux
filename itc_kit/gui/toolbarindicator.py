@@ -1,14 +1,16 @@
 __author__ = "Kristo Koert"
 #Dependency: gir1.2-appindicator3
 
-from gi.repository import Gtk, Gdk
 from itc_kit.settings import settings
+
+
 try:
     from gi.repository import AppIndicator3 as AppIndicator
 except ImportError:
     from gi.repository import AppIndicator
 
 from itc_kit.gui.menus import MainMenu
+from os import getenv
 
 
 class ToolbarIndicator():
@@ -21,7 +23,6 @@ class ToolbarIndicator():
     notification_raised = False
 
     def __init__(self):
-        from os import getenv
         icon_path = getenv("HOME") + settings.get_other_settings()["icon_path"]
         self.indc = AppIndicator.Indicator.new("app-doc-menu", icon_path,
                                                AppIndicator.IndicatorCategory.APPLICATION_STATUS)

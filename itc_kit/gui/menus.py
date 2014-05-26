@@ -210,7 +210,7 @@ class TimeManagerSubMenu(BaseSubMenu):
     def __init__(self):
         super(TimeManagerSubMenu, self).__init__(self.__class__.__name__, "Time manager")
 
-        from itc_kit.gui.icons.build_in_icons import get_productivity_icons
+        #from itc_kit.gui.icons.build_in_icons import get_productivity_icons
 
         #pro_icon, neu_icon, cou_icon = get_productivity_icons()
 

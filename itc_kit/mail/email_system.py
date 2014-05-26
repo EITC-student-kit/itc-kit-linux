@@ -29,8 +29,9 @@ class MailHandler(threading.Thread):
         while True:
             if self.mail_settings["activated"]:
                 self.get_unread_email()
+                time.sleep(15)
             else:
-                time.sleep(1)
+                time.sleep(5)
 
     def connect_to_account(self):
         try:
@@ -49,7 +50,6 @@ class MailHandler(threading.Thread):
         mail_service = self.connection
         if mail_service is None:
             self.connection = self.connect_to_account()
-            time.sleep(1)
         else:
 #            print("Mail service is not none ->", mail_service)
             result, data = mail_service.uid("search", None, "UNSEEN")
