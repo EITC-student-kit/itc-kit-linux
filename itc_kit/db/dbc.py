@@ -142,6 +142,14 @@ def get_mail_not_read(uids):
     return not_found
 
 
+def update_last_activity(start_time, end_time):
+    #ToDo implement with ID field
+    db = connect_to_db()
+    db.cursor().execute("UPDATE Activity SET spent_time=spent_time + 1, end_timestamp=(?) WHERE start_timestamp=(?)",
+                        (end_time, start_time))
+    db.commit()
+
+
 def add_mail_uid(uids):
     try:
         assert isinstance(uids, list)

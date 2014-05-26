@@ -97,6 +97,8 @@ function draw_hour_name (cr, i)
 	text_cairo (cr, font_size, x, y, text)
 end--draw_hour_name
 
+--ToDo Wrap this function in a protected call (pcall) for when the database is locked
+
 function draw_db (cr, i)
 	local function stamp_to_int(timestamp)
 					time_hour = tonumber(string.sub(timestamp, -8, -7))

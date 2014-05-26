@@ -3,11 +3,10 @@ __author__ = "Kristo Koert"
 from threading import Thread
 from time import sleep
 from datetime import datetime
-
 from itc_kit.core.datatypes import Activity
 from itc_kit.db import dbc
 from itc_kit.utils import converting
-
+from itc_kit.settings import settings
 
 class Stopper(Thread):
     """
@@ -31,17 +30,21 @@ class Stopper(Thread):
         self._exit_thread = False
 
     def run(self):
-        """As long as _exit_thread is false, this objects instance will stay active. When it's true, the instance will
-        become inactive and should be left for garbage collection by removing all references to it."""
+        """
+        As long as _exit_thread is false, this objects instance will stay active. When it's true, the instance will
+        become inactive and should be left for garbage collection by removing all references to it.
+        """
         start_time = datetime.now()
-        while not self._exit_thread:
-            self.sub_menu_reference._display_label = converting.sec_to_time(self._time)
-            sleep(1)
-            self._time += 1
-        end_time = datetime.now()
-        new_activity = Activity(self._type_of_activity, start_time, end_time, self._time)
+        new_activity = Activity(self._type_of_activity, start_time, datetime.now(), self._time)
         dbc.add_to_db(new_activity)
+        while not self._exit_thread and settings.get_time_manager_settings()["activated"]:
+            sleep(1)
+            self.sub_menu_reference._display_label = converting.sec_to_time(self._time)
+            self._time += 1
+            dbc.update_last_activity(start_time=start_time, end_time=datetime.now())
 
     def stop_tracking(self):
-        """Lets this thread instance finish. After this all references to this instance should be removed."""
+        """
+        Lets this thread instance finish. After this all references to this instance should be removed.
+        """
         self._exit_thread = True

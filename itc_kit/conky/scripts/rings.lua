@@ -127,6 +127,8 @@ function draw_precent(cr, pct, pt)
 	cairo_set_source_rgba (cr, rgb_to_r_g_b(pt['fg_colour'],pt['fg_alpha']))
 	cairo_stroke (cr)	
 end
+
+--ToDo Wrap this function in a protected call (pcall) for when the database is locked
 function conky_clock_rings()
     local function setup_rings(cr,pt)
         local ac_type=''
@@ -135,7 +137,7 @@ function conky_clock_rings()
 				local total_sum=0
 
         ac_type=pt['ac_type']
-				
+
         local loc = os.getenv("HOME")
 				local db = sqlite3.open(string.format("%s/.itc-kit/itckitdb", loc))
 				for ac_sum in db:nrows("SELECT * FROM Activity WHERE activity_type LIKE '"..ac_type.."'") do
