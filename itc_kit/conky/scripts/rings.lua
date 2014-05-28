@@ -106,11 +106,11 @@ end--draw_ring
  
 function draw_precent(cr, pct, pt)
 	local function round (number)
-		if math.floor(number) >= 0.5 then
-			number = math.ceil(number) 
-		else
+--		if math.floor(number) >= 0.2 then
+--			number = math.ceil(number)
+--		else
 			number = math.floor(number)
-		end
+--		end
 	return number
 	end
 	local font = "Ubuntu"
@@ -138,15 +138,16 @@ function conky_clock_rings()
 
         ac_type=pt['ac_type']
 
-        local loc = os.getenv("HOME")
-				local db = sqlite3.open(string.format("%s/.itc-kit/itckitdb", loc))
-				for ac_sum in db:nrows("SELECT * FROM Activity WHERE activity_type LIKE '"..ac_type.."'") do
-					spent_sum=spent_sum+ac_sum.spent_time
-				end--for
-				for ac_total_sum in db:nrows("SELECT * FROM Activity") do
-					total_sum=total_sum+ac_total_sum.spent_time
-				end--for
-				pct=spent_sum/total_sum
+        local loc = string.format("%s/.itc-kit",os.getenv("HOME"))
+        local db = sqlite3.open(string.format("%s/itckitdb", loc))
+
+		for ac_sum in db:nrows("SELECT * FROM Activity WHERE activity_type LIKE '"..ac_type.."'") do
+			spent_sum=spent_sum+ac_sum.spent_time
+		end--for
+		    for ac_total_sum in db:nrows("SELECT * FROM Activity") do
+			total_sum=total_sum+ac_total_sum.spent_time
+		end--for
+		local pct=spent_sum/total_sum
         draw_ring(cr, pct,pt)
 				draw_precent(cr, pct, pt)
     end--setup_rings
@@ -159,7 +160,7 @@ function conky_clock_rings()
     local cr=cairo_create(cs)    
     
     local updates=conky_parse('${updates}')
-    update_num=tonumber(updates)
+    local update_num=tonumber(updates)
     
     if update_num>1 then
         for i in pairs(settings_table) do

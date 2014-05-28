@@ -101,31 +101,33 @@ end--draw_hour_name
 
 function draw_db (cr, i)
 	local function stamp_to_int(timestamp)
-					time_hour = tonumber(string.sub(timestamp, -8, -7))
-					time_minute = tonumber(string.sub(timestamp, -5, -4))
-					time_int = time_hour + time_minute / 60
+					local time_hour = tonumber(string.sub(timestamp, -8, -7))
+					local time_minute = tonumber(string.sub(timestamp, -5, -4))
+					local time_int = time_hour + time_minute / 60
 					return time_int
-				end--stamp_to_int
-	local db = sqlite3.open(string.format("%s/itckitdb", loc))
-		for class in db:nrows("SELECT * FROM Class WHERE DATE(Class.start_timestamp) = date('now', '+"..i.." days') AND user_attend == 1") do--for
-			if i == 0 then
-			----Main----
-				db_draw_main_Name (cr, class.subject_name, stamp_to_int(class.start_timestamp), i)
-				db_draw_main_startind (cr, stamp_to_int(class.start_timestamp))
-				db_draw_main_lengthind (cr, stamp_to_int(class.start_timestamp), stamp_to_int(class.end_timestamp))
-				db_draw_main_otherName (cr, stamp_to_int(class.start_timestamp), class.start_timestamp, class.end_timestamp, class.classroom)
-				db_draw_main_other2Name (cr, class.academician, class.class_type, stamp_to_int(class.start_timestamp))
-				db_draw_main_other3Name (cr, class.attending_groups, stamp_to_int(class.start_timestamp))
-			else
-			----Other----
-				db_draw_other_startind (cr, stamp_to_int(class.start_timestamp), i)
-				db_draw_other_lengthind (cr, stamp_to_int(class.start_timestamp), stamp_to_int(class.end_timestamp), i)
-				db_draw_other_Name (cr, class.subject_name, stamp_to_int(class.start_timestamp), i)
-				db_draw_other_otherName (cr, class.start_timestamp, class.end_timestamp, class.classroom, stamp_to_int(class.start_timestamp), i)
-				db_draw_other_other2Name (cr, class.academician, class.class_type, stamp_to_int(class.start_timestamp), i)
-				db_draw_other_other3Name (cr, class.attending_groups, stamp_to_int(class.start_timestamp), i)
-			end--if
-		end--for
+	end--stamp_to_int
+
+    local db = sqlite3.open(string.format("%s/itckitdb", loc))
+
+	for class in db:nrows("SELECT * FROM Class WHERE DATE(Class.start_timestamp) = date('now', '+"..i.." days') AND user_attend == 1") do--for
+		if i == 0 then
+	    	----Main----
+			db_draw_main_Name (cr, class.subject_name, stamp_to_int(class.start_timestamp), i)
+			db_draw_main_startind (cr, stamp_to_int(class.start_timestamp))
+			db_draw_main_lengthind (cr, stamp_to_int(class.start_timestamp), stamp_to_int(class.end_timestamp))
+			db_draw_main_otherName (cr, stamp_to_int(class.start_timestamp), class.start_timestamp, class.end_timestamp, class.classroom)
+			db_draw_main_other2Name (cr, class.academician, class.class_type, stamp_to_int(class.start_timestamp))
+			db_draw_main_other3Name (cr, class.attending_groups, stamp_to_int(class.start_timestamp))
+		else
+		    ----Other----
+			db_draw_other_startind (cr, stamp_to_int(class.start_timestamp), i)
+			db_draw_other_lengthind (cr, stamp_to_int(class.start_timestamp), stamp_to_int(class.end_timestamp), i)
+			db_draw_other_Name (cr, class.subject_name, stamp_to_int(class.start_timestamp), i)
+			db_draw_other_otherName (cr, class.start_timestamp, class.end_timestamp, class.classroom, stamp_to_int(class.start_timestamp), i)
+			db_draw_other_other2Name (cr, class.academician, class.class_type, stamp_to_int(class.start_timestamp), i)
+			db_draw_other_other3Name (cr, class.attending_groups, stamp_to_int(class.start_timestamp), i)
+		end--if
+	end--for
 end--draw_db
 ----Main----
 function db_draw_main_startind (cr, start_time)
@@ -198,7 +200,7 @@ end--db_draw_other_lengthind
 
 function db_draw_other_Name (cr, class_name, start_time, i)
 	local function other_Name_resize (string)
-					re_string = ""
+					local re_string = ""
 					for word in string.gmatch (string, "%a+") do
 						if string.len (re_string) < 20 then
 							re_string = string.format ("%s %s" ,re_string ,word)
@@ -267,7 +269,7 @@ function conky_main ()
   local cr = cairo_create (cs)
 	
   local updates = conky_parse ('${updates}')
-	update_num = tonumber (updates)
+	local update_num = tonumber (updates)
 	
 	if update_num > 1 then
 		settings()
