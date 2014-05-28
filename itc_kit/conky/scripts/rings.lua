@@ -105,20 +105,12 @@ function draw_ring(cr,t,pt)
 end--draw_ring
  
 function draw_precent(cr, pct, pt)
-	local function round (number)
---		if math.floor(number) >= 0.2 then
---			number = math.ceil(number)
---		else
-			number = math.floor(number)
---		end
-	return number
-	end
 	local font = "Ubuntu"
 	local font_slant = CAIRO_FONT_SLANT_NORMAL
 	local font_face = CAIRO_FONT_WEIGHT_NORMAL
 	local font_size = 30
 	local x, y = pt['x'] - 30, pt['y'] + 10
-	local text = string.format("%s%%", round(pct * 100))
+	local text = string.format("%s%%", math.floor(pct * 100))
 
 	cairo_select_font_face (cr, font, font_slant, font_face);
 	cairo_set_font_size (cr, font_size)
