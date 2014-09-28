@@ -18,6 +18,8 @@ The application comes with four main functionalities:
 
 Just install the .zip of this repo, extract anywhere and run the install.sh script inside with root privleges. 
 
+Note: Please make sure universe repos are enabled: System Settings -> Software & Updates.
+
 In Ubuntu terminal:
 ```shell
 cd path/to/install.sh
