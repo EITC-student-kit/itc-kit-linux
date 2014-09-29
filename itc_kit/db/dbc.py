@@ -116,13 +116,13 @@ def get_statistics():
 
 def remove_all_activities():
     db = connect_to_db()
-    db.execute("DELETE * FROM Activity")
+    db.execute("DELETE FROM Activity")
     db.commit()
 
 
 def remove_all_notifications():
     db = connect_to_db()
-    db.execute("DELETE * FROM Notification")
+    db.execute("DELETE FROM Notification")
     db.commit()
 
 
